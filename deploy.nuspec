@@ -10,7 +10,7 @@
         <description>Investor</description>
     </metadata>
     <files>
-        <file src='investor\App_Plugins\*.*' target='App_Plugins' />
+        <file src='investor\App_Plugins\**\*.*' target='App_Plugins' />
         <file src='investor\bin\*.*' target='bin' />
         <file src='investor\Config\**\*.*' target='Config' />
 		<file src='investor\media\**\*.*' target='media' />

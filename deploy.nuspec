@@ -1,0 +1,21 @@
+<?xml version='1.0'?>
+<package xmlns='http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd'>
+    <metadata>
+        <id>investor</id>
+        <version>1.0.0</version>
+        <title>investor</title>
+        <summary></summary>
+        <authors>Carl Schéle</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Investor</description>
+    </metadata>
+    <files>
+        <file src='investor\App_Plugins\*.*' target='App_Plugins' />
+        <file src='investor\bin\*.*' target='bin' />
+        <file src='investor\Config\**\*.*' target='Config' />
+		<file src='investor\media\**\*.*' target='media' />
+		<file src='investor\UI\**\*.*' target='UI' />
+		<file src='investor\Views\**\*.*' target='Views' />
+        <file src='visita\global.asax' target='' />
+    </files>
+</package>

@@ -1,0 +1,19 @@
+﻿{
+    propertyEditors: [
+    {
+        alias: "MacroListEditor",
+        name: "Macro List Editor",
+        editor: {
+          view: "~/App_Plugins/MacroListEditor/macrolisteditor.html",
+		  valueType: "JSON"
+        },
+		prevalues:{
+                fields:[]
+            }
+    }
+    ]
+    ,
+    javascript: [
+        '~/App_Plugins/MacroListEditor/macrolisteditor.controller.js'
+    ]
+}

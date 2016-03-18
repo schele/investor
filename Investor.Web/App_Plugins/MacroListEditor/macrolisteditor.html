@@ -1,0 +1,7 @@
+﻿<div class="umb-editor macrolisteditor" ng-controller="MacroListEditorController">
+    <ul>
+        <li ng-repeat="macro in macros">
+            <label>{{macro.name}}:</label> <input type="checkbox" ng-checked="isSelected(macro)" ng-click="toggleMacro(macro)">
+        </li>
+    </ul>
+</div>

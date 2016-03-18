@@ -1,0 +1,19 @@
+﻿.macrolisteditor {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.macrolisteditor > ul {
+    list-style: none;
+    display: table;
+    table-layout: fixed;
+    margin: 0;
+}
+
+.macrolisteditor > ul > li input {
+    margin-left: 4px;
+}
+
+.macrolisteditor > ul > li label {
+    padding: 0;
+}

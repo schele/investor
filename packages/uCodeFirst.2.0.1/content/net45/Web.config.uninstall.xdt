@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+    <configSections>
+		<section name="uCodeFirst" type="UCodeFirst.Configuration.UCodeFirstSection, UCodeFirst" xdt:Locator="Match(name)" xdt:Transform="Remove" />
+	</configSections>
+	<uCodeFirst xdt:Transform="Remove" />
+</configuration>

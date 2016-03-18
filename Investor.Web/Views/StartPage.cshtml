@@ -1,0 +1,11 @@
+@using Investor.Models.PageModels;
+
+@inherits UmbracoViewPage<StartPageModel>
+
+@{
+    Layout = "Master.cshtml";
+}
+
+<h1>@Model.Header</h1>
+
+@Model.Body

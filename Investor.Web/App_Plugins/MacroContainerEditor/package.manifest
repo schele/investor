@@ -1,0 +1,26 @@
+﻿{
+    propertyEditors: [
+    {
+        alias: "MacroContainerEditor",
+        name: "Extended Macro Container Editor",
+        editor: {
+          view: "~/App_Plugins/MacroContainerEditor/macrocontainereditor.html",
+		  valueType: "JSON"
+        },
+		prevalues:{
+                fields:[
+                    {
+                        label:"Allowed Macros",
+                        description:"",
+                        key:"allowedMacros",
+                        view:"~/App_Plugins/MacroListEditor/macrolisteditor.html"
+                    }
+               ]
+            }
+    }
+    ]
+    ,
+    javascript: [
+        '~/App_Plugins/MacroContainerEditor/macrocontainereditor.controller.js'
+    ]
+}

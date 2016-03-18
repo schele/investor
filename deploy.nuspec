@@ -13,7 +13,6 @@
         <file src='Investor.Web\App_Plugins\**\*.*' target='App_Plugins' />
         <file src='Investor.Web\bin\*.*' target='bin' />
         <file src='Investor.Web\Config\**\*.*' target='Config' />
-	<file src='Investor.Web\media\*.*' target='media' />
 	<file src='Investor.Web\UI\**\*.*' target='UI' />
 	<file src='Investor.Web\Views\**\*.*' target='Views' />
         <file src='Investor.Web\global.asax' target='' />

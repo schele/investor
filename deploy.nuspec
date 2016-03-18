@@ -10,11 +10,6 @@
         <description>Investor</description>
     </metadata>
     <files>
-        <file src='investor\bin\*.*' target='bin' />
-        <file src='investor\Config\**\*.*' target='Config' />
-		<file src='investor\media\**\*.*' target='media' />
-		<file src='investor\UI\**\*.*' target='UI' />
-		<file src='investor\Views\**\*.*' target='Views' />
-        <file src='investor\global.asax' target='' />
+
     </files>
 </package>

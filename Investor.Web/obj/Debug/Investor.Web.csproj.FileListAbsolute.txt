@@ -124,3 +124,14 @@ C:\Projects\Git\Investor\Investor.Web\bin\WebMatrix.Data.xml
 C:\Projects\Git\Investor\Investor.Web\bin\WebMatrix.WebData.xml
 C:\Projects\Git\Investor\Investor.Web\obj\Debug\Investor.dll
 C:\Projects\Git\Investor\Investor.Web\obj\Debug\Investor.pdb
+C:\Projects\Git\Investor\Investor.Web\bin\MarkdownSharp.dll
+C:\Projects\Git\Investor\Investor.Web\bin\Microsoft.CodeAnalysis.CSharp.dll
+C:\Projects\Git\Investor\Investor.Web\bin\Microsoft.CodeAnalysis.dll
+C:\Projects\Git\Investor\Investor.Web\bin\System.Collections.Immutable.dll
+C:\Projects\Git\Investor\Investor.Web\bin\System.Reflection.Metadata.dll
+C:\Projects\Git\Investor\Investor.Web\bin\Umbraco.ModelsBuilder.dll
+C:\Projects\Git\Investor\Investor.Web\bin\Microsoft.CodeAnalysis.xml
+C:\Projects\Git\Investor\Investor.Web\bin\Microsoft.CodeAnalysis.CSharp.xml
+C:\Projects\Git\Investor\Investor.Web\bin\System.Collections.Immutable.xml
+C:\Projects\Git\Investor\Investor.Web\bin\System.Reflection.Metadata.xml
+C:\Projects\Git\Investor\Investor.Web\bin\Umbraco.ModelsBuilder.pdb

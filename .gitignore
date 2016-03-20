@@ -198,3 +198,5 @@ FakesAssemblies/
 # License file
 # License.config
 /Investor.Web/App_Data/TEMP/PluginCache
+/Investor.Web/media
+Investor.Web/App_Data/

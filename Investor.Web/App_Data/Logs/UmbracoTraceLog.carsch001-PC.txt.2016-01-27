@@ -1,0 +1,923 @@
+ 2016-01-27 08:15:33,574 [P7568/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.3.5 application starting on CARSCH001-PC
+ 2016-01-27 08:15:33,593 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2016-01-27 08:15:33,601 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 7ms)
+ 2016-01-27 08:15:33,723 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2016-01-27 08:15:33,815 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 92ms)
+ 2016-01-27 08:15:33,830 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2016-01-27 08:15:33,833 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 3ms)
+ 2016-01-27 08:15:33,833 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2016-01-27 08:15:33,836 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 3ms)
+ 2016-01-27 08:15:33,854 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2016-01-27 08:15:33,856 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 2ms)
+ 2016-01-27 08:15:33,856 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2016-01-27 08:15:33,861 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 4ms)
+ 2016-01-27 08:15:33,891 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2016-01-27 08:15:33,894 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 2ms)
+ 2016-01-27 08:15:33,894 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2016-01-27 08:15:33,896 [P7568/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 2ms)
+ 2016-01-27 08:15:34,560 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:10128211-ad12-4a34-826b-cdbc2238c0d9
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:34,560 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:34,665 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:10128211-ad12-4a34-826b-cdbc2238c0d9
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:34,665 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:35,665 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:10128211-ad12-4a34-826b-cdbc2238c0d9
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:35,665 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:36,665 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:10128211-ad12-4a34-826b-cdbc2238c0d9
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:36,665 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:37,666 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:10128211-ad12-4a34-826b-cdbc2238c0d9
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:37,666 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:38,666 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:10128211-ad12-4a34-826b-cdbc2238c0d9
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:38,666 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:39,668 [P7568/D2/T1] WARN  System.Data.IDbConnection - Configured database is reporting as not being available!. Exception: System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.DbConnectionExtensions.IsAvailable(IDbConnection connection)
+ClientConnectionId:d89c1893-ffc0-452c-bb4a-0876f2eeba72
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:39,668 [P7568/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = False
+ 2016-01-27 08:15:39,672 [P7568/D2/T1] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+Umbraco.Core.Exceptions.UmbracoStartupFailedException: Umbraco cannot start. A connection string is configured but the Umbraco cannot connect to the database.
+   at Umbraco.Core.CoreBootManager.EnsureDatabaseConnection()
+   at Umbraco.Core.CoreBootManager.Complete(Action`1 afterComplete)
+   at Umbraco.Web.WebBootManager.Complete(Action`1 afterComplete)
+   at Umbraco.Core.UmbracoApplicationBase.StartApplication(Object sender, EventArgs e)
+ 2016-01-27 08:15:49,720 [P7568/D2/T12] ERROR UmbracoExamine.DataServices.UmbracoContentService - EXCEPTION OCCURRED reading GetAllUserPropertyNames
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'umbraco_user'.
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Umbraco.Core.Persistence.FaultHandling.RetryPolicy.<>c__DisplayClass1.<ExecuteAction>b__0()
+   at Umbraco.Core.Persistence.FaultHandling.RetryPolicy.ExecuteAction[TResult](Func`1 func)
+   at Umbraco.Core.Persistence.Database.OpenSharedConnection()
+   at Umbraco.Core.Persistence.Database.<Query>d__7`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at UmbracoExamine.DataServices.UmbracoContentService.GetAllUserPropertyNames()
+ClientConnectionId:b0ef405b-99b5-4c13-8bf7-734978275239
+Error Number:18456,State:1,Class:14
+ 2016-01-27 08:15:49,752 [P7568/D2/T12] ERROR UmbracoExamine.DataServices.UmbracoLogService - Provider=InternalMemberIndexer, NodeId=-1
+System.Exception: Cannot index queue items, the index doesn't exist!,, IndexSet: InternalMemberIndexSet
+ 2016-01-27 08:15:49,753 [P7568/D2/T12] ERROR UmbracoExamine.DataServices.UmbracoLogService - Provider=InternalIndexer, NodeId=-1
+System.Exception: Cannot index queue items, the index doesn't exist!,, IndexSet: InternalIndexSet
+ 2016-01-27 08:15:49,753 [P7568/D2/T12] ERROR UmbracoExamine.DataServices.UmbracoLogService - Provider=ExternalIndexer, NodeId=-1
+System.Exception: Cannot index queue items, the index doesn't exist!,, IndexSet: ExternalIndexSet
+ 2016-01-27 08:16:19,777 [P7568/D2/T9] INFO  Umbraco.Core.UmbracoApplicationBase - Application shutdown. Details: InitializationError
+
+_shutDownMessage=Initialization Error
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+
+_shutDownStack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.AppDomainShutdownTimerCallback(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.TimerQueueTimer.CallCallback()
+   at System.Threading.TimerQueueTimer.Fire()
+   at System.Threading.TimerQueue.FireNextTimers()
+ 2016-01-27 08:18:28,670 [P7568/D3/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.3.5 application starting on CARSCH001-PC
+ 2016-01-27 08:18:28,688 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2016-01-27 08:18:28,698 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 8ms)
+ 2016-01-27 08:18:28,786 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2016-01-27 08:18:28,863 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 76ms)
+ 2016-01-27 08:18:28,877 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2016-01-27 08:18:28,880 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 3ms)
+ 2016-01-27 08:18:28,881 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2016-01-27 08:18:28,884 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 3ms)
+ 2016-01-27 08:18:28,896 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2016-01-27 08:18:28,899 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 2ms)
+ 2016-01-27 08:18:28,899 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2016-01-27 08:18:28,902 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 2ms)
+ 2016-01-27 08:18:28,927 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2016-01-27 08:18:28,932 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 4ms)
+ 2016-01-27 08:18:28,932 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2016-01-27 08:18:28,935 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 2ms)
+ 2016-01-27 08:18:29,819 [P7568/D3/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 08:18:29,998 [P7568/D3/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 08:18:30,120 [P7568/D3/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - Synchronizing the database with the code...
+ 2016-01-27 08:18:30,136 [P7568/D3/T1] INFO  UCodeFirst.Stylesheets.StylesheetsManager - Synchronized 0 css.
+ 2016-01-27 08:18:30,781 [P7568/D3/T1] INFO  UCodeFirst.RazorViews.RazorTemplatesManager - Synchronized 1 razor templates.
+ 2016-01-27 08:18:30,832 [P7568/D3/T1] INFO  UCodeFirst.DataTypes.DataTypesManager - Synchronized 0 data types.
+ 2016-01-27 08:18:31,189 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2016-01-27 08:18:31,195 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 5ms)
+ 2016-01-27 08:18:31,362 [P7568/D3/T1] INFO  UCodeFirst.ContentTypes.ContentTypesManager - Synchronized 2 content types.
+ 2016-01-27 08:18:31,402 [P7568/D3/T1] INFO  UCodeFirst.MemberTypes.MemberTypesManager - Synchronized 0 member types.
+ 2016-01-27 08:18:31,420 [P7568/D3/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - uCodeFirst executed successfully in 1407 ms.
+ 2016-01-27 08:18:31,421 [P7568/D3/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 08:18:31,429 [P7568/D3/T1] WARN  Umbraco.Core.Sync.DatabaseServerMessenger - No last synced Id found, this generally means this is a new server/install. The server will rebuild its caches and indexes and then adjust it's last synced id to the latest found in the database and will start maintaining cache updates based on that id
+ 2016-01-27 08:18:31,440 [P7568/D3/T1] INFO  umbraco.content - Load Xml from file...
+ 2016-01-27 08:18:31,449 [P7568/D3/T1] INFO  umbraco.content - Loaded Xml from file.
+ 2016-01-27 08:18:31,453 [P7568/D3/T1] INFO  umbraco.content - Loading content from database...
+ 2016-01-27 08:18:31,729 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2016-01-27 08:18:31,744 [P7568/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 15ms)
+ 2016-01-27 08:18:31,840 [P7568/D3/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2016-01-27 08:18:31,855 [P7568/D3/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2016-01-27 08:18:31,856 [P7568/D3/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2016-01-27 08:18:31,865 [P7568/D3/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 3266ms)
+ 2016-01-27 08:18:32,381 [P7568/D3/T9] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://investorab.local:80/umbraco (UmbracoModule request)
+ 2016-01-27 08:18:32,818 [P7568/D3/T9] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:18:35,510 [P7568/D3/T18] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 08:18:35,516 [P7568/D3/T11] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 08:20:40,803 [P7568/D3/T25] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:20:42,577 [P7568/D3/T25] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:20:42,729 [P7568/D3/T25] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:20:42,898 [P7568/D3/T25] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:20:51,533 [P7568/D3/T15] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:20:51,838 [P7568/D3/T15] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 08:21:01,513 [P7568/D3/T30] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt failed for username umbraco from IP address 127.0.0.1
+ 2016-01-27 08:21:09,602 [P7568/D3/T15] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt failed for username test from IP address 127.0.0.1
+ 2016-01-27 08:21:58,526 [P7568/D3/T32] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-01-26 08:21:58
+ 2016-01-27 08:26:24,644 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Terminating
+ 2016-01-27 08:26:24,644 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Waiting for tasks to complete
+ 2016-01-27 08:26:24,645 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Terminating
+ 2016-01-27 08:26:24,645 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Waiting for tasks to complete
+ 2016-01-27 08:26:24,646 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Terminating
+ 2016-01-27 08:26:24,646 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Waiting for tasks to complete
+ 2016-01-27 08:26:24,649 [P7568/D3/T22] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Tasks completed, terminated
+ 2016-01-27 08:26:24,650 [P7568/D3/T31] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Tasks completed, terminated
+ 2016-01-27 08:26:24,650 [P7568/D3/T32] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Tasks completed, terminated
+ 2016-01-27 08:26:24,654 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Terminating
+ 2016-01-27 08:26:24,655 [P7568/D3/T30] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Waiting for tasks to complete
+ 2016-01-27 08:26:24,657 [P7568/D3/T24] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Tasks completed, terminated
+ 2016-01-27 08:26:54,682 [P7568/D3/T22] INFO  Umbraco.Core.UmbracoApplicationBase - Application shutdown. Details: BinDirChangeOrDirectoryRename
+
+_shutDownMessage=Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment initiated shutdown
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+Change Notification for critical directories.
+bin dir change or directory rename
+HostingEnvironment caused shutdown
+
+_shutDownStack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.HttpRuntime.ShutdownAppDomain(String stackTrace)
+   at System.Web.HttpRuntime.OnCriticalDirectoryChange(Object sender, FileChangeEvent e)
+   at System.Web.FileChangesMonitor.OnCriticaldirChange(Object sender, FileChangeEvent e)
+   at System.Web.DirectoryMonitor.FireNotifications()
+   at System.Web.Util.WorkItem.CallCallbackWithAssert(WorkItemCallback callback)
+   at System.Web.Util.WorkItem.OnQueueUserWorkItemCompletion(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
+   at System.Threading.ThreadPoolWorkQueue.Dispatch()
+ 2016-01-27 08:27:14,879 [P7568/D4/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.3.5 application starting on CARSCH001-PC
+ 2016-01-27 08:27:14,897 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2016-01-27 08:27:14,904 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 5ms)
+ 2016-01-27 08:27:14,992 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2016-01-27 08:27:15,069 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 77ms)
+ 2016-01-27 08:27:15,083 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2016-01-27 08:27:15,087 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 4ms)
+ 2016-01-27 08:27:15,088 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2016-01-27 08:27:15,093 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 5ms)
+ 2016-01-27 08:27:15,103 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2016-01-27 08:27:15,107 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 3ms)
+ 2016-01-27 08:27:15,107 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2016-01-27 08:27:15,111 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 4ms)
+ 2016-01-27 08:27:15,131 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2016-01-27 08:27:15,135 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 4ms)
+ 2016-01-27 08:27:15,135 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2016-01-27 08:27:15,139 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 3ms)
+ 2016-01-27 08:27:15,698 [P7568/D4/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 08:27:15,854 [P7568/D4/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 08:27:15,912 [P7568/D4/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - Synchronizing the database with the code...
+ 2016-01-27 08:27:15,923 [P7568/D4/T1] INFO  UCodeFirst.Stylesheets.StylesheetsManager - Synchronized 0 css.
+ 2016-01-27 08:27:17,042 [P7568/D4/T1] INFO  UCodeFirst.RazorViews.RazorTemplatesManager - Synchronized 1 razor templates.
+ 2016-01-27 08:27:17,087 [P7568/D4/T1] INFO  UCodeFirst.DataTypes.DataTypesManager - Synchronized 0 data types.
+ 2016-01-27 08:27:17,352 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2016-01-27 08:27:17,358 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 5ms)
+ 2016-01-27 08:27:17,605 [P7568/D4/T1] INFO  UCodeFirst.ContentTypes.ContentTypesManager - Synchronized 2 content types.
+ 2016-01-27 08:27:17,648 [P7568/D4/T1] INFO  UCodeFirst.MemberTypes.MemberTypesManager - Synchronized 0 member types.
+ 2016-01-27 08:27:17,667 [P7568/D4/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - uCodeFirst executed successfully in 1804 ms.
+ 2016-01-27 08:27:17,669 [P7568/D4/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 08:27:17,675 [P7568/D4/T1] WARN  Umbraco.Core.Sync.DatabaseServerMessenger - No last synced Id found, this generally means this is a new server/install. The server will rebuild its caches and indexes and then adjust it's last synced id to the latest found in the database and will start maintaining cache updates based on that id
+ 2016-01-27 08:27:17,687 [P7568/D4/T1] INFO  umbraco.content - Load Xml from file...
+ 2016-01-27 08:27:17,687 [P7568/D4/T1] INFO  umbraco.content - Loaded Xml from file.
+ 2016-01-27 08:27:17,691 [P7568/D4/T1] INFO  umbraco.content - Loading content from database...
+ 2016-01-27 08:27:17,903 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2016-01-27 08:27:17,916 [P7568/D4/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 13ms)
+ 2016-01-27 08:27:17,981 [P7568/D4/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2016-01-27 08:27:17,998 [P7568/D4/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2016-01-27 08:27:17,999 [P7568/D4/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2016-01-27 08:27:18,006 [P7568/D4/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 3192ms)
+ 2016-01-27 08:27:18,335 [P7568/D4/T41] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://investorab.local:80/umbraco (UmbracoModule request)
+ 2016-01-27 08:27:21,724 [P7568/D4/T46] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 08:27:21,730 [P7568/D4/T10] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 08:27:27,749 [P7568/D4/T43] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 09:04:59,603 [P7568/D4/T24] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-01-26 09:04:59
+ 2016-01-27 09:05:51,488 [P7568/D4/T24] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt failed for username test from IP address 127.0.0.1
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Terminating
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Waiting for tasks to complete
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Terminating
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Waiting for tasks to complete
+ 2016-01-27 09:06:27,602 [P7568/D4/T12] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Tasks completed, terminated
+ 2016-01-27 09:06:27,602 [P7568/D4/T38] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Tasks completed, terminated
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Terminating
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Waiting for tasks to complete
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Tasks completed, terminated
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Terminating
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Waiting for tasks to complete
+ 2016-01-27 09:06:27,602 [P7568/D4/T18] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Tasks completed, terminated
+ 2016-01-27 11:36:07,733 [P8980/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.3.5 application starting on CARSCH001-PC
+ 2016-01-27 11:36:07,764 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2016-01-27 11:36:07,777 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 10ms)
+ 2016-01-27 11:36:07,941 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2016-01-27 11:36:07,953 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 12ms)
+ 2016-01-27 11:36:07,971 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2016-01-27 11:36:07,973 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 2ms)
+ 2016-01-27 11:36:07,973 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2016-01-27 11:36:07,974 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 0ms)
+ 2016-01-27 11:36:07,990 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2016-01-27 11:36:07,991 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 0ms)
+ 2016-01-27 11:36:07,991 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2016-01-27 11:36:07,992 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 0ms)
+ 2016-01-27 11:36:08,029 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2016-01-27 11:36:08,030 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 0ms)
+ 2016-01-27 11:36:08,030 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2016-01-27 11:36:08,031 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 0ms)
+ 2016-01-27 11:36:08,954 [P8980/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 11:36:09,195 [P8980/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 11:36:09,379 [P8980/D2/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - Synchronizing the database with the code...
+ 2016-01-27 11:36:09,392 [P8980/D2/T1] INFO  UCodeFirst.Stylesheets.StylesheetsManager - Synchronized 0 css.
+ 2016-01-27 11:36:10,415 [P8980/D2/T1] INFO  UCodeFirst.RazorViews.RazorTemplatesManager - Synchronized 1 razor templates.
+ 2016-01-27 11:36:10,492 [P8980/D2/T1] INFO  UCodeFirst.DataTypes.DataTypesManager - Synchronized 0 data types.
+ 2016-01-27 11:36:10,963 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2016-01-27 11:36:10,964 [P8980/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 1ms)
+ 2016-01-27 11:36:11,224 [P8980/D2/T1] INFO  UCodeFirst.ContentTypes.ContentTypesManager - Synchronized 2 content types.
+ 2016-01-27 11:36:11,299 [P8980/D2/T1] INFO  UCodeFirst.MemberTypes.MemberTypesManager - Synchronized 0 member types.
+ 2016-01-27 11:36:11,327 [P8980/D2/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - uCodeFirst executed successfully in 2119 ms.
+ 2016-01-27 11:36:11,331 [P8980/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 11:36:11,350 [P8980/D2/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2016-01-27 11:36:11,369 [P8980/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2016-01-27 11:36:11,483 [P8980/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2016-01-27 11:36:11,494 [P8980/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 3877ms)
+ 2016-01-27 11:36:12,466 [P8980/D2/T10] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://investorab.local:80/umbraco (UmbracoModule request)
+ 2016-01-27 11:36:12,466 [P8980/D2/T11] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://investorab.local:80/umbraco (UmbracoModule request)
+ 2016-01-27 11:36:12,654 [P8980/D2/T10] INFO  umbraco.content - Load Xml from file...
+ 2016-01-27 11:36:12,656 [P8980/D2/T10] INFO  umbraco.content - Loaded Xml from file.
+ 2016-01-27 11:36:12,802 [P8980/D2/T10] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2016-01-27 11:36:12,803 [P8980/D2/T10] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 1ms)
+ 2016-01-27 11:36:13,050 [P8980/D2/T10] ERROR Umbraco.Core.UmbracoApplicationBase - An unhandled exception occurred
+UCodeFirst.UCodeFirstException: Impossible to create an instance of type "Investor.Models.PageModels.StartPageModel". Did you provide a public constructor? See inner exception for more details. ---> StructureMap.StructureMapConfigurationException: No default Instance is registered and cannot be automatically determined for type 'System.Globalization.CultureInfo'
+
+There is no configuration specified for System.Globalization.CultureInfo
+
+1.) new StartPageModel(Value: Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent, *Default of CultureInfo*)
+2.) Investor.Models.PageModels.StartPageModel
+3.) Instance of Investor.Models.PageModels.StartPageModel
+4.) Container.GetInstance(Investor.Models.PageModels.StartPageModel ,{content=Umbraco.Web.PublishedCache.XmlPublishedCache.XmlPublishedContent})
+
+   at lambda_method(Closure , IBuildSession , IContext )
+   at StructureMap.Building.BuildPlan.Build(IBuildSession session, IContext context) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Building\BuildPlan.cs:line 151
+   at StructureMap.Pipeline.LifecycleObjectCache.Get(Type pluginType, Instance instance, IBuildSession session) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Pipeline\LifecycleObjectCache.cs:line 60
+   at StructureMap.SessionCache.GetObject(Type pluginType, Instance instance, ILifecycle lifecycle) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\SessionCache.cs:line 88
+   at StructureMap.Container.GetInstance(Type pluginType, ExplicitArguments args) in c:\BuildAgent\work\996e173a8ceccdca\src\StructureMap\Container.cs:line 134
+   at UCodeFirst.TypeExtensions.CreateInstance(Type type, IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\TypeExtensions.cs:line 86
+   --- End of inner exception stack trace ---
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem, Nullable`1 timeout, Boolean isSliding, CacheItemPriority priority, CacheItemRemovedCallback removedCallback, CacheDependency dependency)
+   at Umbraco.Core.Cache.HttpRuntimeCacheProvider.GetCacheItem(String cacheKey, Func`1 getCacheItem)
+   at UCodeFirst.Helpers.UCodeFirstHelper.ToStrongContent(IPublishedContent publishedContent) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Helpers\UCodeFirstHelper.cs:line 34
+   at UCodeFirst.Controllers.UCodeFirstController.Index(RenderModel model) in e:\Workspaces\Umbraco.UCodeFirst\UCodeFirst\Controllers\UCodeFirstController.cs:line 18
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+ 2016-01-27 11:36:31,892 [P8980/D2/T15] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username robgha01 from IP address 127.0.0.1
+ 2016-01-27 11:36:31,894 [P8980/D2/T15] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: robgha01 logged in from IP address 127.0.0.1
+ 2016-01-27 11:36:32,072 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-01-27 11:36:32,083 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 11ms)
+ 2016-01-27 11:36:32,167 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplication
+ 2016-01-27 11:36:32,177 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplication, found 0 (took 10ms)
+ 2016-01-27 11:36:32,266 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-01-27 11:36:32,267 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 0ms)
+ 2016-01-27 11:36:32,269 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2016-01-27 11:36:32,276 [P8980/D2/T15] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 7ms)
+ 2016-01-27 11:36:32,321 [P8980/D2/T14] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2016-01-27 11:36:32,336 [P8980/D2/T14] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 15ms)
+ 2016-01-27 11:37:13,118 [P8980/D2/T13] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-01-26 11:37:13
+ 2016-01-27 11:38:34,228 [P8980/D2/T28] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Hem' with Id '1049' has been published.
+ 2016-01-27 11:38:34,322 [P8980/D2/T28] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ICacheRefresher
+ 2016-01-27 11:38:34,335 [P8980/D2/T28] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 0 (took 12ms)
+ 2016-01-27 11:38:38,482 [P8980/D2/T12] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 11:38:38,486 [P8980/D2/T28] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 11:38:56,339 [P8980/D2/T38] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Home' with Id '0' has been published.
+ 2016-01-27 11:39:00,394 [P8980/D2/T10] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 11:39:00,395 [P8980/D2/T10] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 11:39:35,989 [P8980/D2/T22] WARN  Umbraco.Web.UmbracoModule - Status code is 404 yet TrySkipIisCustomErrors is false - IIS will take over.
+ 2016-01-27 11:40:02,098 [P8980/D2/T58] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Home' with Id '1050' has been published.
+ 2016-01-27 11:40:06,135 [P8980/D2/T48] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 11:40:06,138 [P8980/D2/T48] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 11:40:27,465 [P8980/D2/T55] INFO  umbraco.content - Loading content from database...
+ 2016-01-27 11:40:31,501 [P8980/D2/T49] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 11:40:31,502 [P8980/D2/T49] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 11:41:30,854 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Terminating
+ 2016-01-27 11:41:30,854 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Waiting for tasks to complete
+ 2016-01-27 11:41:30,858 [P8980/D2/T48] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledPublishing] Tasks completed, terminated
+ 2016-01-27 11:41:30,859 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Terminating
+ 2016-01-27 11:41:30,859 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Waiting for tasks to complete
+ 2016-01-27 11:41:30,859 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Terminating
+ 2016-01-27 11:41:30,859 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Waiting for tasks to complete
+ 2016-01-27 11:41:30,859 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Terminating
+ 2016-01-27 11:41:30,859 [P8980/D2/T10] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Waiting for tasks to complete
+ 2016-01-27 11:41:30,859 [P8980/D2/T13] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [LogScrubber] Tasks completed, terminated
+ 2016-01-27 11:41:30,859 [P8980/D2/T56] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [ScheduledTasks] Tasks completed, terminated
+ 2016-01-27 11:41:30,859 [P8980/D2/T14] INFO  Umbraco.Web.Scheduling.BackgroundTaskRunner - [KeepAlive] Tasks completed, terminated
+ 2016-01-27 11:42:00,864 [P8980/D2/T10] INFO  Umbraco.Core.UmbracoApplicationBase - Application shutdown. Details: ConfigurationChange
+
+_shutDownMessage=IIS configuration change
+HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+
+_shutDownStack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()
+ 2016-01-27 11:42:22,119 [P8980/D3/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.3.5 application starting on CARSCH001-PC
+ 2016-01-27 11:42:22,137 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2016-01-27 11:42:22,147 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 9ms)
+ 2016-01-27 11:42:22,228 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2016-01-27 11:42:22,237 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 9ms)
+ 2016-01-27 11:42:22,259 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2016-01-27 11:42:22,260 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 0ms)
+ 2016-01-27 11:42:22,260 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2016-01-27 11:42:22,260 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 0ms)
+ 2016-01-27 11:42:22,268 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2016-01-27 11:42:22,269 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 0ms)
+ 2016-01-27 11:42:22,269 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2016-01-27 11:42:22,270 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 0ms)
+ 2016-01-27 11:42:22,291 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2016-01-27 11:42:22,292 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 0ms)
+ 2016-01-27 11:42:22,292 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2016-01-27 11:42:22,293 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 0ms)
+ 2016-01-27 11:42:23,117 [P8980/D3/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 11:42:23,316 [P8980/D3/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 11:42:23,369 [P8980/D3/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - Synchronizing the database with the code...
+ 2016-01-27 11:42:23,386 [P8980/D3/T1] INFO  UCodeFirst.Stylesheets.StylesheetsManager - Synchronized 0 css.
+ 2016-01-27 11:42:24,107 [P8980/D3/T1] INFO  UCodeFirst.RazorViews.RazorTemplatesManager - Synchronized 1 razor templates.
+ 2016-01-27 11:42:24,160 [P8980/D3/T1] INFO  UCodeFirst.DataTypes.DataTypesManager - Synchronized 0 data types.
+ 2016-01-27 11:42:24,500 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2016-01-27 11:42:24,501 [P8980/D3/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 1ms)
+ 2016-01-27 11:42:24,726 [P8980/D3/T1] INFO  UCodeFirst.ContentTypes.ContentTypesManager - Synchronized 2 content types.
+ 2016-01-27 11:42:24,778 [P8980/D3/T1] INFO  UCodeFirst.MemberTypes.MemberTypesManager - Synchronized 0 member types.
+ 2016-01-27 11:42:24,798 [P8980/D3/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - uCodeFirst executed successfully in 1481 ms.
+ 2016-01-27 11:42:24,802 [P8980/D3/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 11:42:24,814 [P8980/D3/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2016-01-27 11:42:24,831 [P8980/D3/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2016-01-27 11:42:24,889 [P8980/D3/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2016-01-27 11:42:24,896 [P8980/D3/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 2861ms)
+ 2016-01-27 11:42:25,265 [P8980/D3/T44] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://investorab.se.local:80/umbraco (UmbracoModule request)
+ 2016-01-27 11:42:27,776 [P8980/D3/T62] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2016-01-27 11:42:27,777 [P8980/D3/T62] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 1ms)
+ 2016-01-27 11:42:44,845 [P8980/D3/T6] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username robgha01 from IP address 127.0.0.1
+ 2016-01-27 11:42:44,846 [P8980/D3/T6] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: robgha01 logged in from IP address 127.0.0.1
+ 2016-01-27 11:42:44,983 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-01-27 11:42:44,984 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 1ms)
+ 2016-01-27 11:42:45,088 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplication
+ 2016-01-27 11:42:45,088 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplication, found 0 (took 0ms)
+ 2016-01-27 11:42:45,210 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-01-27 11:42:45,211 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 0ms)
+ 2016-01-27 11:42:45,213 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2016-01-27 11:42:45,214 [P8980/D3/T6] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 1ms)
+ 2016-01-27 11:42:45,417 [P8980/D3/T25] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2016-01-27 11:42:45,418 [P8980/D3/T25] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 0ms)
+ 2016-01-27 11:43:03,912 [P8980/D3/T25] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ICacheRefresher
+ 2016-01-27 11:43:03,913 [P8980/D3/T25] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 0 (took 0ms)
+ 2016-01-27 11:43:25,880 [P8980/D3/T44] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-01-26 11:43:25
+ 2016-01-27 11:43:25,891 [P8980/D3/T62] INFO  umbraco.content - Load Xml from file...
+ 2016-01-27 11:43:25,892 [P8980/D3/T62] INFO  umbraco.content - Loaded Xml from file.
+ 2016-01-27 11:43:44,475 [P8980/D3/T62] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Hem' with Id '1049' has been published.
+ 2016-01-27 11:43:48,674 [P8980/D3/T20] INFO  umbraco.content - Save Xml to file...
+ 2016-01-27 11:43:48,678 [P8980/D3/T54] INFO  umbraco.content - Saved Xml to file.
+ 2016-01-27 12:02:18,405 [P8980/D3/T40] INFO  Umbraco.Core.Logging.OwinLogger - Event Id: 0, state: User logged will be logged out due to timeout: robgha01, IP Address: 127.0.0.1
+ 2016-01-27 12:03:54,234 [P8980/D3/T33] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username robgha01 from IP address 127.0.0.1
+ 2016-01-27 12:03:54,234 [P8980/D3/T33] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: robgha01 logged in from IP address 127.0.0.1
+ 2016-01-27 12:03:54,251 [P8980/D3/T10] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-01-27 12:03:54,251 [P8980/D3/T10] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 0ms)
+ 2016-01-27 13:32:47,547 [P9276/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.3.5 application starting on CARSCH001-PC
+ 2016-01-27 13:32:47,558 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2016-01-27 13:32:47,571 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 11ms)
+ 2016-01-27 13:32:47,644 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2016-01-27 13:32:47,651 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 7ms)
+ 2016-01-27 13:32:47,669 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2016-01-27 13:32:47,670 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 0ms)
+ 2016-01-27 13:32:47,670 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2016-01-27 13:32:47,670 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 0ms)
+ 2016-01-27 13:32:47,677 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2016-01-27 13:32:47,678 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 0ms)
+ 2016-01-27 13:32:47,678 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2016-01-27 13:32:47,679 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 0ms)
+ 2016-01-27 13:32:47,701 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2016-01-27 13:32:47,701 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 0ms)
+ 2016-01-27 13:32:47,702 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2016-01-27 13:32:47,702 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 0ms)
+ 2016-01-27 13:32:48,282 [P9276/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 13:32:48,385 [P9276/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 13:32:48,482 [P9276/D2/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - Synchronizing the database with the code...
+ 2016-01-27 13:32:48,501 [P9276/D2/T1] INFO  UCodeFirst.Stylesheets.StylesheetsManager - Synchronized 0 css.
+ 2016-01-27 13:32:49,176 [P9276/D2/T1] INFO  UCodeFirst.RazorViews.RazorTemplatesManager - Synchronized 1 razor templates.
+ 2016-01-27 13:32:49,228 [P9276/D2/T1] INFO  UCodeFirst.DataTypes.DataTypesManager - Synchronized 0 data types.
+ 2016-01-27 13:32:49,612 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2016-01-27 13:32:49,614 [P9276/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 1ms)
+ 2016-01-27 13:32:49,783 [P9276/D2/T1] INFO  UCodeFirst.ContentTypes.ContentTypesManager - Synchronized 2 content types.
+ 2016-01-27 13:32:49,827 [P9276/D2/T1] INFO  UCodeFirst.MemberTypes.MemberTypesManager - Synchronized 0 member types.
+ 2016-01-27 13:32:49,842 [P9276/D2/T1] INFO  UCodeFirst.UCodeFirstApplicationEventHandler - uCodeFirst executed successfully in 1447 ms.
+ 2016-01-27 13:32:49,846 [P9276/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2016-01-27 13:32:49,855 [P9276/D2/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2016-01-27 13:32:49,868 [P9276/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2016-01-27 13:32:49,917 [P9276/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2016-01-27 13:32:49,923 [P9276/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 2431ms)
+ 2016-01-27 13:32:50,234 [P9276/D2/T11] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://investorab.com.local:80/umbraco (UmbracoModule request)
+ 2016-01-27 13:32:50,462 [P9276/D2/T11] INFO  Umbraco.Core.Logging.OwinLogger - Event Id: 0, state: User logged will be logged out due to timeout: robgha01, IP Address: 127.0.0.1
+ 2016-01-27 14:01:53,226 [P9276/D2/T18] INFO  Umbraco.Core.UmbracoApplicationBase - Application shutdown. Details: HostingEnvironment
+
+_shutDownMessage=HostingEnvironment initiated shutdown
+HostingEnvironment caused shutdown
+
+_shutDownStack=   at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)
+   at System.Environment.get_StackTrace()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownInternal()
+   at System.Web.Hosting.HostingEnvironment.InitiateShutdownWithoutDemand()
+   at System.Web.Hosting.PipelineRuntime.StopProcessing()

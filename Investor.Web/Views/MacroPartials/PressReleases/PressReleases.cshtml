@@ -1,10 +1,18 @@
-﻿@using Umbraco.Web.Models.ContentEditing
-@inherits Umbraco.Web.Macros.PartialViewMacroPage
+﻿@using Investor.Abstraction.Pressreleases
+@using StructureMap
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
               
 @{
-
+    var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
 }
 
 <div>
     <h1>@(Model.MacroParameters["Heading"].ToString())</h1>
 </div>
+
+@foreach (var item in pressReleaseRepository.GetPressReleases())
+{
+    
+}

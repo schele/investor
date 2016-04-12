@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <StackTraceEnabled>True</StackTraceEnabled>
+    <WebConfigOriginal>..\Web.config</WebConfigOriginal>
+    <WebConfigTemp>..\Configuration\Web.Temp.$(Configuration).config</WebConfigTemp>
+    <WebConfigTransform>..\Web.$(Configuration).config</WebConfigTransform>
+  </PropertyGroup>
+
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\Web\Microsoft.Web.Publishing.Tasks.dll"/>
+
+  <!-- Transform configuration files -->
+  <Target Name="Transform-Config-files">
+    <Copy SourceFiles="$(WebConfigOriginal)" DestinationFiles="$(WebConfigTemp)" />
+    <TransformXml Source="$(WebConfigTemp)" Transform="$(WebConfigTransform)" Destination="$(WebConfigOriginal)" StackTrace="$(StackTraceEnabled)"/>
+    <Delete Files="$(WebConfigTemp)" />
+  </Target>
+</Project>

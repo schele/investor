@@ -121,3 +121,4 @@ C:\Projects\Git\Investor\Investor.Models\bin\Debug\WebMatrix.WebData.xml
 C:\Projects\Git\Investor\Investor.Models\obj\Debug\Investor.Models.csproj.App.config
 C:\Projects\Git\Investor\Investor.Models\obj\Debug\Investor.Models.dll
 C:\Projects\Git\Investor\Investor.Models\obj\Debug\Investor.Models.pdb
+C:\Projects\Git\Investor\Investor.Models\obj\Debug\Investor.Models.csprojResolveAssemblyReference.cache

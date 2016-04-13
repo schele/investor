@@ -1,0 +1,15 @@
+﻿{
+    propertyEditors: [
+    {
+		name: "Dropdown for Robots",
+        alias: "DropdownForRobotsEditor",
+        editor: {
+            view: "~/App_Plugins/DropdownForRobotsEditor/dropdownforrobotseditor.html"
+        }
+    }
+    ]
+    ,
+    javascript: [
+        '~/App_Plugins/DropdownForRobotsEditor/dropdownforrobotseditor.controller.js'
+    ]
+}

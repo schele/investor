@@ -347,6 +347,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\DropdownForRobotsEditor\dropdownforrobotseditor.controller.js" />
+    <Content Include="App_Plugins\DropdownForRobotsEditor\dropdownforrobotseditor.html" />
     <Content Include="App_Plugins\MacroContainerEditor\macrocontainereditor.controller.js" />
     <Content Include="App_Plugins\MacroContainerEditor\macrocontainereditor.css" />
     <Content Include="App_Plugins\MacroContainerEditor\macrocontainereditor.html" />
@@ -454,6 +456,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\PageNotFound.cshtml" />
+    <Content Include="App_Plugins\DropdownForRobotsEditor\package.manifest" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

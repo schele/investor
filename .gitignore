@@ -200,3 +200,5 @@ FakesAssemblies/
 /Investor.Web/App_Data/TEMP/PluginCache
 /Investor.Web/media
 Investor.Web/App_Data/
+/Investor.Web/bin
+/Investor.Models/bin

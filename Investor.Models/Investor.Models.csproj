@@ -302,9 +302,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTypes\DropdownForRobots.cs" />
     <Compile Include="DataTypes\MacroContainer.cs" />
     <Compile Include="Models\PressReleases\Attachment.cs" />
     <Compile Include="PageModels\BaseModel.cs" />
+    <Compile Include="PageModels\PageNotFoundModel.cs" />
     <Compile Include="PageModels\StartPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Converters\RichtextConverter.cs" />

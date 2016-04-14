@@ -9,20 +9,24 @@ using Umbraco.Core.Models;
 namespace Investor.Models.PageModels
 {
     [ContentType(
-        DisplayName = "Sida: 404",
-        Icon = Icon.Search,
-        Description = "En sida som visas när man går till en länk som inte finns i systemet.",
-        AllowAtRoot = true
+        DisplayName = "Sida: Kategori",
+        Icon = Icon.Categories,
+        Description = "En sida för att lista kategorier.",
+        AllowAtRoot = true,
+        AllowedChildNodes = new object[]
+            {
+                typeof(ArticlePageModel)
+            }
     )]
-    public class PageNotFoundModel : BaseModel
+    public class CategoryPageModel : BaseModel
     {
         #region constructors
 
-        public PageNotFoundModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
+        public CategoryPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
         {
         }
 
-        public PageNotFoundModel(IPublishedContent content) : base(content)
+        public CategoryPageModel(IPublishedContent content) : base(content)
         {
         }
 
@@ -37,6 +41,14 @@ namespace Investor.Models.PageModels
             Description = "H1"
         )]
         public virtual string Header { get; set; }
+
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Content,
+            DisplayName = "Ingress",
+            Description = ""
+        )]
+        public virtual string Preamble { get; set; }
 
         [Property(
             UmbracoDataType.RichtextEditor,

@@ -76,8 +76,8 @@ namespace Investor.Models
         [EnumName("Tags")]
         Tags,
 
-        //[EnumName("Textbox multiple")]
-        //TextboxMultiple,
+        [EnumName("Textarea")]
+        TextboxMultiple,
 
         [EnumName("Textstring")]
         Textstring,

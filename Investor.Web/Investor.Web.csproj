@@ -395,7 +395,7 @@
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="Config\uCodeFirstSettings.config" />
-    <Content Include="Views\StartPage.cshtml" />
+    <Content Include="Views\Start.cshtml" />
     <Content Include="Views\MacroPartials\PressReleases\PressReleases.cshtml" />
     <Content Include="App_Plugins\MacroContainerEditor\package.manifest" />
     <Content Include="App_Plugins\MacroListEditor\package.manifest" />
@@ -458,6 +458,8 @@
   <ItemGroup>
     <Content Include="Views\PageNotFound.cshtml" />
     <Content Include="App_Plugins\DropdownForRobotsEditor\package.manifest" />
+    <Content Include="Views\Article.cshtml" />
+    <Content Include="Views\Category.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -203,3 +203,5 @@ Investor.Web/App_Data/
 /Investor.Web/bin
 /Investor.Models/bin
 /Investor.Web/obj
+/Investor.Web/App_Data
+/Investor.Models/obj

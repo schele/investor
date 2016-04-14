@@ -178,8 +178,12 @@ header .mobile-navigation {
 }
 
 @media (max-width: 500px) {
-    header .main-navigation {
+    header .main-navigation ul {
         display: none;
+    }
+
+    header .mobile-navigation-section {
+        float: right;
     }
 
 	header #mobile-main-menu .options,
@@ -204,14 +208,14 @@ header .mobile-navigation {
     }
 
 	header #mobile-main-menu.selected,
-	header #search.selected 					                { border-bottom: 0px; }
-	header #mobile-main-menu .ui						{ padding: 0px 10px; }
+	header #search.selected { border-bottom: 0; }
+	header #mobile-main-menu .ui { padding: 0 10px; }
 	header #mobile-main-menu.selected,
-	header #search.selected                   { background: transparent; }
+	header #search.selected { background: transparent; }
 	header #mobile-main-menu.selected .ui,
-	header #search.selected .ui				{ border: 1px solid #cccccc; border-bottom: 0px; height: 4em; position: relative; z-index: 10000; background: white;  -moz-box-shadow: inset -4px 3px 4px #e0e0e0; -webkit-box-shadow: inset -4px 3px 4px #e0e0e0; box-shadow: inset 0px 3px 4px #e0e0e0; }
+	header #search.selected .ui	{ border: 1px solid #cccccc; border-bottom: 0px; height: 4em; position: relative; z-index: 10000; background: white;  -moz-box-shadow: inset -4px 3px 4px #e0e0e0; -webkit-box-shadow: inset -4px 3px 4px #e0e0e0; box-shadow: inset 0px 3px 4px #e0e0e0; }
 	
-	#second-main-navigation                             { display: none; }
+	#second-main-navigation { display: none; }
 	
 	.header .text-size                                  { display: none !important;}
 	

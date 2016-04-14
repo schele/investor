@@ -1,0 +1,31 @@
+@using System.Xml.Linq
+@using umbraco.MacroEngines
+@using umbraco.NodeFactory;
+
+@functions
+{
+    protected string GetUrl(int id)
+    {
+        return new Node(id, true).Url;        
+    }
+
+    protected string GetName(int id)
+    {
+        return new Node(id, true).Name;
+    }
+}
+
+@{
+    string css = Parameter.alternativeCss;
+    DynamicXml dXml = new DynamicXml(Current.AncestorOrSelf("Start").GetPropertyValue("additionalLinks"));
+
+    foreach (XElement item in dXml.BaseElement.Elements("link"))
+    {
+        <li><a href="@GetUrl(int.Parse(item.Attribute("link").Value))"
+            @if (!string.IsNullOrEmpty(css))
+            {
+                @:class="@css" 
+            }
+        >@item.Attribute("title").Value</a></li>
+    }
+}

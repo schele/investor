@@ -49,11 +49,11 @@ header .main-navigation li:hover .icon	{
     height: 1.4285714285714em; 
     background: transparent url("/images/sprite.png") -1.42857142857143em -5.71428571428571em; 
     float: left; margin-top: 0.57142857142857em;
-     margin-right: 0.35714285714286em; 
-     -webkit-background-size: 14.2857142857143em 14.2857142857143em; 
-     -o-background-size: 14.2857142857143em 14.2857142857143em; 
-     -moz-background-size: 14.2857em 14.2857em; 
-     background-size: 14.2857em 14.2857em; 
+    margin-right: 0.35714285714286em; 
+    -webkit-background-size: 14.2857142857143em 14.2857142857143em; 
+    -o-background-size: 14.2857142857143em 14.2857142857143em; 
+    -moz-background-size: 14.2857em 14.2857em; 
+    background-size: 14.2857em 14.2857em; 
 
 }
 
@@ -78,8 +78,7 @@ header .languages .options li {
 }
 header .mobile-navigation,
 .page .content .page-navigation,
-.page .mobile-sub-navigation {
-     
+.page .mobile-sub-navigation {  
      height: 4em; 
      margin-top: -0.1em;
 }
@@ -183,17 +182,80 @@ header .mobile-navigation #search a,
     text-decoration: none;
 }
 
-@media (min-width: 500px) {
-    .mobile-navigation {
-        display: none;
-    }
-}
-
 @media (max-width: 500px) {
-    .main-navigation {
+    header .main-navigation {
         display: none;
     }
-    .mobile-navigation {
-        display: block;
-    }
-} 
+
+	header #mobile-main-menu .options,
+	header #search .options                             { padding: 2em; left: 0px; width: 100%; position: absolute; z-index: 100; display: none; background-color: white; font-size: 0.8em; border: 1px solid #ededed; border-top: 0px; border-bottom: 4px solid #F08B17; }
+	header #mobile-main-menu .options li a              { font-size: 1.6em; }
+	header #mobile-main-menu .options > li				{ font-size: 1.4em;}
+	header #mobile-main-menu.selected,
+	header #search.selected 					                { border-bottom: 0px; }
+	header #mobile-main-menu .ui						{ padding: 0px 10px; }
+	header #mobile-main-menu.selected,
+	header #search.selected                   { background: transparent; }
+	header #mobile-main-menu.selected .ui,
+	header #search.selected .ui				{ border: 1px solid #cccccc; border-bottom: 0px; height: 4em; position: relative; z-index: 10000; background: white;  -moz-box-shadow: inset -4px 3px 4px #e0e0e0; -webkit-box-shadow: inset -4px 3px 4px #e0e0e0; box-shadow: inset 0px 3px 4px #e0e0e0; }
+	
+	#second-main-navigation                             { display: none; }
+	
+	.header .text-size                                  { display: none !important;}
+	
+	.page .sub-navigation								{ display: none; }
+	.page .container       								{ width: 95%; margin: 0 10px 0 10px; padding-left: 0px; border: 0px; }
+	.page .content .page-navigation a .label { display: none; }
+	
+	.page .content                                      { padding-left: inherit; margin: inherit; border: inherit; width: auto; }
+	
+	.page .content.full-width                           { width: auto; float: none; }
+	
+	.page .content .page-navigation li a,
+	.page .content .page-navigation .selected > a		{ padding: 0px 5px 0px 12px; }	.page .content .page-navigation a > div.label		{ display: none; }
+ 	.page .content .page-navigation a div.link + .label	{ display: block; }
+	#main-navigation,
+	header .second-navigation,
+	header .search										{ display: none; }
+	header .mobile-navigation							{ display:  inline-block;float: left;margin-top: 0 !important; }
+	header #mobile-main-menu .options,
+	header #search .options                             { border-top: 1px solid #cccccc !important; }
+	header .mobile-navigation .menu .ui .icon		    { width: 18px; height: 20px; background: transparent url("../images/sprite.png") -0px -120px; float: left; margin-top: 8px; margin-right: 5px;  }
+	header .mobile-navigation #search .icon				{ width: 18px; height: 20px; background: transparent url("../images/sprite.png") -20px -120px; float: left; margin-top: 8px; margin-right: 5px;  }
+	header .mobile-navigation #search					{ border-bottom: 4px solid #f08b17; }
+	header .mobile-navigation li > a					{ padding: 0px 15px 0px 15px; }
+	
+	.page .slide-gallery                                { width: auto; }
+	.page .slide-gallery .wrapper .slide-text           { float: none; width: auto; height: 320px; }
+	.page .slide-gallery .wrapper .slide-image          { float: none; width: 100% !important; }
+	.page .slide-gallery .wrapper li                    { height: auto; }
+	.page .slide-gallery .controls                      { width: 100%; text-align: center; right: 0px; }
+	.page .slide-gallery .controls li                   { display: inline-block; }
+	
+	.page .breadcrumbs                                  { margin: auto; float: none; top: inherit; position: inherit; margin-top: 2em; }
+	
+	header .second-level-navigation-mobile              { clear: both;display: block;cursor: pointer; }
+	
+	.page .breadcrumbs                                  { left: 0px !important; }
+	.page .company .heading                             { width: auto; background: transparent; }
+	.page .company .heading .col2 img                   { width: 100%; }
+	
+	.page .information                                  { float: none; width: 100%; clear: both; }
+	
+	.page .our-investments .info-boxes
+	.box-content .col1 > ul                             { width: 100%; }
+	
+	.page .our-investments > .col2 img                  { width: 100%; }
+	
+	.page .video-information.layout-1 .video            { overflow: hidden !important; width: auto !important; padding: 0px !important; margin: 0px !important; margin-bottom: 1em !important; }
+	
+	.page .left-boxes                                   { width: auto; padding-top: 0px !important; float: none; clear: both; }
+	
+	.page .left-boxes .box                              { width: auto !important; }
+	
+	
+    header .mobile-sub-navigation						{ margin: 20px 10px 0px 10px; display: block; background: url(../images/menu-separator.png) no-repeat top right; padding-right: 1px; overflow: hidden; }
+    header .mobile-sub-navigation .ui					{ display: block; width: 100%; }
+    header .mobile-sub-navigation > .ui .icon			{ width: 20px; height: 20px; float: left; background: transparent url("../images/sprite.png") -0px -140px; margin-top: 8px; margin-left: -10px; margin-right: 10px; }
+}
+	 

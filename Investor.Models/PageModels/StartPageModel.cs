@@ -12,7 +12,9 @@ namespace Investor.Models.PageModels
         Description = "",
         AllowedChildNodes = new object[]
             {
-                typeof(PageNotFoundModel)                
+                typeof(PageNotFoundModel),
+                typeof(CategoryPageModel),
+                typeof(ArticlePageModel)
             }
     )]
     public class StartPageModel : BaseModel

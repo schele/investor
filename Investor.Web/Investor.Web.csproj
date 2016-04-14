@@ -455,12 +455,12 @@
     <Content Include="UI\js\jquery.dd.js" />
     <Content Include="UI\js\mobile-navigation.js" />
     <Content Include="UI\js\npm.js" />
+    <Content Include="Views\Start.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Config\ClientDependency.config" />
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="Config\uCodeFirstSettings.config" />
-    <Content Include="Views\Start.cshtml" />
     <Content Include="Views\MacroPartials\PressReleases\PressReleases.cshtml" />
     <Content Include="App_Plugins\MacroContainerEditor\package.manifest" />
     <Content Include="App_Plugins\MacroListEditor\package.manifest" />

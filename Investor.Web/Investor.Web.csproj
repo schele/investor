@@ -380,14 +380,74 @@
     <Content Include="Config\Lang\zh-CN.user.xml" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\blue-gradient.png" />
+    <Content Include="images\favicon.png" />
+    <Content Include="images\filetypes\HTML.png" />
+    <Content Include="images\filetypes\movie.png" />
+    <Content Include="images\filetypes\pdf.png" />
+    <Content Include="images\heading-shadow.png" />
+    <Content Include="images\install\default.aspx" />
+    <Content Include="images\install\steps\database.ascx" />
+    <Content Include="images\install\steps\defaultUser.ascx" />
+    <Content Include="images\install\steps\license.ascx" />
+    <Content Include="images\install\steps\renaming.ascx" />
+    <Content Include="images\install\steps\skinning.ascx" />
+    <Content Include="images\install\steps\Skinning\loadStarterKitDesigns.ascx" />
+    <Content Include="images\install\steps\Skinning\loadStarterKits.ascx" />
+    <Content Include="images\install\steps\theend.ascx" />
+    <Content Include="images\install\steps\validatePermissions.ascx" />
+    <Content Include="images\install\steps\welcome.ascx" />
+    <Content Include="images\install\Title.ascx" />
+    <Content Include="images\install\utills\p.aspx" />
+    <Content Include="images\investor_icons_vector.svg" />
+    <Content Include="images\investor_icons_vector_IE.png" />
+    <Content Include="images\link.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\marker.png" />
+    <Content Include="images\menu-gradient.png" />
+    <Content Include="images\menu-separator.png" />
+    <Content Include="images\msdropdown\dd_arrow.gif" />
+    <Content Include="images\page-gradient.png" />
+    <Content Include="images\pdf.png" />
+    <Content Include="images\play.png" />
+    <Content Include="images\postscript.png" />
+    <Content Include="images\previous.png" />
+    <Content Include="images\sample\bottom-banner.png" />
+    <Content Include="images\sample\chart.png" />
+    <Content Include="images\sample\circles.png" />
+    <Content Include="images\sample\company.png" />
+    <Content Include="images\sample\investor.png" />
+    <Content Include="images\sample\video1.png" />
+    <Content Include="images\search-gradient.png" />
+    <Content Include="images\separator.svg" />
+    <Content Include="images\shadow\bottom-left.png" />
+    <Content Include="images\shadow\bottom-right.png" />
+    <Content Include="images\shadow\bottom.png" />
+    <Content Include="images\shadow\left.png" />
+    <Content Include="images\shadow\right.png" />
+    <Content Include="images\shadow\top-left.png" />
+    <Content Include="images\shadow\top-right.png" />
+    <Content Include="images\shadow\top.png" />
+    <Content Include="images\sprite.png" />
+    <Content Include="images\sprites.png" />
+    <Content Include="images\stock\down.gif" />
+    <Content Include="images\stock\same.gif" />
+    <Content Include="images\stock\up.gif" />
+    <Content Include="images\tick-unfolded.png" />
+    <Content Include="images\tick-unfolded_white.png" />
+    <Content Include="images\tick.png" />
+    <Content Include="images\tick_white.png" />
+    <Content Include="images\time.png" />
+    <Content Include="images\video.png" />
+    <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
     <Content Include="UI\css\bootstrap-theme.css" />
     <Content Include="UI\css\bootstrap-theme.min.css" />
     <Content Include="UI\css\bootstrap.css" />
     <Content Include="UI\css\bootstrap.min.css" />
     <Content Include="UI\css\ie10-viewport-bug-workaround.css" />
-    <Content Include="UI\css\reset.css" />
-    <Content Include="UI\css\style.css" />
+    <Content Include="Styles\reset.css" />
+    <Content Include="Styles\style.css" />
     <Content Include="UI\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="UI\js\bootstrap.js" />
     <Content Include="UI\js\bootstrap.min.js" />
@@ -466,6 +526,7 @@
     <Content Include="Views\PageNotFound.cshtml" />
     <Content Include="App_Plugins\DropdownForRobotsEditor\package.manifest" />
     <Content Include="Views\Article.cshtml" />
+    <Content Include="images\AdditionalLinks.cshtml" />
     <Content Include="Views\Category.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -473,6 +534,10 @@
     <None Include="Web.UAT.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\Cached\" />
+    <Folder Include="images\install\steps\Definitions\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

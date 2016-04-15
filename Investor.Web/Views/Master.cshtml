@@ -1,4 +1,7 @@
-﻿    
+﻿@using Investor.Models.PageModels
+
+@inherits UmbracoViewPage<BaseModel>
+
 <!DOCTYPE html>
 <html lang="en"><html lang="@Model.CurrentCulture.TwoLetterISOLanguageName" data-culture="@Model.CurrentCulture.Name">
 <head>
@@ -8,6 +11,24 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+
+        @if (!string.IsNullOrEmpty(Model.MetaForRobots))
+    {
+        <meta name="robots" content="@Model.MetaForRobots">
+    }
+
+    @if (!string.IsNullOrEmpty(Model.GetMetaDescription()))
+    {
+        <meta name="description" content="@Model.GetMetaDescription()" />
+    }
+
+    @if (!string.IsNullOrEmpty(Model.MetaKeywords))
+    {
+        <meta name="keywords" content="@Model.MetaKeywords" />
+    }
+    
+    @*<link rel="canonical" href="@UrlAbsolute();" />*@   
+
     <link rel="icon" href="../../favicon.ico">
 
     <title>@Model.StartPage.BrowserTabText - Investor AB</title>

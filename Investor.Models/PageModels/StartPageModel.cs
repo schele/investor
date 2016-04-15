@@ -2,6 +2,7 @@ using System.Globalization;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using Umbraco.Core.Models;
+using UCodeFirst.Tab;
 
 namespace Investor.Models.PageModels
 {
@@ -30,5 +31,13 @@ namespace Investor.Models.PageModels
         }
 
         #endregion
+
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Seo,
+            DisplayName = "Google Analytics",
+            Description = "Skriv in en kod för Google Analytics"
+        )]
+        public virtual string GoogleAnalytics { get; set; }
     }
 }

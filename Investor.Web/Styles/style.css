@@ -76,18 +76,15 @@ header .languages .options li {
 .header .main-navigation {
     display: inline-block; 
 }
-header .mobile-navigation,
-.page .content .page-navigation,
-.page .mobile-sub-navigation {  
-     height: 4em; 
-     margin-top: -0.1em;
+header .mobile-navigation {  
+    height: 36px;
+    margin-bottom: 10px;
+    float: right;
 }
 
-.main-navigation ul,
+header .main-navigation ul,
 header .mobile-navigation ul,
-header .mobile-navigation #search,
-.page .content .page-navigation ul,
-.page .content .mobile-sub-navigation {
+header .mobile-navigation #search {
     background: url(/images/separator.svg) no-repeat top right; 
     -webkit-background-size: 1px 40px;
     -o-background-size: 1px 40px;
@@ -99,9 +96,7 @@ header .mobile-navigation #search,
 
 header .mobile-navigation > ul > li > a,
 header .mobile-navigation #search a,
-.main-navigation li > a,
-.page .content .page-navigation li > a,
-.page .mobile-sub-navigation .ui label {
+.main-navigation li > a {
      cursor: pointer; 
      background: url(/images/menu-gradient.png) repeat-x; /* Old browsers */ 
      background: -moz-linear-gradient(top,  #ffffff 58%, #eeeeee 96%, #ffffff 100%); /* FF3.6+ */ 
@@ -114,9 +109,7 @@ header .mobile-navigation #search a,
 }
 
 header .mobile-navigation > ul > li,
-.main-navigation li,
-.page .content .page-navigation li,
-.page .mobile-sub-navigation .ui { 
+.main-navigation li { 
     float: left; 
     line-height: 3.6em; 
     font-family:'Frutiger LT W01 65 Bold', Arial; 
@@ -125,15 +118,13 @@ header .mobile-navigation > ul > li,
     -o-background-size: 1em 4em; 
     -moz-background-size: 1em 4em; 
     background-size: 1em 4em; 
-    border-bottom: 0.4em solid #a0a0a0; 
+    border-bottom: 4px solid #a0a0a0; 
 }
 
 header .mobile-navigation > ul > li > a,
 header .mobile-navigation #search a,
-.main-navigation li a,
-.page .content .page-navigation li a,
-.page .mobile-sub-navigation .ui label {
-     height: 2.571428571em; 
+.main-navigation li a {
+     height: 36px; 
      display: block; 
      border-left: 1px solid white; 
      margin-left: 1px; 
@@ -182,24 +173,49 @@ header .mobile-navigation #search a,
     text-decoration: none;
 }
 
+header .mobile-navigation {
+    display: none;
+}
+
 @media (max-width: 500px) {
-    header .main-navigation {
+    header .main-navigation ul {
         display: none;
     }
 
+    header .mobile-navigation-section {
+        float: right;
+    }
+
 	header #mobile-main-menu .options,
-	header #search .options                             { padding: 2em; left: 0px; width: 100%; position: absolute; z-index: 100; display: none; background-color: white; font-size: 0.8em; border: 1px solid #ededed; border-top: 0px; border-bottom: 4px solid #F08B17; }
-	header #mobile-main-menu .options li a              { font-size: 1.6em; }
-	header #mobile-main-menu .options > li				{ font-size: 1.4em;}
+	header #search .options {
+	    top: 140px; 
+        padding: 2em; 
+        left: 0; 
+        width: 100%; 
+        position: absolute; 
+        z-index: 100; 
+        display: none; 
+        background-color: white; 
+        font-size: 18px; 
+        border: 1px solid #ededed; 
+        border-top: 0;
+        border-bottom: 4px solid #F08B17;
+	    
+	}
+
+    header #mobile-main-menu .options a {
+        color: #000;
+    }
+
 	header #mobile-main-menu.selected,
-	header #search.selected 					                { border-bottom: 0px; }
-	header #mobile-main-menu .ui						{ padding: 0px 10px; }
+	header #search.selected { border-bottom: 0; }
+	header #mobile-main-menu .ui { padding: 0 10px; }
 	header #mobile-main-menu.selected,
-	header #search.selected                   { background: transparent; }
+	header #search.selected { background: transparent; }
 	header #mobile-main-menu.selected .ui,
-	header #search.selected .ui				{ border: 1px solid #cccccc; border-bottom: 0px; height: 4em; position: relative; z-index: 10000; background: white;  -moz-box-shadow: inset -4px 3px 4px #e0e0e0; -webkit-box-shadow: inset -4px 3px 4px #e0e0e0; box-shadow: inset 0px 3px 4px #e0e0e0; }
+	header #search.selected .ui	{ border: 1px solid #cccccc; border-bottom: 0px; height: 4em; position: relative; z-index: 10000; background: white;  -moz-box-shadow: inset -4px 3px 4px #e0e0e0; -webkit-box-shadow: inset -4px 3px 4px #e0e0e0; box-shadow: inset 0px 3px 4px #e0e0e0; }
 	
-	#second-main-navigation                             { display: none; }
+	#second-main-navigation { display: none; }
 	
 	.header .text-size                                  { display: none !important;}
 	

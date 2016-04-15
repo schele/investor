@@ -8,18 +8,32 @@
     </ul>
 </nav>
 
-<nav class="mobile-navigation" data-mobile="true">
-    <ul>
-        <li id="mobile-main-menu" class="menu">
+
+<div class="mobile-navigation-section">
+    <nav class="mobile-navigation" data-mobile="true">
+        <ul>
+            <li id="mobile-main-menu" class="menu">
+                <a class="ui">
+                    <span class="icon"></span>
+                </a>
+                <ul class="options">
+                    <li><a href="#"><span>Projects</span></a></li>
+                    <li><a href="#"><span>Services</span></a></li>
+                    <li><a href="#"><span>Downloads</span></a></li>
+                    <li><a href="#"><span>About</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="mobile-navigation" data-mobile="true">
+        <div id="search">
             <a class="ui">
-                <span class="icon"></span> 
+                <span class="icon"></span>
             </a>
-            <ul class="options">
-                <li><a href="#"><span>Projects</span></a></li>
-                <li><a href="#"><span>Services</span></a></li>
-                <li><a href="#"><span>Downloads</span></a></li>
-                <li><a href="#"><span>About</span></a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+            <div class="options">
+                <umbraco:Macro Alias="QuickSearch" TextBoxId="TopMobileSearch" runat="server" />
+            </div>
+        </div>
+    </div>
+</div>

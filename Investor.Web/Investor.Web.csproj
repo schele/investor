@@ -441,6 +441,8 @@
     <Content Include="images\video.png" />
     <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
+    <Content Include="Scripts\mobile-navigation.js" />
     <Content Include="UI\css\bootstrap-theme.css" />
     <Content Include="UI\css\bootstrap-theme.min.css" />
     <Content Include="UI\css\bootstrap.css" />
@@ -531,6 +533,7 @@
     <Content Include="Views\Article.cshtml" />
     <Content Include="images\AdditionalLinks.cshtml" />
     <Content Include="Views\Category.cshtml" />
+    <Content Include="Views\Partials\Footer.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

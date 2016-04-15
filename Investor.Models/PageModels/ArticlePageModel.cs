@@ -61,17 +61,23 @@ namespace Investor.Models.PageModels
         )]
         public virtual IHtmlString Body { get; set; }
 
-        //External links
         [Property(
             UmbracoDataType.RelatedLinks,
             Tab.Content,
-            DisplayName = "Innehåll",
+            DisplayName = "Relaterade länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual List<NodeLink> RelatedLinks { get; set; }
+        public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
 
-        //Documents
+        //[Property(
+        //    UmbracoDataType.MultipleMediaPicker,
+        //    Tab.Content,
+        //    DisplayName = "Relaterade dokument",
+        //    Description = "",
+        //    Converter = typeof(MultipleMediaConverter)
+        //)]
+        //public virtual IEnumerable<IMedia> RelatedDocuments { get; set; }
         
         #endregion
     }

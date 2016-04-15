@@ -1,8 +1,6 @@
-﻿using Investor.Models.Models.NodeLink.Abstraction;
-
-namespace Investor.Models.Models.NodeLink
+﻿namespace Investor.Models.Models.NodeLink
 {
-    public class NodeLink : INodeLink
+    public class NodeLink
     {
         public string Caption { get; set; }
 
@@ -10,9 +8,9 @@ namespace Investor.Models.Models.NodeLink
 
         public bool NewWindow { get; set; }
 
-        public bool IsInternal { get; set; }
+        public bool Edit { get; set; }
 
-        public string Internal { get; set; }
+        public bool IsInternal { get; set; }
 
         public string Type { get; set; }
 

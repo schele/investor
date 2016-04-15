@@ -8,40 +8,51 @@
 
 @{
     var relatedDocuments = Umbraco.Field("relateradeDokument").ToString();
+    Layout = "Master.cshtml";
 }
 
-<div>
-    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
-    @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
-    @Html.Raw(Umbraco.Field("broedtext"))
-</div>
+@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+<article class="article-page col-md-9">
+    <div class="article-page-content">
+        @Html.Render(Model.Header, @<h2 class="article-page-header">@Model.Header</h2>)
+        @Html.Render(Model.Preamble, @<p class="article-page-premable">@Model.Preamble</p>)
 
-@if (Model.RelatedLinks != null)
-{
-    <div>
-        <ul>
-            @foreach (var link in Model.RelatedLinks)
-            {
-                var target = link.NewWindow ? "_blank" : null;
-
-                <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
-            }
-        </ul>
+        @if (Umbraco.Field("broedtext") != null)
+        {
+            <div class="article-page-body">
+                @Html.Raw(Umbraco.Field("broedtext"))
+            </div>
+        }
+        
     </div>
-}
 
-@if (!string.IsNullOrEmpty(relatedDocuments))
-{
-    <div>
-        <ul>
-            @{
-                foreach (var d in relatedDocuments.Split(','))
+    @if (Model.RelatedLinks != null)
+    {
+        <div>
+            <ul>
+                @foreach (var link in Model.RelatedLinks)
                 {
-                    var document = MediaExtensions.GetMediaById(d);
+                    var target = link.NewWindow ? "_blank" : null;
 
-                    <li><a href="@document.FriendlyUrl()" title="@document.Name">@document.Name</a></li>
+                    <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
                 }
-            }
-        </ul>
-    </div>
-}
+            </ul>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(relatedDocuments))
+    {
+        <div>
+            <ul>
+                @{
+                    foreach (var d in relatedDocuments.Split(','))
+                    {
+                        var document = MediaExtensions.GetMediaById(d);
+
+                        <li><a href="@document.FriendlyUrl()" title="@document.Name">@document.Name</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+</article>

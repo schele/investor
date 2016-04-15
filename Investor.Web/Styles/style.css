@@ -1,6 +1,19 @@
-﻿body {
+﻿/*******GENERAL STYLES********/
+
+body {
     background-color: #f8f8f8;
+        font-family: arial;  
 }
+
+em, i {
+    font-style: italic !important;
+}
+
+strong {
+    font-weight: bold !important;
+}
+
+/*******GENERAL STYLES END********/
 
 header {
     background: #fff;
@@ -8,6 +21,8 @@ header {
     border-bottom: 1px solid #C9C9C9;
     padding: 12px 0 15px;
 }
+
+/*******HEADER********/
 
 header .top {
     padding-bottom: 50px;
@@ -18,7 +33,7 @@ header .main-navigation li a {
     font-size: 14px;
     color: #000;
     padding: 0px 20px 0px 10px;
-    font-family:'Frutiger LT W01 65 Bold', Arial;  
+
 }
 
 header .main-navigation li .icon {
@@ -112,7 +127,6 @@ header .mobile-navigation > ul > li,
 .main-navigation li { 
     float: left; 
     line-height: 3.6em; 
-    font-family:'Frutiger LT W01 65 Bold', Arial; 
     background: url(/images/separator.svg) no-repeat;  
     -webkit-background-size: 1em 40em; 
     -o-background-size: 1em 4em; 
@@ -248,11 +262,8 @@ header .mobile-navigation {
 	.page .slide-gallery .controls                      { width: 100%; text-align: center; right: 0px; }
 	.page .slide-gallery .controls li                   { display: inline-block; }
 	
-	.page .breadcrumbs                                  { margin: auto; float: none; top: inherit; position: inherit; margin-top: 2em; }
-	
 	header .second-level-navigation-mobile              { clear: both;display: block;cursor: pointer; }
 	
-	.page .breadcrumbs                                  { left: 0px !important; }
 	.page .company .heading                             { width: auto; background: transparent; }
 	.page .company .heading .col2 img                   { width: 100%; }
 	
@@ -273,5 +284,85 @@ header .mobile-navigation {
     header .mobile-sub-navigation						{ margin: 20px 10px 0px 10px; display: block; background: url(../images/menu-separator.png) no-repeat top right; padding-right: 1px; overflow: hidden; }
     header .mobile-sub-navigation .ui					{ display: block; width: 100%; }
     header .mobile-sub-navigation > .ui .icon			{ width: 20px; height: 20px; float: left; background: transparent url("../images/sprite.png") -0px -140px; margin-top: 8px; margin-left: -10px; margin-right: 10px; }
+}
+/*******END HEADER********/
+
+/*******FOOTER********/
+
+.footer { background: #001e5a; /* Old browsers */
+background: -moz-linear-gradient(top,  #001e5a 0%, #002b7e 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#001e5a), color-stop(100%,#002b7e)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* IE10+ */
+background: linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5a', endColorstr='#002b7e',GradientType=0 ); /* IE6-9 */
+overflow: hidden;
+margin-top: 0;
+padding-top: 2em;
+clear: both;
+}
+
+.footer a { color: white; }
+.footer .search { float: right; }
+.footer .columns > div { float: left; margin-right: 10em; }
+.footer .columns > div > ul > li { font-size: 1.4em; line-height: 1.5em; }
+.footer .columns > div > ul > li:first-child { font-size: 1.8em; }
+
+.footer .columns       { clear: both; margin-top: 2em; }
+
+.footer .main-actions li { display: inline; height: 0.3em; margin-right: 2em; }
+.footer .main-actions li > a { line-height: 1.5em; font-size: 1em; }
+.footer li               { font-size: 1.6em; }
+.footer .introduction    { border-bottom: 1px solid #294885; overflow: hidden; padding-bottom: 2em; }
+.footer .copyright       { padding-top: 2em; }
+.footer .copyright p     { clear: both; font-size: 1.4em; color: White; }
+.footer .investment-listing h3              { color: White; font-size: 1.8em; margin-bottom: 0.4em; margin-top: 0.3em; }
+
+/*******END FOOTER********/
+
+/*******GENERAL ARTICLE-STYLES********/
+
+article {
+    padding: 25px 0;
+}
+
+article h2 {
+    font-size: 27px;
+    font-weight: bold;  
+}
+
+/*******GENERAL ARTICLE-STYLES END********/
+
+/*******ARTICLE-PAGE********/
+
+.article-page .article-page-content .article-page-header {
+    margin-bottom: 20px;
+}
+
+.article-page .article-page-content .article-page-premable {
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height: 30px;
+
+}
+
+.article-page .article-page-content .article-page-body p {
+    font-size: 16px;
+    margin-bottom: 16px;
+    line-height: 24px;
+}
+
+/*******END ARTICLE-PAGE********/
+
+/*******SUB-MENU********/
+
+.sub-navigation {
+    padding-top: 25px;
+}
+
+.sub-navigation .for-show-menu {
+    background: grey;
+    height: 200px;
 }
 	 

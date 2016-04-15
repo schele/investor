@@ -1,4 +1,5 @@
-﻿@using Investor.Models.Extensions
+﻿@using Investor.Helpers
+@using Investor.Models.Extensions
 @using Investor.Models.PageModels
 @using MediaExtensions = Investor.Models.Extensions.MediaExtensions
 
@@ -7,11 +8,15 @@
 
 @{
     var relatedDocuments = Umbraco.Field("relateradeDokument").ToString();
+
+    //var body = Model.Body;
+    //var s = body;
 }
 
 <div>
-    <h1>@Model.Header</h1>
-    <p>@Model.Body</p>
+    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
+    @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
+    @Html.Raw(Umbraco.Field("broedtext"))
 </div>
 
 @if (Model.RelatedLinks != null)

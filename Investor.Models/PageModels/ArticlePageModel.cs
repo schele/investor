@@ -52,18 +52,18 @@ namespace Investor.Models.PageModels
         )]
         public virtual string Preamble { get; set; }
 
-        [Property(
-            UmbracoDataType.RichtextEditor,
-            Tab.Content,
-            DisplayName = "Innehåll",
-            Description = "",
-            Converter = typeof(RichtextConverter)
-        )]
-        public virtual IHtmlString Body { get; set; }
+        //[Property(
+        //    UmbracoDataType.RichtextEditor,
+        //    Tab.Content,
+        //    DisplayName = "Innehåll",
+        //    Description = "",
+        //    Converter = typeof(RichtextConverter)
+        //)]
+        //public virtual IHtmlString Body { get; set; }
 
         [Property(
             UmbracoDataType.RelatedLinks,
-            Tab.Content,
+            Tab.Page,
             DisplayName = "Relaterade länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)

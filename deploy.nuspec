@@ -14,6 +14,7 @@
         <file src='Investor.Web\bin\*.*' target='bin' />
         <file src='Investor.Web\Config\**\*.*' target='Config' />
 		<file src='Investor.Web\UI\**\*.*' target='UI' />
+		<file src='Investor.Web\Styles\*.*' target='Styles' />
 		<file src='Investor.Web\Views\**\*.*' target='Views' />
         <file src='Investor.Web\global.asax' target='' />
 		<file src='Investor.Web\web.config' target='' />

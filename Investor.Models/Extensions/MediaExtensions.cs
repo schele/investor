@@ -3,7 +3,7 @@ using Umbraco.Core.Models;
 
 namespace Investor.Models.Extensions
 {
-    public class MediaExtensions
+    public static class MediaExtensions
     {
         public static IMedia GetMediaById(string mediaId)
         {
@@ -16,6 +16,16 @@ namespace Investor.Models.Extensions
             }
 
             return null;
+        }
+
+        public static string FriendlyUrl(this IMedia media)
+        {
+            return media != null ? media.Url() : string.Empty;
+        }
+
+        public static string Url(this IMedia currentMedia)
+        {
+            return currentMedia.GetValue<string>("umbracoFile");
         }
     }
 }

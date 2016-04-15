@@ -6,7 +6,7 @@
 @inherits UmbracoViewPage<ArticlePageModel>
 
 @{
-    var relatedDocuments = Umbraco.Field("relateradeDokument");
+    var relatedDocuments = Umbraco.Field("relateradeDokument").ToString();
 }
 
 <div>
@@ -28,12 +28,12 @@
     </div>
 }
 
-@if (relatedDocuments != null)
+@if (!string.IsNullOrEmpty(relatedDocuments))
 {
     <div>
         <ul>
             @{
-                foreach (var d in relatedDocuments.ToString().Split(','))
+                foreach (var d in relatedDocuments.Split(','))
                 {
                     var document = MediaExtensions.GetMediaById(d);
 

@@ -451,6 +451,7 @@
     <Content Include="Styles\reset.css" />
     <Content Include="Styles\style.css" />
     <Content Include="UI\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="UI\js\analytics.js" />
     <Content Include="UI\js\bootstrap.js" />
     <Content Include="UI\js\bootstrap.min.js" />
     <Content Include="UI\js\jquery-1.5.min.js" />

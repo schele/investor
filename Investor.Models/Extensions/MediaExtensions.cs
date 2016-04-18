@@ -12,7 +12,9 @@ namespace Investor.Models.Extensions
 
             if (int.TryParse(mediaId, out parsedId))
             {
-                return mediaService.GetById(parsedId);
+                var media =  mediaService.GetById(parsedId);
+
+                return media;
             }
 
             return null;

@@ -1,8 +1,10 @@
 using System.Globalization;
+using System.Web;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
-using Umbraco.Core.Models;
+using UCodeFirst.Converters;
 using UCodeFirst.Tab;
+using Umbraco.Core.Models;
 
 namespace Investor.Models.PageModels
 {
@@ -32,6 +34,8 @@ namespace Investor.Models.PageModels
 
         #endregion
 
+        #region seo
+
         [Property(
             UmbracoDataType.Textstring,
             Tab.Seo,
@@ -39,5 +43,20 @@ namespace Investor.Models.PageModels
             Description = "Skriv in en kod för Google Analytics"
         )]
         public virtual string GoogleAnalytics { get; set; }
+
+        #endregion
+
+        #region content
+
+        //[Property(
+        //    UmbracoDataType.MacroContainer,
+        //    Tab.Content,
+        //    DisplayName = "Bildspel",
+        //    Description = "Lägg till bilder för bildspel i storleken xxx",
+        //    Converter = typeof(MacroContainerConverter)
+        //)]
+        //public virtual IHtmlString Modules { get; set; }
+
+        #endregion
     }
 }

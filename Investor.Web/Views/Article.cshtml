@@ -39,7 +39,8 @@
 
     @if (Model.RelatedLinks != null)
     {
-        <div>
+        <div class="article-page-links">
+            <h3><span class="icon"></span>Links</h3> <!--Ska bytas mot prop förmodligen-->
             <ul>
                 @foreach (var link in Model.RelatedLinks)
                 {

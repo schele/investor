@@ -1,4 +1,6 @@
 using System.Globalization;
+using umbraco.interfaces;
+using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -88,5 +90,7 @@ namespace Investor.Models.PageModels
                 return AncestorOrSelf<StartPageModel>(1);
             }
         }
+
+        public Node CurrentPage { get { return umbraco.NodeFactory.Node.GetCurrent(); } }
     }
 }

@@ -12,6 +12,18 @@
     </ul>
 </nav>
 
+@if (Model.StartPage.AdditionalMenu != null)
+{
+    <div>
+        <ul>
+            @foreach (var menu in Model.StartPage.AdditionalMenu)
+            {
+                <li><a href="@menu.Link">@menu.Caption</a></li>
+            }
+        </ul>
+    </div>
+}
+
 <div class="mobile-navigation-section">
     <nav class="mobile-navigation" data-mobile="true">
         <ul>

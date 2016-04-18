@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
+using Investor.Models.Converters;
+using Investor.Models.Models.NodeLink;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Converters;
@@ -46,16 +49,16 @@ namespace Investor.Models.PageModels
 
         #endregion
 
-        #region content
+        #region navigation
 
-        //[Property(
-        //    UmbracoDataType.MacroContainer,
-        //    Tab.Content,
-        //    DisplayName = "Bildspel",
-        //    Description = "Lägg till bilder för bildspel i storleken xxx",
-        //    Converter = typeof(MacroContainerConverter)
-        //)]
-        //public virtual IHtmlString Modules { get; set; }
+        [Property(
+            UmbracoDataType.RelatedLinks,
+            Tab.Navigation,
+            DisplayName = "Extrameny",
+            Description = "",
+            Converter = typeof(NodeLinkConverter<NodeLink>)
+        )]
+        public virtual IEnumerable<NodeLink> AdditionalMenu { get; set; }
 
         #endregion
     }

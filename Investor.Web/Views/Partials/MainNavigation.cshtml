@@ -1,13 +1,16 @@
-﻿<nav class="main-navigation" role="navigation">
+﻿@using Investor.Models.PageModels
+
+@inherits UmbracoViewPage<BaseModel>
+
+<nav class="main-navigation" role="navigation">
     <a class="logo" href="#"><img src="~/images/logo.png" alt="investor logo"/></a>
     <ul>
-        <li><a href="#"><span class="icon"></span>Projects</a></li>
-        <li><a href="#"><span class="icon"></span>Services</a></li>
-        <li><a href="#"><span class="icon"></span>Downloads</a></li>
-        <li><a href="#"><span class="icon"></span>About</a></li>
+        @foreach (var categoryPage in Model.CurrentPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "CategoryPageModel"))
+        {
+            <li><a href="@categoryPage.NiceUrl" title="@categoryPage.Name"><span class="icon"></span>@categoryPage.Name</a></li>
+        }
     </ul>
 </nav>
-
 
 <div class="mobile-navigation-section">
     <nav class="mobile-navigation" data-mobile="true">
@@ -17,10 +20,10 @@
                     <span class="icon"></span>
                 </a>
                 <ul class="options">
-                    <li><a href="#"><span>Projects</span></a></li>
-                    <li><a href="#"><span>Services</span></a></li>
-                    <li><a href="#"><span>Downloads</span></a></li>
-                    <li><a href="#"><span>About</span></a></li>
+                    @foreach (var categoryPage in Model.CurrentPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "CategoryPageModel"))
+                    {
+                        <li><a href="@categoryPage.NiceUrl" title="@categoryPage.Name"><span>@categoryPage.Name</span></a></li>
+                    }
                 </ul>
             </li>
         </ul>

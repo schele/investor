@@ -1,4 +1,6 @@
 using System.Globalization;
+using umbraco.interfaces;
+using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -58,28 +60,28 @@ namespace Investor.Models.PageModels
         )]
         public virtual string MetaForRobots { get; set; }
 
-        //[Property(
-        //    UmbracoDataType.TextboxMultiple,
-        //    Tab.Seo,
-        //    DisplayName = "Meta: Beskrivning",
-        //    Description = "Meta description läggs till som ett meta-värde under <meta name=\"description\">"
-        //)]
-        //public string MetaDescription { get; set; }
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Seo,
+            DisplayName = "Meta: Beskrivning",
+            Description = "Meta description läggs till som ett meta-värde under <meta name=\"description\">"
+        )]
+        public virtual string MetaDescription { get; set; }
 
-        //[Property(
-        //    UmbracoDataType.TextboxMultiple,
-        //    Tab.Seo,
-        //    DisplayName = "Meta: Nyckelord",
-        //    Description = "Meta keywords läggs till som ett meta-värde under <meta name=\"keywords\">"
-        //)]
-        //public string MetaKeywords { get; set; }
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Seo,
+            DisplayName = "Meta: Nyckelord",
+            Description = "Meta keywords läggs till som ett meta-värde under <meta name=\"keywords\">"
+        )]
+        public virtual string MetaKeywords { get; set; }
 
         #endregion
 
-        //public string GetMetaDescription()
-        //{
-        //    return MetaDescription;
-        //}
+        public string GetMetaDescription()
+        {
+            return MetaDescription;
+        }
 
         public StartPageModel StartPage
         {
@@ -88,5 +90,7 @@ namespace Investor.Models.PageModels
                 return AncestorOrSelf<StartPageModel>(1);
             }
         }
+
+        public Node CurrentPage { get { return umbraco.NodeFactory.Node.GetCurrent(); } }
     }
 }

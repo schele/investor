@@ -1,15 +1,26 @@
 ﻿@using Investor.Helpers
 @using Investor.Models.Extensions
 @using Investor.Models.PageModels
+@using UCodeFirst.Factories
 @using MediaExtensions = Investor.Models.Extensions.MediaExtensions
 
-@inherits UmbracoTemplatePage
 @inherits UmbracoViewPage<ArticlePageModel>
 
 @{
     var relatedDocuments = Umbraco.Field("relateradeDokument").ToString();
     Layout = "Master.cshtml";
+
+     var niceurl = Model.CurrentPage.ChildrenAsList;
 }
+
+<ul>
+    @foreach (var article in niceurl)
+    {
+        <li>@article.Name</li>
+    }
+</ul>
+
+<span>Name: @niceurl</span>
 
 @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 <article class="article-page col-md-9">

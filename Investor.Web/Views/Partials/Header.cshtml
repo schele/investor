@@ -1,7 +1,47 @@
-﻿<header>
+﻿@using Investor.Helpers
+@using Investor.ToggleLanguage
+@using umbraco.NodeFactory
+@using Investor.Models.PageModels
+
+@inherits UmbracoViewPage<BaseModel>
+
+@{
+    var nodeHelper = new NodeHelper();
+    var rootNode = nodeHelper.GetRootNode(Model.CurrentPage);
+    var languageObjects = new List<ToggleLanguageObject>();
+    var parent = new Node(-1);
+
+    foreach (Node node in parent.Children)
+    {
+        if (node.Id.Equals(rootNode.Id))
+        {
+            continue;
+        }
+
+        var nodeDomain = library.GetCurrentDomains(node.Id);
+
+        if (nodeDomain != null && nodeDomain.Any())
+        {
+            foreach (var domain in nodeDomain)
+            {
+                var languageDisplayName = Umbraco.GetDictionaryValue("Domains");
+
+                if (!string.IsNullOrWhiteSpace(domain.Name))
+                {
+                    languageObjects.Add(new ToggleLanguageObject(languageDisplayName, domain.Name));
+                }
+            }
+        }
+    }
+}
+
+<header>
     <div class="container">
         <div class="top">
-            <a class="language" href="#">Svenska</a>
+            @foreach (var item in languageObjects)
+            {
+                <a href="@item.GetUrl()" class="language">@item.GetLanguage()</a>
+            }
         </div>      
         @Html.Partial("~/Views/Partials/MainNavigation.cshtml")
     </div>

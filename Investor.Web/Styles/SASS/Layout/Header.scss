@@ -79,7 +79,7 @@ header .mobile-navigation {
 }
 
 header .main-navigation ul,
-header .mobile-navigation ul,
+header .mobile-navigation ul:first-child,
 header .mobile-navigation #search {
     background: url(/images/separator.svg) no-repeat top right; 
     -webkit-background-size: 1px 40px;
@@ -107,13 +107,22 @@ header .mobile-navigation #search a,
 header .mobile-navigation > ul > li,
 .main-navigation li { 
     float: left; 
-    line-height: 3.6em; 
+    line-height: 50px; 
     background: url(/images/separator.svg) no-repeat;  
     -webkit-background-size: 1em 40em; 
     -o-background-size: 1em 4em; 
     -moz-background-size: 1em 4em; 
     background-size: 1em 4em; 
     border-bottom: 4px solid #a0a0a0; 
+}
+
+header .mobile-navigation > ul > li {
+     line-height: 0;
+}
+
+header .mobile-navigation > ul > li a {
+    width: 100%;
+    line-height: 35px;
 }
 
 header .mobile-navigation > ul > li > a,
@@ -139,8 +148,8 @@ header .mobile-navigation #search a,
 
 .main-navigation li .icon {
      width: 1.28571428571429em; 
-     height: 1.4285714285714em; 
-     background: transparent url("/images/sprite.png") -1.42857142857143em -7.14285714285714em; 
+     height: 1.4285714285714em;
+     background: transparent url(/images/sprite.png) -1.42857142857143em -7.14285714285714em; 
      float: left; margin-top: 0.57142857142857em;
      margin-right: 0.35714285714286em; 
      -webkit-background-size: 14.2857142857143em 14.2857142857143em; 
@@ -153,7 +162,7 @@ header .mobile-navigation #search a,
 .main-navigation li:hover .icon {
      width: 1.28571428571429em; 
      height: 1.4285714285714em; 
-     background: transparent url("/images/sprite.png") -1.42857142857143em -5.71428571428571em; 
+     background: transparent url(/images/sprite.png) -1.42857142857143em -5.71428571428571em; 
      float: left; 
      margin-top: 0.57142857142857em; 
      margin-right: 0.35714285714286em; 
@@ -204,7 +213,7 @@ header  .main-navigation-additional li a {
 	header #mobile-main-menu .options,
 	header #search .options {
 	    top: 140px; 
-        padding: 2em; 
+        padding: 20px; 
         left: 0; 
         width: 100%; 
         position: absolute; 
@@ -219,6 +228,7 @@ header  .main-navigation-additional li a {
 
     header #mobile-main-menu .options a {
         color: #000;
+        font-weight: bold;
     }
 
 	header #mobile-main-menu.selected,
@@ -250,8 +260,8 @@ header  .main-navigation-additional li a {
 	header .mobile-navigation							{ display:  inline-block;float: left;margin-top: 0 !important; }
 	header #mobile-main-menu .options,
 	header #search .options                             { border-top: 1px solid #cccccc !important; }
-	header .mobile-navigation .menu .ui .icon		    { width: 18px; height: 20px; background: transparent url("../images/sprite.png") -0px -120px; float: left; margin-top: 8px; margin-right: 5px;  }
-	header .mobile-navigation #search .icon				{ width: 18px; height: 20px; background: transparent url("../images/sprite.png") -20px -120px; float: left; margin-top: 8px; margin-right: 5px;  }
+	header .mobile-navigation .menu .ui .icon		    { width: 18px; height: 20px; background: transparent url(/images/sprite.png) -0px -120px; float: left; margin-top: 8px; margin-right: 5px;  }
+	header .mobile-navigation #search .icon				{ width: 18px; height: 20px; background: transparent url(/images/sprite.png) -20px -120px; float: left; margin-top: 8px; margin-right: 5px;  }
 	header .mobile-navigation #search					{ border-bottom: 4px solid #f08b17; }
 	header .mobile-navigation li > a					{ padding: 0px 15px 0px 15px; }
 	
@@ -280,8 +290,7 @@ header  .main-navigation-additional li a {
 	
 	.page .left-boxes .box                              { width: auto !important; }
 	
-	
-    header .mobile-sub-navigation						{ margin: 20px 10px 0px 10px; display: block; background: url(../images/menu-separator.png) no-repeat top right; padding-right: 1px; overflow: hidden; }
+    header .mobile-sub-navigation						{ margin: 20px 10px 0px 10px; display: block; background: url(/images/menu-separator.png) no-repeat top right; padding-right: 1px; overflow: hidden; }
     header .mobile-sub-navigation .ui					{ display: block; width: 100%; }
-    header .mobile-sub-navigation > .ui .icon			{ width: 20px; height: 20px; float: left; background: transparent url("../images/sprite.png") -0px -140px; margin-top: 8px; margin-left: -10px; margin-right: 10px; }
+    header .mobile-sub-navigation > .ui .icon			{ width: 20px; height: 20px; float: left; background: transparent url(/images/sprite.png) -0px -140px; margin-top: 8px; margin-left: -10px; margin-right: 10px; }
 }

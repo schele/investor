@@ -16,7 +16,7 @@
     var investorsAndMediaPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(investorsAndMediaId));
 }
 
-<footer class="footer">
+<footer>
     <div class="introduction">
         <div class="container">
             @if (Model.StartPage.AdditionalMenu != null)
@@ -33,7 +33,7 @@
     <div class="introduction sitemap">
         <div class="container">
             <div class="columns">
-                <div>
+                <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
                         <li><a href="@aboutInvestorPage.Url" title="@aboutInvestorPage.Name">@aboutInvestorPage.Name</a></li>
                         @foreach (var item in aboutInvestorPage.Children())
@@ -42,7 +42,7 @@
                         }                        
                     </ul>
                 </div>
-                <div class="investment-listing">
+                <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
                         <li><a href="@ourInvestmentsPage.Url" title="@ourInvestmentsPage.Name">@ourInvestmentsPage.Name</a></li>
                         @foreach (var item in investmentPages)
@@ -51,7 +51,7 @@
                         }
                     </ul>
                 </div>
-                <div>
+                <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
                         <li><a href="@investorsAndMediaPage.Url" title="@investorsAndMediaPage.Name">@investorsAndMediaPage.Name</a></li>
                         @foreach (var item in investorsAndMediaPage.Children())

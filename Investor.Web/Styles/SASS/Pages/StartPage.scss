@@ -9,6 +9,8 @@
 
 .start-page .slide-show-container .slide-show-item {
     position: absolute;
+    transition: 1s;
+    left: 0;
 }
 
 .start-page .slide-show-container .slide-show-item .slide-show-content {
@@ -58,4 +60,10 @@
 
 .start-page .slide-show-container .slide-show-controls li.slide-show-active-control {
     background: #fcc127;
+}
+
+@media (max-width: 990px) {
+    .start-page .slide-show-container {
+        display: none;
+    }
 }

@@ -3,6 +3,8 @@ using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
+using umbraco.interfaces;
+using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Converters;
@@ -60,6 +62,37 @@ namespace Investor.Models.PageModels
         )]
         public virtual IEnumerable<NodeLink> AdditionalMenu { get; set; }
 
+        #endregion
+
+        #region footer
+
+        //[Property(
+        //    UmbracoDataType.RichtextEditor,
+        //    Tab.Footer,
+        //    DisplayName = "Sidfot",
+        //    Description = "",
+        //    Converter = typeof(RichtextConverter)
+        //)]
+        //public virtual IHtmlString Footer { get; set; }
+        
+        //[Property(
+        //    UmbracoDataType.RichtextEditor,
+        //    Tab.Footer,
+        //    DisplayName = "Sidfot",
+        //    Description = "",
+        //    Converter = typeof(RichtextConverter)
+        //)]
+        //public virtual IHtmlString Footer { get; set; }
+
+        [Property(
+            UmbracoDataType.RichtextEditor,
+            Tab.Footer,
+            DisplayName = "Sidfot",
+            Description = "",
+            Converter = typeof(RichtextConverter)
+        )]
+        public virtual IHtmlString Footer { get; set; }
+        
         #endregion
     }
 }

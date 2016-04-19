@@ -1,23 +1,69 @@
-﻿<footer class="footer">
+﻿@using Investor.Models.PageModels
+@using UCodeFirst.Factories
+
+@inherits UmbracoViewPage<BaseModel>
+
+@{
+    var aboutInvestorId = Umbraco.Field("aboutInvestor").ToString();
+    var aboutInvestorPage = ModelFactory.Instance.GetModel<CategoryPageModel>(int.Parse(aboutInvestorId));
+    
+    var ourInvestmentsId = Umbraco.Field("ourInvestments").ToString();
+    var ourInvestmentsPage = ModelFactory.Instance.GetModel<CategoryPageModel>(int.Parse(ourInvestmentsId));
+    
+    var investorsAndMediaId = Umbraco.Field("investorsAndMedia").ToString();
+    var investorsAndMediaPage = ModelFactory.Instance.GetModel<CategoryPageModel>(int.Parse(investorsAndMediaId));
+}
+
+<footer class="footer">
     <div class="introduction">
         <div class="container">
-            <ul class="main-actions">
-            </ul>
+            @if (Model.StartPage.AdditionalMenu != null)
+            {
+                <ul class="main-actions">
+                @foreach (var menu in Model.StartPage.AdditionalMenu)
+                {
+                    <li><a href="@menu.Link">@menu.Caption</a></li>
+                }
+                </ul>
+            }
         </div>
     </div>
     <div class="introduction sitemap">
         <div class="container">
             <div class="columns">
                 <div>
+                    <ul>
+                        <li><a href="@aboutInvestorPage.Url" title="@aboutInvestorPage.Name">@aboutInvestorPage.Name</a></li>
+                        @foreach (var item in aboutInvestorPage.Children())
+                        {
+                            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
+                        }                        
+                    </ul>
                 </div>
                 <div class="investment-listing">
+                    <ul>
+                        <li><a href="@ourInvestmentsPage.Url" title="@ourInvestmentsPage.Name">@ourInvestmentsPage.Name</a></li>
+                        @foreach (var item in ourInvestmentsPage.Children())
+                        {
+                            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
+                        }
+                    </ul>
                 </div>
                 <div>
+                    <ul>
+                        <li><a href="@investorsAndMediaPage.Url" title="@investorsAndMediaPage.Name">@investorsAndMediaPage.Name</a></li>
+                        @foreach (var item in investorsAndMediaPage.Children())
+                        {
+                            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="copyright"></div>
+        <div class="copyright">
+            @Model.StartPage.Footer            
+        </div>
     </div>
 </footer>

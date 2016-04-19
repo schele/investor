@@ -304,7 +304,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\MediaConverter.cs" />
+    <Compile Include="Converters\ModelConverter.cs" />
     <Compile Include="Converters\MultipleMediaConverter.cs" />
+    <Compile Include="Converters\NodeConverter.cs" />
     <Compile Include="Converters\NodeLinkConverter.cs" />
     <Compile Include="DataTypes\DropdownForRobots.cs" />
     <Compile Include="DataTypes\MacroContainer.cs" />

@@ -205,3 +205,5 @@ Investor.Web/App_Data/
 /Investor.Web/obj
 /Investor.Web/App_Data
 /Investor.Models/obj
+/Investor.Web/_build/node_modules/
+/Investor.Web/static/

@@ -1,0 +1,24 @@
+{
+  "name": "investor",
+  "version": "0.0.1",
+  "description" : "",
+  "main": "gulpfile.js",
+    "scripts": {
+    "build": "gulp all",
+    "dev": "gulp all && gulp watch"
+  },
+  "author": "Torbjörn Walther",
+  "devDependencies": {},
+  "dependencies" : {
+    "express": "^4.4.3",
+    "gulp": "~3.9.1",
+    "gulp-clean": "~0.2.4",
+    "gulp-csslint": "^0.1.4",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-sass": "~0.7.0",
+    "node-sass": "0.8.4",
+    "optipng-bin": "~0.3.3",
+    "pretty-hrtime": "~0.2.0",
+    "run-sequence": "~0.3.6"
+  }
+}

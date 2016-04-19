@@ -452,7 +452,6 @@
     <Content Include="UI\css\bootstrap.min.css" />
     <Content Include="UI\css\ie10-viewport-bug-workaround.css" />
     <Content Include="Styles\reset.css" />
-    <Content Include="Styles\style.css" />
     <Content Include="UI\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="UI\js\analytics.js" />
     <Content Include="UI\js\bootstrap.js" />
@@ -550,6 +549,14 @@
     <Content Include="Views\Category.cshtml" />
     <Content Include="Views\Partials\Footer.cshtml" />
     <Content Include="Views\Partials\SubNavigation.cshtml" />
+    <Content Include="Styles\SASS\Pages\ArticlePage.scss" />
+    <Content Include="Styles\style.scss" />
+    <Content Include="Styles\SASS\pages.scss" />
+    <Content Include="Styles\SASS\layout.scss" />
+    <Content Include="Styles\SASS\Layout\Header.scss" />
+    <Content Include="Styles\SASS\general-styles.scss" />
+    <Content Include="Styles\SASS\Layout\Footer.scss" />
+    <Content Include="Styles\SASS\Layout\SubMenu.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,0 +1,29 @@
+﻿.footer { background: #001e5a; /* Old browsers */
+background: -moz-linear-gradient(top,  #001e5a 0%, #002b7e 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#001e5a), color-stop(100%,#002b7e)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* IE10+ */
+background: linear-gradient(top,  #001e5a 0%,#002b7e 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5a', endColorstr='#002b7e',GradientType=0 ); /* IE6-9 */
+overflow: hidden;
+margin-top: 0;
+padding-top: 2em;
+clear: both;
+}
+
+.footer a { color: white; }
+.footer .search { float: right; }
+.footer .columns > div { float: left; margin-right: 10em; }
+.footer .columns > div > ul > li { font-size: 1.4em; line-height: 1.5em; }
+.footer .columns > div > ul > li:first-child { font-size: 1.8em; }
+
+.footer .columns { clear: both; margin-top: 2em; }
+
+.footer .main-actions li { display: inline; height: 0.3em; margin-right: 2em; }
+.footer .main-actions li > a { line-height: 1.5em; font-size: 1em; }
+.footer li { font-size: 1.6em; }
+.footer .introduction { border-bottom: 1px solid #294885; overflow: hidden; padding-bottom: 2em; }
+.footer .copyright { padding-top: 2em; }
+.footer .copyright p { clear: both; font-size: 1.4em; color: White; }
+.footer .investment-listing h3 { color: White; font-size: 1.8em; margin-bottom: 0.4em; margin-top: 0.3em; }

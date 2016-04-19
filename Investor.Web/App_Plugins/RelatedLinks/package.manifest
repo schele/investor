@@ -1,0 +1,27 @@
+{
+	propertyEditors: [
+		{
+			alias: "RelatedLinks",
+			name: "Related Links",
+			isParameterEditor: true,
+			editor:
+			{
+				view: "~/App_Plugins/RelatedLinks/relatedlinks.html",
+				valueType: "JSON"
+			},
+			prevalues: {
+				fields:[
+					{
+						label:"Max numbers of items",
+						description:"Optional: Specify how many items that is allowed to be created.",
+                        key:"maxItems",
+                        view:"textstring"
+					}
+				]
+			}
+		}
+	],
+	javascript: [
+		'~/App_Plugins/RelatedLinks/relatedlinks.controller.js'
+	]
+}

@@ -1,6 +1,8 @@
 ﻿@using System.Web.Script.Serialization
 @using Investor.Models.Models
 @using Investor.Models.PageModels
+@using umbraco.cms.businesslogic.macro
+@using umbraco.MacroEngines
 @using umbraco.NodeFactory
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @inherits UmbracoViewPage<StartPageModel>
@@ -11,6 +13,8 @@
     var serializer = new JavaScriptSerializer();
 }
 
+
+<!-- slideshow start -->
 <div>
     @foreach (var id in Umbraco.Field("slideshow").ToString().Split(','))
     {
@@ -18,9 +22,9 @@
         var heading = media.Properties.FirstOrDefault(x => x.Alias == "heading");
         var text = media.Properties.FirstOrDefault(x => x.Alias == "text");
         var url = media.Properties.FirstOrDefault(x => x.Alias == "url");
-        var urlText = media.Properties.FirstOrDefault(x => x.Alias == "urlText");        
+        var urlText = media.Properties.FirstOrDefault(x => x.Alias == "urlText");
         var umbracoFile = media.Properties.FirstOrDefault(x => x.Alias == "umbracoFile");
-        
+
         var slideshowHeading = string.Empty;
         var slideshowText = string.Empty;
         var destination = new Node();
@@ -40,14 +44,14 @@
         if (url != null && url.Value != null)
         {
             destination = new Node(int.Parse(url.Value.ToString()));
-            
+
         }
-        
+
         if (urlText != null && urlText.Value != null)
         {
-            destinationText = urlText.Value.ToString();            
+            destinationText = urlText.Value.ToString();
         }
-        
+
         if (umbracoFile != null && umbracoFile.Value != null)
         {
             image = serializer.Deserialize<Slideshow>(umbracoFile.Value.ToString());
@@ -56,6 +60,28 @@
         <h2>@slideshowHeading</h2>
         <p>@slideshowText</p>
         <a href="@destination.NiceUrl">@destinationText</a>
-        <img src="@image.Src" alt="@slideshowHeading" />
+        <img src="@image.Src" alt="@slideshowHeading"/>
     }
 </div>
+<!-- slideshow end -->
+
+<!-- puff start -->
+@*@functions
+{    
+    public static string RenderMacro(string alias, int nodeId)
+    {
+        var macroEngine = new RazorMacroEngine();
+        
+        var macro = new MacroModel
+        {
+            ScriptLanguage = "cshtml",
+            ScriptName = alias + ".cshtml"
+        };
+
+        return macroEngine.Execute(macro, new Node(nodeId));
+    }
+}*@
+
+@*@Html.Raw(RenderMacro("StartPuff", Model.CurrentPage.Id))*@
+
+<!-- puff end -->

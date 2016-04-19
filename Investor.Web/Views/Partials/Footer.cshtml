@@ -1,17 +1,19 @@
 ﻿@using Investor.Models.PageModels
+@using umbraco.NodeFactory
 @using UCodeFirst.Factories
 
 @inherits UmbracoViewPage<BaseModel>
 
 @{
     var aboutInvestorId = Umbraco.Field("aboutInvestor").ToString();
-    var aboutInvestorPage = ModelFactory.Instance.GetModel<CategoryPageModel>(int.Parse(aboutInvestorId));
+    var aboutInvestorPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(aboutInvestorId));
     
     var ourInvestmentsId = Umbraco.Field("ourInvestments").ToString();
-    var ourInvestmentsPage = ModelFactory.Instance.GetModel<CategoryPageModel>(int.Parse(ourInvestmentsId));
+    var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsId));
+    var investmentPages = ourInvestmentsPage.GetDescendantOrSelfNodes().Where(x => x.NodeTypeAlias == "InvestmentPageModel");
     
     var investorsAndMediaId = Umbraco.Field("investorsAndMedia").ToString();
-    var investorsAndMediaPage = ModelFactory.Instance.GetModel<CategoryPageModel>(int.Parse(investorsAndMediaId));
+    var investorsAndMediaPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(investorsAndMediaId));
 }
 
 <footer>
@@ -43,7 +45,7 @@
                 <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
                         <li><a href="@ourInvestmentsPage.Url" title="@ourInvestmentsPage.Name">@ourInvestmentsPage.Name</a></li>
-                        @foreach (var item in ourInvestmentsPage.Children())
+                        @foreach (var item in investmentPages)
                         {
                             <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
                         }

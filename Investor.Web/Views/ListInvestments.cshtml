@@ -1,0 +1,13 @@
+﻿@using Investor.Models.PageModels
+
+@inherits UmbracoViewPage<ListInvestmentsPageModel>
+
+@{    
+    Layout = "Master.cshtml";
+}
+
+@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+
+<div>
+    <h1>@Model.CurrentPage.Name</h1>
+</div>

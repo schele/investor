@@ -560,6 +560,9 @@
     <Content Include="Styles\SASS\Layout\SubMenu.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />
     <Content Include="Styles\SASS\Pages\StartPage.scss" />
+    <Content Include="Views\ListInvestments.cshtml" />
+    <Content Include="Views\Investment.cshtml" />
+    <Content Include="Views\MacroPartials\OurInvestments.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

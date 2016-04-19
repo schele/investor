@@ -1,0 +1,26 @@
+﻿@using Investor.Helpers
+@using Investor.Models.PageModels
+@using umbraco.NodeFactory
+@using UCodeFirst.Factories
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    var heading = Model.MacroParameters["Heading"];
+    //var ourInvestmentsPageId = Model.MacroParameters["OurInvestments"].ToString();
+    //var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsPageId));
+    //var investments = ourInvestmentsPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "ListInvestmentsPageModel");
+}
+
+<div>
+    <h2>@heading</h2>
+
+    @*@foreach (var investment in investments)
+    {
+        var listInvestment = ModelFactory.Instance.GetModel<ListInvestmentsPageModel>(investment.Id);
+
+        <h3>@listInvestment.Name</h3>
+        <p>@listInvestment.Preamble</p>
+    }*@
+</div>

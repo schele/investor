@@ -5,9 +5,9 @@
 <nav class="main-navigation" role="navigation">
     <a class="logo" href="#"><img src="~/images/logo.png" alt="investor logo"/></a>
     <ul>
-        @foreach (var categoryPage in Model.CurrentPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "CategoryPageModel"))
+        @foreach (var categoryPage in Model.StartPage.Children<CategoryPageModel>())
         {
-            <li><a href="@categoryPage.NiceUrl" title="@categoryPage.Name"><span class="icon"></span>@categoryPage.Name</a></li>
+            <li><a href="@categoryPage.Url" title="@categoryPage.Name"><span class="icon"></span>@categoryPage.Name</a></li>
         }
     </ul>
 </nav>
@@ -32,9 +32,9 @@
                     <span class="icon"></span>
                 </a>
                 <ul class="options">
-                    @foreach (var categoryPage in Model.CurrentPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "CategoryPageModel"))
+                    @foreach (var categoryPage in Model.StartPage.Children<CategoryPageModel>())
                     {
-                        <li><a href="@categoryPage.NiceUrl" title="@categoryPage.Name"><span>@categoryPage.Name</span></a></li>
+                        <li><a href="@categoryPage.Url" title="@categoryPage.Name"><span>@categoryPage.Name</span></a></li>
                     }
                 </ul>
             </li>

@@ -554,7 +554,7 @@
     <Content Include="Styles\SASS\pages.scss" />
     <Content Include="Styles\SASS\layout.scss" />
     <Content Include="Styles\SASS\Layout\Header.scss" />
-    <Content Include="Styles\SASS\general-styles.scss" />
+    <Content Include="Styles\SASS\global.scss" />
     <Content Include="Styles\SASS\Layout\Footer.scss" />
     <Content Include="Styles\SASS\Layout\SubMenu.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />

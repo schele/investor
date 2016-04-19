@@ -7,21 +7,20 @@
     <ul>
         @foreach (var categoryPage in Model.StartPage.Children<CategoryPageModel>())
         {
-            <li><a href="@categoryPage.Url" title="@categoryPage.Name"><span class="icon"></span>@categoryPage.Name</a></li>
+            <li><a href="@categoryPage.Url" title="@categoryPage.Name">@categoryPage.Name</a></li>
         }
     </ul>
+
 </nav>
 
 @if (Model.StartPage.AdditionalMenu != null)
 {
-    <div>
-        <ul>
-            @foreach (var menu in Model.StartPage.AdditionalMenu)
-            {
-                <li><a href="@menu.Link">@menu.Caption</a></li>
-            }
-        </ul>
-    </div>
+    <ul class="main-navigation-additional">
+        @foreach (var menu in Model.StartPage.AdditionalMenu)
+        {
+            <li><a href="@menu.Link">@menu.Caption</a></li>
+        }
+    </ul>
 }
 
 <div class="mobile-navigation-section">
@@ -47,7 +46,7 @@
                 <span class="icon"></span>
             </a>
             <div class="options">
-                <umbraco:Macro Alias="QuickSearch" TextBoxId="TopMobileSearch" runat="server" />
+              
             </div>
         </div>
     </div>

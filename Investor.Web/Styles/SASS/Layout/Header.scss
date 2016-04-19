@@ -172,6 +172,22 @@ header .mobile-navigation {
     display: none;
 }
 
+header  .main-navigation-additional {
+    margin: 0 0 0 30px;
+    display: inline-block;
+}
+
+header  .main-navigation-additional li {
+    display: inline-block;
+}
+header  .main-navigation-additional li a {
+    padding: 15px 5px;
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: #000;
+}
+
 @media (max-width: 990px) {
     header .main-navigation ul {
         display: none;
@@ -179,6 +195,10 @@ header .mobile-navigation {
 
     header .mobile-navigation-section {
         float: right;
+    }
+
+    header  .main-navigation-additional {
+        display: none;
     }
 
 	header #mobile-main-menu .options,

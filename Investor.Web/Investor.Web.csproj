@@ -445,6 +445,7 @@
     <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
+    <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\mobile-navigation.js" />
     <Content Include="UI\css\bootstrap-theme.css" />
     <Content Include="UI\css\bootstrap-theme.min.css" />
@@ -558,6 +559,7 @@
     <Content Include="Styles\SASS\Layout\Footer.scss" />
     <Content Include="Styles\SASS\Layout\SubMenu.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />
+    <Content Include="Styles\SASS\Pages\StartPage.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

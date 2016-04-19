@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 	watch = require("gulp-watch"),
 		src = {
 			styles: '../Styles/style.scss',
-			stylesWatch: ['../Styles/style.scss', '../Styles/styles/**'],
+			stylesWatch: ['../Styles/style.scss', '../Styles/SASS/**'],
 			lintcss : '../styles/style.css',
 		},
 		dest = {

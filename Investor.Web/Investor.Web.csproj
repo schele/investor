@@ -358,6 +358,9 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="App_Plugins\RelatedLinks\relatedlinks.controller.js" />
+    <Content Include="App_Plugins\RelatedLinks\relatedlinks.css" />
+    <Content Include="App_Plugins\RelatedLinks\relatedlinks.html" />
     <Content Include="Configuration\ConfigurationTransforms.xml" />
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="Config\Lang\cs-CZ.user.xml" />
@@ -554,6 +557,7 @@
     <Content Include="Styles\SASS\global.scss" />
     <Content Include="Styles\SASS\Layout\Footer.scss" />
     <Content Include="Styles\SASS\Layout\SubMenu.scss" />
+    <Content Include="App_Plugins\RelatedLinks\package.manifest" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

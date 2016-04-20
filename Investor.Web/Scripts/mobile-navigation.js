@@ -8,6 +8,6 @@
       $("#mobile-main-menu").addClass("selected");
     }
 
-    $("#mobile-main-menu .options").slideToggle();
+    $("#mobile-main-menu .options").stop().slideToggle();
   });
 });

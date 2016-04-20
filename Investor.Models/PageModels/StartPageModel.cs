@@ -84,6 +84,15 @@ namespace Investor.Models.PageModels
         //)]
         //public virtual IHtmlString Footer { get; set; }
 
+       // [Property(
+       //    UmbracoDataType.ContentPicker,
+       //    Tab.Site,
+       //    DisplayName = "About Investor",
+       //    Description = "Länk till About Investor",
+       //    Converter = typeof(ModelConverter<CategoryPageModel>)
+       //)]
+       // public virtual CategoryPageModel AboutInvestorPage { get; set; }
+
         [Property(
             UmbracoDataType.RichtextEditor,
             Tab.Footer,

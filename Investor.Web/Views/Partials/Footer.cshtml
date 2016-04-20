@@ -5,14 +5,17 @@
 @inherits UmbracoViewPage<BaseModel>
 
 @{
-    var aboutInvestorId = Umbraco.Field("aboutInvestor").ToString();
+    var aboutInvestorId = Umbraco.Field("aboutInvestor", recursive:true).ToString();
     var aboutInvestorPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(aboutInvestorId));
-    
-    var ourInvestmentsId = Umbraco.Field("ourInvestments").ToString();
+
+    //var aboutInvestorPage = Model.StartPage.AboutInvestorPage;
+    //var childrenOfAboutInvestor = aboutInvestorPage.Children();
+
+    var ourInvestmentsId = Umbraco.Field("ourInvestments", recursive: true).ToString();
     var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsId));
     var investmentPages = ourInvestmentsPage.GetDescendantOrSelfNodes().Where(x => x.NodeTypeAlias == "InvestmentPageModel");
-    
-    var investorsAndMediaId = Umbraco.Field("investorsAndMedia").ToString();
+
+    var investorsAndMediaId = Umbraco.Field("investorsAndMedia", recursive: true).ToString();
     var investorsAndMediaPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(investorsAndMediaId));
 }
 
@@ -39,7 +42,7 @@
                         @foreach (var item in aboutInvestorPage.Children())
                         {
                             <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
-                        }                        
+                        }
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-4 footer-list">

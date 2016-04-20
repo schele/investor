@@ -1,0 +1,15 @@
+﻿@using Investor.Models.PageModels
+
+@inherits UmbracoViewPage<IFramePageModel>
+
+@{
+    Layout = "Master.cshtml";
+}
+
+@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+
+<div>
+    <h1>@Model.CurrentPage.Name</h1>
+
+    <iframe src="@Model.IFrameSrc"></iframe>
+</div>

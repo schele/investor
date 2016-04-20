@@ -3,7 +3,7 @@
 @inherits UmbracoViewPage<BaseModel>
 
 <nav class="main-navigation" role="navigation">
-    <a class="logo" href="#"><img src="~/images/logo.png" alt="investor logo"/></a>
+    <a class="logo" href="/"><img src="~/images/logo.png" alt="investor logo"/></a>
     <ul>
         @foreach (var categoryPage in Model.StartPage.Children<CategoryPageModel>())
         {

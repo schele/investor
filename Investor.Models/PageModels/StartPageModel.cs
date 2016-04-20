@@ -3,11 +3,8 @@ using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
-using umbraco.interfaces;
-using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
-using UCodeFirst.Converters;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
 
@@ -22,7 +19,8 @@ namespace Investor.Models.PageModels
             {
                 typeof(PageNotFoundModel),
                 typeof(CategoryPageModel),
-                typeof(ArticlePageModel)
+                typeof(ArticlePageModel),
+                typeof(IFramePageModel)
             }
     )]
     public class StartPageModel : BaseModel

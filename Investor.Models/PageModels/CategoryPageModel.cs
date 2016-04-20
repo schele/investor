@@ -15,7 +15,8 @@ namespace Investor.Models.PageModels
         AllowAtRoot = true,
         AllowedChildNodes = new object[]
             {
-                typeof(ListInvestmentsPageModel)
+                typeof(ListInvestmentsPageModel),
+                typeof(IFramePageModel)
             }
     )]
     public class CategoryPageModel : BaseModel

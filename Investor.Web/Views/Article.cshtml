@@ -42,7 +42,8 @@
 
     @if (!string.IsNullOrEmpty(relatedDocuments))
     {
-        <div>
+        <div class="article-page-documents">
+            <h3><span class="icon"></span>Documents</h3> <!--Ska bytas mot prop förmodligen-->
             <ul>
                 @{
                     foreach (var d in relatedDocuments.Split(','))

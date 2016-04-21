@@ -8,7 +8,7 @@
 
 @{
     Layout = "Master.cshtml";
-    var imageIndex = 1;
+    var slideIndex = 1;
     var serializer = new JavaScriptSerializer();
 }
 
@@ -73,12 +73,10 @@
         <ul class="slide-show-controls">
             @foreach (var id in Umbraco.Field("slideshow").ToString().Split(','))
             {
-                <li name="@imageIndex" class="slide-show-dot"></li>
-                imageIndex++;
+                <li name="@slideIndex" class="slide-show-dot"></li>
+                slideIndex++;
             }
         </ul>
     </div>
+    @Umbraco.Field("macroContainer")
 </div>
-<!-- slideshow end -->
-
-@Umbraco.Field("macroContainer")

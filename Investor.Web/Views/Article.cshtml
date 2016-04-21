@@ -12,7 +12,7 @@
 
 @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 
-<article class="article-page col-md-9">
+<article class="article-page col-md-7">
     <div class="article-page-content">
         @Html.Render(Model.Header, @<h2 class="article-page-header">@Model.Header</h2>)
         @Html.Render(Model.Preamble, @<p class="article-page-premable">@Model.Preamble</p>)
@@ -42,7 +42,8 @@
 
     @if (!string.IsNullOrEmpty(relatedDocuments))
     {
-        <div>
+        <div class="article-page-documents">
+            <h3><span class="icon"></span>Documents</h3> <!--Ska bytas mot prop förmodligen-->
             <ul>
                 @{
                     foreach (var d in relatedDocuments.Split(','))

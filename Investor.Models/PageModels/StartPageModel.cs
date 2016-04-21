@@ -99,6 +99,22 @@ namespace Investor.Models.PageModels
             Converter = typeof(RichtextConverter)
         )]
         public virtual IHtmlString Footer { get; set; }
+
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Page,
+            DisplayName = "Popup: Text",
+            Description = ""
+        )]
+        public virtual string PopupText { get; set; }
+
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Page,
+            DisplayName = "Popup: Länktext",
+            Description = ""
+        )]
+        public virtual string PopupUrlText { get; set; }
         
         #endregion
     }

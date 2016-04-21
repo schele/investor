@@ -25,6 +25,14 @@ namespace Investor.Models.PageModels
         #region navigation tab
 
         [Property(
+            UmbracoDataType.TrueFalse,
+            Tab.Navigation,
+            DisplayName = "Hide In Navigation",
+            Description = "Välj om sidan ska visas i navigeringen"
+        )]
+        public virtual bool HideInNavigation { get; set; } // int eller bool, inget fungerar
+
+        [Property(
             UmbracoDataType.Textstring,
             Tab.Navigation,
             DisplayName = "Url Alias",
@@ -36,7 +44,7 @@ namespace Investor.Models.PageModels
             UmbracoDataType.Textstring,
             Tab.Navigation,
             DisplayName = "Url Name",
-            Description = "Ändra url adressen som går till den här sidan."
+            Description = "Ändra adressen som går till den här sidan."
         )]
         public virtual string UmbracoUrlName { get; set; }
 
@@ -47,7 +55,7 @@ namespace Investor.Models.PageModels
         [Property(
             UmbracoDataType.Textstring,
             Tab.Seo,
-            DisplayName = "Sidans titel",
+            DisplayName = "Page Title",
             Description = "Texten uppe i webbläsarens fönster samt <title> på sidan"
         )]
         public virtual string BrowserTabText { get; set; }
@@ -63,7 +71,7 @@ namespace Investor.Models.PageModels
         [Property(
             UmbracoDataType.TextboxMultiple,
             Tab.Seo,
-            DisplayName = "Meta: Beskrivning",
+            DisplayName = "Meta: Description",
             Description = "Meta description läggs till som ett meta-värde under <meta name=\"description\">"
         )]
         public virtual string MetaDescription { get; set; }
@@ -71,7 +79,7 @@ namespace Investor.Models.PageModels
         [Property(
             UmbracoDataType.TextboxMultiple,
             Tab.Seo,
-            DisplayName = "Meta: Nyckelord",
+            DisplayName = "Meta: Keywords",
             Description = "Meta keywords läggs till som ett meta-värde under <meta name=\"keywords\">"
         )]
         public virtual string MetaKeywords { get; set; }

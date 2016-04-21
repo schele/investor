@@ -1,4 +1,5 @@
 ﻿@using System.Web.Script.Serialization
+@using Investor.Helpers
 @using Investor.Models.Models
 @using Investor.Models.PageModels
 @using umbraco.NodeFactory
@@ -69,7 +70,7 @@
                         </div>
                         <div class="col-md-6 no-left-padding">
                             <div class="slide-show-image">
-                                <img src="@image.Src" alt="@slideshowHeading" />
+                                <img src="@image.Src" alt="@slideshowHeading"/>
                             </div>
                         </div>
                     </li>
@@ -84,8 +85,17 @@
             </ul>
         </div>
     }
-    
+
     <div class="row">
         @Umbraco.Field("macroContainer")
     </div>
 </div>
+
+<!-- Popup start -->
+
+<div>
+    @Html.Render(Model.StartPage.PopupText, @<span>@Model.StartPage.PopupText</span>)   
+    @Html.Render(Model.StartPage.PopupUrlText, @<span>@Model.StartPage.PopupUrlText</span>)
+</div>
+
+<!-- Popup end -->

@@ -1,4 +1,58 @@
-﻿<div class="col-md-3 sub-navigation">
-    <div class="for-show-menu"></div>
+﻿@using Investor.Models.PageModels
 
+@inherits UmbracoViewPage<BaseModel>
+
+@helper RenderMenu(BaseModel parent, bool recursive = true, bool renderSelf = false, int? maxLevel = null)
+{
+    if (renderSelf)
+    {
+        <li>
+            <a href="@parent.Url">@parent.Name</a>
+
+            <ul>
+                @RenderMenu(parent, recursive, false, maxLevel)
+            </ul>
+        </li>
+
+        return;
+    }
+
+    foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNavigation == false))
+    {
+        if (!Umbraco.MemberHasAccess(childPage.Id, childPage.Path))
+        {
+            continue;
+        }
+
+        string className = null;
+        if (childPage.Name == Model.Name)
+        {
+            className = "active";
+        }
+
+        <li>
+            <a href="@childPage.Url" class="@className">@childPage.Name</a>
+            @if (recursive)
+            {
+                var children = childPage.Children<BaseModel>().ToList();
+
+                if (!children.Any() || maxLevel.HasValue && maxLevel <= 1 && children.First().Level >= maxLevel)
+                {
+                    continue;
+                }
+
+                <ul>
+                    @RenderMenu(childPage)
+                </ul>
+            }
+        </li>        
+    }
+}
+
+<div class="col-md-3 sub-navigation">
+    <div class="for-show-menu">
+        <ul id="submenu">
+            @RenderMenu(Model.AncestorOrSelf<BaseModel>(2))
+        </ul>
+    </div>
 </div>

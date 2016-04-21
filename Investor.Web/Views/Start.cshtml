@@ -59,14 +59,18 @@
                         image = serializer.Deserialize<Slideshow>(umbracoFile.Value.ToString());
                     }
 
-                    <li class="slide-show-item">
-                        <div class="col-md-6 slide-show-content">
-                            <h2>@slideshowHeading</h2>
-                            <p>@slideshowText</p>
-                            <a href="@destination.NiceUrl">@destinationText</a>
+                    <li class="slide-show-item row">
+                        <div class="col-md-6 no-right-padding">
+                            <div class="slide-show-content">
+                                <h2>@slideshowHeading</h2>
+                                <p>@slideshowText</p>
+                                <a href="@destination.NiceUrl">@destinationText</a>
+                            </div>
                         </div>
-                        <div class="col-md-6 slide-show-image">
-                            <img src="@image.Src" alt="@slideshowHeading" />
+                        <div class="col-md-6 no-left-padding">
+                            <div class="slide-show-image">
+                                <img src="@image.Src" alt="@slideshowHeading" />
+                            </div>
                         </div>
                     </li>
                 }
@@ -81,5 +85,7 @@
         </div>
     }
     
-    @Umbraco.Field("macroContainer")
+    <div class="row">
+        @Umbraco.Field("macroContainer")
+    </div>
 </div>

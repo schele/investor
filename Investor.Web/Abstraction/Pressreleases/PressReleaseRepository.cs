@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Xml;
 using System.Xml.Linq;
-using Investor.Models.Models;
 using Investor.Models.Models.PressReleases;
 using log4net;
-using umbraco.BusinessLogic;
 
 namespace Investor.Abstraction.Pressreleases
 {
@@ -42,7 +38,7 @@ namespace Investor.Abstraction.Pressreleases
                 //        umbraco.library.GetCurrentDomains(Node.GetCurrent().Id)[0].Language.
                 //            CultureAlias);
                 //var numberOfPressReleasesToShow = Int32.Parse(CurrentNode.GetProperty("numberOfPressreleases").Value);
-                var xmlUrl = string.Format("http://ir.investorab.com/?p=press%26s=feed%26afw_lang=en");
+                var xmlUrl = string.Format(@"http://ir.investorab.com/?p=press&s=feed&afw_limit=5&afw_lang=en");
                     //((SiteConstants.PRESS_RELEASE_LIST).Replace("%26", "&"), lang);
                 var xDoc = Load(xmlUrl);
 
@@ -51,6 +47,7 @@ namespace Investor.Abstraction.Pressreleases
             catch (Exception exception)
             {
                 Log.Error(exception.Message);
+
                 return new List<PressRelease>();
             }
         }

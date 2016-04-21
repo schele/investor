@@ -4,12 +4,27 @@
 
 @{
     Layout = "Master.cshtml";
+    var id = 0;
+
+    if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+    {
+        id = int.Parse(Request.QueryString["id"]);
+    }
 }
 
 @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 
 <div>
-    <h1>@Model.CurrentPage.Name</h1>
 
-    <iframe src="@Model.IFrameSrc"></iframe>
+@if (id != 0)
+{
+    <span>här ska det in en pressrelease med id "@id"</span>
+}
+else
+{
+    <div>
+        <iframe src="@Model.IFrameSrc"></iframe>
+    </div>
+}
+
 </div>

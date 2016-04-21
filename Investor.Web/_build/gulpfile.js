@@ -3,15 +3,15 @@ var gulp = require('gulp'),
 	minifyCSS = require("gulp-minify-css"),
 	runSequence = require('run-sequence'),
 	clean = require('gulp-clean'),
-	csslint = require('gulp-csslint'),
 	watch = require("gulp-watch"),
 		src = {
-			styles: '../Styles/style.scss',
-			stylesWatch: ['../Styles/style.scss', '../Styles/SASS/**'],
-			lintcss : '../styles/style.css',
+			resetStyles: '../SASS/reset.scss',
+			styles: '../SASS/style.scss',
+			stylesWatch: ['../SASS/style.scss', '../SASS/Styles/**'],
 		},
 		dest = {
 			root: '../static/**',
+			resetStyles: '../static/styles/',
 			styles: '../static/styles/',
 	};
 
@@ -22,15 +22,16 @@ gulp.task('styles', function () {
 		.pipe(gulp.dest(dest.styles));
 });
 
+gulp.task('resetStyles', function () {
+    return gulp.src(src.resetStyles)
+		.pipe(sass({ errLogToConsole: true }))
+		.pipe(minifyCSS())
+		.pipe(gulp.dest(dest.resetStyles));
+});
+
 gulp.task('clean', function() {
 	return gulp.src(dest.root, { read: false })
 		.pipe(clean({ force: true }));
-});
-
-gulp.task('lintcss', function() {
-	return gulp.src(src.lintcss)
-		.pipe(csslint())
-    	.pipe(csslint.reporter());
 });
 
 gulp.task('watch', function () {
@@ -40,6 +41,6 @@ gulp.task('watch', function () {
 
 // all is used to exclude watch task
 gulp.task('all', function() {
-	runSequence('clean', ['styles']);
+	runSequence('clean', ['styles', 'resetStyles']);
 });
 gulp.task('default', ['all', 'watch']);

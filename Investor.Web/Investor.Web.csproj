@@ -452,7 +452,6 @@
     <Content Include="UI\css\bootstrap.css" />
     <Content Include="UI\css\bootstrap.min.css" />
     <Content Include="UI\css\ie10-viewport-bug-workaround.css" />
-    <Content Include="Styles\reset.css" />
     <Content Include="UI\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="UI\js\analytics.js" />
     <Content Include="UI\js\bootstrap.js" />
@@ -550,20 +549,23 @@
     <Content Include="Views\Category.cshtml" />
     <Content Include="Views\Partials\Footer.cshtml" />
     <Content Include="Views\Partials\SubNavigation.cshtml" />
-    <Content Include="Styles\SASS\Pages\ArticlePage.scss" />
-    <Content Include="Styles\style.scss" />
-    <Content Include="Styles\SASS\pages.scss" />
-    <Content Include="Styles\SASS\layout.scss" />
-    <Content Include="Styles\SASS\Layout\Header.scss" />
-    <Content Include="Styles\SASS\global.scss" />
-    <Content Include="Styles\SASS\Layout\Footer.scss" />
-    <Content Include="Styles\SASS\Layout\SubMenu.scss" />
+    <Content Include="SASS\Styles\Pages\Article.scss" />
+    <Content Include="SASS\style.scss" />
+    <Content Include="SASS\Styles\pages.scss" />
+    <Content Include="SASS\Styles\layout.scss" />
+    <Content Include="SASS\Styles\Layout\Header.scss" />
+    <Content Include="SASS\Styles\global.scss" />
+    <Content Include="SASS\Styles\Layout\Footer.scss" />
+    <Content Include="SASS\Styles\Layout\SubMenu.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />
-    <Content Include="Styles\SASS\Pages\StartPage.scss" />
+    <Content Include="SASS\Styles\Pages\Start.scss" />
     <Content Include="Views\ListInvestments.cshtml" />
     <Content Include="Views\Investment.cshtml" />
     <Content Include="Views\MacroPartials\OurInvestments.cshtml" />
     <Content Include="Views\IFrame.cshtml" />
+    <Content Include="SASS\Styles\MacroPartials\OurInvestments.scss" />
+    <Content Include="SASS\Styles\macro-partials.scss" />
+    <Content Include="SASS\reset.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

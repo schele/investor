@@ -1,0 +1,68 @@
+﻿.our-investments {
+    background: white url(/images/menu-gradient.png) repeat-x bottom left;
+    background-color: #fff;
+    border: 1px solid #D5D5D5;
+    border-bottom: 4px solid #A0A0A0;
+}
+
+.our-investments .our-investments-header {
+    padding: 10px;
+
+    background: #f9b314;
+    background: -moz-linear-gradient(top, #f9b314 0%, #e4a412 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9b314), color-stop(100%,#e4a412));
+    background: -webkit-linear-gradient(top, #f9b314 0%,#e4a412 100%);
+    background: -o-linear-gradient(top, #f9b314 0%,#e4a412 100%);
+    background: -ms-linear-gradient(top, #f9b314 0%,#e4a412 100%);
+
+}
+
+.our-investments .our-investments-header .our-investments-icon {
+    background: transparent url("/images/sprite.png") -100px -41px;
+    background-position: -100px -40px;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 30px;
+}
+
+.our-investments .our-investments-header h2 {
+    font-size: 20px;
+}
+
+.our-investments .our-investments-header h2 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.our-investments .our-investments-content {
+    padding: 10px 30px 30px 30px;
+}
+.our-investments .our-investments-content li {
+    border-bottom: 1px solid #C4C4C4;
+}
+
+.our-investments .our-investments-content li:last-child {
+    border-bottom: none;
+}
+
+.our-investments .our-investments-content a {
+    text-decoration: none;
+    padding: 15px 0 10px;
+    display: block;
+}
+.our-investments .our-investments-content a span {
+    color: #002B7E;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+}
+
+.our-investments .our-investments-content a p {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    line-height: 21px;
+    font-size: 14px;
+}

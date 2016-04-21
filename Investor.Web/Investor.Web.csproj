@@ -402,6 +402,12 @@
     <Content Include="images\install\steps\welcome.ascx" />
     <Content Include="images\install\Title.ascx" />
     <Content Include="images\install\utills\p.aspx" />
+    <Content Include="images\investor-popup-close.png" />
+    <Content Include="images\investor-popup-link-btn.png" />
+    <Content Include="images\investor-popup-logo.png" />
+    <Content Include="images\investor-popup-pattern-mobile-small.png" />
+    <Content Include="images\investor-popup-pattern-mobile.png" />
+    <Content Include="images\investor-popup-pattern.png" />
     <Content Include="images\investor_icons_vector.svg" />
     <Content Include="images\investor_icons_vector_IE.png" />
     <Content Include="images\link.png" />
@@ -444,7 +450,10 @@
     <Content Include="images\video.png" />
     <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
+    <Content Include="SASS\magnific-popup.css" />
+    <Content Include="Scripts\campaign-lightbox.js" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
+    <Content Include="Scripts\lib\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\mobile-navigation.js" />
     <Content Include="UI\css\bootstrap-theme.css" />

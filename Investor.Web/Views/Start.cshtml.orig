@@ -89,14 +89,23 @@
     <div class="row">
         @Umbraco.Field("macroContainer")
     </div>
-
+<<<<<<< HEAD
     <a href="" data-mfp-src="#test-popup" id="fancy_box"></a>
     <div id="test-popup" class="campaign-popup mfp-hide">
-        <button class="campaign-custom-close" id="campaign-custom-close">Stäng</button>
-        <img class="mobile-image" src="~/images/investor-popup-pattern-mobile-small.png"/>
-        <img class="logo" src="~/images/investor-popup-logo.png" alt="investor logo"/>
-        @Html.Render(Model.StartPage.PopupText, @<p>@Model.StartPage.PopupText</p>)
-        <a href="#">@Html.Render(Model.StartPage.PopupUrlText, @<span>@Model.StartPage.PopupUrlText</span>)</a>
-        <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
+        <img src="~/images/investor-popup-logo.png" alt="investor logo"/>
+        <p>Bacon ipsum dolor amet beef ribs kielbasa shoulder pork belly. Corned beef pancetta strip steak, alcatra cupim filet mignon salami shank chicken beef. Tri-tip landjaeger tail meatloaf filet mignon. Picanha pork belly kevin boudin ribeye tri-tip short loin porchetta sirloin cow hamburger tongue.</p>
+        <a href="#"><img src="~/images/investor-popup-link-btn.png" alt="länk till jubileumssidan"/></a>
     </div>
 </div>
+=======
+</div>
+
+<!-- Popup start -->
+
+<div>
+    @Html.Render(Model.StartPage.PopupText, @<span>@Model.StartPage.PopupText</span>)   
+    @Html.Render(Model.StartPage.PopupUrlText, @<span>@Model.StartPage.PopupUrlText</span>)
+</div>
+
+<!-- Popup end -->
+>>>>>>> 92835a70d8fa65705dd086da4c97c4008fd623fb

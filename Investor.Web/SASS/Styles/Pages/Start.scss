@@ -75,30 +75,61 @@
     background-image: url(/images/investor-popup-pattern.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
-    padding: 120px 180px;
+    padding: 140px 200px;
     width: auto;
     margin: 20px auto;
     width: 960px;
-    height: 600px;
+    height: 630px;
     text-align: center;
 }
 
-.campaign-popup img {
+.campaign-popup .mobile-image {
+    display: none;
+}
+
+.campaign-popup .logo {
     margin-bottom: 35px;
+    z-index: 10;
+    position: relative;
 }
 
 .campaign-popup p {
     margin-bottom: 20px;
     line-height: 21px;
+    z-index: 10;
+    position: relative;
 }
 
-.mfp-close-btn-in button.mfp-close {
+.campaign-popup a {
+    background: #1b2f59;
+    padding: 12px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 10;
+}
+
+.campaign-popup a span {
+    color: #eab755;
+}
+.campaign-popup .campaign-custom-close {
+    position: absolute;
+    border: none;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    display: block;
+    padding: 3px 50px 0px 3px;
+    font-size: 16px;
     background-image: url(/images/investor-popup-close.png);
+    background-position: right;
     background-repeat: no-repeat;
-    content: "";
-    width: 80px;
-    color: #fff;
+    background-color: white;
+}
+.campaign-popup .campaign-custom-close-mobile {
+    display: none;
 }
 
 @media (max-width: 990px) {
@@ -125,7 +156,38 @@
 
 @media (max-width: 435px) { 
       .campaign-popup {
-        background-image: url(/images/investor-popup-pattern-mobile-small.png);
+        background-image: none;
+        padding: 120px 0;
+    }
+
+    .campaign-popup .mobile-image {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 2;
+    }
+
+    .campaign-popup .logo {
+        width: 50%;
+    }
+
+    .mfp-bg {
+        opacity: 0;
+    }
+
+    .mfp-content {
+        vertical-align: top;
+        margin-top: 130px;
+    }
+
+    .mfp-container {
         padding: 0;
     }
 }
+
+@media (max-width: 335px) { 
+    .campaign-popup {
+        padding-top: 100px;
+    }
+} 

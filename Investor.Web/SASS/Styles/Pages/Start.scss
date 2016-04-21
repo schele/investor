@@ -68,3 +68,64 @@
         display: none;
     }
 }
+
+.campaign-popup {
+    position: relative;
+    background-color: #fff;
+    background-image: url(/images/investor-popup-pattern.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 120px 180px;
+    width: auto;
+    margin: 20px auto;
+    width: 960px;
+    height: 600px;
+    text-align: center;
+}
+
+.campaign-popup img {
+    margin-bottom: 35px;
+}
+
+.campaign-popup p {
+    margin-bottom: 20px;
+    line-height: 21px;
+}
+
+.mfp-close-btn-in button.mfp-close {
+    background-image: url(/images/investor-popup-close.png);
+    background-repeat: no-repeat;
+    content: "";
+    width: 80px;
+    color: #fff;
+}
+
+@media (max-width: 990px) {
+    .campaign-popup {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media (max-width: 750px) {
+    .campaign-popup {
+        position: relative;
+        background-color: #fff;
+        background-image: url(/images/investor-popup-pattern-mobile.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 220px 0;
+        width: auto;
+        margin: 20px auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 435px) { 
+      .campaign-popup {
+        background-image: url(/images/investor-popup-pattern-mobile-small.png);
+        padding: 0;
+    }
+}

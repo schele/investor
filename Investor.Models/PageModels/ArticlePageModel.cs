@@ -86,7 +86,7 @@ namespace Investor.Models.PageModels
             UmbracoDataType.TextboxMultiple,
             Tab.Push,
             DisplayName = "Puff: Text",
-            Description = "Text som visas på en kategorisida"
+            Description = "Text som visas på en puffyta"
         )]
         public virtual string PushText { get; set; }
 
@@ -94,12 +94,11 @@ namespace Investor.Models.PageModels
             UmbracoDataType.RelatedLinks,
             Tab.Push,
             DisplayName = "Puff: Relaterade länkar",
-            Description = "Dessa länkar visas på en kategorisida",
+            Description = "Dessa länkar visas som puffyta",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
         public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
 
         #endregion
-
     }
 }

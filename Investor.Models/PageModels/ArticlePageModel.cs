@@ -61,9 +61,17 @@ namespace Investor.Models.PageModels
         //public virtual IHtmlString Body { get; set; }
 
         [Property(
+            UmbracoDataType.Textstring,
+            Tab.Page,
+            DisplayName = "Relaterade länkar: Rubrik",
+            Description = ""
+        )]
+        public virtual string RelatedLinksHeader { get; set; }
+
+        [Property(
             UmbracoDataType.RelatedLinks,
             Tab.Page,
-            DisplayName = "Relaterade länkar",
+            DisplayName = "Relaterade länkar: Länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
@@ -98,6 +106,16 @@ namespace Investor.Models.PageModels
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
         public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
+
+        //lägg till en bild för puffytan
+        //[Property(
+        //    UmbracoDataType.RelatedLinks,
+        //    Tab.Push,
+        //    DisplayName = "Puff: Relaterade länkar",
+        //    Description = "Dessa länkar visas som puffyta",
+        //    Converter = typeof(NodeLinkConverter<NodeLink>)
+        //)]
+        //public virtual IEnumerable<NodeLink> ImageForPush { get; set; }
 
         #endregion
     }

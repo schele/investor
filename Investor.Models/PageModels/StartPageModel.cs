@@ -116,6 +116,14 @@ namespace Investor.Models.PageModels
         )]
         public virtual string CookieUrlText { get; set; }
 
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Footer,
+            DisplayName = "Cookie: Knapptext",
+            Description = ""
+        )]
+        public virtual string CookieButtonText { get; set; }
+
         #endregion
 
         #region page

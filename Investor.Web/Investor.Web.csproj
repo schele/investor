@@ -411,6 +411,7 @@
     <Content Include="images\investor_icons_vector.svg" />
     <Content Include="images\investor_icons_vector_IE.png" />
     <Content Include="images\link.png" />
+    <Content Include="images\logo-mobile.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\marker.png" />
     <Content Include="images\menu-gradient.png" />

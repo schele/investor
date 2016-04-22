@@ -91,6 +91,12 @@
     margin-bottom: 35px;
     z-index: 10;
     position: relative;
+    margin: 0 auto 35px auto;
+    display: block;
+}
+
+.campaign-popup .logo-mobile {
+    display: none;
 }
 
 .campaign-popup p {
@@ -126,7 +132,7 @@
     background-image: url(/images/investor-popup-close.png);
     background-position: right;
     background-repeat: no-repeat;
-    background-color: white;
+    background-color: #fff;
 }
 .campaign-popup .campaign-custom-close-mobile {
     display: none;
@@ -147,17 +153,16 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        padding: 220px 0;
+        padding: 220px 15%;
         width: auto;
         margin: 20px auto;
-        text-align: center;
     }
 }
 
 @media (max-width: 435px) { 
-      .campaign-popup {
+    .campaign-popup {
         background-image: none;
-        padding: 120px 0;
+        padding: 130px 0;
     }
 
     .campaign-popup .mobile-image {
@@ -170,6 +175,34 @@
 
     .campaign-popup .logo {
         width: 50%;
+    }
+
+    .campaign-popup .logo-mobile {
+        display: block;
+    }
+
+    .campaign-popup .logo-desktop {
+        display: none;
+    }
+
+    .campaign-popup p {
+        display: none;
+    }
+
+    .campaign-popup a {
+        margin-top: 20px;
+    }
+
+    .campaign-popup .campaign-custom-close-mobile {
+        display: block;
+        background: #fff;
+        border: none;
+        color: #002b7e;
+        z-index: 10;
+        text-decoration: underline;
+        position: relative;
+        margin: 150px auto;
+        font-weight: bold;
     }
 
     .mfp-bg {
@@ -186,8 +219,14 @@
     }
 }
 
-@media (max-width: 335px) { 
+@media (max-width: 400px) { 
     .campaign-popup {
         padding-top: 100px;
     }
-} 
+}
+
+@media (max-width: 360px) { 
+    .campaign-popup .campaign-custom-close-mobile {
+        margin-top: 120px;
+    }
+}  

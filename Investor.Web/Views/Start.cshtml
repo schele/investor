@@ -94,7 +94,8 @@
     <div id="test-popup" class="campaign-popup mfp-hide">
         <button class="campaign-custom-close" id="campaign-custom-close">@Umbraco.GetDictionaryValue("Close")</button>
         <img class="mobile-image" src="~/images/investor-popup-pattern-mobile-small.png"/>
-        <img class="logo" src="~/images/investor-popup-logo.png" alt="investor logo"/>
+        <img class="logo logo-desktop" src="~/images/investor-popup-logo.png" alt="investor logo"/>
+        <img class="logo logo-mobile" src="~/images/investor-popup-logo.png" alt="investor logo" />
         @Html.Render(Model.StartPage.PopupText, @<p>@Model.StartPage.PopupText</p>)
         <a href="#">@Html.Render(Model.StartPage.PopupUrlText, @<span>@Model.StartPage.PopupUrlText</span>)</a>
         <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>

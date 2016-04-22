@@ -6,4 +6,9 @@
     closeBtnOutside: false
     // other options
   }).trigger("click");;
+
+  $('#campaign-custom-close, #campaign-custom-close-mobile').click(function () {
+    $.magnificPopup.close();
+  });
+
 });

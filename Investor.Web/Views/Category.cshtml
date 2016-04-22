@@ -1,12 +1,29 @@
 ﻿@using Investor.Models.PageModels
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @inherits UmbracoViewPage<CategoryPageModel>
+
 @{
     Layout = "Master.cshtml";
 }
 
 <div>
     <h1>@Model.Header</h1>
-    <p>@Model.Body</p>
+    <p>@Model.Preamble</p>
+</div>
+
+<div>
+    @foreach (var page in Model.Children<ArticlePageModel>())
+    {
+        <p>@page.Name</p>
+        <p>@page.PushText</p>
+        
+        if (page.RelatedLinksForPush != null)
+        {
+            foreach (var link in page.RelatedLinksForPush)
+            {
+                <p><a href="@link.Link">@link.Caption</a></p>
+            }
+        }
+    }
 </div>

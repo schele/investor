@@ -92,7 +92,7 @@
 
     <a href="" data-mfp-src="#test-popup" id="fancy_box"></a>
     <div id="test-popup" class="campaign-popup mfp-hide">
-        <button class="campaign-custom-close" id="campaign-custom-close">Stäng</button>
+        <button class="campaign-custom-close" id="campaign-custom-close">@Umbraco.GetDictionaryValue("Close")</button>
         <img class="mobile-image" src="~/images/investor-popup-pattern-mobile-small.png"/>
         <img class="logo" src="~/images/investor-popup-logo.png" alt="investor logo"/>
         @Html.Render(Model.StartPage.PopupText, @<p>@Model.StartPage.PopupText</p>)

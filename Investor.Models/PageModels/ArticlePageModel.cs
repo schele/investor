@@ -61,9 +61,17 @@ namespace Investor.Models.PageModels
         //public virtual IHtmlString Body { get; set; }
 
         [Property(
+            UmbracoDataType.Textstring,
+            Tab.Page,
+            DisplayName = "Relaterade länkar: Rubrik",
+            Description = ""
+        )]
+        public virtual string RelatedLinksHeader { get; set; }
+
+        [Property(
             UmbracoDataType.RelatedLinks,
             Tab.Page,
-            DisplayName = "Relaterade länkar",
+            DisplayName = "Relaterade länkar: Länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]

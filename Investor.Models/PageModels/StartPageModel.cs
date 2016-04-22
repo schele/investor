@@ -102,6 +102,26 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.TextboxMultiple,
+            Tab.Footer,
+            DisplayName = "Cookie: Text",
+            Description = ""
+        )]
+        public virtual string CookieText { get; set; }
+
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Footer,
+            DisplayName = "Cookie: Länktext",
+            Description = ""
+        )]
+        public virtual string CookieUrlText { get; set; }
+
+        #endregion
+
+        #region page
+
+        [Property(
+            UmbracoDataType.TextboxMultiple,
             Tab.Page,
             DisplayName = "Popup: Text",
             Description = ""

@@ -79,5 +79,27 @@ namespace Investor.Models.PageModels
         //public virtual IEnumerable<IMedia> RelatedDocuments { get; set; }
         
         #endregion
+
+        #region puff
+
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Push,
+            DisplayName = "Puff: Text",
+            Description = "Text som visas på en kategorisida"
+        )]
+        public virtual string PushText { get; set; }
+
+        [Property(
+            UmbracoDataType.RelatedLinks,
+            Tab.Push,
+            DisplayName = "Puff: Relaterade länkar",
+            Description = "Dessa länkar visas på en kategorisida",
+            Converter = typeof(NodeLinkConverter<NodeLink>)
+        )]
+        public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
+
+        #endregion
+
     }
 }

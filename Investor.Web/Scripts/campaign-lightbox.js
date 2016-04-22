@@ -3,7 +3,7 @@
   if (!readCookie('hide-campaign-popup')) {
     $('#fancy_box').magnificPopup({
       type: 'inline',
-      closeBtnInside: false,
+      closeBtnInside: false
 
     }).trigger("click");;
   }

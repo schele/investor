@@ -13,49 +13,56 @@
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 
-    <article class="article-page col-md-7">
-        <div class="article-page-content">
-            @Html.Render(Model.Header, @<h2 class="article-page-header">@Model.Header</h2>)
-            @Html.Render(Model.Preamble, @<p class="article-page-premable">@Model.Preamble</p>)
+    <article class="article-page col-md-9">
+        <div class="row">
+            <div class="article-page-content col-md-9">
+                @Html.Render(Model.Header, @<h2 class="article-page-header">@Model.Header</h2>)
+                @Html.Render(Model.Preamble, @<p class="article-page-premable">@Model.Preamble</p>)
 
-            @if (Umbraco.Field("broedtext") != null)
+                @if (Umbraco.Field("broedtext") != null)
+                {
+                    <div class="article-page-body">
+                        @Html.Raw(Umbraco.Field("broedtext"))
+                    </div>
+                }
+            </div>
+            <div class="col-md-3">
+            @if (Model.RelatedLinks != null)
             {
-                <div class="article-page-body">
-                    @Html.Raw(Umbraco.Field("broedtext"))
+                <div class="article-page-links">
+                    <h3>
+                        <span class="icon"></span>Links
+                    </h3> <!--Ska bytas mot prop förmodligen-->
+                    <ul>
+                        @foreach (var link in Model.RelatedLinks)
+                        {
+                            var target = link.NewWindow ? "_blank" : null;
+
+                            <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
+                        }
+                    </ul>
                 </div>
             }
-        </div>
 
-        @if (Model.RelatedLinks != null)
-        {
-            <div class="article-page-links">
-                <h3><span class="icon"></span>Links</h3> <!--Ska bytas mot prop förmodligen-->
-                <ul>
-                    @foreach (var link in Model.RelatedLinks)
-                {
-                    var target = link.NewWindow ? "_blank" : null;
-
-                        <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
-                    }
-                </ul>
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(relatedDocuments))
-        {
-            <div class="article-page-documents">
-                <h3><span class="icon"></span>Documents</h3> <!--Ska bytas mot prop förmodligen-->
-                <ul>
-                    @{
+            @if (!string.IsNullOrEmpty(relatedDocuments))
+            {
+                <div class="article-page-documents">
+                    <h3>
+                        <span class="icon"></span>Documents
+                    </h3> <!--Ska bytas mot prop förmodligen-->
+                    <ul>
+                        @{
                         foreach (var d in relatedDocuments.Split(','))
                         {
                             var document = MediaExtensions.GetMediaById(d);
 
                             <li><a href="@document.FriendlyUrl()" title="@document.Name">@document.Name</a></li>
                         }
-                    }
-                </ul>
+                        }
+                    </ul>
+                </div>
+            }
             </div>
-        }
+        </div>
     </article>
 </div>

@@ -67,8 +67,6 @@
     height: 34px;
     display: block;
     float: left;
-    
-
 }
 
 .article-page .article-page-documents h3 .icon {
@@ -87,12 +85,19 @@
 
 .article-page .article-page-documents a,
 .article-page .article-page-links a {
+    
+    
     text-decoration: none;
     font-size: 14px;
     color: #002b7f;
     display: block;
     width: 100%;
     padding: 15px 0;
+}
+
+.article-page .article-page-documents a {
+    background: url(/images/filetypes/pdf.png) no-repeat 0px 11px;
+    padding-left: 30px;
 }
 
 @media (max-width: 990px) {

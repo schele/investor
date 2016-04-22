@@ -107,6 +107,16 @@ namespace Investor.Models.PageModels
         )]
         public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
 
+        //lägg till en bild för puffytan
+        //[Property(
+        //    UmbracoDataType.RelatedLinks,
+        //    Tab.Push,
+        //    DisplayName = "Puff: Relaterade länkar",
+        //    Description = "Dessa länkar visas som puffyta",
+        //    Converter = typeof(NodeLinkConverter<NodeLink>)
+        //)]
+        //public virtual IEnumerable<NodeLink> ImageForPush { get; set; }
+
         #endregion
     }
 }

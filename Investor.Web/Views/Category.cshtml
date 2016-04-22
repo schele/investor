@@ -15,14 +15,14 @@
 <div>
     @foreach (var page in Model.Children<ArticlePageModel>())
     {
-        <p>@page.Name</p>
+        <p><a href="@page.Url" title="@page.Name">@page.Name</a></p>
         <p>@page.PushText</p>
         
         if (page.RelatedLinksForPush != null)
         {
             foreach (var link in page.RelatedLinksForPush)
             {
-                <p><a href="@link.Link">@link.Caption</a></p>
+                <p><a href="@link.Link" title="@link.Caption">@link.Caption</a></p>
             }
         }
     }

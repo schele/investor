@@ -9,39 +9,49 @@
         <li>
             <a href="@parent.Url">@parent.Name</a>
 
-            <ul>
+            <ul class="sub-navigation-first-level">
                 @RenderMenu(parent, recursive, false, maxLevel)
             </ul>
         </li>
 
-        return;
+    return;
+}
+
+foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNavigation == false))
+{
+    if (!Umbraco.MemberHasAccess(childPage.Id, childPage.Path))
+    {
+        continue;
     }
 
-    foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNavigation == false))
+    string activeClass = null;
+    string hasChildrenClass = null;
+    var children = childPage.Children<BaseModel>().ToList();
+    var noChildren = !children.Any() || maxLevel.HasValue && maxLevel <= 1 && children.First().Level >= maxLevel;
+    if (childPage.Name == Model.Name)
     {
-        if (!Umbraco.MemberHasAccess(childPage.Id, childPage.Path))
-        {
-            continue;
-        }
+        activeClass = "sub-navigation-active";
+    }
+    if (!noChildren)
+    {
+        hasChildrenClass = " has-children";
+    }
 
-        string className = null;
-        if (childPage.Name == Model.Name)
-        {
-            className = "active";
-        }
-
-        <li>
-            <a href="@childPage.Url" class="@className">@childPage.Name</a>
+        <li class="@activeClass @hasChildrenClass">
+            <a href="@childPage.Url">@childPage.Name</a>
+            @if (activeClass == "sub-navigation-active")
+            {
+                <span class="arrow"></span>
+            }
             @if (recursive)
             {
-                var children = childPage.Children<BaseModel>().ToList();
-
-                if (!children.Any() || maxLevel.HasValue && maxLevel <= 1 && children.First().Level >= maxLevel)
+                
+                if (noChildren)
                 {
                     continue;
                 }
-
-                <ul>
+      
+                <ul class="sub-navigation-second-level">
                     @RenderMenu(childPage)
                 </ul>
             }
@@ -50,9 +60,7 @@
 }
 
 <div class="col-md-3 sub-navigation">
-    <div class="for-show-menu">
-        <ul id="submenu">
+        <ul id="sub-navigation">
             @RenderMenu(Model.AncestorOrSelf<BaseModel>(2))
         </ul>
-    </div>
 </div>

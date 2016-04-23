@@ -1,0 +1,58 @@
+﻿.sub-navigation {
+    padding-top: 25px;
+    padding-right: 0;
+}
+
+.sub-navigation a {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    background: url(/images/tick.png) no-repeat 10px 12px;
+    padding: 10px 0 10px 20px;
+    display: block;
+    border-bottom: 1px solid #E1E1E1; 
+}
+
+.sub-navigation-active {
+    position: relative;
+}
+
+.sub-navigation .sub-navigation-active > a  {
+    background: url(/images/tick_white.png) no-repeat 10px 12px #0b3283;
+    color: #fff;
+    -moz-box-shadow: inset 3px 6px 5px rgba(0,0,0,.4);
+    -webkit-box-shadow: inset 3px 6px 5px rgba(0,0,0,.4);
+    box-shadow: inset 3px 6px 5px rgba(0,0,0,.24);
+}
+
+.sub-navigation .sub-navigation-active .arrow {
+    background: url(/images/marker.png) no-repeat center right;
+    position: absolute;
+    width: 9px;
+    height: 17px;
+    right: -2px;
+    top: 10px;
+    z-index: 100;
+}
+
+.sub-navigation .sub-navigation-first-level {
+    float: left;
+}
+
+.sub-navigation .has-children ul {
+    width: 95%;
+    display: none;
+    margin-left: 5%;
+}
+
+.sub-navigation .has-children--expanded > a {
+    background: url(/images/tick-unfolded.png) no-repeat 5px 12px;
+}
+
+.sub-navigation .sub-navigation-active.has-children--expanded > a {
+    background: url(/images/tick-unfolded_white.png) no-repeat 5px 12px #0b3283;
+}
+
+.sub-navigation .has-children--expanded ul {
+    display: block;
+}

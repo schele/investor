@@ -566,7 +566,7 @@
     <Content Include="SASS\Styles\Layout\Header.scss" />
     <Content Include="SASS\Styles\global.scss" />
     <Content Include="SASS\Styles\Layout\Footer.scss" />
-    <Content Include="SASS\Styles\Layout\SubMenu.scss" />
+    <Content Include="SASS\Styles\Layout\SubNavigation.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />
     <Content Include="SASS\Styles\Pages\Start.scss" />
     <Content Include="Views\ListInvestments.cshtml" />

@@ -24,12 +24,13 @@
 .category-page .category-page-category h2 {
     font-size: 23px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 15px;   
 }
 
 .category-page .category-page-category h2 a {
     color: #000;
     text-decoration: none;
+    color: #002b7f;
 }
 
 .category-page .category-page-category p {
@@ -37,10 +38,20 @@
     line-height: 24px;
 }
 
-.category-page .category-page-category ul {
+.category-page .category-page-category span {
+    margin-top: 15px;
+    font-weight: bold;
+    display: block;
+}
 
+.category-page .category-page-category ul {
+    margin-top: 15px;
 }
 
 .category-page .category-page-category ul li {
+    margin-bottom: 10px;
+}
 
+.category-page .category-page-category ul li a {
+    color: #002b7f;  
 }

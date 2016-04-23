@@ -7,23 +7,35 @@
     Layout = "Master.cshtml";
 }
 
-<div>
-    <h1>@Model.Header</h1>
-    <p>@Model.Preamble</p>
-</div>
+<div class="category-page">
+    <div class="row">
+        <div class="category-page-intro col-md-7">
+            <h1>@Model.Header</h1>
+            <p>@Model.Preamble</p>
+        </div>
+    </div>
 
-<div>
-    @foreach (var page in Model.Children<ArticlePageModel>())
-    {
-        <p><a href="@page.Url" title="@page.Name">@page.Name</a></p>
-        <p>@page.PushText</p>
-        
-        if (page.RelatedLinksForPush != null)
+    <div class="row">
+        @foreach (var page in Model.Children<ArticlePageModel>())
         {
-            foreach (var link in page.RelatedLinksForPush)
-            {
-                <p><a href="@link.Link" title="@link.Caption">@link.Caption</a></p>
-            }
+            <div class="category-page-category col-md-4 text-left">
+                <h2>
+                    <a href="@page.Url" title="@page.Name">@page.Name</a>
+                </h2>
+                <p>@page.PushText</p>
+
+                @if (page.RelatedLinksForPush != null)
+                {
+                    <ul>
+                    @foreach (var link in page.RelatedLinksForPush)
+                    {
+                        <li>
+                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                        </li>
+                    }
+                    </ul>
+                }
+            </div>
         }
-    }
+    </div>
 </div>

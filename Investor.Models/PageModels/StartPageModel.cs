@@ -4,6 +4,7 @@ using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
 using UCodeFirst;
+using UCodeFirst.Attributes;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
@@ -143,7 +144,16 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string PopupUrlText { get; set; }
-        
+
+        [Property(
+            "Sida: Start - Grid - Grid layout",
+            Tab.Content,
+            DisplayName = "Content: Grid",
+            Description = ""
+        )]
+        [UCodeFirst.Attributes.MacroCache("Slideshow", "OurInvestments")]
+        public virtual string Grid { get; set; }
+
         #endregion
     }
 }

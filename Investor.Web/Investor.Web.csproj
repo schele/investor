@@ -15,7 +15,7 @@
     <RootNamespace>Investor</RootNamespace>
     <AssemblyName>Investor</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -605,6 +605,7 @@
     <Content Include="SASS\Styles\macro-partials.scss" />
     <Content Include="SASS\reset.scss" />
     <Content Include="favicon\manifest.json" />
+    <Content Include="Views\MacroPartials\Slideshow.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -631,7 +632,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>37635</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:37635/</IISUrl>
+          <IISUrl>https://investorab.com.local/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -148,8 +148,13 @@ function MacroContainerEditor($scope, $timeout, dialogService, entityResource, m
         if ($scope.model.config.allowedMacros.length !== 0) {
             $timeout(function () {
                 var element = angular.element("[ng-controller='Umbraco.Dialogs.InsertMacroController']:last");
-
                 var dialogScope = element.scope();
+                
+                $(".umb-overlay").each(function () {
+                    $(this).width(726);
+                    console.log("yoooo");
+                });
+
 
                 var validMacros = [];
 

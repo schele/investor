@@ -8,7 +8,7 @@ function RelatedLinksController($rootScope, $scope, $timeout, dialogService, ass
     });
 
     var config = {
-        maxItems: null
+        maxItems: null // Lägg till hur många det ska vara null = default
     };
 
     if (!angular.isUndefined($scope.model.config) && $scope.model.config !== null) {
@@ -63,6 +63,8 @@ function RelatedLinksController($rootScope, $scope, $timeout, dialogService, ass
             if ($scope.model.value.length < $scope.model.config.maxItems) {
                 return false;
             }
+        } else if ($scope.model.config.maxItems == null) {
+            return false;
         }
 
         return true;
@@ -244,6 +246,24 @@ function RelatedLinksController($rootScope, $scope, $timeout, dialogService, ass
 
     function handleCss(disable)
     {
+        //var thisDialog = $(".umb-overlay umb-overlay-right").last();
+        //var controller = angular.element(thisDialog).controller();
+
+        var element = angular.element("[ng-controller='Umbraco.PropertyEditors.Grid.MacroController']:last");
+
+        var dialogScope = element.scope();
+
+        $(".umb-overlay").each(function () {
+            $(this).width(726);
+            console.log(this);
+        });
+
+        //if (!disable) {
+        //    thisDialog.width(726);
+        //} else {
+        //    thisDialog.width(500); // Reset the dialog
+        //}
+
         var lookfor = '/App_Plugins/RelatedLinks/relatedlinks.css';
         [].forEach.call(document.styleSheets, function (styleSheet) {
             if (styleSheet.href && styleSheet.href.indexOf(lookfor) != -1) {

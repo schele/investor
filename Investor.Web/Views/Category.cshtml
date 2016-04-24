@@ -18,7 +18,7 @@
     <div class="row">
         @foreach (var page in Model.Children<ArticlePageModel>())
         {
-            <div class="category-page-category col-md-4 text-left">
+            <div class="category-page-category col-md-4 col-sm-4">
                 <h2>
                     <a href="@page.Url" title="@page.Name">@page.Name</a>
                 </h2>

@@ -12,19 +12,20 @@
     }
 }
 
-@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+<div class="row">
+    @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 
-<div>
+ 
+        <article class="col-md-7 iframe-page">
+            @if (id != 0)
+            {
+                <span>här ska det in en pressrelease med id "@id"</span>
+            }
+            else
+            {
+                <iframe onload="iframeLoaded()" id="iframe-page-iframe" scrolling="no" src="@Model.IFrameSrc"></iframe>
+            }
 
-@if (id != 0)
-{
-    <span>här ska det in en pressrelease med id "@id"</span>
-}
-else
-{
-    <div>
-        <iframe src="@Model.IFrameSrc"></iframe>
-    </div>
-}
-
+        </article>
+ 
 </div>

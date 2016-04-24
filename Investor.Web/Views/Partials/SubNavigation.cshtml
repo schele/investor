@@ -59,8 +59,10 @@ foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNaviga
     }
 }
 
+
 <div class="col-md-3 sub-navigation">
-        <ul id="sub-navigation">
-            @RenderMenu(Model.AncestorOrSelf<BaseModel>(2))
-        </ul>
+    <button class="sub-navigation-mobile-btn">Sub navigation</button>
+    <ul class="sub-navigation-nav">
+        @RenderMenu(Model.AncestorOrSelf<BaseModel>(2))
+    </ul>
 </div>

@@ -1,6 +1,5 @@
 ﻿.iframe-page {
     border-left: 1px solid rgb(201, 201, 201);
-    min-height: unset;
 }
 
 .iframe-page iframe {
@@ -9,4 +8,10 @@
     height: 1137px;
     max-width: 100%;
     border: none;
+}
+
+@media(max-width: 990px) {
+    .iframe-page {
+        border-left: none;
+    }
 }

@@ -19,12 +19,12 @@ namespace Investor.Models.PageModels
     public class ListInvestmentsPageModel : BaseModel
     {
         #region constructors
-        
-        protected ListInvestmentsPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
+
+        public ListInvestmentsPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
         {
         }
 
-        protected ListInvestmentsPageModel(IPublishedContent content) : base(content)
+        public ListInvestmentsPageModel(IPublishedContent content) : base(content)
         {
         }
 

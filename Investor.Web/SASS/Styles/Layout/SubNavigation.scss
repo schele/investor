@@ -17,8 +17,6 @@
     position: relative;
 }
 
-
-
 .sub-navigation .sub-navigation-active > a  {
     background: url(/images/tick_white.png) no-repeat 10px 12px #0b3283;
     color: #fff;
@@ -66,15 +64,18 @@
     padding: 14px;
     display: none;
 }
+
 @media (min-width: 990px) {
     .sub-navigation .sub-navigation-nav {
-    display: block !important;
+        display: block !important;
+    }
 }
-}
+
 @media (max-width: 990px) {
     .sub-navigation {
         padding-right: 15px;
     }
+
     .sub-navigation .sub-navigation-mobile-btn {
         display: block;
     }

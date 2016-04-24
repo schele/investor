@@ -481,6 +481,7 @@
     <Content Include="packages.config" />
     <Content Include="SASS\magnific-popup.css" />
     <Content Include="Scripts\campaign-lightbox.js" />
+    <Content Include="Scripts\iframe-size.js" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
     <Content Include="Scripts\lib\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\slideshow.js" />
@@ -607,6 +608,7 @@
     <Content Include="SASS\reset.scss" />
     <Content Include="SASS\Styles\Pages\Category.scss" />
     <Content Include="favicon\manifest.json" />
+    <Content Include="SASS\Styles\Pages\IFrame.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

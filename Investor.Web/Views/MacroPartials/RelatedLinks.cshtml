@@ -1,0 +1,36 @@
+﻿@using System.Web.Script.Serialization
+@using Investor.Helpers
+@using Investor.Models.Models.NodeLink
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    var heading = Model.MacroParameters["Heading"].ToString();
+    var headingUrl = Model.MacroParameters["HeadingUrl"].ToString();
+    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString().Replace("&quot;", "\"");
+    var links = new JavaScriptSerializer().Deserialize<IEnumerable<NodeLink>>(relatedLinks);    
+}
+
+<div class="col-md-6">
+    <div class="our-investments">
+        <div class="our-investments-header">
+            <span class="our-investments-icon"></span>
+            <h2>
+                <a href="@Umbraco.TypedContent(headingUrl).Url">@heading</a>
+            </h2>
+        </div>
+        <ul class="our-investments-content">
+            @foreach (var link in links)
+            {
+                var preamble = Umbraco.TypedContent(int.Parse(link.Link)).GetProperty("preamble").Value;
+                <li>
+                    <a href="#">
+                        @Html.Render(preamble, @<p>@preamble</p>)
+                        @Html.Render(link.Caption, @<span>@link.Caption</span>)
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

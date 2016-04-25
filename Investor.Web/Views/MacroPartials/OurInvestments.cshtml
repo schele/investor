@@ -1,12 +1,10 @@
-﻿@using umbraco.NodeFactory
+﻿@using Investor.Helpers
 @using Umbraco.Web.Macros
 
 @inherits PartialViewMacroPage
 
-@*@{
-    var ourInvestmentsPageId = Model.MacroParameters["OurInvestments"].ToString();
-    var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsPageId));
-    var investments = ourInvestmentsPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "ListInvestmentsPageModel");    
+@{
+    var ourInvestmentsPage = Umbraco.TypedContent(Model.MacroParameters["OurInvestments"].ToString());
 }
 
 <div class="col-md-6">
@@ -14,42 +12,28 @@
         <div class="our-investments-header">
             <span class="our-investments-icon"></span>
             <h2>
-                <a href="@ourInvestmentsPage.NiceUrl">@ourInvestmentsPage.Name</a>
+                <a href="@ourInvestmentsPage.Url">@ourInvestmentsPage.Name</a>
             </h2>
         </div>
         <ul class="our-investments-content">
-            @foreach (var investment in investments)
+            @foreach (var investment in ourInvestmentsPage.Children)
             {
+                var preamble = investment.GetProperty("preamble").Value;
+                
                 <li>
-                    <a href="@investment.NiceUrl">
-                        <span>@investment.Name</span>
-                        @if (investment.GetProperty("preamble") != null)
-                        {
-                            <p>@investment.GetProperty("preamble").ToString()</p>
-                        }
+                    <a href="@investment.Url">
+                        @Html.Render(investment.Name, @<span>@investment.Name</span>)
+                        @Html.Render(preamble, @<p>@preamble</p>)
                     </a>
-                </li>
+                </li>                
             }
         </ul>
     </div>
-</div>*@
-
-
-@{
-    var content = Umbraco.TypedContent(Model.MacroParameters["OurInvestments"].ToString());
-    var media = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());
-    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString();
-}
-
-<div>
-    <p>content = @content.Url</p>
-    <p>media = @media.Url</p>
-    <p>relatedLinks = @relatedLinks</p>
 </div>
 
-@*{
-    <p>@media.GetProperty("heading").Value.ToString()</p>
-    <p>@media.GetProperty("text").Value.ToString()</p>
-    <p><a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@media.GetProperty("urlText").Value.ToString()</a></p>
-    <img src="@media.Url" alt="@media.GetProperty("heading").Value.ToString()" />
-}*@
+@*
+var media = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());
+var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString();
+<p>media = @media.Url</p>
+<p>relatedLinks = @relatedLinks</p>
+*@

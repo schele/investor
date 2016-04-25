@@ -612,6 +612,7 @@
     <Content Include="SASS\Styles\Pages\ListInvestments.scss" />
     <Content Include="Views\CoWorkers.cshtml" />
     <Content Include="Views\MacroPartials\Slideshow.cshtml" />
+    <Content Include="Views\MacroPartials\RelatedLinks.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

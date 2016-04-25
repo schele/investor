@@ -22,9 +22,7 @@
         
         <ul class="our-investments-content">
             @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
-            {
-                //var preamble = investment.GetProperty("preamble").Value;
-
+            {                
                 <li>@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("DateFormat")) @pressRelease.Published.ToString(Umbraco.GetDictionaryValue("TimeFormat"))
                     <p><a href="/investors-media/press-releases/?id=@pressRelease.Id">@pressRelease.Headline</a></p>
                 </li>

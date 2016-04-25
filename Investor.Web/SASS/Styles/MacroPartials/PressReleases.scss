@@ -1,0 +1,87 @@
+﻿.press-releases {
+    background: white url(/images/menu-gradient.png) repeat-x bottom left;
+    background-color: #fff;
+    border: 1px solid #D5D5D5;
+    border-bottom: 4px solid #A0A0A0;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.press-releases .press-releases-header {
+    padding: 5px 30px;
+    background: #949494;
+    background: -moz-linear-gradient(top, #949494 0%, #7b7b7b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#949494), color-stop(100%,#7b7b7b));
+    background: -webkit-linear-gradient(top, #949494 0%,#7b7b7b 100%);
+    background: -o-linear-gradient(top, #949494 0%,#7b7b7b 100%);
+    background: -ms-linear-gradient(top, #949494 0%,#7b7b7b 100%);
+}
+
+.press-releases .press-releases-header .press-releases-icon {
+    background: transparent url("/images/sprite.png") -100px -41px;
+    background-position: -100px -40px;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 30px;
+}
+
+.press-releases .press-releases-header h2 {
+    font-size: 20px;
+}
+
+.press-releases .press-releases-header h2 a:before {
+    background: transparent url("/images/sprite.png") -100px -80px;
+    background-size: 200px 200px;
+    height: 30px;
+    width: 40px;
+    display: inline-block;
+    margin-bottom: -8px;
+    margin-right: 10px;
+    content: "";
+}
+
+.press-releases .press-releases-header h2 a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    min-height: 30px;
+}
+
+.press-releases .press-releases-list {
+    padding: 10px 30px 30px;
+    display: block;
+}
+
+.press-releases .press-releases-list li {
+    border-top: 1px solid #C4C4C4;
+}
+
+.press-releases .press-releases-list li:first-child {
+    border-top: none;
+}
+
+.press-releases .press-releases-list li a {
+    padding: 15px 0px 10px 0px;
+    display: block;
+    text-decoration: none;
+}
+
+.press-releases .press-releases-list li a .press-releases-date,
+.press-releases .press-releases-list li a .press-releases-time {
+    color: #a0a0a0;
+    font-size: 14px;
+}
+
+.press-releases .press-releases-list li a .press-releases-time { 
+    background: url(/images/time.png) no-repeat left;
+    padding-left: 14px;
+    margin-left: 14px;
+}
+
+.press-releases .press-releases-list li a .press-releases-link-text {
+    display: block;
+    color: #000;
+    font-size: 14px;
+    line-height: 21px;
+}

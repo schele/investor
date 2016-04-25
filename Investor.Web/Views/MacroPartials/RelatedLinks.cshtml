@@ -12,25 +12,22 @@
     var links = new JavaScriptSerializer().Deserialize<IEnumerable<NodeLink>>(relatedLinks);    
 }
 
-<div class="col-md-6">
-    <div class="our-investments">
-        <div class="our-investments-header">
-            <span class="our-investments-icon"></span>
-            <h2>
-                <a href="@Umbraco.TypedContent(headingUrl).Url">@heading</a>
-            </h2>
-        </div>
-        <ul class="our-investments-content">
-            @foreach (var link in links)
-            {
-                var preamble = Umbraco.TypedContent(int.Parse(link.Link)).GetProperty("preamble").Value;
-                <li>
-                    <a href="#">
-                        @Html.Render(preamble, @<p>@preamble</p>)
-                        @Html.Render(link.Caption, @<span>@link.Caption</span>)
-                    </a>
-                </li>
-            }
-        </ul>
+<div class="related-links">
+    <div class="related-links-header">
+        <h2>
+            <a href="@Umbraco.TypedContent(headingUrl).Url">@heading</a>
+        </h2>
     </div>
+    <ul class="related-links-list">
+        @foreach (var link in links)
+        {
+            var preamble = Umbraco.TypedContent(int.Parse(link.Link)).GetProperty("preamble").Value;
+            <li>
+                <a href="#">
+                    @Html.Render(preamble, @<p>@preamble</p>)
+                    @Html.Render(link.Caption, @<span>@link.Caption</span>)
+                </a>
+            </li>
+        }
+    </ul>
 </div>

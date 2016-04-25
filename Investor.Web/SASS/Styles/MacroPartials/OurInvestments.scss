@@ -3,55 +3,69 @@
     background-color: #fff;
     border: 1px solid #D5D5D5;
     border-bottom: 4px solid #A0A0A0;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .our-investments .our-investments-header {
-    padding: 10px;
-
+    padding: 5px 30px;
     background: #f9b314;
     background: -moz-linear-gradient(top, #f9b314 0%, #e4a412 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9b314), color-stop(100%,#e4a412));
     background: -webkit-linear-gradient(top, #f9b314 0%,#e4a412 100%);
     background: -o-linear-gradient(top, #f9b314 0%,#e4a412 100%);
     background: -ms-linear-gradient(top, #f9b314 0%,#e4a412 100%);
-
 }
 
 .our-investments .our-investments-header .our-investments-icon {
     background: transparent url("/images/sprite.png") -100px -41px;
-    background-position: -100px -40px;
     background-size: 200px 200px;
     background-repeat: no-repeat;
     width: 40px;
-    height: 30px;
+    height: 40px;
+
 }
 
 .our-investments .our-investments-header h2 {
     font-size: 20px;
 }
 
+.our-investments .our-investments-header h2 a:before {
+    background: transparent url("/images/sprite.png") -100px -41px;
+    background-size: 200px 200px;
+    height: 30px;
+    width: 40px;
+    display: inline-block;
+    margin-bottom: -7px;
+    margin-right: 10px;
+    content: "";
+}
+
 .our-investments .our-investments-header h2 a {
     color: #fff;
     text-decoration: none;
+    display: block;
+    min-height: 30px;
 }
 
-.our-investments .our-investments-content {
+.our-investments .our-investments-list {
     padding: 10px 30px 30px 30px;
 }
-.our-investments .our-investments-content li {
-    border-bottom: 1px solid #C4C4C4;
+
+.our-investments .our-investments-list li {
+    border-top: 1px solid #C4C4C4;
 }
 
-.our-investments .our-investments-content li:last-child {
-    border-bottom: none;
+.our-investments .our-investments-list li:first-child {
+    border-top: none;
 }
 
-.our-investments .our-investments-content a {
+.our-investments .our-investments-list a {
     text-decoration: none;
     padding: 15px 0 10px;
     display: block;
 }
-.our-investments .our-investments-content a span {
+.our-investments .our-investments-list a span {
     color: #002B7E;
     text-decoration: underline;
     margin-bottom: 10px;
@@ -59,7 +73,7 @@
     font-size: 18px;
 }
 
-.our-investments .our-investments-content a p {
+.our-investments .our-investments-list a p {
     color: #000;
     text-decoration: none;
     display: block;

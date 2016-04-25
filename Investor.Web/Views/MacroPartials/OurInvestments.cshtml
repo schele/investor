@@ -7,29 +7,28 @@
     var ourInvestmentsPage = Umbraco.TypedContent(Model.MacroParameters["OurInvestments"].ToString());
 }
 
-<div class="col-md-6">
-    <div class="our-investments">
-        <div class="our-investments-header">
-            <span class="our-investments-icon"></span>
-            <h2>
-                <a href="@ourInvestmentsPage.Url">@ourInvestmentsPage.Name</a>
-            </h2>
-        </div>
-        <ul class="our-investments-content">
-            @foreach (var investment in ourInvestmentsPage.Children)
-            {
-                var preamble = investment.GetProperty("preamble").Value;
-                
-                <li>
-                    <a href="@investment.Url">
-                        @Html.Render(investment.Name, @<span>@investment.Name</span>)
-                        @Html.Render(preamble, @<p>@preamble</p>)
-                    </a>
-                </li>                
-            }
-        </ul>
+
+<div class="our-investments">
+    <div class="our-investments-header">
+        <h2>
+            <a href="@ourInvestmentsPage.Url">@ourInvestmentsPage.Name</a>
+        </h2>
     </div>
+    <ul class="our-investments-list">
+        @foreach (var investment in ourInvestmentsPage.Children)
+        {
+            var preamble = investment.GetProperty("preamble").Value;
+                
+            <li>
+                <a href="@investment.Url">
+                    @Html.Render(investment.Name, @<span>@investment.Name</span>)
+                    @Html.Render(preamble, @<p>@preamble</p>)
+                </a>
+            </li>                
+        }
+    </ul>
 </div>
+
 
 @*
 var media = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());

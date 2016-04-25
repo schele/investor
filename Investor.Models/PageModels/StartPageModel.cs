@@ -4,6 +4,7 @@ using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
 using UCodeFirst;
+using UCodeFirst.Attributes;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
@@ -64,33 +65,6 @@ namespace Investor.Models.PageModels
 
         #region footer
 
-        //[Property(
-        //    UmbracoDataType.RichtextEditor,
-        //    Tab.Footer,
-        //    DisplayName = "Sidfot",
-        //    Description = "",
-        //    Converter = typeof(RichtextConverter)
-        //)]
-        //public virtual IHtmlString Footer { get; set; }
-        
-        //[Property(
-        //    UmbracoDataType.RichtextEditor,
-        //    Tab.Footer,
-        //    DisplayName = "Sidfot",
-        //    Description = "",
-        //    Converter = typeof(RichtextConverter)
-        //)]
-        //public virtual IHtmlString Footer { get; set; }
-
-       // [Property(
-       //    UmbracoDataType.ContentPicker,
-       //    Tab.Site,
-       //    DisplayName = "About Investor",
-       //    Description = "Länk till About Investor",
-       //    Converter = typeof(ModelConverter<CategoryPageModel>)
-       //)]
-       // public virtual CategoryPageModel AboutInvestorPage { get; set; }
-
         [Property(
             UmbracoDataType.RichtextEditor,
             Tab.Footer,
@@ -143,7 +117,16 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string PopupUrlText { get; set; }
-        
+
+        [Property(
+            "Sida: Start - Grid - Grid layout",
+            Tab.Content,
+            DisplayName = "Content: Grid",
+            Description = ""
+        )]
+        [MacroCache("Slideshow", "OurInvestments", "PressReleases")]
+        public virtual string Grid { get; set; }
+
         #endregion
     }
 }

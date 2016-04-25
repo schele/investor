@@ -1,92 +1,12 @@
-﻿@using System.Web.Script.Serialization
-@using Investor.Helpers
-@using Investor.Models.Models
-@using Investor.Models.PageModels
-@using umbraco.NodeFactory
+﻿@using Investor.Models.PageModels
 
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @inherits UmbracoViewPage<StartPageModel>
 
 @{
     Layout = "Master.cshtml";
-    var slideIndex = 1;
-    var serializer = new JavaScriptSerializer();
 }
 
 <!-- slideshow start -->
 <div class="start-page">
-    @if (!string.IsNullOrWhiteSpace(Umbraco.Field("slideshow").ToString()))
-    {
-        <div class="slide-show-container">
-            <ul class="slide-show-item-list">
-                @foreach (var id in Umbraco.Field("slideshow").ToString().Split(','))
-                {
-                    var media = ApplicationContext.Current.Services.MediaService.GetById(int.Parse(id));
-                    var heading = media.Properties.FirstOrDefault(x => x.Alias == "heading");
-                    var text = media.Properties.FirstOrDefault(x => x.Alias == "text");
-                    var url = media.Properties.FirstOrDefault(x => x.Alias == "url");
-                    var urlText = media.Properties.FirstOrDefault(x => x.Alias == "urlText");
-                    var umbracoFile = media.Properties.FirstOrDefault(x => x.Alias == "umbracoFile");
-
-                    var slideshowHeading = string.Empty;
-                    var slideshowText = string.Empty;
-                    var destination = new Node();
-                    var destinationText = string.Empty;
-                    var image = new Slideshow();
-
-                    if (heading != null)
-                    {
-                        slideshowHeading = heading.Value.ToString();
-                    }
-
-                    if (text != null)
-                    {
-                        slideshowText = text.Value.ToString();
-                    }
-
-                    if (url != null && url.Value != null)
-                    {
-                        destination = new Node(int.Parse(url.Value.ToString()));
-
-                    }
-
-                    if (urlText != null && urlText.Value != null)
-                    {
-                        destinationText = urlText.Value.ToString();
-                    }
-
-                    if (umbracoFile != null && umbracoFile.Value != null)
-                    {
-                        image = serializer.Deserialize<Slideshow>(umbracoFile.Value.ToString());
-                    }
-
-                    <li class="slide-show-item row">
-                        <div class="col-md-6 no-right-padding">
-                            <div class="slide-show-content">
-                                <h2>@slideshowHeading</h2>
-                                <p>@slideshowText</p>
-                                <a href="@destination.NiceUrl">@destinationText</a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 no-left-padding">
-                            <div class="slide-show-image">
-                                <img src="@image.Src" alt="@slideshowHeading"/>
-                            </div>
-                        </div>
-                    </li>
-                }
-            </ul>
-            <ul class="slide-show-controls">
-                @foreach (var id in Umbraco.Field("slideshow").ToString().Split(','))
-                {
-                    <li name="@slideIndex" class="slide-show-dot"></li>
-                    slideIndex++;
-                }
-            </ul>
-        </div>
-    }
-
-    <div class="row">
-        @Umbraco.Field("macroContainer")
-    </div>
+    @Model.Content.GetGridHtml(Html, "grid")
 </div>

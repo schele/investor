@@ -4,19 +4,53 @@
 
 @inherits UmbracoViewPage<BaseModel>
 
-@{
-    var aboutInvestorId = Umbraco.Field("aboutInvestor", recursive:true).ToString();
-    var aboutInvestorPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(aboutInvestorId));
+@helper AboutInvestorPage()
+{
+    var aboutInvestorId = Umbraco.Field("aboutInvestor", recursive: true).ToString();
+        
+    if (!string.IsNullOrWhiteSpace(aboutInvestorId))
+    {
+        var aboutInvestorPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(aboutInvestorId));
 
-    //var aboutInvestorPage = Model.StartPage.AboutInvestorPage;
-    //var childrenOfAboutInvestor = aboutInvestorPage.Children();
+        <li><a href="@aboutInvestorPage.Url" title="@aboutInvestorPage.Name">@aboutInvestorPage.Name</a></li>
+        foreach (var item in aboutInvestorPage.Children())
+        {
+            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
+        }
+    }
+}
 
+@helper OurInvestmentsPage()
+{
     var ourInvestmentsId = Umbraco.Field("ourInvestments", recursive: true).ToString();
-    var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsId));
-    var investmentPages = ourInvestmentsPage.GetDescendantOrSelfNodes().Where(x => x.NodeTypeAlias == "InvestmentPageModel");
 
+    if (!string.IsNullOrWhiteSpace(ourInvestmentsId))
+    {
+        var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsId));
+        var investmentPages = ourInvestmentsPage.GetDescendantOrSelfNodes().Where(x => x.NodeTypeAlias == "InvestmentPageModel");
+
+        <li><a href="@ourInvestmentsPage.Url" title="@ourInvestmentsPage.Name">@ourInvestmentsPage.Name</a></li>
+        foreach (var item in investmentPages)
+        {
+            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
+        }
+    }
+}
+
+@helper InvestorsAndMediaPage()
+{
     var investorsAndMediaId = Umbraco.Field("investorsAndMedia", recursive: true).ToString();
-    var investorsAndMediaPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(investorsAndMediaId));
+
+    if (!string.IsNullOrWhiteSpace(investorsAndMediaId))
+    {
+        var investorsAndMediaPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(investorsAndMediaId));
+
+        <li><a href="@investorsAndMediaPage.Url" title="@investorsAndMediaPage.Name">@investorsAndMediaPage.Name</a></li>
+        foreach (var item in investorsAndMediaPage.Children())
+        {
+            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
+        }
+    }
 }
 
 <footer>
@@ -38,29 +72,17 @@
             <div class="columns">
                 <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
-                        <li><a href="@aboutInvestorPage.Url" title="@aboutInvestorPage.Name">@aboutInvestorPage.Name</a></li>
-                        @foreach (var item in aboutInvestorPage.Children())
-                        {
-                            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
-                        }
+                        @AboutInvestorPage()
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
-                        <li><a href="@ourInvestmentsPage.Url" title="@ourInvestmentsPage.Name">@ourInvestmentsPage.Name</a></li>
-                        @foreach (var item in investmentPages)
-                        {
-                            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
-                        }
+                        @OurInvestmentsPage()
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-4 footer-list">
                     <ul>
-                        <li><a href="@investorsAndMediaPage.Url" title="@investorsAndMediaPage.Name">@investorsAndMediaPage.Name</a></li>
-                        @foreach (var item in investorsAndMediaPage.Children())
-                        {
-                            <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
-                        }
+                        @InvestorsAndMediaPage()
                     </ul>
                 </div>
             </div>

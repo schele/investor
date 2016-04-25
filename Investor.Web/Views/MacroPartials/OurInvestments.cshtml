@@ -3,7 +3,7 @@
 
 @inherits PartialViewMacroPage
 
-@{
+@*@{
     var ourInvestmentsPageId = Model.MacroParameters["OurInvestments"].ToString();
     var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsPageId));
     var investments = ourInvestmentsPage.ChildrenAsList.Where(x => x.NodeTypeAlias == "ListInvestmentsPageModel");    
@@ -32,4 +32,24 @@
             }
         </ul>
     </div>
+</div>*@
+
+
+@{
+    var content = Umbraco.TypedContent(Model.MacroParameters["OurInvestments"].ToString());
+    var media = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());
+    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString();
+}
+
+<div>
+    <p>content = @content.Url</p>
+    <p>media = @media.Url</p>
+    <p>relatedLinks = @relatedLinks</p>
 </div>
+
+@*{
+    <p>@media.GetProperty("heading").Value.ToString()</p>
+    <p>@media.GetProperty("text").Value.ToString()</p>
+    <p><a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@media.GetProperty("urlText").Value.ToString()</a></p>
+    <img src="@media.Url" alt="@media.GetProperty("heading").Value.ToString()" />
+}*@

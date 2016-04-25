@@ -611,6 +611,7 @@
     <Content Include="SASS\Styles\Pages\IFrame.scss" />
     <Content Include="SASS\Styles\Pages\ListInvestments.scss" />
     <Content Include="Views\CoWorkers.cshtml" />
+    <Content Include="SASS\Styles\Pages\CoWorkers.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

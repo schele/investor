@@ -30,12 +30,31 @@ namespace Investor.Models.PageModels
 
         #endregion
 
+        #region content
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Content,
+            DisplayName = "Rubrik",
+            Description = "H1"
+        )]
+        public virtual string Header { get; set; }
+
         [Property(
             UmbracoDataType.TextboxMultiple,
             Tab.Content,
+            DisplayName = "Ingress",
+            Description = ""
+        )]
+        public virtual string Preamble { get; set; }
+
+        #endregion
+
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Push,
             DisplayName = "Pufftext",
             Description = "Denna text visas i puffar"
         )]
-        public virtual string Preamble { get; set; }
+        public virtual string PuffPreamble { get; set; }
     }
 }

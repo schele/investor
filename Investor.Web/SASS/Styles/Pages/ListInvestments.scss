@@ -1,0 +1,35 @@
+﻿.list-investments-page {
+    padding-top: 30px;
+}
+
+.list-investments-page h1 {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #00AAD2;
+}
+
+.list-investments-page p {
+    line-height: 24px;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.list-investments-page ul {
+    margin-bottom: 30px;
+}
+
+.list-investments-page ul li {
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.list-investments-page ul li:first-child {
+    border-top: 1px solid #e4e4e4;
+}
+
+.list-investments-page ul li a {
+    padding: 16px 0;
+    display: block;
+    color: #002b7f;
+    text-decoration: none;
+}

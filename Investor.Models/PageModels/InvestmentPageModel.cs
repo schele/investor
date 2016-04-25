@@ -15,11 +15,11 @@ namespace Investor.Models.PageModels
     {
         #region constructors
         
-        protected InvestmentPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
+        public InvestmentPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
         {
         }
 
-        protected InvestmentPageModel(IPublishedContent content) : base(content)
+        public InvestmentPageModel(IPublishedContent content) : base(content)
         {
         }
 

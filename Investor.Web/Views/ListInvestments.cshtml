@@ -6,8 +6,18 @@
     Layout = "Master.cshtml";
 }
 
-@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
-
-<div>
-    <h1>@Model.CurrentPage.Name</h1>
+<div class="row">
+    <div class="col-md-9 list-investments-page">
+        <h1>@Model.CurrentPage.Name</h1>
+        <p>Bacon ipsum dolor amet pork chop tenderloin shankle jowl,
+            flank kevin ground round turkey corned beef salami picanha turducken
+            biltong short ribs. Picanha meatloaf tri-tip prosciutto porchetta.
+            Strip steak tongue fatback brisket, doner boudin tail chicken andouille.
+            Shoulder doner ham, rump pancetta ball tip beef swine jerky turkey tenderloin.</p>
+        <ul>
+            <li><a href="">testlänk</a></li>
+            <li><a href="">testlänk</a></li>
+            <li><a href="">testlänk</a></li>
+        </ul>
+    </div>
 </div>

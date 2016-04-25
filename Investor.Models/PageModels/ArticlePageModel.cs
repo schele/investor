@@ -81,14 +81,15 @@ namespace Investor.Models.PageModels
         #endregion
 
         #region puff
-        [Property(
-            UmbracoDataType.MediaPicker,
-            Tab.Push,
-            DisplayName = "Puff: Bild",
-            Description = "Denna bild visas på en puffyta"
-            //Converter = typeof(NodeLinkConverter<Media>)
-        )]
-        public virtual string ImageForPush { get; set; }
+        //todo: fungerar inte
+        //[Property(
+        //    UmbracoDataType.MediaPicker,
+        //    Tab.Push,
+        //    DisplayName = "Puff: Bild",
+        //    Description = "Denna bild visas på en puffyta"
+        //    //Converter = typeof(MediaConverter)
+        //)]
+        //public virtual int ImageForPush { get; set; }
 
         [Property(
             UmbracoDataType.TextboxMultiple,
@@ -99,9 +100,17 @@ namespace Investor.Models.PageModels
         public virtual string PushText { get; set; }
 
         [Property(
+            UmbracoDataType.Textstring,
+            Tab.Push,
+            DisplayName = "Puff Relaterade länkar: Rubrik",
+            Description = "Rubrik för relaterade länkar"
+        )]
+        public virtual string RelatedLinksForPushHeader { get; set; }
+
+        [Property(
             UmbracoDataType.RelatedLinks,
             Tab.Push,
-            DisplayName = "Puff: Relaterade länkar",
+            DisplayName = "Puff Relaterade länkar: Relaterade länkar",
             Description = "Dessa länkar visas på en puffyta",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]

@@ -1,0 +1,17 @@
+﻿.iframe-page {
+    border-left: 1px solid rgb(201, 201, 201);
+}
+
+.iframe-page iframe {
+    display: block;
+    position: relative;
+    height: 1137px;
+    max-width: 100%;
+    border: none;
+}
+
+@media(max-width: 990px) {
+    .iframe-page {
+        border-left: none;
+    }
+}

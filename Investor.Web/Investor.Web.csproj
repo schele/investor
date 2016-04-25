@@ -481,10 +481,12 @@
     <Content Include="packages.config" />
     <Content Include="SASS\magnific-popup.css" />
     <Content Include="Scripts\campaign-lightbox.js" />
+    <Content Include="Scripts\iframe-size.js" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
     <Content Include="Scripts\lib\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\mobile-navigation.js" />
+    <Content Include="Scripts\sub-navigation.js" />
     <Content Include="UI\css\bootstrap-theme.css" />
     <Content Include="UI\css\bootstrap-theme.min.css" />
     <Content Include="UI\css\bootstrap.css" />
@@ -594,7 +596,7 @@
     <Content Include="SASS\Styles\Layout\Header.scss" />
     <Content Include="SASS\Styles\global.scss" />
     <Content Include="SASS\Styles\Layout\Footer.scss" />
-    <Content Include="SASS\Styles\Layout\SubMenu.scss" />
+    <Content Include="SASS\Styles\Layout\SubNavigation.scss" />
     <Content Include="App_Plugins\RelatedLinks\package.manifest" />
     <Content Include="SASS\Styles\Pages\Start.scss" />
     <Content Include="Views\ListInvestments.cshtml" />
@@ -604,7 +606,11 @@
     <Content Include="SASS\Styles\MacroPartials\OurInvestments.scss" />
     <Content Include="SASS\Styles\macro-partials.scss" />
     <Content Include="SASS\reset.scss" />
+    <Content Include="SASS\Styles\Pages\Category.scss" />
     <Content Include="favicon\manifest.json" />
+    <Content Include="SASS\Styles\Pages\IFrame.scss" />
+    <Content Include="SASS\Styles\Pages\ListInvestments.scss" />
+    <Content Include="Views\CoWorkers.cshtml" />
     <Content Include="Views\MacroPartials\Slideshow.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>

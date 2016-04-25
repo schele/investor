@@ -16,7 +16,7 @@
     <article class="article-page col-md-9">
         <div class="row">
             <div class="article-page-content col-md-9">
-                @Html.Render(Model.Header, @<h2 class="article-page-header">@Model.Header</h2>)
+                @Html.Render(Model.Header, @<h1 class="article-page-header">@Model.Header</h1>)
                 @Html.Render(Model.Preamble, @<p class="article-page-premable">@Model.Preamble</p>)
 
                 @if (Umbraco.Field("broedtext") != null)

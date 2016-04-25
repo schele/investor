@@ -20,14 +20,32 @@
     max-width: 100%;
 }
 
-.co-workers-page .co-workers-page-info ul {
-    list-style: disc;
-    margin-left: 16px;
+.co-workers-page ul {
     margin-bottom: 20px;
+    list-style: none;
 }
 
-.co-workers-page .co-workers-page-info ul li {
+.co-workers-page ul li {
     font-size: 16px;
     line-height: 22px;
-    padding: 0 0 10px 0;
+    margin-bottom: 15px;
+
+}
+
+.co-workers-page ul li a {
+    display: block;
+    text-decoration: none; 
+}
+
+.co-workers-page ul li .co-worker-name {
+    color: #002b7f;
+    font-size: 14px;
+    display: block;
+}
+
+.co-workers-page ul li .co-worker-position {
+    color: #000;
+    font-size: 10px;
+    display: block;
+    line-height: 15px;
 }

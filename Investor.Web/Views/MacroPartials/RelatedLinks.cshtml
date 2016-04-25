@@ -8,7 +8,8 @@
 @{
     var heading = Model.MacroParameters["Heading"].ToString();
     var headingUrl = Model.MacroParameters["HeadingUrl"].ToString();
-    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString().Replace("&quot;", "\"");
+    var preamble = Model.MacroParameters["Preamble"].ToString();
+    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString().Replace("&quot;", "\""); //todo: fråga robert
     var links = new JavaScriptSerializer().Deserialize<IEnumerable<NodeLink>>(relatedLinks);    
 }
 
@@ -18,13 +19,14 @@
             <a href="@Umbraco.TypedContent(headingUrl).Url">@heading</a>
         </h2>
     </div>
-    <ul class="related-links-list">
+
+        @Html.Render(preamble, @<p>@preamble</p>)
+        
+        <ul class="related-links-list">            
         @foreach (var link in links)
         {
-            var preamble = Umbraco.TypedContent(int.Parse(link.Link)).GetProperty("preamble").Value;
             <li>
                 <a href="#">
-                    @Html.Render(preamble, @<p>@preamble</p>)
                     @Html.Render(link.Caption, @<span>@link.Caption</span>)
                 </a>
             </li>

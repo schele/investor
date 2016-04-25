@@ -1,4 +1,5 @@
-﻿@using Investor.Models.PageModels
+﻿@using Investor.Helpers
+@using Investor.Models.PageModels
 
 @inherits UmbracoViewPage<ListInvestmentsPageModel>
 
@@ -6,18 +7,16 @@
     Layout = "Master.cshtml";
 }
 
+@*todo: sätt en dropdown property för byte av class på header*@
 <div class="row">
     <div class="col-md-9 list-investments-page">
-        <h1>@Model.CurrentPage.Name</h1>
-        <p>Bacon ipsum dolor amet pork chop tenderloin shankle jowl,
-            flank kevin ground round turkey corned beef salami picanha turducken
-            biltong short ribs. Picanha meatloaf tri-tip prosciutto porchetta.
-            Strip steak tongue fatback brisket, doner boudin tail chicken andouille.
-            Shoulder doner ham, rump pancetta ball tip beef swine jerky turkey tenderloin.</p>
+        @Html.Render(Model.CurrentPage.Name, @<h1>@Model.Header</h1>)
+        @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
         <ul>
-            <li><a href="">testlänk</a></li>
-            <li><a href="">testlänk</a></li>
-            <li><a href="">testlänk</a></li>
+            @foreach (var investment in Model.Children())
+            {                
+                <li><a href="@investment.Url">@investment.Name</a></li>
+            }
         </ul>
     </div>
 </div>

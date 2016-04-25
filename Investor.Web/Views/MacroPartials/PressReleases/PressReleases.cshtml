@@ -6,15 +6,20 @@
               
 @{
     var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
+    var url = @Model.MacroParameters["Url"].ToString();
 }
 
 <div class="press-releases">
     <div class="press-releases-header">
         @if (Model.MacroParameters["Heading"] != null)
         {
-
-            <h2><a href="">@(Model.MacroParameters["Heading"].ToString())</a></h2>
-        }
+            <h2>
+                @if (Model.MacroParameters["Url"] != null)
+                {
+                    <a href="@Umbraco.TypedContent(url).Url">@(Model.MacroParameters["Heading"].ToString())</a>
+                }
+            </h2>
+          }
     </div>
     <ul class="press-releases-list">
         @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
@@ -28,4 +33,5 @@
             </li>
         }
     </ul>
+    </div>
 </div>

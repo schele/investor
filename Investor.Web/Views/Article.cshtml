@@ -57,7 +57,7 @@
                         {
                             var document = MediaExtensions.GetMediaById(d);
 
-                            <li><a href="@document.FriendlyUrl()" title="@document.Name">@document.Name</a></li>
+                            <li><a href="@document.FriendlyUrl()" title="@document.Name">@Path.GetFileNameWithoutExtension(document.Name)</a></li>
                         }
                         }
                     </ul>

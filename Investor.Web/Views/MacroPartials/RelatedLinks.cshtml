@@ -8,7 +8,7 @@
 @{
     var heading = Model.MacroParameters["Heading"].ToString();
     var headingUrl = Model.MacroParameters["HeadingUrl"].ToString();
-    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString().Replace("&quot;", "\"");
+    var relatedLinks = Model.MacroParameters["RelatedLinks"].ToString().Replace("&quot;", "\""); //todo: fråga robert
     var links = new JavaScriptSerializer().Deserialize<IEnumerable<NodeLink>>(relatedLinks);    
 }
 

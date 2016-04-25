@@ -8,18 +8,27 @@
     var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
 }
 
-<div>
-    @if (Model.MacroParameters["Heading"] != null)
-    {
-        <h1>@(Model.MacroParameters["Heading"].ToString())</h1>    
-    }    
-</div>
+<div class="col-md-6" style="clear: both">
+    <div class="our-investments">
+        @if (Model.MacroParameters["Heading"] != null)
+        {
+            <div class="our-investments-header">
+                <span class="our-investments-icon"></span>
+                <h2>
+                    <a href="/investors-media/press-releases/">@(Model.MacroParameters["Heading"].ToString())</a>
+                </h2>
+            </div>
+        }
+        
+        <ul class="our-investments-content">
+            @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
+            {
+                //var preamble = investment.GetProperty("preamble").Value;
 
-<ul>
-    @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
-    {
-        <li>@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("DateFormat")) @pressRelease.Published.ToString(Umbraco.GetDictionaryValue("TimeFormat"))
-            <p><a href="/investors-media/press-releases/?id=@pressRelease.Id">@pressRelease.Headline</a></p>
-        </li>
-    }
-</ul>
+                <li>@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("DateFormat")) @pressRelease.Published.ToString(Umbraco.GetDictionaryValue("TimeFormat"))
+                    <p><a href="/investors-media/press-releases/?id=@pressRelease.Id">@pressRelease.Headline</a></p>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

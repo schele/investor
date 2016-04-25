@@ -14,7 +14,11 @@ namespace Investor.Models.PageModels
         DisplayName = "Sida: Listning Medarbetare",
         Icon = Icon.Article,
         Description = "En sida för att lista medarbetare.",
-        AllowAtRoot = false
+        AllowAtRoot = false,
+        AllowedChildNodes = new object[]
+            {
+                typeof(CoWorkerPageModel)
+            }
     )]
     public class CoWorkersListPageModel : BaseModel
     {

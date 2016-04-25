@@ -616,6 +616,8 @@
     <Content Include="Views\MacroPartials\RelatedLinks.cshtml" />
     <Content Include="SASS\Styles\MacroPartials\RelatedLinks.scss" />
     <Content Include="SASS\Styles\MacroPartials\PressReleases.scss" />
+    <Content Include="Views\CoWorker.cshtml" />
+    <Content Include="SASS\Styles\Pages\CoWorker.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

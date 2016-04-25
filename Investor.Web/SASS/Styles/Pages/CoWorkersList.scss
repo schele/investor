@@ -1,51 +1,67 @@
-﻿.co-workers-page {
+﻿.co-workers-list-page {
     border-left: 1px solid rgb(201, 201, 201);
 }
 
-.co-workers-page h1 {
+
+
+.co-workers-list-page h1 {
     margin-bottom: 24px;
 }
 
-.co-workers-page .co-workers-page-info {
+.co-workers-list-page .co-workers-list-page-info {
     margin-bottom: 24px;
 }
 
-.co-workers-page .co-workers-page-info p {
+.co-workers-list-page .co-workers-list-page-info p {
     font-size: 16px;
     margin-bottom: 16px;
     line-height: 24px;
 }
 
-.co-workers-page .co-workers-page-info img {
+.co-workers-list-page .co-workers-list-page-info img {
     max-width: 100%;
 }
 
-.co-workers-page ul {
+.co-workers-list-page ul {
     margin-bottom: 20px;
     list-style: none;
 }
 
-.co-workers-page ul li {
+.co-workers-list-page ul .co-worker {
     font-size: 16px;
     line-height: 22px;
     margin-bottom: 15px;
 
 }
 
-.co-workers-page ul li a {
+.co-workers-list-page ul .co-worker a {
     display: block;
-    text-decoration: none; 
+    text-decoration: none;
+    max-width: 143px; 
 }
 
-.co-workers-page ul li .co-worker-name {
+.co-workers-list-page ul .co-worker {
+    float: none; display: inline-block; margin: 0 -0.125em;
+    vertical-align: top;
+    margin-bottom: 30px;
+}
+
+.co-workers-list-page ul .co-worker .co-worker-name {
     color: #002b7f;
     font-size: 14px;
     display: block;
 }
 
-.co-workers-page ul li .co-worker-position {
+.co-workers-list-page ul .co-worker .co-worker-position {
     color: #000;
     font-size: 10px;
     display: block;
     line-height: 15px;
+    display: block;
+}
+
+@media (max-width: 990px) {
+    .co-workers-list-page {
+        border-left: none;
+    }
 }

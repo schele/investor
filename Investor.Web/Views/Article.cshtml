@@ -27,12 +27,13 @@
                 }
             </div>
             <div class="col-md-3">
+
             @if (Model.RelatedLinks != null)
             {
                 <div class="article-page-links">
                     <h3>
-                        <span class="icon"></span>Links
-                    </h3> <!--Ska bytas mot prop förmodligen-->
+                        <span class="icon"></span>@Model.RelatedLinksHeader
+                    </h3>
                     <ul>
                         @foreach (var link in Model.RelatedLinks)
                         {
@@ -48,8 +49,8 @@
             {
                 <div class="article-page-documents">
                     <h3>
-                        <span class="icon"></span>Documents
-                    </h3> <!--Ska bytas mot prop förmodligen-->
+                        <span class="icon"></span>@Model.RelatedDocumentsHeader
+                    </h3>
                     <ul>
                         @{
                         foreach (var d in relatedDocuments.Split(','))

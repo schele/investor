@@ -2,10 +2,35 @@
 
 @inherits PartialViewMacroPage
 
-@foreach (var media in Umbraco.TypedMedia(Model.MacroParameters["Slideshow"].ToString().Split(',')))
-{
-    <p>@media.GetProperty("heading").Value.ToString()</p>
-    <p>@media.GetProperty("text").Value.ToString()</p>
-    <p><a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@media.GetProperty("urlText").Value.ToString()</a></p>
-    <img src="@media.Url" alt="@media.GetProperty("heading").Value.ToString()" />
+@{
+    var slideIndex = 1;
 }
+
+<div class="slide-show-container">
+    <ul class="slide-show-item-list">
+        @foreach (var media in Umbraco.TypedMedia(Model.MacroParameters["Slideshow"].ToString().Split(',')))
+        {
+            <li class="slide-show-item row">
+                <div class="col-md-6 no-right-padding">
+                    <div class="slide-show-content">
+                        <h2>@media.GetProperty("heading").Value.ToString()</h2>
+                        <p>@media.GetProperty("text").Value.ToString()</p>
+                        <a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@media.GetProperty("urlText").Value.ToString()</a>
+                    </div>
+                </div>
+                <div class="col-md-6 no-left-padding">
+                    <div class="slide-show-image">
+                        <img src="@media.Url" alt="@media.GetProperty("heading").Value.ToString()" />
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    <ul class="slide-show-controls">
+        @foreach (var media in Umbraco.TypedMedia(Model.MacroParameters["Slideshow"].ToString().Split(',')))
+        {
+            <li name="@slideIndex" class="slide-show-dot"></li>
+            slideIndex++;
+        }
+    </ul>
+</div>

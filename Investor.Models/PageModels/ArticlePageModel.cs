@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
 using UCodeFirst;
+using UCodeFirst.Attributes;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
@@ -34,7 +36,7 @@ namespace Investor.Models.PageModels
         #endregion
 
         #region content
-        
+     
         [Property(
             UmbracoDataType.Textstring,
             Tab.Content,
@@ -50,15 +52,6 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string Preamble { get; set; }
-
-        //[Property(
-        //    UmbracoDataType.RichtextEditor,
-        //    Tab.Content,
-        //    DisplayName = "Innehåll",
-        //    Description = "",
-        //    Converter = typeof(RichtextConverter)
-        //)]
-        //public virtual IHtmlString Body { get; set; }
 
         [Property(
             UmbracoDataType.Textstring,
@@ -77,18 +70,25 @@ namespace Investor.Models.PageModels
         )]
         public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
 
-        //[Property(
-        //    UmbracoDataType.MultipleMediaPicker,
-        //    Tab.Content,
-        //    DisplayName = "Relaterade dokument",
-        //    Description = "",
-        //    Converter = typeof(MultipleMediaConverter)
-        //)]
-        //public virtual IEnumerable<IMedia> RelatedDocuments { get; set; }
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Page,
+            DisplayName = "Relaterade dokument: Rubrik",
+            Description = ""
+        )]
+        public virtual string RelatedDocumentsHeader { get; set; }
         
         #endregion
 
         #region puff
+        [Property(
+            UmbracoDataType.MediaPicker,
+            Tab.Push,
+            DisplayName = "Puff: Bild",
+            Description = "Denna bild visas på en puffyta"
+            //Converter = typeof(NodeLinkConverter<Media>)
+        )]
+        public virtual string ImageForPush { get; set; }
 
         [Property(
             UmbracoDataType.TextboxMultiple,
@@ -102,20 +102,10 @@ namespace Investor.Models.PageModels
             UmbracoDataType.RelatedLinks,
             Tab.Push,
             DisplayName = "Puff: Relaterade länkar",
-            Description = "Dessa länkar visas som puffyta",
+            Description = "Dessa länkar visas på en puffyta",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
         public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
-
-        //lägg till en bild för puffytan
-        //[Property(
-        //    UmbracoDataType.RelatedLinks,
-        //    Tab.Push,
-        //    DisplayName = "Puff: Relaterade länkar",
-        //    Description = "Dessa länkar visas som puffyta",
-        //    Converter = typeof(NodeLinkConverter<NodeLink>)
-        //)]
-        //public virtual IEnumerable<NodeLink> ImageForPush { get; set; }
 
         #endregion
     }

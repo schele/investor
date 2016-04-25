@@ -15,6 +15,11 @@
 <div>
     @foreach (var page in Model.Children<ArticlePageModel>())
     {
+        if (!string.IsNullOrWhiteSpace(page.ImageForPush))
+        {
+            <p><img src="@Umbraco.TypedMedia(int.Parse(page.ImageForPush))" alt="@page.Name" /></p>
+        }
+        
         <p><a href="@page.Url" title="@page.Name">@page.Name</a></p>
         <p>@page.PushText</p>
         

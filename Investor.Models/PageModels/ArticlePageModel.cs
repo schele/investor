@@ -4,7 +4,6 @@ using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
 using UCodeFirst;
-using UCodeFirst.Attributes;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
@@ -53,6 +52,18 @@ namespace Investor.Models.PageModels
         )]
         public virtual string Preamble { get; set; }
 
+        //todo: lägg till rich text editor
+        //bugg: när man lägger till en bild blir det fel
+
+        [Property(
+            UmbracoDataType.RichtextEditor,
+            Tab.Content,
+            DisplayName = "Text",
+            Description = "",
+            Converter = typeof(RichtextConverter)
+        )]
+        public virtual IHtmlString Text { get; set; }
+
         [Property(
             UmbracoDataType.Textstring,
             Tab.Page,
@@ -71,15 +82,6 @@ namespace Investor.Models.PageModels
         public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
 
         [Property(
-            "Multiple Media Picker",
-            Tab.Page,
-            DisplayName = "Relaterade dokument: Dokument",
-            Description = "",
-            Converter = typeof(DocumentConverter)
-        )]
-        public virtual IEnumerable<IPublishedContent> RelatedDocuments { get; set; }
-
-        [Property(
             UmbracoDataType.Textstring,
             Tab.Page,
             DisplayName = "Relaterade dokument: Rubrik",
@@ -87,10 +89,19 @@ namespace Investor.Models.PageModels
         )]
         public virtual string RelatedDocumentsHeader { get; set; }
         
+        [Property(
+            "Multiple Media Picker",
+            Tab.Page,
+            DisplayName = "Relaterade dokument: Dokument",
+            Description = "",
+            Converter = typeof(DocumentConverter)
+        )]
+        public virtual IEnumerable<IPublishedContent> RelatedDocuments { get; set; }
+        
         #endregion
 
         #region puff
-        //todo: fungerar inte
+
         [Property(
             UmbracoDataType.MediaPicker,
             Tab.Push,
@@ -119,7 +130,7 @@ namespace Investor.Models.PageModels
         [Property(
             UmbracoDataType.RelatedLinks,
             Tab.Push,
-            DisplayName = "Puff Relaterade länkar: Relaterade länkar",
+            DisplayName = "Puff Relaterade länkar: Länkar",
             Description = "Dessa länkar visas på en puffyta",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]

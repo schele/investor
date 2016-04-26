@@ -1,5 +1,7 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using UCodeFirst.Converters;
+using Umbraco.Core.Models;
 using Umbraco.Web;
 
 namespace Investor.Models.Converters
@@ -10,7 +12,17 @@ namespace Investor.Models.Converters
         {
             var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            return umbracoHelper.TypedMedia(value);
+            var images = value.ToString().Split(',');
+            var media = new List<IPublishedContent>();
+
+            foreach (var mediaId in images)
+            {
+                var i = umbracoHelper.TypedMedia(mediaId);
+
+                media.Add(i);
+            }
+
+            return media;
         }
     }
 }

@@ -84,9 +84,8 @@
 }
 
 .article-page .article-page-documents a,
-.article-page .article-page-links a {
-    
-    
+.article-page .article-page-links a {    
+    word-break: break-all;
     text-decoration: none;
     font-size: 14px;
     color: #002b7f;

@@ -49,27 +49,30 @@
     min-height: 30px;
 }
 
-.related-links .related-links-header .related-links-icon {
-
-}
-
-.related-links .related-links-list {
+.related-links .related-links-content {
     padding: 10px 30px 30px 30px;
 }
-.related-links .related-links-list li {
+
+.related-links .related-links-content p {
+    line-height: 21px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.related-links .related-links-content .related-links-list li {
     border-bottom: 1px solid #C4C4C4;
 }
 
-.related-links .related-links-list li:last-child {
+.related-links .related-links-content .related-links-list li:last-child {
     border-bottom: none;
 }
 
-.related-links .related-links-list a {
+.related-links .related-links-content .related-links-list a {
     text-decoration: none;
     padding: 15px 0 10px;
     display: block;
 }
-.related-links .related-links-list a span {
+.related-links .related-links-content .related-links-list a span {
     color: #002B7E;
     text-decoration: underline;
     margin-bottom: 10px;
@@ -77,7 +80,7 @@
     font-size: 18px;
 }
 
-.related-links .related-links-list a p {
+.related-links .related-links-content .related-links-list a p {
     color: #000;
     text-decoration: none;
     display: block;

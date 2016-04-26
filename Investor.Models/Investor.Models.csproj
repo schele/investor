@@ -301,7 +301,8 @@
     <Compile Include="Models\NodeLink\NodeLink.cs" />
     <Compile Include="Models\PressReleases\Attachment.cs" />
     <Compile Include="Models\Slideshow.cs" />
-    <Compile Include="PageModels\CoWorkersPageModel.cs" />
+    <Compile Include="PageModels\CoWorkerPageModel.cs" />
+    <Compile Include="PageModels\CoWorkersListPageModel.cs" />
     <Compile Include="PageModels\IFramePageModel.cs" />
     <Compile Include="PageModels\CategoryPageModel.cs" />
     <Compile Include="PageModels\ArticlePageModel.cs">

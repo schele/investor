@@ -11,20 +11,24 @@ using Umbraco.Core.Models;
 namespace Investor.Models.PageModels
 {
     [ContentType(
-        DisplayName = "Sida: Medarbetare",
+        DisplayName = "Sida: Listning Medarbetare",
         Icon = Icon.Article,
         Description = "En sida för att lista medarbetare.",
-        AllowAtRoot = false
+        AllowAtRoot = false,
+        AllowedChildNodes = new object[]
+            {
+                typeof(CoWorkerPageModel)
+            }
     )]
-    public class CoWorkersPageModel : BaseModel
+    public class CoWorkersListPageModel : BaseModel
     {
         #region constructors
 
-        public CoWorkersPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
+        public CoWorkersListPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
         {
         }
 
-        public CoWorkersPageModel(IPublishedContent content) : base(content)
+        public CoWorkersListPageModel(IPublishedContent content) : base(content)
         {
         }
 

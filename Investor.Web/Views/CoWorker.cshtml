@@ -1,0 +1,22 @@
+﻿@using Investor.Models.PageModels
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@inherits UmbracoViewPage<CoWorkerPageModel>
+
+@{
+    Layout = "Master.cshtml";
+}
+<div class="row">
+    @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+    <article class="co-worker-page col-md-7 col-sm-12">
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <img src="/media/1015/susanna.gif" alt="" />
+            </div>
+            <div class="col-md-5 col-sm-5">
+                <h2 class="co-worker-name">Susanna sjödin</h2>
+                <span class="co-worker-position">Communications Officer</span>
+            </div>
+        </div>
+    </article>
+</div>

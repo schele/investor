@@ -287,12 +287,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\DocumentConverter.cs" />
-    <Compile Include="Converters\PublishedMediaConverter.cs" />
     <Compile Include="Converters\MediaConverter.cs" />
     <Compile Include="Converters\ModelConverter.cs" />
     <Compile Include="Converters\MultipleMediaConverter.cs" />
     <Compile Include="Converters\NodeConverter.cs" />
     <Compile Include="Converters\NodeLinkConverter.cs" />
+    <Compile Include="Converters\PublishedMediaConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DataTypes\DropdownForRobots.cs" />
     <Compile Include="DataTypes\MacroContainer.cs" />
     <Compile Include="Extensions\MediaExtensions.cs" />

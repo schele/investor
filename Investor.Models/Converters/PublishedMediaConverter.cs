@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using Investor.Models.Extensions;
 using UCodeFirst.Converters;
+using Umbraco.Web;
 
 namespace Investor.Models.Converters
 {
-    public class MediaConverter : IConverter
+    public class PublishedMediaConverter : IConverter
     {
         //public object Read(PropertyInfo propertyInfo, string value)
         //{
@@ -22,8 +22,10 @@ namespace Investor.Models.Converters
             {
                 return null;
             }
+            
+            var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            return MediaExtensions.GetMediaById(value.ToString());
+            return umbracoHelper.TypedMedia(value);
         }
     }
 }

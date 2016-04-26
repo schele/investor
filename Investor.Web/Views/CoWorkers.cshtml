@@ -1,26 +1,4 @@
-﻿@using Investor.Models.PageModels
-
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-@inherits UmbracoViewPage<CoWorkersPageModel>
-
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "Master.cshtml";
+	Layout = null;
 }
-
-<div class="row">
-    @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
-    <article class="co-workers-page col-md-7">
-        <h1>@Model.CurrentPage.Name</h1>
-        <div class="co-workers-page-info">
-            <p><strong>Investor AB</strong><br /><span>Arsenalsgatan 8C</span><br /><span>SE-103 32 Stockholm, SWEDEN</span><br /><span>Telephone: +46 8 614 20 00</span><br /><span>Fax: +46 8 614 21 50</span></p>
-        </div>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </article>
-</div>

@@ -71,6 +71,15 @@ namespace Investor.Models.PageModels
         public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
 
         [Property(
+            "Multiple Media Picker",
+            Tab.Page,
+            DisplayName = "Relaterade dokument: Dokument",
+            Description = "",
+            Converter = typeof(DocumentConverter)
+        )]
+        public virtual IEnumerable<IPublishedContent> RelatedDocuments { get; set; }
+
+        [Property(
             UmbracoDataType.Textstring,
             Tab.Page,
             DisplayName = "Relaterade dokument: Rubrik",
@@ -82,14 +91,14 @@ namespace Investor.Models.PageModels
 
         #region puff
         //todo: fungerar inte
-        //[Property(
-        //    UmbracoDataType.MediaPicker,
-        //    Tab.Push,
-        //    DisplayName = "Puff: Bild",
-        //    Description = "Denna bild visas på en puffyta"
-        //    //Converter = typeof(MediaConverter)
-        //)]
-        //public virtual int ImageForPush { get; set; }
+        [Property(
+            UmbracoDataType.MediaPicker,
+            Tab.Push,
+            DisplayName = "Puff: Bild",
+            Description = "Denna bild visas på en puffyta",
+            Converter = typeof(PublishedMediaConverter)
+        )]
+        public virtual IPublishedContent PushImage { get; set; }
 
         [Property(
             UmbracoDataType.TextboxMultiple,

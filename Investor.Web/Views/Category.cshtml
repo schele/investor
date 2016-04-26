@@ -1,4 +1,6 @@
-﻿@using Investor.Models.PageModels
+﻿@using Investor.Helpers
+@using Investor.Models.Extensions
+@using Investor.Models.PageModels
 
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @inherits UmbracoViewPage<CategoryPageModel>
@@ -19,10 +21,8 @@
         @foreach (var page in Model.Children<ArticlePageModel>())
         {
             <div class="category-page-category col-md-4 col-sm-4">
-                @*@if (page.ImageForPush != null)
-                {
-                    <p><img src="@Umbraco.TypedMedia(page.ImageForPush)" alt="@page.Name" /></p>
-                }*@
+                @Html.Render(page.PushImage, @<p><img src="@page.PushImage.Url" alt="@page.Name" /></p>)
+
                 <h2>
                     <a href="@page.Url" title="@page.Name">@page.Name</a>
                 </h2>

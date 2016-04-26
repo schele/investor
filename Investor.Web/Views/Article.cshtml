@@ -8,10 +8,20 @@
 @{
     var relatedDocuments = Umbraco.Field("relateradeDokument").ToString();
     Layout = "Master.cshtml";
+
+
+    var docs = Model.RelatedDocuments;
+    var dd = docs;
+    //var image = Model.PushImage;
+    //var i = image;
 }
 
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+
+    <div>
+        <img src="@Model.PushImage" alt="" />
+    </div>
 
     <article class="article-page col-md-9">
         <div class="row">

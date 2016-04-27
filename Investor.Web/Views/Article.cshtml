@@ -7,6 +7,8 @@
 
 @{
     Layout = "Master.cshtml";
+
+    var docs = Model.RelatedDocuments.ToList();
 }
 
 <div class="row">
@@ -38,22 +40,24 @@
                     </div>
                 }
 
-                <div class="article-page-documents">
-                    <h3>
-                        <span class="icon"></span>@Model.RelatedDocumentsHeader
-                    </h3>
-                    <ul>
-                        @foreach (var document in Model.RelatedDocuments)
-                        {
-                            if (document != null)
+                @if (docs[0] != null) {
+                    <div class="article-page-documents">
+                        <h3>
+                            <span class="icon"></span>@Model.RelatedDocumentsHeader
+                        </h3>
+                        <ul>
+                            @foreach (var document in Model.RelatedDocuments)
                             {
-                                var doc = MediaExtensions.GetMediaById(document.Id.ToString());
+                                if (document != null)
+                                {
+                                    var doc = MediaExtensions.GetMediaById(document.Id.ToString());
 
-                                <li><a href="@doc.FriendlyUrl()" title="@doc.Name">@Path.GetFileNameWithoutExtension(doc.Name)</a></li>
+                                    <li><a href="@doc.FriendlyUrl()" title="@doc.Name">@Path.GetFileNameWithoutExtension(doc.Name)</a></li>
+                                }
                             }
-                        }
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                }
             </div>
         </div>
     </article>

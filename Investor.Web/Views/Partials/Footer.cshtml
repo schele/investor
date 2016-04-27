@@ -1,19 +1,15 @@
 ﻿@using Investor.Models.PageModels
-@using umbraco.NodeFactory
-@using UCodeFirst.Factories
 
 @inherits UmbracoViewPage<BaseModel>
 
 @helper AboutInvestorPage()
 {
-    var aboutInvestorId = Umbraco.Field("aboutInvestor", recursive: true).ToString();
-        
-    if (!string.IsNullOrWhiteSpace(aboutInvestorId))
-    {
-        var aboutInvestorPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(aboutInvestorId));
+    var aboutInvestorNode = Model.StartPage.AboutInvestorNode;
 
-        <li><a href="@aboutInvestorPage.Url" title="@aboutInvestorPage.Name">@aboutInvestorPage.Name</a></li>
-        foreach (var item in aboutInvestorPage.Children())
+    if (aboutInvestorNode != null)
+    {
+        <li><a href="@aboutInvestorNode.Url" title="@aboutInvestorNode.Name">@aboutInvestorNode.Name</a></li>
+        foreach (var item in aboutInvestorNode.ChildrenAsList)
         {
             <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
         }
@@ -22,15 +18,12 @@
 
 @helper OurInvestmentsPage()
 {
-    var ourInvestmentsId = Umbraco.Field("ourInvestments", recursive: true).ToString();
-
-    if (!string.IsNullOrWhiteSpace(ourInvestmentsId))
+    var aboutInvestorNode = Model.StartPage.OurInvestmentsNode;
+    
+    if (aboutInvestorNode != null)
     {
-        var ourInvestmentsPage = new Node(int.Parse(ourInvestmentsId));
-        var investmentPages = ourInvestmentsPage.GetDescendantOrSelfNodes().Where(x => x.NodeTypeAlias == "InvestmentPageModel");
-
-        <li><a href="@ourInvestmentsPage.Url" title="@ourInvestmentsPage.Name">@ourInvestmentsPage.Name</a></li>
-        foreach (var item in investmentPages)
+        <li><a href="@aboutInvestorNode.Url" title="@aboutInvestorNode.Name">@aboutInvestorNode.Name</a></li>
+        foreach (var item in aboutInvestorNode.ChildrenAsList)
         {
             <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
         }
@@ -39,14 +32,12 @@
 
 @helper InvestorsAndMediaPage()
 {
-    var investorsAndMediaId = Umbraco.Field("investorsAndMedia", recursive: true).ToString();
+    var investorsAndMediaNode = Model.StartPage.InvestorsAndMediaNode;
 
-    if (!string.IsNullOrWhiteSpace(investorsAndMediaId))
+    if (investorsAndMediaNode != null)
     {
-        var investorsAndMediaPage = ModelFactory.Instance.GetModel<BaseModel>(int.Parse(investorsAndMediaId));
-
-        <li><a href="@investorsAndMediaPage.Url" title="@investorsAndMediaPage.Name">@investorsAndMediaPage.Name</a></li>
-        foreach (var item in investorsAndMediaPage.Children())
+        <li><a href="@investorsAndMediaNode.Url" title="@investorsAndMediaNode.Name">@investorsAndMediaNode.Name</a></li>
+        foreach (var item in investorsAndMediaNode.ChildrenAsList)
         {
             <li><a href="@item.Url" title="@item.Name">@item.Name</a></li>
         }

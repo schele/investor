@@ -6,5 +6,7 @@ namespace Investor.Abstraction.Pressreleases
     public interface IPressReleaseRepository
     {
         List<PressRelease> GetPressReleases();
+
+        PressRelease GetPressRelease(string id);
     }
 }

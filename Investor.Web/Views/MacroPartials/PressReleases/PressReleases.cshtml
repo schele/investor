@@ -6,7 +6,10 @@
               
 @{
     var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
-    var url = @Model.MacroParameters["Url"].ToString();
+    var url = Model.MacroParameters["Url"].ToString();
+    
+    
+    //var pressReleaseNode = Model.StartPage
 }
 
 <div class="press-releases">
@@ -25,6 +28,7 @@
         @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
         {
             <li>
+                @* todo: get pressreleasenode from startpage *@
                 <a href="/investors-media/press-releases/?id=@pressRelease.Id">
                     <span class="press-releases-date">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("DateFormat"))</span>
                     <span class="press-releases-time">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("TimeFormat"))</span>

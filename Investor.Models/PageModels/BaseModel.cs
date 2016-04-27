@@ -98,6 +98,12 @@ namespace Investor.Models.PageModels
             }
         }
 
-        public Node CurrentPage { get { return umbraco.NodeFactory.Node.GetCurrent(); } }
+        public Node CurrentPage
+        {
+            get
+            {
+                return umbraco.NodeFactory.Node.GetCurrent();
+            }
+        }
     }
 }

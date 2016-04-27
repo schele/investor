@@ -1,31 +1,39 @@
 ﻿@using Investor.Models.PageModels
+@using umbraco.NodeFactory
 
 @inherits UmbracoViewPage<IFramePageModel>
 
+@functions
+{
+    protected string GetLanguage(string culture)
+    {
+        return culture.Substring(0, 2);
+    }
+}
+
 @{
     Layout = "Master.cshtml";
-    var id = 0;
-
+    
+    var id = string.Empty;
+    
     if (!string.IsNullOrEmpty(Request.QueryString["id"]))
     {
-        id = int.Parse(Request.QueryString["id"]);
+        id = Request.QueryString["id"];
     }
 }
 
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 
- 
-        <article class="col-md-7 iframe-page">
-            @if (id != 0)
-            {
-                <span>här ska det in en pressrelease med id "@id"</span>
-            }
-            else
-            {
-                <iframe onload="iframeLoaded()" id="iframe-page-iframe" scrolling="no" src="@Model.IFrameSrc"></iframe>
-            }
-
-        </article>
- 
+    <article class="col-md-7 iframe-page">
+        @if (!string.IsNullOrWhiteSpace(id))
+        {
+            var lang = GetLanguage(library.GetCurrentDomains(Node.GetCurrent().Id)[0].Language.CultureAlias);
+            <iframe src="https://vp053.alertir.com/index.php?p=press&s=detail&afw_id=@id&afw_lang=@lang" scrolling="no"></iframe>
+        }
+        else
+        {
+            <iframe onload="iframeLoaded()" id="iframe-page-iframe" scrolling="no" src="@Model.IFrameSrc"></iframe>
+        }
+    </article> 
 </div>

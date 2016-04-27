@@ -7,6 +7,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Investor.Models.Models.PressReleases;
 using log4net;
+using umbraco.NodeFactory;
 
 namespace Investor.Abstraction.Pressreleases
 {
@@ -33,12 +34,12 @@ namespace Investor.Abstraction.Pressreleases
         {
             try
             {
-                //var lang =
-                //    GetLanguage(
-                //        umbraco.library.GetCurrentDomains(Node.GetCurrent().Id)[0].Language.
-                //            CultureAlias);
+                var lang =
+                    GetLanguage(
+                        umbraco.library.GetCurrentDomains(Node.GetCurrent().Id)[0].Language.
+                            CultureAlias);
                 //var numberOfPressReleasesToShow = Int32.Parse(CurrentNode.GetProperty("numberOfPressreleases").Value);
-                var xmlUrl = string.Format(@"http://ir.investorab.com/?p=press&s=feed&afw_limit=5&afw_lang=en");
+                var xmlUrl = string.Format(@"http://ir.investorab.com/?p=press&s=feed&afw_limit=5&afw_lang=" + lang);
                     //((SiteConstants.PRESS_RELEASE_LIST).Replace("%26", "&"), lang);
                 var xDoc = Load(xmlUrl);
 
@@ -49,6 +50,25 @@ namespace Investor.Abstraction.Pressreleases
                 Log.Error(exception.Message);
 
                 return new List<PressRelease>();
+            }
+        }
+
+        public PressRelease GetPressRelease(string id)
+        {
+            try
+            {
+                var lang =
+                    GetLanguage(
+                        umbraco.library.GetCurrentDomains(umbraco.NodeFactory.Node.GetCurrent().Id)[0].Language.
+                            CultureAlias);
+                var xmlUrl = string.Format("http://ir.investorab.com/?p=reports%26s=feed%26afw_id={0}%26afw_lang={1}".Replace("%26", "&"), id, lang);
+                var xDoc = Load(xmlUrl);
+
+                return ParseSinglePressReleaseXmlData(xDoc);
+            }
+            catch (Exception)
+            {
+                return new PressRelease();
             }
         }
 
@@ -77,6 +97,26 @@ namespace Investor.Abstraction.Pressreleases
             }
 
             return pressReleases;
+        }
+
+        public static PressRelease ParseSinglePressReleaseXmlData(XDocument xDoc, string typeToShow = "all")
+        {
+            try
+            {
+                PressRelease pressRelease = null;
+                
+                foreach (var mainElement in xDoc.Descendants("release"))
+                {
+                    pressRelease = GetPressRelease(mainElement, false, typeToShow);
+                }
+
+                return pressRelease;
+            }
+
+            catch (Exception)
+            {
+                return new PressRelease();
+            }
         }
 
         private static PressRelease GetPressRelease(XElement mainElement, bool isSnippet, string typeToShow)
@@ -176,6 +216,11 @@ namespace Investor.Abstraction.Pressreleases
         static string HtmlToText(string text)
         {
             return Regex.Replace(text, "<[^>]*>", String.Empty);
+        }
+
+        protected string GetLanguage(string culture)
+        {
+            return culture.Substring(0, 2);
         }
     }
 }

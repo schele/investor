@@ -1,15 +1,31 @@
-﻿@using Investor.Models.PageModels
+﻿@using Investor.Abstraction.Pressreleases
+@using Investor.Models.PageModels
+@using StructureMap
 
 @inherits UmbracoViewPage<IFramePageModel>
 
 @{
     Layout = "Master.cshtml";
-    var id = 0;
-
+    
+    var id = string.Empty;
+    var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
+    var title = string.Empty;
+    var body = string.Empty;
+    var date = string.Empty;
+    var time = string.Empty;
+    
     if (!string.IsNullOrEmpty(Request.QueryString["id"]))
     {
-        id = int.Parse(Request.QueryString["id"]);
+        id = Request.QueryString["id"];
+
+        var pressRelease = pressReleaseRepository.GetPressRelease(id);
+        title = pressRelease.Headline;
+        body = pressRelease.Body;
+        date = pressRelease.Published.ToString(Umbraco.GetDictionaryValue("DateFormat"));
+        time = pressRelease.Published.ToString(Umbraco.GetDictionaryValue("TimeFormat"));
     }
+
+    
 }
 
 <div class="row">
@@ -17,9 +33,13 @@
 
  
         <article class="col-md-7 iframe-page">
-            @if (id != 0)
-            {
-                <span>här ska det in en pressrelease med id "@id"</span>
+            @if (!string.IsNullOrWhiteSpace(id))
+            {                
+                <div>
+                    <h1>@title</h1>
+                    <p>@date @time</p>
+                    @Html.Raw(body)                    
+                </div>
             }
             else
             {

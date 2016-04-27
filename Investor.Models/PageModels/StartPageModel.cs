@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
+using umbraco.interfaces;
 using UCodeFirst;
 using UCodeFirst.Attributes;
 using UCodeFirst.ContentTypes;
@@ -64,6 +65,42 @@ namespace Investor.Models.PageModels
         #endregion
 
         #region footer
+ 
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Footer,
+            DisplayName = "Länk till \"About Investor\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode AboutInvestorNode { get; set; }
+
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Footer,
+            DisplayName = "Länk till \"Our Investments\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode OurInvestmentsNode { get; set; }
+
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Footer,
+            DisplayName = "Länk till \"Investors & Media\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode InvestorsAndMediaNode { get; set; }
+
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Footer,
+            DisplayName = "Länk till \"Press Releases\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode PressReleasesNode { get; set; }
 
         [Property(
             UmbracoDataType.RichtextEditor,

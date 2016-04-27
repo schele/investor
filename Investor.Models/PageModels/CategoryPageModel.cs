@@ -52,15 +52,6 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string Preamble { get; set; }
-
-        //[Property(
-        //    UmbracoDataType.RichtextEditor,
-        //    Tab.Content,
-        //    DisplayName = "Innehåll",
-        //    Description = "",
-        //    Converter = typeof(RichtextConverter)
-        //)]
-        //public virtual IHtmlString Body { get; set; }
         
         #endregion
     }

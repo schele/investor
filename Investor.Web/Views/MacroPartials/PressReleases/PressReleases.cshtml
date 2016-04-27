@@ -1,4 +1,5 @@
 ﻿@using Investor.Abstraction.Pressreleases
+@using ServiceStack
 @using StructureMap
 @using Umbraco.Web.Macros
 
@@ -7,6 +8,8 @@
 @{
     var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
     var url = @Model.MacroParameters["Url"].ToString();
+    
+    //var pressReleaseNode = Model.StartPage
 }
 
 <div class="press-releases">

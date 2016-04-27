@@ -1,4 +1,5 @@
-﻿@using Investor.Models.PageModels
+﻿@using Investor.Helpers
+@using Investor.Models.PageModels
 
 @inherits UmbracoViewPage<InvestmentPageModel>
 
@@ -6,9 +7,67 @@
     Layout = "Master.cshtml";
 }
 
-@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+@functions
+{
+    //protected string GetPreviousUrl()
+    //{
+    //    var parentNode = Current.Parent;
+    //    var list = parentNode.ChildrenAsList.Where(item => item.NodeTypeAlias == "InvestmentPageModel");
+    //    string url;
+
+    //    if (Current.IsNotFirst() && Current.NodeTypeAlias == "Company")
+    //    {
+    //        url = Current.Previous().Url;
+    //    }
+    //    else
+    //    {
+    //        url = list.Last().Url;
+    //    }
+
+    //    return url;
+    //}
+
+    //protected string GetNextUrl()
+    //{
+    //    var parentNode = Current.Parent;
+    //    var list = parentNode.ChildrenAsList.Where(item => item.NodeTypeAlias == "InvestmentPageModel");
+    //    string url;
+
+    //    if (Current.IsNotLast() && Current.Next().NodeTypeAlias == "Company")
+    //    {
+    //        url = Current.Next().Url;
+    //    }
+    //    else
+    //    {
+    //        url = list.First().Url;
+    //    }
+
+    //    return url;
+    //}
+}
+
 
 <div>
-    <h1>@Model.CurrentPage.Name</h1>
-    <span>@Model.ColorDropdown</span>
+    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
+    @Html.Render(Model.Preamble, @<span>@Model.Preamble</span>)
+    @Html.Raw(Model.Text)
+    @Html.Render(Model.Image, @<img src="@Model.Image.Url" alt="@Model.Header"/>)
+    @Model.ColorDropdown
+</div>
+
+<div>
+    @Html.Render(Model.FactsWebsite, @<a href="@Model.FactsWebsite" title="@Model.FactsWebsite">@Model.FactsWebsiteHeader</a>)
+    @Html.Render(Model.FactsOffice, @<span>Registered Office: @Model.FactsOffice</span>)
+    @Html.Render(Model.FactsListed, @<span>Listed: @Model.FactsListed</span>)
+    @Html.Render(Model.FactsBusinessArea, @<span>Business Area: @Model.FactsBusinessArea</span>)
+    @Html.Render(Model.FactsShare, @<span>Share of total assets (%): @Model.FactsShare</span>)
+    @Html.Render(Model.FactsOwnership, @<span>Ownership capital/votes (%): @Model.FactsOwnership</span>)
+    @Html.Render(Model.FactsInvestment, @<span>Investment Year: @Model.FactsInvestment</span>)
+    @Html.Render(Model.FactsBoard, @<span>Serving On The Board: @Model.FactsBoard</span>)
+</div>
+
+<div>
+    @*Umbraco.GetDictionaryValue*@
+    <a class="previous" href="#">@library.GetDictionaryItem("Previous Investment")</a> |
+    <a class="next link" href="#">@library.GetDictionaryItem("Next Investment")</a>
 </div>

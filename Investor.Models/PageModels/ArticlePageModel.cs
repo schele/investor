@@ -52,9 +52,7 @@ namespace Investor.Models.PageModels
         )]
         public virtual string Preamble { get; set; }
 
-        //todo: lägg till rich text editor
         //bugg: när man lägger till en bild blir det fel
-
         [Property(
             UmbracoDataType.RichtextEditor,
             Tab.Content,

@@ -46,28 +46,47 @@
     //}
 }
 
-
-    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
-    @Html.Render(Model.Preamble, @<span>@Model.Preamble</span>)
-    @Html.Raw(Model.Text)
-    @Html.Render(Model.Image, @<img src="@Model.Image.Url" alt="@Model.Header"/>)
-    @Model.ColorDropdown
-</div>
-
-<div>
-    @Html.Render(Model.FactsWebsite, @<a href="@Model.FactsWebsite" title="@Model.FactsWebsite">@Model.FactsWebsiteHeader</a>)
-    @Html.Render(Model.FactsOffice, @<span>Registered Office: @Model.FactsOffice</span>)
-    @Html.Render(Model.FactsListed, @<span>Listed: @Model.FactsListed</span>)
-    @Html.Render(Model.FactsBusinessArea, @<span>Business Area: @Model.FactsBusinessArea</span>)
-    @Html.Render(Model.FactsShare, @<span>Share of total assets (%): @Model.FactsShare</span>)
-    @Html.Render(Model.FactsOwnership, @<span>Ownership capital/votes (%): @Model.FactsOwnership</span>)
-    @Html.Render(Model.FactsInvestment, @<span>Investment Year: @Model.FactsInvestment</span>)
-    @Html.Render(Model.FactsBoard, @<span>Serving On The Board: @Model.FactsBoard</span>)
-</div>
-
-<div>
-    @*Umbraco.GetDictionaryValue*@
-    <a class="previous" href="#">@library.GetDictionaryItem("Previous Investment")</a> |
-    <a class="next link" href="#">@library.GetDictionaryItem("Next Investment")</a>
+<article class="investment-page">
+    <div class="row">
+        <div class="col-md-12 investment-page-next-previous">
+            @*Umbraco.GetDictionaryValue*@
+            <a class="previous" href="#">@library.GetDictionaryItem("Previous Investment")</a> |
+            <a class="next link" href="#">@library.GetDictionaryItem("Next Investment")</a>
+        </div>
     </div>
+    <div class="row investment-page-intro">
+        <div class="col-md-7 col-sm-6">
+            @Html.Render(Model.Header, @<h1> @Model.Header </h1>)
+            @Html.Render(Model.Preamble, @<p class="@Model.ColorDropdown">@Model.Preamble</p>)
+        </div>
+        <div class="col-md-5 col-sm-6">
+            @Html.Render(Model.Image, @<img src="@Model.Image.Url" alt="@Model.Header" />)
+        </div>
+    </div>
+    <div class="row">    
+        <div class="text-editor-content col-md-7">
+            @Html.Raw(Model.Text)
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12 investment-page-facts">
+            @Html.Render(Model.FactsWebsite, @<a class="investment-page-facts-link" href="@Model.FactsWebsite" title="@Model.FactsWebsite">@Model.FactsWebsiteHeader</a>)
+            <div class="investment-page-facts-info">
+                @Html.Render(Model.FactsWebsite, @<h2><a class="@Model.ColorDropdown" href="@Model.FactsWebsite" title="@Model.FactsWebsite">Company Facts</a></h2>)
+                <h3>Registered Office:</h3>
+                @Html.Render(Model.FactsOffice, @<span>@Model.FactsOffice</span>)
+                <h3>Listed:</h3>
+                @Html.Render(Model.FactsListed, @<span>@Model.FactsListed</span>)
+                <h3>Business Area:</h3>
+                @Html.Render(Model.FactsBusinessArea, @<span>@Model.FactsBusinessArea</span>)
+                <h3>Share of total assets (%):</h3>
+                @Html.Render(Model.FactsShare, @<span>@Model.FactsShare</span>)
+                <h3>Ownership capital/votes (%):</h3>
+                @Html.Render(Model.FactsOwnership, @<span>@Model.FactsOwnership</span>)
+                <h3>Investment Year:</h3>
+                @Html.Render(Model.FactsInvestment, @<span>@Model.FactsInvestment</span>)
+                <h3>Serving On The Board:</h3>
+                @Html.Render(Model.FactsBoard, @<span>@Model.FactsBoard</span>)
+            </div>
+        </div>
+    </div>
+
 </article>

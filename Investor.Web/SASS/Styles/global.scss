@@ -11,10 +11,6 @@ strong {
     font-weight: bold !important;
 }
 
-article {
-    padding: 30px 0;
-}
-
 article h1 {
     font-size: 27px;
     font-weight: bold;  
@@ -30,4 +26,30 @@ article h1 {
 
 #fancy_box {
     display: none;
+}
+
+article {
+    padding: 30px 0;
+}
+
+.text-editor-content p {
+    font-size: 16px;
+    margin-bottom: 16px;
+    line-height: 24px;
+}
+
+.text-editor-content img {
+    max-width: 100%;
+}
+
+.text-editor-content ul {
+    list-style: disc;
+    margin-left: 16px;
+    margin-bottom: 20px;
+}
+
+.text-editor-content ul li {
+    font-size: 16px;
+    line-height: 22px;
+    padding: 0 0 10px 0;
 }

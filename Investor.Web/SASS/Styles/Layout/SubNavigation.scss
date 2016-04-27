@@ -65,12 +65,6 @@
     display: none;
 }
 
-@media (min-width: 990px) {
-    .sub-navigation .sub-navigation-nav {
-        display: block !important;
-    }
-}
-
 @media (max-width: 990px) {
     .sub-navigation {
         padding-right: 15px;
@@ -82,5 +76,9 @@
 
     .sub-navigation .sub-navigation-nav {
         display: none;
+    }
+
+    .sub-navigation .sub-navigation-nav {
+        display: block !important;
     }
 }

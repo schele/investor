@@ -484,6 +484,7 @@
     <Content Include="Scripts\campaign-lightbox.js" />
     <Content Include="Scripts\iframe-size.js" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
+    <Content Include="Scripts\lib\jquery-ui.min.js" />
     <Content Include="Scripts\lib\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\mobile-navigation.js" />
@@ -620,6 +621,7 @@
     <Content Include="Config\EmbeddedMedia.config" />
     <Content Include="Config\Dashboard.config" />
     <Content Include="App_Plugins\DropdownForInvestmentsEditor\package.manifest" />
+    <Content Include="SASS\Styles\Pages\Investment.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

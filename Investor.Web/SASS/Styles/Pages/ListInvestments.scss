@@ -6,7 +6,19 @@
     font-size: 27px;
     font-weight: bold;
     margin-bottom: 24px;
-    color: #00AAD2;
+    color: #000;
+}
+
+.list-investments-page h1.investments-theme-color--green {
+    color: #b5bf00;
+}
+
+.list-investments-page h1.investments-theme-color--blue {
+    color: #00aad2;
+}
+
+.list-investments-page h1.investments-theme-color--orange {
+    color: #ef8100;
 }
 
 .list-investments-page p {

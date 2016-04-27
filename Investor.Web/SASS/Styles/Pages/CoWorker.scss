@@ -1,5 +1,6 @@
 ﻿.co-worker-page {
-
+    border-left: 1px solid rgb(201, 201, 201);
+    margin-left: -1px;
 }
 
 .co-worker-page img {
@@ -22,6 +23,12 @@
 
 .co-worker-page .co-worker-page-content p {
 
+}
+
+@media (max-width: 990px) {
+    .co-worker-page {
+        border-left: none;
+    }
 }
 
 @media (max-width: 767px) {

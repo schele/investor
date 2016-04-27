@@ -12,6 +12,11 @@
     position: absolute;
     transition: 1s;
     left: 0;
+    display: none;
+}
+
+.start-page .slide-show-container .slide-show-item.active {
+    display: block;
 }
 
 .start-page .slide-show-container .slide-show-item .slide-show-content {
@@ -50,7 +55,7 @@
     right: 10px;
 }
 
-.start-page .slide-show-container .slide-show-controls li.slide-show-dot {
+.start-page .slide-show-container .slide-show-controls .slide-show-dot {
     height: 15px;
     width: 15px;
     background: #f8f8f8;
@@ -59,7 +64,7 @@
     display: inline-block;
 }
 
-.start-page .slide-show-container .slide-show-controls li.slide-show-active-control {
+.start-page .slide-show-container .slide-show-controls .slide-show-dot.active {
     background: #fcc127;
 }
 

@@ -1,23 +1,46 @@
-﻿var slideIndex = 1;
-showSlides(slideIndex);
-
-$(".slide-show-dot").click(function() {
-  var n = $(this).attr("name");
-  showSlides(slideIndex = n);
-});
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("slide-show-item");
-  var dots = document.getElementsByClassName("slide-show-dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length};
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+﻿var initSlideShow = function() {
+  if ($('.slide-show-item:first-child') != null && $('.slide-show-dot:first-child') != null) {
+      $('.slide-show-item:first-child').addClass('active');
+      $('.slide-show-dot:first-child').addClass('active');
+      return true;
   }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" slide-show-active-control", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex - 1].className += " slide-show-active-control";
+  return false;
 }
+
+var addActiveClass = function(activeElement, firstItem) {
+  if (!activeElement.is(":last-child")) {
+    activeElement.next().addClass("active");
+  } else {
+    firstItem.addClass('active');
+  }
+}
+
+var autoSlide = function () {
+  var currentActiveSlide = $('.slide-show-item.active');
+  var currentActiveDot = $('.slide-show-dot.active');
+  var firstSlide = $('.slide-show-item:first-child');
+  var firstDot = $('.slide-show-dot:first-child');
+  $('.slide-show-item.active, .slide-show-dot.active').removeClass('active');
+  addActiveClass(currentActiveSlide, firstSlide);
+  addActiveClass(currentActiveDot, firstDot);
+}
+
+var selectSlide = function (setSlideInterval) {
+    $('.slide-show-dot').click(function () {
+      $('.slide-show-item.active, .slide-show-dot.active').removeClass('active');
+      var index = $(this).attr('name');
+      $('[name="' + index + '"]').addClass('active');
+      clearTimeout(setSlideInterval);
+      setSlideInterval = setInterval('autoSlide()', 14000);
+    });
+}
+
+var startSlideInterval = function () {
+  if (initSlideShow()) {
+    initSlideShow();
+    var setSlideInterval = setInterval('autoSlide()', 14000);
+    selectSlide(setSlideInterval);
+  }
+}
+
+startSlideInterval();

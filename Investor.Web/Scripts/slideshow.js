@@ -25,25 +25,22 @@ var autoSlide = function () {
   addActiveClass(currentActiveDot, firstDot);
 }
 
-var selectSlide = function () {
+var selectSlide = function (setSlideInterval) {
     $('.slide-show-dot').click(function () {
-    $('.slide-show-item.active, .slide-show-dot.active').removeClass('active');
-    var index = $(this).attr('name');
-    $('[name="' + index + '"]').addClass('active');
+      $('.slide-show-item.active, .slide-show-dot.active').removeClass('active');
+      var index = $(this).attr('name');
+      $('[name="' + index + '"]').addClass('active');
       clearTimeout(setSlideInterval);
-      setSlideInterval = setInterval('autoSlide()', 6000);
+      setSlideInterval = setInterval('autoSlide()', 14000);
     });
 }
-
-var setSlideInterval = setInterval('autoSlide()', 6000);
 
 var startSlideInterval = function () {
   if (initSlideShow()) {
     initSlideShow();
+    var setSlideInterval = setInterval('autoSlide()', 14000);
+    selectSlide(setSlideInterval);
   }
 }
 
-
-
 startSlideInterval();
-selectSlide();

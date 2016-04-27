@@ -9,43 +9,46 @@
 
 @functions
 {
-    //protected string GetPreviousUrl()
-    //{
-    //    var parentNode = Current.Parent;
-    //    var list = parentNode.ChildrenAsList.Where(item => item.NodeTypeAlias == "InvestmentPageModel");
-    //    string url;
+    protected string GetPreviousUrl()
+    {
+        var parent = Model.Parent<BaseModel>();
+        var list2 = parent.Children<InvestmentPageModel>();
+        var parentNode = Model.CurrentPage.Parent;
+        var list = parentNode.ChildrenAsList.Where(item => item.NodeTypeAlias == "InvestmentPageModel");
+        string url;
 
-    //    if (Current.IsNotFirst() && Current.NodeTypeAlias == "Company")
-    //    {
-    //        url = Current.Previous().Url;
-    //    }
-    //    else
-    //    {
-    //        url = list.Last().Url;
-    //    }
+        if (!Model.IsFirst())
+        {
+            var prevNode = Model.Previous<InvestmentPageModel>();
+            url = prevNode.Url;
+        }
+        else
+        {
+            url = list.Last().Url;
+        }
 
-    //    return url;
-    //}
+        return url;
+    }
 
-    //protected string GetNextUrl()
-    //{
-    //    var parentNode = Current.Parent;
-    //    var list = parentNode.ChildrenAsList.Where(item => item.NodeTypeAlias == "InvestmentPageModel");
-    //    string url;
+    protected string GetNextUrl()
+    {
+        var parentNode = Model.CurrentPage.Parent;
+        var list = parentNode.ChildrenAsList.Where(item => item.NodeTypeAlias == "InvestmentPageModel");
+        string url;
+        
+        if (!Model.IsLast())
+        {
+            var prevNode = Model.Next<InvestmentPageModel>();
+            url = prevNode.Url;
+        }
+        else
+        {
+            url = list.First().Url;
+        }
 
-    //    if (Current.IsNotLast() && Current.Next().NodeTypeAlias == "Company")
-    //    {
-    //        url = Current.Next().Url;
-    //    }
-    //    else
-    //    {
-    //        url = list.First().Url;
-    //    }
-
-    //    return url;
-    //}
+        return url;
+    }
 }
-
 
 <div>
     @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
@@ -68,6 +71,6 @@
 
 <div>
     @*Umbraco.GetDictionaryValue*@
-    <a class="previous" href="#">@library.GetDictionaryItem("Previous Investment")</a> |
-    <a class="next link" href="#">@library.GetDictionaryItem("Next Investment")</a>
+    <a class="previous" href="@GetPreviousUrl()">@Umbraco.GetDictionaryValue("System.Investment.PreviousInvestment")</a> |
+    <a class="next link" href="@GetNextUrl()">@library.GetDictionaryItem("Next Investment")</a>
 </div>

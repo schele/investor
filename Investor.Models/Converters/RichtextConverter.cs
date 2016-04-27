@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Web;
 using HtmlAgilityPack;
@@ -40,21 +41,18 @@ namespace Investor.Models.Converters
                 return html;
             }
 
-            var noScriptElement = doc.CreateElement("data-slimmage");
-
-            for (int index = 0; index < nodes.Count; index++)
+            foreach (var img in nodes.ToList())
             {
-                var img = nodes[index];
+                var noScriptElement = doc.CreateElement("data-slimmage");
                 img.Attributes.Remove("style");
 
                 if (img.Attributes["src"].Value.IndexOf("?", StringComparison.Ordinal) == -1)
                 {
                     img.Attributes["src"].Value = img.Attributes["src"].Value + "?width=480&amp;quality=75";
                 }
-
+                var nodeIndex = nodes.IndexOf(img);
                 noScriptElement.AppendChild(img);
-                var parent = img.ParentNode;
-                parent.InsertAfter(noScriptElement, img);
+                nodes.Insert(nodeIndex + 1, noScriptElement);
                 nodes.Remove(img);
             }
 

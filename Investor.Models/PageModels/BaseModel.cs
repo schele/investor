@@ -1,4 +1,5 @@
 using System.Globalization;
+using Investor.Models.Converters;
 using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
@@ -27,9 +28,10 @@ namespace Investor.Models.PageModels
             UmbracoDataType.TrueFalse,
             Tab.Navigation,
             DisplayName = "Hide In Navigation",
-            Description = "Välj om sidan ska visas i navigeringen"
+            Description = "Välj om sidan ska visas i navigeringen",
+            Converter = typeof(BoolConverter)
         )]
-        public virtual bool HideInNavigation { get; set; } // int eller bool, inget fungerar
+        public virtual bool HideInNavigation { get; set; }
 
         [Property(
             UmbracoDataType.Textstring,

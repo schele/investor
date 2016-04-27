@@ -113,7 +113,7 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.TextboxMultiple,
-            Tab.Footer,
+            CustomTabs.Cookie,
             DisplayName = "Cookie: Text",
             Description = ""
         )]
@@ -121,7 +121,7 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.Textstring,
-            Tab.Footer,
+            CustomTabs.Cookie,
             DisplayName = "Cookie: Länktext",
             Description = ""
         )]
@@ -129,7 +129,7 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.Textstring,
-            Tab.Footer,
+            CustomTabs.Cookie,
             DisplayName = "Cookie: Knapptext",
             Description = ""
         )]
@@ -165,5 +165,11 @@ namespace Investor.Models.PageModels
         public virtual string Grid { get; set; }
 
         #endregion
+    }
+
+    public enum CustomTabs
+    {
+        [EnumName("Cookie")]
+        Cookie
     }
 }

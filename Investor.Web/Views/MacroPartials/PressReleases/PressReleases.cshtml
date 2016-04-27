@@ -1,5 +1,7 @@
 ﻿@using Investor.Abstraction.Pressreleases
+@using Investor.Models.PageModels
 @using StructureMap
+@using UCodeFirst
 @using Umbraco.Web.Macros
 
 @inherits PartialViewMacroPage
@@ -8,8 +10,8 @@
     var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
     var url = Model.MacroParameters["Url"].ToString();
     
-    
-    //var pressReleaseNode = Model.StartPage
+    var startPage = Model.Content.ToStrongContent().AncestorOrSelf<StartPageModel>();
+    var pressReleaseUrl = startPage.PressReleasesNode;
 }
 
 <div class="press-releases">
@@ -27,12 +29,11 @@
     <ul class="press-releases-list">
         @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
         {
-            <li>
-                @* todo: get pressreleasenode from startpage *@
-                <a href="/investors-media/press-releases/?id=@pressRelease.Id">
-                    <span class="press-releases-date">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("DateFormat"))</span>
-                    <span class="press-releases-time">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("TimeFormat"))</span>
-                    <span class="press-releases-link-text">@pressRelease.Headline</span>                            
+            <li>                
+                <a href="@pressReleaseUrl.Url?id=@pressRelease.Id">
+                    <span class="press-releases-date">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+                    <span class="press-releases-time">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+                    <span class="press-releases-link-text">@pressRelease.Headline</span>
                 </a>
             </li>
         }

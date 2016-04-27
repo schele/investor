@@ -286,6 +286,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BoolConverter.cs" />
     <Compile Include="Converters\DocumentConverter.cs" />
     <Compile Include="Converters\MediaConverter.cs" />
     <Compile Include="Converters\ModelConverter.cs" />

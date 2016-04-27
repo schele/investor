@@ -17,8 +17,8 @@
             <div class="co-worker-page-content col-md-5 col-sm-5">
                 @Html.Render(Model.Name, @<h1>@Model.Name</h1>)
                 @Html.Render(Model.Position, @<span>Position: @Model.Position</span>)
-                @Html.Render(Model.Phone, @<p>@Umbraco.GetDictionaryValue("Phone"): @Model.Phone</p>)
-                @Html.Render(Model.Mobile, @<p>@Umbraco.GetDictionaryValue("Mobile"): @Model.Mobile</p>)
+                @Html.Render(Model.Phone, @<p>@Umbraco.GetDictionaryValue("System.Contact.Phone"): @Model.Phone</p>)
+                @Html.Render(Model.Mobile, @<p>@Umbraco.GetDictionaryValue("System.Contact.Mobile"): @Model.Mobile</p>)
             </div>
         </div>
     </article>

@@ -26,6 +26,8 @@ namespace Investor.Models.PageModels
 
         #endregion
 
+        #region page
+
         [Property(
             "Dropdown for Investments",
             Tab.Page,
@@ -33,5 +35,7 @@ namespace Investor.Models.PageModels
             Description = "Välj vilken färg som ska visas för företagsnamnet"
         )]
         public virtual string ColorDropdown { get; set; }
+
+        #endregion
     }
 }

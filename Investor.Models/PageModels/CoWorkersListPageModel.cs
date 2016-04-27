@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
+using System.Web;
+using Investor.Models.Converters;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
+using UCodeFirst.Tab;
 using Umbraco.Core.Models;
 
 namespace Investor.Models.PageModels
@@ -31,6 +29,19 @@ namespace Investor.Models.PageModels
         public CoWorkersListPageModel(IPublishedContent content) : base(content)
         {
         }
+
+        #endregion
+
+        #region content
+
+        [Property(
+            UmbracoDataType.RichtextEditor,
+            Tab.Content,
+            DisplayName = "Text",
+            Description = "",
+            Converter = typeof(RichtextConverter)
+        )]
+        public virtual IHtmlString Text { get; set; }
 
         #endregion
     }

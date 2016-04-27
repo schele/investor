@@ -6,73 +6,54 @@
 @inherits UmbracoViewPage<ArticlePageModel>
 
 @{
-    var relatedDocuments = Umbraco.Field("relateradeDokument").ToString();
     Layout = "Master.cshtml";
-
-
-    var docs = Model.RelatedDocuments;
-    var dd = docs;
-    //var image = Model.PushImage;
-    //var i = image;
 }
 
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
-
-    <div>
-        <img src="@Model.PushImage" alt="" />
-    </div>
 
     <article class="article-page col-md-9">
         <div class="row">
             <div class="article-page-content col-md-9">
                 @Html.Render(Model.Header, @<h1 class="article-page-header">@Model.Header</h1>)
                 @Html.Render(Model.Preamble, @<p class="article-page-premable">@Model.Preamble</p>)
-
-                @if (Umbraco.Field("broedtext") != null)
-                {
-                    <div class="article-page-body">
-                        @Html.Raw(Umbraco.Field("broedtext"))
-                    </div>
-                }
+                @Html.Render(Model.Text, @<div class="article-page-body">@Html.Raw(Model.Text)</div>)
             </div>
             <div class="col-md-3">
 
-            @if (Model.RelatedLinks != null)
-            {
-                <div class="article-page-links">
-                    <h3>
-                        <span class="icon"></span>@Model.RelatedLinksHeader
-                    </h3>
-                    <ul>
-                        @foreach (var link in Model.RelatedLinks)
-                        {
-                            var target = link.NewWindow ? "_blank" : null;
+                @if (Model.RelatedLinks != null)
+                {
+                    <div class="article-page-links">
+                        <h3>
+                            <span class="icon"></span>@Model.RelatedLinksHeader
+                        </h3>
+                        <ul>
+                            @foreach (var link in Model.RelatedLinks)
+                            {
+                                var target = link.NewWindow ? "_blank" : null;
 
-                            <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
-                        }
-                    </ul>
-                </div>
-            }
+                                <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
 
-            @if (!string.IsNullOrEmpty(relatedDocuments))
-            {
                 <div class="article-page-documents">
                     <h3>
                         <span class="icon"></span>@Model.RelatedDocumentsHeader
                     </h3>
                     <ul>
-                        @{
-                        foreach (var d in relatedDocuments.Split(','))
+                        @foreach (var document in Model.RelatedDocuments)
                         {
-                            var document = MediaExtensions.GetMediaById(d);
+                            if (document != null)
+                            {
+                                var doc = MediaExtensions.GetMediaById(document.Id.ToString());
 
-                            <li><a href="@document.FriendlyUrl()" title="@document.Name">@Path.GetFileNameWithoutExtension(document.Name)</a></li>
-                        }
+                                <li><a href="@doc.FriendlyUrl()" title="@doc.Name">@Path.GetFileNameWithoutExtension(doc.Name)</a></li>
+                            }
                         }
                     </ul>
                 </div>
-            }
             </div>
         </div>
     </article>

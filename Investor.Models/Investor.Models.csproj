@@ -309,6 +309,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PageModels\BaseModel.cs" />
+    <Compile Include="PageModels\IInvestments.cs" />
     <Compile Include="PageModels\InvestmentPageModel.cs" />
     <Compile Include="PageModels\ListInvestmentsPageModel.cs" />
     <Compile Include="PageModels\PageNotFoundModel.cs" />

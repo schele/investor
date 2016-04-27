@@ -1,24 +1,24 @@
-﻿@using Investor.Models.PageModels
+﻿@using Investor.Helpers
+@using Investor.Models.PageModels
 
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @inherits UmbracoViewPage<CoWorkerPageModel>
 
 @{
     Layout = "Master.cshtml";
 }
+
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
     <article class="co-worker-page col-md-7 col-sm-12">
         <div class="row">
             <div class="col-md-3 col-sm-3">
-                <img src="/media/1015/susanna.gif" alt="" />
+                @Html.Render(Model.Image.Url, @<img src="@Model.Image.Url" alt="@Model.Name" />)
             </div>
             <div class="co-worker-page-content col-md-5 col-sm-5">
-                <h1>Susanna sjödin</h1>
-                <span>Communications Officer</span>
-                <p>
-                    Telephone: +46 8 614 20 60
-                </p>
+                @Html.Render(Model.Name, @<h1>@Model.Name</h1>)
+                @Html.Render(Model.Position, @<span>Position: @Model.Position</span>)
+                @Html.Render(Model.Phone, @<p>@Umbraco.GetDictionaryValue("Phone"): @Model.Phone</p>)
+                @Html.Render(Model.Mobile, @<p>@Umbraco.GetDictionaryValue("Mobile"): @Model.Mobile</p>)
             </div>
         </div>
     </article>

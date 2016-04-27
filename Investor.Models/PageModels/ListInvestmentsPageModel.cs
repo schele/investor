@@ -16,7 +16,7 @@ namespace Investor.Models.PageModels
                 typeof(InvestmentPageModel)
             }
     )]
-    public class ListInvestmentsPageModel : BaseModel
+    public class ListInvestmentsPageModel : BaseModel, IInvestments
     {
         #region constructors
 
@@ -49,6 +49,8 @@ namespace Investor.Models.PageModels
 
         #endregion
 
+        #region push
+
         [Property(
             UmbracoDataType.TextboxMultiple,
             Tab.Push,
@@ -56,5 +58,19 @@ namespace Investor.Models.PageModels
             Description = "Denna text visas i puffar"
         )]
         public virtual string PuffPreamble { get; set; }
+
+        #endregion
+
+        #region page
+
+        [Property(
+            "Dropdown for Investments",
+            Tab.Page,
+            DisplayName = "Dropdown: Rubrikfärg",
+            Description = "Välj vilken färg som ska visas för företagsnamnet"
+        )]
+        public virtual string ColorDropdown { get; set; }
+
+        #endregion
     }
 }

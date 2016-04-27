@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
+using UCodeFirst.Tab;
 using Umbraco.Core.Models;
 
 namespace Investor.Models.PageModels
@@ -11,7 +12,7 @@ namespace Investor.Models.PageModels
         Description = "En sida för att skapa en investering.",
         AllowAtRoot = false
     )]
-    public class InvestmentPageModel : BaseModel
+    public class InvestmentPageModel : BaseModel, IInvestments
     {
         #region constructors
         
@@ -22,6 +23,18 @@ namespace Investor.Models.PageModels
         public InvestmentPageModel(IPublishedContent content) : base(content)
         {
         }
+
+        #endregion
+
+        #region page
+
+        [Property(
+            "Dropdown for Investments",
+            Tab.Page,
+            DisplayName = "Dropdown: Rubrikfärg",
+            Description = "Välj vilken färg som ska visas för företagsnamnet"
+        )]
+        public virtual string ColorDropdown { get; set; }
 
         #endregion
     }

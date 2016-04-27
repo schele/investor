@@ -346,6 +346,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\DropdownForInvestmentsEditor\dropdownforinvestmentseditor.controller.js" />
+    <Content Include="App_Plugins\DropdownForInvestmentsEditor\dropdownforinvestmentseditor.html" />
     <Content Include="App_Plugins\DropdownForRobotsEditor\dropdownforrobotseditor.controller.js" />
     <Content Include="App_Plugins\DropdownForRobotsEditor\dropdownforrobotseditor.html" />
     <Content Include="App_Plugins\MacroContainerEditor\macrocontainereditor.controller.js" />
@@ -617,6 +619,7 @@
     <Content Include="Config\ExamineIndex.config" />
     <Content Include="Config\EmbeddedMedia.config" />
     <Content Include="Config\Dashboard.config" />
+    <Content Include="App_Plugins\DropdownForInvestmentsEditor\package.manifest" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

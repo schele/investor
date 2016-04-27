@@ -1,5 +1,4 @@
 using System.Globalization;
-using umbraco.interfaces;
 using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;

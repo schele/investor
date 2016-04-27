@@ -1,0 +1,15 @@
+﻿{
+    propertyEditors: [
+    {
+		name: "Dropdown for Investments",
+        alias: "DropdownForInvestmentsEditor",
+        editor: {
+            view: "~/App_Plugins/DropdownForInvestmentsEditor/dropdownforinvestmentseditor.html"
+        }
+    }
+    ]
+    ,
+    javascript: [
+        '~/App_Plugins/DropdownForInvestmentsEditor/dropdownforinvestmentseditor.controller.js'
+    ]
+}

@@ -6,9 +6,13 @@
     Layout = "Master.cshtml";
 }
 
-@Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+<article class="investment-page">
+    <div class="row">
+        <div class="col-md-4 pull-right investment-page-next-previous">
+            <a href="">Previous investment</a>
+            <a href="">Next investment</a>
+        </div>
 
-<div>
-    <h1>@Model.CurrentPage.Name</h1>
-    <span>@Model.ColorDropdown</span>
-</div>
+        <h1>@Model.CurrentPage.Name</h1>
+    </div>
+</article>

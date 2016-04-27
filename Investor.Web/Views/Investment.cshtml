@@ -72,9 +72,9 @@
             @Html.Raw(Model.Text)
         </div>
         <div class="col-md-4 col-sm-12 col-xs-12 investment-page-facts">
-            @Html.Render(Model.FactsWebsite, @<a class="investment-page-facts-link" href="@Model.FactsWebsite" title="@Model.FactsWebsite">@Model.FactsWebsiteHeader</a>)
+            @Html.Render(Model.FactsWebsite, @<a class="investment-page-facts-link" href="@Model.FactsWebsite" title="@Model.FactsWebsite" target="_blank">@Model.FactsWebsiteHeader</a>)
             <div class="investment-page-facts-info">
-                @Html.Render(Model.FactsWebsite, @<h2><a class="@Model.ColorDropdown" href="@Model.FactsWebsite" title="@Model.FactsWebsite">Company Facts</a></h2>)
+                @Html.Render(Model.FactsWebsite, @<h2><span class="@Model.ColorDropdown">@Model.FactsHeader</span></h2>)
                 <h3>Registered Office:</h3>
                 @Html.Render(Model.FactsOffice, @<span>@Model.FactsOffice</span>)
                 <h3>Listed:</h3>

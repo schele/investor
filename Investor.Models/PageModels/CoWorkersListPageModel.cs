@@ -10,7 +10,7 @@ namespace Investor.Models.PageModels
 {
     [ContentType(
         DisplayName = "Sida: Listning Medarbetare",
-        Icon = Icon.Article,
+        Icon = Icon.Users,
         Description = "En sida för att lista medarbetare.",
         AllowAtRoot = false,
         AllowedChildNodes = new object[]

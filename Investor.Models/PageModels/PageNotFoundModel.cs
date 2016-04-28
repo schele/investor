@@ -10,7 +10,7 @@ namespace Investor.Models.PageModels
 {
     [ContentType(
         DisplayName = "Sida: 404",
-        Icon = Icon.Search,
+        Icon = Icon.ApplicationError,
         Description = "En sida som visas när man går till en länk som inte finns i systemet.",
         AllowAtRoot = true
     )]

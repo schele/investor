@@ -1,12 +1,15 @@
 ﻿@using Investor.Helpers
-@using Investor.Models.Extensions
 @using Investor.Models.PageModels
+@using Investor.Models.PageModels.Interfaces
+@using log4net
 
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @inherits UmbracoViewPage<CategoryPageModel>
 
 @{
     Layout = "Master.cshtml";
+    
+    var log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);     
 }
 
 <div class="category-page">
@@ -18,30 +21,122 @@
     </div>
 
     <div class="row">
-        @foreach (var page in Model.Children<ArticlePageModel>())
+
+        @foreach (var page in Model.Children())
         {
-            <div class="category-page-category col-md-4 col-sm-4">
-                @Html.Render(page.PushImage, @<p><img src="@page.PushImage.Url" alt="@page.Name" /></p>)
-
-                <h2>
-                    <a href="@page.Url" title="@page.Name">@page.Name</a>
-                </h2>
-
-                <p>@page.PushText</p>
-
-                @if (page.RelatedLinksForPush != null)
+            if (page is IPush)
+            {                
+                //ArticlePageModel
+                try
                 {
-                    <span>@page.RelatedLinksForPushHeader</span>
-                    <ul>
-                        @foreach (var link in page.RelatedLinksForPush)
-                        {
-                            <li>
-                                <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                            </li>
-                        }
-                    </ul>
+                    var article = page as ArticlePageModel;
+
+                    if (article != null)
+                    {
+                        <div class="category-page-category col-md-4 col-sm-4">
+
+                            @Html.Render(article.PushImage, @<p><img src="@article.PushImage.Url" alt="@article.Name"/></p>)
+
+                            <h2>
+                                <a href="@article.Url" title="@article.Name">@article.Name</a>
+                            </h2>
+
+                            <p>@article.PushText</p>
+
+                            @if (article.RelatedLinksForPush != null)
+                            {
+                                <span>@article.RelatedLinksForPushHeader</span>
+                                <ul>
+                                    @foreach (var link in article.RelatedLinksForPush)
+                                    {
+                                        <li>
+                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    }
                 }
-            </div>
+                catch (Exception exception)
+                {
+                    log.Error(exception.Message);
+                }
+
+                //ListInvestmentsPageModel
+                try
+                {
+                    var investment = page as ListInvestmentsPageModel;
+
+                    if (investment != null)
+                    {
+                        <div class="category-page-category col-md-4 col-sm-4">
+
+                            @Html.Render(investment.PushImage, @<p><img src="@investment.PushImage.Url" alt="@investment.Name"/></p>)
+
+                            <h2>
+                                <a href="@investment.Url" title="@investment.Name" class="@investment.ColorDropdown">@investment.Name</a>
+                            </h2>
+
+                            <p>@investment.PushText</p>
+
+                            @if (investment.RelatedLinksForPush != null)
+                            {
+                                <span>@investment.RelatedLinksForPushHeader</span>
+                                <ul>
+                                    @foreach (var link in investment.RelatedLinksForPush)
+                                    {
+                                        <li>
+                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    }
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception.Message);
+                }
+
+                //IFramePageModel
+                try
+                {
+                    var iframe = page as IFramePageModel;
+
+                    if (iframe != null)
+                    {
+                        <div class="category-page-category col-md-4 col-sm-4">
+
+                            @Html.Render(iframe.PushImage, @<p><img src="@iframe.PushImage.Url" alt="@iframe.Name"/></p>)
+
+                            <h2>
+                                <a href="@iframe.Url" title="@iframe.Name">@iframe.Name</a>
+                            </h2>
+
+                            <p>@iframe.PushText</p>
+
+                            @if (iframe.RelatedLinksForPush != null)
+                            {
+                                <span>@iframe.RelatedLinksForPushHeader</span>
+                                <ul>
+                                    @foreach (var link in iframe.RelatedLinksForPush)
+                                    {
+                                        <li>
+                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    }
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception.Message);
+                }
+            }
         }
     </div>
 </div>

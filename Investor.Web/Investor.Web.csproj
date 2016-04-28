@@ -622,6 +622,8 @@
     <Content Include="Config\Dashboard.config" />
     <Content Include="App_Plugins\DropdownForInvestmentsEditor\package.manifest" />
     <Content Include="SASS\Styles\Pages\Investment.scss" />
+    <Content Include="Views\Search.cshtml" />
+    <Content Include="Views\Newsroom.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

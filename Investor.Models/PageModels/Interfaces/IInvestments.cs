@@ -1,4 +1,4 @@
-﻿namespace Investor.Models.PageModels
+﻿namespace Investor.Models.PageModels.Interfaces
 {
     public interface IInvestments
     {

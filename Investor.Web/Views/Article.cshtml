@@ -30,23 +30,41 @@
                             <span class="icon"></span>@Model.RelatedLinksHeader
                         </h3>
                         <ul>
-                            @foreach (var link in Model.RelatedLinks)
+                            @foreach (var link in Model.RelatedLinks.Take(5))
                             {
                                 var target = link.NewWindow ? "_blank" : null;
 
                                 <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
+
                             }
                         </ul>
+                        @if (Model.RelatedLinks.Count() > 5)
+                        {
+
+                            <ul class="article-page-links-expandable">
+                                @foreach (var link in Model.RelatedLinks.Skip(5))
+                                {
+                                    var target = link.NewWindow ? "_blank" : null;
+
+                                    <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
+                                }
+                            </ul>
+                            <button class="article-page-links-expand-btn">
+                                <span class="article-page-links-expandable-closed active">Read more</span>
+                                <span class="article-page-links-expandable-open">Read less</span>
+                            </button> 
+                        }
                     </div>
                 }
 
-                @if (docs[0] != null) {
+                @if (docs[0] != null)
+                {
                     <div class="article-page-documents">
                         <h3>
                             <span class="icon"></span>@Model.RelatedDocumentsHeader
                         </h3>
                         <ul>
-                            @foreach (var document in Model.RelatedDocuments)
+                            @foreach (var document in Model.RelatedDocuments.Take(5))
                             {
                                 if (document != null)
                                 {
@@ -56,8 +74,26 @@
                                 }
                             }
                         </ul>
+                        @if (Model.RelatedDocuments.Count() > 5)
+                        {
+                            <ul class="article-page-documents-expandable">
+                                @foreach (var document in Model.RelatedDocuments.Skip(5))
+                                {
+                                    if (document != null)
+                                    {
+                                        var doc = MediaExtensions.GetMediaById(document.Id.ToString());
+
+                                        <li><a href="@doc.FriendlyUrl()" title="@doc.Name">@Path.GetFileNameWithoutExtension(doc.Name)</a></li>
+                                    }
+                                }
+                            </ul>
+                            <button class="article-page-documents-expand-btn">
+                                <span class="article-page-documents-expandable-closed active">Read more</span>
+                                <span class="article-page-documents-expandable-open">Read less</span>
+                            </button>
+                        }                
                     </div>
-                }
+                }                
             </div>
         </div>
     </article>

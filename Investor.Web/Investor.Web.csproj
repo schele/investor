@@ -486,6 +486,7 @@
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
     <Content Include="Scripts\lib\jquery-ui.min.js" />
     <Content Include="Scripts\lib\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\list-expand.js" />
     <Content Include="Scripts\slideshow.js" />
     <Content Include="Scripts\mobile-navigation.js" />
     <Content Include="Scripts\sub-navigation.js" />

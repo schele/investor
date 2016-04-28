@@ -63,7 +63,9 @@
 }
 
 .article-page .article-page-documents a,
-.article-page .article-page-links a {    
+.article-page .article-page-links a,
+.article-page .article-page-documents button,
+.article-page .article-page-links button {    
     word-break: break-all;
     text-decoration: none;
     font-size: 14px;
@@ -73,9 +75,40 @@
     padding: 15px 0;
 }
 
+.article-page .article-page-documents button,
+.article-page .article-page-links button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    text-align: left;
+}
+
 .article-page .article-page-documents a {
     background: url(/images/filetypes/pdf.png) no-repeat 0px 11px;
     padding-left: 30px;
+}
+
+.article-page .article-page-documents .article-page-documents-expandable,
+.article-page .article-page-links .article-page-links-expandable {
+    display: none;
+    margin: 0;
+}
+
+.article-page .article-page-links .article-page-links-expandable-open,
+.article-page .article-page-links .article-page-links-expandable-closed,
+.article-page .article-page-documents .article-page-documents-expandable-open,
+.article-page .article-page-documents .article-page-documents-expandable-closed {
+    display: none;
+}
+
+.article-page .article-page-links .article-page-links-expandable-open.active,
+.article-page .article-page-links .article-page-links-expandable-closed.active,
+.article-page .article-page-documents .article-page-documents-expandable-open.active,
+.article-page .article-page-documents .article-page-documents-expandable-closed.active {
+    display: block;
 }
 
 @media (max-width: 990px) {

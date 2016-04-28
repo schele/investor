@@ -16,17 +16,14 @@ var expandLinkList = function(classObj) {
   $(classObj.button).click(function (e) {
     e.preventDefault();
     $(classObj.open + ',' + classObj.closed).removeClass('active');
-    if ($(classObj.container).is(":visible")) {
-      $(classObj.open).addClass("active");
-    } else {
-      $(classObj.closed).addClass("active");
-    }
 
-   
-    $(classObj.container).stop().slideToggle();
-
-
-
+    $(classObj.container).stop().slideToggle(300, function() {
+      if ($(classObj.container).is(":visible")) {
+        $(classObj.open).addClass("active");
+      } else {
+        $(classObj.closed).addClass("active");
+      }
+    });
   });
 }
 

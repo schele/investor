@@ -7,7 +7,16 @@
     <ul>
         @foreach (var page in Model.StartPage.Children<BaseModel>().Where(x => x.HideInNavigation == false))
         {
-            <li><a href="@page.Url" title="@page.Name">@page.Name</a></li>
+            var activeClass = page.Name == Model.Name ? "selected" : "";
+
+            if (activeClass != "")
+            {
+                <li class="@activeClass"><a href="@page.Url" title="@page.Name">@page.Name</a></li>
+            }
+            else
+            {
+                <li><a href="@page.Url" title="@page.Name">@page.Name</a></li>
+            }
         }
     </ul>
 

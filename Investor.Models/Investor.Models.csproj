@@ -298,10 +298,16 @@
     </Compile>
     <Compile Include="DataTypes\DropdownForRobots.cs" />
     <Compile Include="DataTypes\MacroContainer.cs" />
+    <Compile Include="Enums\CustomTabs.cs" />
     <Compile Include="Extensions\MediaExtensions.cs" />
     <Compile Include="Models\NodeLink\NodeLink.cs" />
     <Compile Include="Models\PressReleases\Attachment.cs" />
     <Compile Include="Models\Slideshow.cs" />
+    <Compile Include="PageModels\CommentPageModel.cs" />
+    <Compile Include="PageModels\ContainerPageModel.cs" />
+    <Compile Include="PageModels\Interfaces\IPush.cs" />
+    <Compile Include="PageModels\NewsroomPageModel.cs" />
+    <Compile Include="PageModels\SearchPageModel.cs" />
     <Compile Include="PageModels\CoWorkerPageModel.cs" />
     <Compile Include="PageModels\CoWorkersListPageModel.cs" />
     <Compile Include="PageModels\IFramePageModel.cs" />
@@ -310,7 +316,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PageModels\BaseModel.cs" />
-    <Compile Include="PageModels\IInvestments.cs" />
+    <Compile Include="PageModels\Interfaces\IInvestments.cs" />
     <Compile Include="PageModels\InvestmentPageModel.cs" />
     <Compile Include="PageModels\ListInvestmentsPageModel.cs" />
     <Compile Include="PageModels\PageNotFoundModel.cs" />

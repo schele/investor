@@ -8,12 +8,15 @@ namespace Investor.Models.Converters
     {
         public object Read(PropertyInfo propertyInfo, object value)
         {
-            if (!string.IsNullOrEmpty(value.ToString()))
+            if (value != null)
             {
-                return new Node(int.Parse(value.ToString()));
+                if (!string.IsNullOrEmpty(value.ToString()))
+                {
+                    return new Node(int.Parse(value.ToString()));
+                }
             }
 
-            return null;
+            return null;            
         }
     }
 }

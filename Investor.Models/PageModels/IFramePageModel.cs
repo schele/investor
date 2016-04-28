@@ -1,4 +1,8 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Investor.Models.Converters;
+using Investor.Models.Models.NodeLink;
+using Investor.Models.PageModels.Interfaces;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -12,7 +16,7 @@ namespace Investor.Models.PageModels
         Description = "En sida för att skapa en iframe.",
         AllowAtRoot = true
     )]
-    public class IFramePageModel : BaseModel
+    public class IFramePageModel : BaseModel, IPush
     {
         #region constructors
 
@@ -23,6 +27,44 @@ namespace Investor.Models.PageModels
         public IFramePageModel(IPublishedContent content) : base(content)
         {
         }
+
+        #endregion
+
+        #region push
+
+        [Property(
+            UmbracoDataType.MediaPicker,
+            Tab.Push,
+            DisplayName = "Puff: Bild",
+            Description = "Denna bild visas på en puffyta",
+            Converter = typeof(PublishedMediaConverter)
+        )]
+        public virtual IPublishedContent PushImage { get; set; }
+
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            Tab.Push,
+            DisplayName = "Puff: Text",
+            Description = "Text som visas på en puffyta"
+        )]
+        public virtual string PushText { get; set; }
+
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Push,
+            DisplayName = "Puff Relaterade länkar: Rubrik",
+            Description = "Rubrik för relaterade länkar"
+        )]
+        public virtual string RelatedLinksForPushHeader { get; set; }
+
+        [Property(
+            UmbracoDataType.RelatedLinks,
+            Tab.Push,
+            DisplayName = "Puff Relaterade länkar: Länkar",
+            Description = "Dessa länkar visas på en puffyta",
+            Converter = typeof(NodeLinkConverter<NodeLink>)
+        )]
+        public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
 
         #endregion
 

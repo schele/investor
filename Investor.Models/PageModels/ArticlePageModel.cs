@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
+using Investor.Models.PageModels.Interfaces;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -17,10 +18,11 @@ namespace Investor.Models.PageModels
         AllowAtRoot = true,
         AllowedChildNodes = new object[]
             {                
-                typeof(ArticlePageModel)
+                typeof(ArticlePageModel),
+                typeof(IFramePageModel)
             }
     )]
-    public class ArticlePageModel : BaseModel
+    public class ArticlePageModel : BaseModel, IPush
     {
         #region constructors
 
@@ -52,7 +54,6 @@ namespace Investor.Models.PageModels
         )]
         public virtual string Preamble { get; set; }
 
-        //bugg: när man lägger till en bild blir det fel
         [Property(
             UmbracoDataType.RichtextEditor,
             Tab.Content,

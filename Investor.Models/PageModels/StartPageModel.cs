@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
+using Investor.Models.Enums;
 using Investor.Models.Models.NodeLink;
 using umbraco.interfaces;
 using UCodeFirst;
@@ -22,7 +23,10 @@ namespace Investor.Models.PageModels
                 typeof(PageNotFoundModel),
                 typeof(CategoryPageModel),
                 typeof(ArticlePageModel),
-                typeof(IFramePageModel)
+                typeof(IFramePageModel),
+                typeof(SearchPageModel),
+                typeof(NewsroomPageModel),
+                typeof(ContainerPageModel)
             }
     )]
     public class StartPageModel : BaseModel
@@ -52,6 +56,15 @@ namespace Investor.Models.PageModels
         #endregion
 
         #region navigation
+
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Navigation,
+            DisplayName = "Länk till \"Search\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode SearchNode { get; set; }
 
         [Property(
             UmbracoDataType.RelatedLinks,
@@ -165,11 +178,5 @@ namespace Investor.Models.PageModels
         public virtual string Grid { get; set; }
 
         #endregion
-    }
-
-    public enum CustomTabs
-    {
-        [EnumName("Cookie")]
-        Cookie
     }
 }

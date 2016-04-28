@@ -7,11 +7,9 @@
 @inherits PartialViewMacroPage
               
 @{
-    var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
-    var url = Model.MacroParameters["Url"].ToString();
-    
+    var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();    
     var startPage = Model.Content.ToStrongContent().AncestorOrSelf<StartPageModel>();
-    var pressReleaseUrl = startPage.PressReleasesNode;
+    var pressReleaseUrl = startPage.PressReleasesNode;    
 }
 
 <div class="press-releases">
@@ -19,23 +17,27 @@
         @if (Model.MacroParameters["Heading"] != null)
         {
             <h2>
-                @if (Model.MacroParameters["Url"] != null)
+                @if (pressReleaseUrl != null)
                 {
-                    <a href="@Umbraco.TypedContent(url).Url">@(Model.MacroParameters["Heading"].ToString())</a>
+                    <a href="@pressReleaseUrl.Url">@(Model.MacroParameters["Heading"].ToString())</a>
                 }
             </h2>
-          }
-    </div>
-    <ul class="press-releases-list">
-        @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
-        {
-            <li>                
-                <a href="@pressReleaseUrl.Url?id=@pressRelease.Id">
-                    <span class="press-releases-date">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
-                    <span class="press-releases-time">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
-                    <span class="press-releases-link-text">@pressRelease.Headline</span>
-                </a>
-            </li>
         }
-    </ul>
+    </div>
+
+    @if (pressReleaseUrl != null)
+    {
+        <ul class="press-releases-list">
+            @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
+            {
+                <li>
+                    <a href="@pressReleaseUrl.Url?id=@pressRelease.Id">
+                        <span class="press-releases-date">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+                        <span class="press-releases-time">@pressRelease.Published.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+                        <span class="press-releases-link-text">@pressRelease.Headline</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    }
 </div>

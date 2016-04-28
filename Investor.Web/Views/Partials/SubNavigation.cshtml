@@ -44,14 +44,13 @@ foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNaviga
                 <span class="arrow"></span>
             }
             @if (recursive)
-            {
-                
+            {                
                 if (noChildren)
                 {
                     continue;
                 }
       
-                <ul class="sub-navigation-second-level">
+                <ul>
                     @RenderMenu(childPage)
                 </ul>
             }

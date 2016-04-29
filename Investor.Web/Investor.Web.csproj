@@ -625,6 +625,7 @@
     <Content Include="SASS\Styles\Pages\Investment.scss" />
     <Content Include="Views\Search.cshtml" />
     <Content Include="Views\Newsroom.cshtml" />
+    <Content Include="SASS\Styles\Pages\PageNotFound.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -18,7 +18,8 @@ namespace Investor.Models.PageModels
                 typeof(ListInvestmentsPageModel),
                 typeof(IFramePageModel),
                 typeof(ArticlePageModel),
-                typeof(CoWorkersListPageModel)
+                typeof(CoWorkersListPageModel),
+                typeof(ListPresentationsPageModel)
             }
     )]
     public class CategoryPageModel : BaseModel

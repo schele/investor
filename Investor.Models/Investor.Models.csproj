@@ -306,6 +306,7 @@
     <Compile Include="PageModels\CommentPageModel.cs" />
     <Compile Include="PageModels\ContainerPageModel.cs" />
     <Compile Include="PageModels\Interfaces\IPush.cs" />
+    <Compile Include="PageModels\ListPresentationsPageModel.cs" />
     <Compile Include="PageModels\NewsroomPageModel.cs" />
     <Compile Include="PageModels\SearchPageModel.cs" />
     <Compile Include="PageModels\CoWorkerPageModel.cs" />

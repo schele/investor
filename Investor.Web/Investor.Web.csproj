@@ -628,6 +628,8 @@
     <Content Include="SASS\Styles\Pages\PageNotFound.scss" />
     <Content Include="SASS\Styles\Pages\ListPresentationsPage.scss" />
     <Content Include="Views\ListPresentations.cshtml" />
+    <Content Include="Views\ImageArchive.cshtml" />
+    <Content Include="SASS\Styles\Pages\ImageArchive.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

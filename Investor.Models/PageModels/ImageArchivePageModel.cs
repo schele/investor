@@ -17,7 +17,7 @@ namespace Investor.Models.PageModels
     AllowAtRoot = false,
     AllowedChildNodes = new object[]
         {
-                
+            typeof(ImageArchivePageModel)
         }
     )]
     public class ImageArchivePageModel : BaseModel

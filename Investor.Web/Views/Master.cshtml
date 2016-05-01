@@ -88,15 +88,16 @@
     <![endif]-->
 
     <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
-    <script type="text/javascript">
+    @*<script type="text/javascript">
     window.cookieconsent_options = { "message": "@Model.StartPage.CookieText", "dismiss": "@Model.StartPage.CookieButtonText", "learnMore": "@Model.StartPage.CookieUrlText", "link": "/cookies", "theme": "light-bottom" };
     </script>
 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>*@
     <!-- End Cookie Consent plugin -->
 </head>
 
 <body>
+    @Html.Partial("~/Views/Partials/Cookies.cshtml")
     @Html.Partial("~/Views/Partials/Header.cshtml")
 
     <div class="container">
@@ -125,6 +126,7 @@
     <script src="~/Scripts/sub-navigation.js" type="text/javascript"></script>
     <script src="~/Scripts/iframe-size.js" type="text/javascript"></script>
     <script src="~/Scripts/list-expand.js" type="text/javascript"></script>
+    <script src="~/Scripts/cookies.js" type="text/javascript"></script>
 
 </body>
 </html>

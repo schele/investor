@@ -1,6 +1,4 @@
 ﻿using System.Globalization;
-using System.Web;
-using Investor.Models.Converters;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -18,7 +16,8 @@ namespace Investor.Models.PageModels
                 typeof(ListInvestmentsPageModel),
                 typeof(IFramePageModel),
                 typeof(ArticlePageModel),
-                typeof(CoWorkersListPageModel)
+                typeof(CoWorkersListPageModel),
+                typeof(NewsroomPageModel)
             }
     )]
     public class CategoryPageModel : BaseModel

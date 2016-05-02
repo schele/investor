@@ -20,9 +20,13 @@
             {
                 <li class="co-worker col-md-3 col-sm-3">
                     <a href="@coworker.Url" alt="@coworker.Name">
-                        @Html.Render(coworker.Image.Url, @<img src="@coworker.Image.Url" alt="@coworker.Name" />)
+                        @if (coworker.Image != null)
+                        {
+                            <img src="@coworker.Image.Url" alt="@coworker.Name" />
+                        }
+                        
                         @Html.Render(coworker.Name, @<span class="co-worker-name">@coworker.Name</span>)
-                        @Html.Render(coworker.Position, @<span class="co-worker-position">@coworker.Position</span>)                        
+                        @Html.Render(coworker.Position, @<span class="co-worker-position">@coworker.Position</span>)
                     </a>
                 </li>
             }            

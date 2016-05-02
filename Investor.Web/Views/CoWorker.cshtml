@@ -12,7 +12,10 @@
     <article class="co-worker-page col-md-7 col-sm-12">
         <div class="row">
             <div class="col-md-3 col-sm-3">
-                @Html.Render(Model.Image.Url, @<img src="@Model.Image.Url" alt="@Model.Name" />)
+                @if (Model.Image != null)
+                {
+                    <img src="@Model.Image.Url" alt="@Model.Name" />
+                }
             </div>
             <div class="co-worker-page-content col-md-5 col-sm-5">
                 @Html.Render(Model.Name, @<h1>@Model.Name</h1>)

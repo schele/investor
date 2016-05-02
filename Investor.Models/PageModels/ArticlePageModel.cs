@@ -19,7 +19,8 @@ namespace Investor.Models.PageModels
         AllowedChildNodes = new object[]
             {                
                 typeof(ArticlePageModel),
-                typeof(IFramePageModel)
+                typeof(IFramePageModel),
+                typeof(PresentationPageModel),
             }
     )]
     public class ArticlePageModel : BaseModel, IPush

@@ -5,6 +5,9 @@ namespace Investor.Models.Enums
     public enum CustomTabs
     {
         [EnumName("Cookie")]
-        Cookie
+        Cookie,
+
+        [EnumName("Popup")]
+        Popup
     }
 }

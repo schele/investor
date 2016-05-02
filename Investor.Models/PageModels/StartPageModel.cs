@@ -150,23 +150,7 @@ namespace Investor.Models.PageModels
 
         #endregion
 
-        #region page
-
-        [Property(
-            UmbracoDataType.TextboxMultiple,
-            Tab.Page,
-            DisplayName = "Popup: Text",
-            Description = ""
-        )]
-        public virtual string PopupText { get; set; }
-
-        [Property(
-            UmbracoDataType.Textstring,
-            Tab.Page,
-            DisplayName = "Popup: Länktext",
-            Description = ""
-        )]
-        public virtual string PopupUrlText { get; set; }
+        #region content
 
         [Property(
             "Sida: Start - Grid - Grid layout",
@@ -176,6 +160,26 @@ namespace Investor.Models.PageModels
         )]
         [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks")]
         public virtual string Grid { get; set; }
+
+        #endregion
+
+        #region popup
+        
+        [Property(
+            UmbracoDataType.TextboxMultiple,
+            CustomTabs.Popup,
+            DisplayName = "Popup: Text",
+            Description = ""
+        )]
+        public virtual string PopupText { get; set; }
+
+        [Property(
+            UmbracoDataType.Textstring,
+            CustomTabs.Popup,
+            DisplayName = "Popup: Länktext",
+            Description = ""
+        )]
+        public virtual string PopupUrlText { get; set; }
 
         #endregion
     }

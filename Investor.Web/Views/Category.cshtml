@@ -22,7 +22,7 @@
 
     <div class="row">
 
-        @foreach (var page in Model.Children())
+        @foreach (var page in Model.Children().OrderBy(x => x.CreateDate))
         {
             if (page is IPush)
             {                
@@ -109,7 +109,44 @@
                     {
                         <div class="category-page-category col-md-4 col-sm-4">
 
-                            @Html.Render(iframe.PushImage, @<p><img src="@iframe.PushImage.Url" alt="@iframe.Name"/></p>)
+                            @Html.Render(iframe.PushImage, @<p><img src="@iframe.PushImage.Url" alt="@iframe.Name" /></p>)
+
+                            <h2>
+                                <a href="@iframe.Url" title="@iframe.Name">@iframe.Name</a>
+                            </h2>
+
+                            <p>@iframe.PushText</p>
+
+                            @if (iframe.RelatedLinksForPush != null)
+                            {
+                                <span>@iframe.RelatedLinksForPushHeader</span>
+                                <ul>
+                                    @foreach (var link in iframe.RelatedLinksForPush)
+                                    {
+                                        <li>
+                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    }
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception.Message);
+                }
+
+                //Newsroom
+                try
+                {
+                    var iframe = page as NewsroomPageModel;
+
+                    if (iframe != null)
+                    {
+                        <div class="category-page-category col-md-4 col-sm-4">
+
+                            @Html.Render(iframe.PushImage, @<p><img src="@iframe.PushImage.Url" alt="@iframe.Name" /></p>)
 
                             <h2>
                                 <a href="@iframe.Url" title="@iframe.Name">@iframe.Name</a>

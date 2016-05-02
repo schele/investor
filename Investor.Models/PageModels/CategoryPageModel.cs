@@ -9,7 +9,7 @@ namespace Investor.Models.PageModels
     [ContentType(
         DisplayName = "Sida: Kategori",
         Icon = Icon.Categories,
-        Description = "En sida för att lista kategorier.",
+        Description = "En sida för att lista kategorier",
         AllowAtRoot = true,
         AllowedChildNodes = new object[]
             {

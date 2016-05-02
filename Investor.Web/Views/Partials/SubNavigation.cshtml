@@ -17,7 +17,7 @@
     return;
 }
 
-foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNavigation == false))
+foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNavigation == false).OrderBy(x => x.SortOrder))
 {
     if (!Umbraco.MemberHasAccess(childPage.Id, childPage.Path))
     {

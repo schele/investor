@@ -1,0 +1,22 @@
+﻿@using Investor.Helpers
+
+@inherits UmbracoViewPage<Investor.Models.PageModels.CommentPageModel>
+
+<div class="newsroom-page-comments-date">
+    <span>@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+    <span class="newsroom-page-comments-time">@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+</div>
+@Html.Render(Model.Header, @<h3>@Model.Header</h3>)
+@Html.Render(Model.Preamble, @<div class="newsroom-page-comments-premable"><p>@Model.Preamble</p></div>)
+
+@if (Model.RelatedDocuments != null)
+{
+    <ul class="newsroom-page-comments-links">
+        @foreach (var document in Model.RelatedDocuments)
+        {
+            <li>
+                <a href="@document.Url" title="@document.Name">@Path.GetFileNameWithoutExtension(document.Name)</a>
+            </li>
+        }
+    </ul>
+}

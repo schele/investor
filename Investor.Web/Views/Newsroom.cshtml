@@ -11,28 +11,37 @@
 <article class="row newsroom-page">
     <div class="col-md-12 newsroom-page-intro">
         @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
-        @Html.Render(Model.Preamble, @<span>@Model.Preamble</span>)
+        @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
     </div>
 
     <div class="col-md-6">
         <div class="newsroom-page-comments">
             @Html.Render(Model.CommentsHeader, @<h2>@Model.CommentsHeader</h2>)
 
-            @foreach (var comment in Model.GetComments())
-            {
-                <div class="newsroom-page-comments-comment">
-                    <div class="newsroom-page-comments-date">
-                        <span>@comment.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
-                        <span class="newsroom-page-comments-time">@comment.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
-                    </div>
-                    @Html.Render(comment.Header, @<h3>@comment.Header</h3>)
-                    @Html.Render(comment.Preamble, @<span>@comment.Preamble</span>)
-
-                    @foreach (var document in comment.RelatedDocuments)
+            @if(Model.GetComments() != null) {
+                <ul>
+                    @foreach (var comment in Model.GetComments().Take(5))
                     {
-                        <a href="@document.Url" title="@document.Name">@Path.GetFileNameWithoutExtension(document.Name)</a>
+                        <li class="newsroom-page-comments-comment">
+                            @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
+                        </li>
                     }
-                </div>
+                </ul>
+                if (Model.GetComments().Count() > 5)
+                {
+                    <ul class="newsroom-page-comments-expandable">
+                        @foreach (var comment in Model.GetComments().Skip(5))
+                        {
+                            <li class="newsroom-page-comments-comment">
+                                @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
+                            </li>
+                        }
+                    </ul>
+                    <button class="newsroom-page-comments-expand-btn">
+                        <span class="newsroom-page-comments-expandable-closed active">See all docuemnts</span>
+                        <span class="newsroom-page-comments-expandable-open">See less documents</span>
+                    </button>
+                }
             }
         </div>
     </div>
@@ -41,21 +50,31 @@
         <div class="newsroom-page-notices">
             @Html.Render(Model.NoticesHeader, @<h2>@Model.NoticesHeader</h2>)
 
-            @foreach (var notice in Model.GetNotices())
+            @if (Model.GetNotices() != null)
             {
-                <div class="newsroom-page-notices-notice">
-                    <div class="newsroom-page-notices-date">
-                        <span>@notice.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
-                        <span class="newsroom-page-notices-time">@notice.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
-                    </div>
-                    @Html.Render(notice.Header, @<h3>@notice.Header</h3>)
-                    @Html.Render(notice.Preamble, @<span>@notice.Preamble</span>)
-
-                    @foreach (var link in notice.RelatedLinks)
+                <ul>
+                    @foreach (var notice in Model.GetNotices().Take(5))
                     {
-                        <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                        <li class="newsroom-page-notices-notice">
+                            @Html.Partial("~/Views/Partials/Notice.cshtml", notice)
+                        </li>
                     }
-                </div>
+                </ul>
+                if (Model.GetNotices().Count() > 5)
+                {
+                    <ul class="newsroom-page-notices-expandable">
+                        @foreach (var notice in Model.GetNotices().Skip(5))
+                        {
+                            <li class="newsroom-page-notices-notice">
+                                @Html.Partial("~/Views/Partials/Notice.cshtml", notice)
+                            </li>
+                        }
+                    </ul>
+                    <button class="newsroom-page-notices-expand-btn">
+                        <span class="newsroom-page-notices-expandable-closed active">See all news</span>
+                        <span class="newsroom-page-notices-expandable-open">See less news</span>
+                    </button>
+                }
             }
         </div>
     </div>

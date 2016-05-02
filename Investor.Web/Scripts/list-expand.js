@@ -12,6 +12,20 @@ var relatedLinksClasses = {
   open: '.article-page-links-expandable-open'
 }
 
+var commentsClasses = {
+  button: '.newsroom-page-comments-expand-btn',
+  container: '.newsroom-page-comments-expandable',
+  closed: '.newsroom-page-comments-expandable-closed',
+  open: '.newsroom-page-comments-expandable-open'
+}
+
+var noticesClasses = {
+  button: '.newsroom-page-notices-expand-btn',
+  container: '.newsroom-page-notices-expandable',
+  closed: '.newsroom-page-notices-expandable-closed',
+  open: '.newsroom-page-notices-expandable-open'
+}
+
 var expandLinkList = function(classObj) {
   $(classObj.button).click(function (e) {
     e.preventDefault();
@@ -29,3 +43,5 @@ var expandLinkList = function(classObj) {
 
 expandLinkList(relatedDocumentsClasses);
 expandLinkList(relatedLinksClasses);
+expandLinkList(commentsClasses);
+expandLinkList(noticesClasses);

@@ -12,7 +12,9 @@
     background: #fff url(/images/menu-gradient.png) repeat-x bottom left;
     border: 1px solid #d5d5d5;
     border-bottom: 4px solid #A0A0A0;
-    padding: 10px 30px 30px 30px;
+    padding: 15px 30px 30px 30px;
+    font-size: 14px;
+    line-height: 21px;
 }
 
 .newsroom-page .newsroom-page-comments h2,
@@ -24,10 +26,37 @@
 }
 
 .newsroom-page .newsroom-page-notices .newsroom-page-notices-notice,
-.newsroom-page .newsroom-page-comment .newsroom-page-comments-comment {
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-comment {
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #d5d5d5;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-expandable,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-expandable {
+    display: none;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-expand-btn,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-expand-btn {
+    background-color: Transparent;
+    background-repeat :no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color: #002B7F;
+    float: right;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-expand-btn span,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-expand-btn span {
+    display: none;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-expand-btn span.active,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-expand-btn span.active {
+    display: block;
 }
 
 .newsroom-page .newsroom-page-comments h3,
@@ -49,4 +78,17 @@
     background: url(/images/time.png) no-repeat left;
     padding-left: 14px;
     margin-left: 14px;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-premable, 
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-premable {
+    margin-bottom: 20px;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-links li a,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-links li a {
+    padding: 10px;
+    color: #002B7F;
+    border-top: 1px solid #E4E4E4;
+    display: block;
 }

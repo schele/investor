@@ -18,6 +18,10 @@ footer .columns {
     margin-top: 20px; 
 }
 
+footer .main-actions {
+    float: left;
+}
+
 footer .main-actions li {
     display: inline-block;
     margin-right: 32px; 
@@ -34,6 +38,37 @@ footer .introduction {
     overflow: hidden; 
     padding-bottom: 2em;
 
+}
+
+footer .introduction .search {
+    float: right;
+}
+
+footer .introduction .search input[type=text] {
+    border: 1px solid #dbdbdb;
+    padding: 5px 1px 5px 10px;
+    -moz-box-shadow: inset -4px 3px 4px #e0e0e0;
+    -webkit-box-shadow: inset -4px 3px 4px #e0e0e0;
+    box-shadow: inset 0px 0.3em 0.4em #e0e0e0;
+    width: 300px;
+    float: left;
+    font-size: 13px;
+}
+
+footer .introduction .search input[type=submit] {
+    float: right;
+    cursor: pointer;
+    color: transparent;
+    text-transform: capitalize;
+    width: 33px;
+    height: 27px;
+    background: transparent url("/images/sprite.png") -0px -40px;
+    padding: 0px;
+    text-indent: -200px;
+    overflow: hidden;
+    border: none;
+    margin: 0 -4px 0;
+    position: relative;
 }
 
 footer .footer-list {
@@ -71,5 +106,9 @@ footer .copyright a {
 @media (max-width: 767px) {
     .footer-list {
         margin-top: 20px;
+    }
+
+    .footer .introduction .search {
+        float: left;
     }
 }

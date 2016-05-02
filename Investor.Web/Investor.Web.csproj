@@ -635,6 +635,8 @@
     <Content Include="Views\Partials\Cookies.cshtml" />
     <Content Include="SASS\Styles\Pages\Search.scss" />
     <Content Include="SASS\Styles\Pages\Newsroom.scss" />
+    <Content Include="Views\Partials\Comment.cshtml" />
+    <Content Include="Views\Partials\Notice.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

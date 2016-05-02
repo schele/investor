@@ -42,6 +42,10 @@
             {
                 <a href="@item.GetUrl()" class="language">@item.GetLanguage()</a>
             }
+            <form class="search">
+                <input class="search-input-text" placeholder="Search at Investorab.com"  type="text"/>
+                <input type="submit" value="submit" />
+            </form>
         </div>
         @Html.Partial("~/Views/Partials/MainNavigation.cshtml")
     </div>

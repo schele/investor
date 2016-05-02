@@ -173,6 +173,43 @@
                 {
                     log.Error(exception.Message);
                 }
+
+                //Image gallery
+                try
+                {
+                    var imageArchive = page as ImageArchivePageModel;
+
+                    if (imageArchive != null)
+                    {
+                        <div class="category-page-category col-md-4 col-sm-4">
+
+                            @Html.Render(imageArchive.PushImage, @<p><img src="@imageArchive.PushImage.Url" alt="@imageArchive.Name" /></p>)
+
+                            <h2>
+                                <a href="@imageArchive.Url" title="@imageArchive.Name">@imageArchive.Name</a>
+                            </h2>
+
+                            <p>@imageArchive.PushText</p>
+
+                            @if (imageArchive.RelatedLinksForPush != null)
+                            {
+                                <span>@imageArchive.RelatedLinksForPushHeader</span>
+                                <ul>
+                                    @foreach (var link in imageArchive.RelatedLinksForPush)
+                                    {
+                                        <li>
+                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    }
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception.Message);
+                }
             }
         }
     </div>

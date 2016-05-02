@@ -11,15 +11,25 @@ namespace Investor.Models.Converters
         public object Read(PropertyInfo propertyInfo, object value)
         {
             var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-
-            var images = value.ToString().Split(',');
             var media = new List<IPublishedContent>();
 
-            foreach (var mediaId in images)
+            if (value != null)
             {
-                var i = umbracoHelper.TypedMedia(mediaId);
+                var ids = value.ToString();
 
-                media.Add(i);
+                if (ids.Contains(","))
+                {
+                    var images = value.ToString().Split(',');
+                    
+                    foreach (var mediaId in images)
+                    {
+                        var i = umbracoHelper.TypedMedia(mediaId);
+
+                        media.Add(i);
+                    }
+                }
+                
+                media.Add(umbracoHelper.TypedMedia(value.ToString()));                
             }
 
             return media;

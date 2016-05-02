@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
+using Investor.Models.Models.NodeLink;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -10,24 +11,21 @@ using Umbraco.Core.Models;
 namespace Investor.Models.PageModels
 {
     [ContentType(
-        DisplayName = "Sida: Kommentar",
+        DisplayName = "Sida: Notis",
         Icon = Icon.Article,
-        Description = "En sida för att skapa en kommentar",
-        AllowAtRoot = true,
-        AllowedChildNodes = new object[]
-            {                
-                //typeof(NewsroomPageModel)
-            }
+        Description = "En sida för att skapa en notis",
+        AllowAtRoot = true
     )]
-    public class CommentPageModel : BaseModel
+    public class NoticePageModel : BaseModel
     {
         #region constructors
 
-        public CommentPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
+        public NoticePageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
         {
         }
 
-        public CommentPageModel(IPublishedContent content) : base(content)
+        public NoticePageModel(IPublishedContent content)
+            : base(content)
         {
         }
 
@@ -51,15 +49,15 @@ namespace Investor.Models.PageModels
             Converter = typeof(RichtextConverter)
         )]
         public virtual IHtmlString Preamble { get; set; }
-        
+
         [Property(
-            UmbracoDataType.MediaPicker,
+            UmbracoDataType.RelatedLinks,
             Tab.Content,
-            DisplayName = "Relaterade dokument: Länkar",
+            DisplayName = "Relaterade länkar: Länkar",
             Description = "",
-            Converter = typeof(DocumentConverter)
+            Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual IEnumerable<IPublishedContent> RelatedDocuments { get; set; }
+        public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
         
         #endregion
     }

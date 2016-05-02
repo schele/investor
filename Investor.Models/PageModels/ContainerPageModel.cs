@@ -8,11 +8,12 @@ namespace Investor.Models.PageModels
     [ContentType(
         DisplayName = "Container: Standard",
         Icon = Icon.Folder,
-        Description = "En sida för att skapa en mapp",
+        Description = "En sida för att skapa en mapp.",
         AllowAtRoot = true,
         AllowedChildNodes = new object[]
             {                
-                typeof(CommentPageModel)
+                typeof(CommentPageModel),
+                typeof(NoticePageModel)
             }
     )]
     public class ContainerPageModel : BaseModel

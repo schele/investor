@@ -7,7 +7,7 @@
     <ul>
         @foreach (var page in Model.StartPage.Children<BaseModel>().Where(x => x.HideInNavigation == false))
         {
-            var activeClass = page.Name == Model.Name ? "selected" : "";
+            var activeClass = Model.IsDescendantOrSelf(page)  ? "selected" : "";
 
             if (activeClass != "")
             {

@@ -3,8 +3,12 @@ using System.Globalization;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
 using Investor.Models.PageModels.Interfaces;
+using StructureMap.Query;
+using umbraco;
+using umbraco.interfaces;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
+using UCodeFirst.Factories;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
 
@@ -51,6 +55,22 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string Preamble { get; set; }
+
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Content,
+            DisplayName = "Comments",
+            Description = "Rubrik för kommentarer"
+        )]
+        public virtual string CommentsHeader { get; set; }
+
+        [Property(
+            UmbracoDataType.Textstring,
+            Tab.Content,
+            DisplayName = "Notices",
+            Description = "Rubrik för notiser"
+        )]
+        public virtual string NoticesHeader { get; set; }
         
         #endregion
 
@@ -91,5 +111,55 @@ namespace Investor.Models.PageModels
         public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
 
         #endregion
+
+        #region navigation
+
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Navigation,
+            DisplayName = "Länk till \"Kommentarer\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode CommentsNode { get; set; }
+
+        [Property(
+            UmbracoDataType.ContentPicker,
+            Tab.Navigation,
+            DisplayName = "Länk till \"Notiser\"",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode NoticesNode { get; set; }
+
+        #endregion
+
+        public IEnumerable<CommentPageModel> GetComments()
+        {
+            var comments = new List<CommentPageModel>();
+
+            foreach (var comment in CommentsNode.ChildrenAsList)
+            {
+                var commentModel = ModelFactory.Instance.GetModel<CommentPageModel>(comment.Id);
+
+                comments.Add(commentModel);
+            }
+
+            return comments;
+        }
+
+        public IEnumerable<NoticePageModel> GetNotices()
+        {
+            var notices = new List<NoticePageModel>();
+
+            foreach (var notice in NoticesNode.ChildrenAsList)
+            {
+                var noticeModel = ModelFactory.Instance.GetModel<NoticePageModel>(notice.Id);
+
+                notices.Add(noticeModel);
+            }
+
+            return notices;
+        } 
     }
 }

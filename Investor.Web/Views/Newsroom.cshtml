@@ -9,6 +9,44 @@
 }
 
 <div>
-    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
-    @Html.Render(Model.Preamble, @<span>@Model.Preamble</span>)
+    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)<br/><br/>
+    @Html.Render(Model.Preamble, @<span>@Model.Preamble</span>)<br /><br />
+</div>
+
+<div>
+    @Html.Render(Model.CommentsHeader, @<h2><strong>@Model.CommentsHeader</strong></h2>)
+
+    @foreach (var comment in Model.GetComments())
+    {
+        <br/><br/>
+        <span class="press-releases-date">@comment.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+        <span class="press-releases-time">@comment.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+
+        @Html.Render(comment.Header, @<h2><strong>@comment.Header</strong></h2>)
+        @Html.Render(comment.Preamble, @<span>@comment.Preamble</span>)<br/>
+
+        foreach (var document in comment.RelatedDocuments)
+        {
+            <a href="@document.Url" title="@document.Name">@Path.GetFileNameWithoutExtension(document.Name)</a>
+        }
+    }
+</div>
+
+<div>
+    @Html.Render(Model.NoticesHeader, @<h2><strong>@Model.NoticesHeader</strong></h2>)
+
+    @foreach (var notice in Model.GetNotices())
+    {
+        <br /><br />
+        <span class="press-releases-date">@notice.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+        <span class="press-releases-time">@notice.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+
+        @Html.Render(notice.Header, @<h2><strong>@notice.Header</strong></h2>)
+        @Html.Render(notice.Preamble, @<span>@notice.Preamble</span>)<br />
+
+        foreach (var link in notice.RelatedLinks)
+        {
+            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+        }
+    }
 </div>

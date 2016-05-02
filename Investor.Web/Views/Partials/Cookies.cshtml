@@ -1,0 +1,8 @@
+﻿@inherits UmbracoViewPage<Investor.Models.PageModels.BaseModel>
+
+<div class="cookie-information" data-module="cookie-information">
+    <div class="cookie-information__inner">
+        <div class="cookie-information__inner__text">@Model.StartPage.CookieText <a href="/cookies">@Model.StartPage.CookieUrlText</a></div>
+        <button class="cookie-information__inner__button" data-type="cookie-accept">@Model.StartPage.CookieButtonText</button>
+    </div>
+</div>

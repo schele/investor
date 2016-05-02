@@ -1,0 +1,38 @@
+﻿@using Investor.Models.PageModels
+@using umbraco.NodeFactory
+
+@inherits UmbracoViewPage<ImageArchivePageModel>
+
+@{
+	Layout = "Master.cshtml";
+}
+
+<div class="row">
+    @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
+    <article class="col-md-7 image-archive-page">
+        <h1>@Model.Name</h1>
+        <ul class="row">
+            <li class="col-md-4">
+                <a href="">
+                    <img src="https://investorab.com.local/media/1026/jacobwallenberg.jpg" alt=""/>
+                    <span>Board of Directors </span>
+                    <span>11 bilder</span>
+                </a>
+            </li>
+            <li class="col-md-4">
+                <a href="">
+                    <img src="https://investorab.com.local/media/1024/investor_16020132276.jpg" alt=""/>
+                    <span>Management Group</span>
+                    <span>6 bilder</span>
+                </a>
+            </li>
+            <li class="col-md-4">
+                <a href="">
+                    <img src="https://investorab.com.local/media/1025/investor_color.jpg" alt="" />
+                    <span>Logotypes </span>
+                    <span>4 bilder</span>
+                </a>
+            </li>
+        </ul>
+    </article>
+</div>

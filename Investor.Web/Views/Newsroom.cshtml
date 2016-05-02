@@ -38,8 +38,8 @@
                         }
                     </ul>
                     <button class="newsroom-page-comments-expand-btn">
-                        <span class="newsroom-page-comments-expandable-closed active">See all docuemnts</span>
-                        <span class="newsroom-page-comments-expandable-open">See less documents</span>
+                        <span class="newsroom-page-comments-expandable-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
+                        <span class="newsroom-page-comments-expandable-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
                     </button>
                 }
             }
@@ -71,8 +71,8 @@
                         }
                     </ul>
                     <button class="newsroom-page-notices-expand-btn">
-                        <span class="newsroom-page-notices-expandable-closed active">See all news</span>
-                        <span class="newsroom-page-notices-expandable-open">See less news</span>
+                        <span class="newsroom-page-notices-expandable-closed active">@Umbraco.GetDictionaryValue("System.News.All")</span>
+                        <span class="newsroom-page-notices-expandable-open">@Umbraco.GetDictionaryValue("System.News.All")</span>
                     </button>
                 }
             }

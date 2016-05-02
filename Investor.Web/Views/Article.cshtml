@@ -50,8 +50,8 @@
                                 }
                             </ul>
                             <button class="article-page-links-expand-btn">
-                                <span class="article-page-links-expandable-closed active">Read more</span>
-                                <span class="article-page-links-expandable-open">Read less</span>
+                                <span class="article-page-links-expandable-closed active">@Umbraco.GetDictionaryValue("System.Read.All")</span>
+                                <span class="article-page-links-expandable-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
                             </button> 
                         }
                     </div>
@@ -88,8 +88,8 @@
                                 }
                             </ul>
                             <button class="article-page-documents-expand-btn">
-                                <span class="article-page-documents-expandable-closed active">Read more</span>
-                                <span class="article-page-documents-expandable-open">Read less</span>
+                                <span class="article-page-documents-expandable-closed active">@Umbraco.GetDictionaryValue("System.Read.All")</span>
+                                <span class="article-page-documents-expandable-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
                             </button>
                         }                
                     </div>

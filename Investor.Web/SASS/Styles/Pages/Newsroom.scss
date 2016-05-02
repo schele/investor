@@ -1,9 +1,9 @@
-﻿.newsroom-page {
-
+﻿.newsroom-page .newsroom-page-intro {
+    margin-bottom: 40px
 }
 
-.newsroom-page .newsroom-page-intro {
-    margin-bottom: 40px
+.newsroom-page .newsroom-page-intro p {
+    line-height: 24px;
 }
 
 .newsroom-page .newsroom-page-comments,
@@ -15,6 +15,7 @@
     padding: 15px 30px 30px 30px;
     font-size: 14px;
     line-height: 21px;
+    margin-bottom: 20px;
 }
 
 .newsroom-page .newsroom-page-comments h2,
@@ -24,6 +25,29 @@
     font-weight: bold;
     margin-bottom: 36px;
 }
+.newsroom-page .newsroom-page-comments h2:before {
+    background: url('/images/investor_icons_vector.svg') -88.8px -2.4px no-repeat;
+    background-size: 192px 192px;
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    margin-bottom: -15px;
+    margin-right: 15px;
+    content: "";
+
+}
+
+.newsroom-page .newsroom-page-notices h2:before {
+    background: url('/images/investor_icons_vector.svg') -88.8px -52.8px no-repeat;
+    background-size: 192px 192px;
+    height: 45px;
+    width: 20px;
+    display: inline-block;
+    margin-bottom: -22px;
+    margin-right: 15px;
+    content: "";
+}
+
 
 .newsroom-page .newsroom-page-notices .newsroom-page-notices-notice,
 .newsroom-page .newsroom-page-comments .newsroom-page-comments-comment {
@@ -87,8 +111,21 @@
 
 .newsroom-page .newsroom-page-comments .newsroom-page-comments-links li a,
 .newsroom-page .newsroom-page-notices .newsroom-page-notices-links li a {
-    padding: 10px;
+    padding: 10px 0;
     color: #002B7F;
     border-top: 1px solid #E4E4E4;
     display: block;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-links li a {
+    background: url(/images/filetypes/pdf.png) no-repeat 0px 11px;
+    padding-left: 30px;
+}
+
+@media (max-width: 500px) {
+    .newsroom-page .newsroom-page-comments h2:before,
+    .newsroom-page .newsroom-page-notices h2:before {
+        display: block;
+        margin-bottom: 10px;
+    }
 }

@@ -8,21 +8,16 @@
 }
 
 .co-worker-page .co-worker-page-content {
-    line-height: 31px;
-}
-
-.co-worker-page .co-worker-page-content span,
-.co-worker-page .co-worker-page-content p {
-    font-size: 14px;
+    line-height: 21px;
 }
 
 .co-worker-page .co-worker-page-content span {
-    margin-bottom: 14px;
+    font-size: 14px;
     display: block;
 }
 
-.co-worker-page .co-worker-page-content p {
-
+.co-worker-page .co-worker-page-content .co-worker-page-position {
+    margin-bottom: 16px;
 }
 
 @media (max-width: 990px) {

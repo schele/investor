@@ -541,10 +541,12 @@
     <Compile Include="Configuration\Bootstrapper.cs" />
     <Compile Include="Configuration\WebRegistry.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\PublishedContent.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\MiscHelpers.cs" />
     <Compile Include="Helpers\NodeHelper.cs">
       <SubType>Code</SubType>
     </Compile>

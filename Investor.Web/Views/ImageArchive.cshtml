@@ -1,10 +1,13 @@
-﻿@using Investor.Models.PageModels
-@using umbraco.NodeFactory
+﻿@using Investor.Extensions
+@using Investor.Helpers
+@using Investor.Models.PageModels
 
 @inherits UmbracoViewPage<ImageArchivePageModel>
 
 @{
 	Layout = "Master.cshtml";
+    
+    var umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 }
 
 <div class="row">
@@ -12,27 +15,59 @@
     <article class="col-md-7 image-archive-page">
         <h1>@Model.Name</h1>
         <ul class="row">
-            <li class="col-md-4">
-                <a href="">
-                    <img src="https://investorab.com.local/media/1026/jacobwallenberg.jpg" alt=""/>
-                    <span>Board of Directors </span>
-                    <span>11 bilder</span>
-                </a>
-            </li>
-            <li class="col-md-4">
-                <a href="">
-                    <img src="https://investorab.com.local/media/1024/investor_16020132276.jpg" alt=""/>
-                    <span>Management Group</span>
-                    <span>6 bilder</span>
-                </a>
-            </li>
-            <li class="col-md-4">
-                <a href="">
-                    <img src="https://investorab.com.local/media/1025/investor_color.jpg" alt="" />
-                    <span>Logotypes </span>
-                    <span>4 bilder</span>
-                </a>
-            </li>
+            @foreach (var gallery in Model.Children<ImageArchivePageModel>())
+            {
+                if (gallery.Images.Count() == 1)
+                {
+                    var umbracoBytes = umbracoHelper.TypedMedia(gallery.Images.ToList().First().Id).GetSize();
+                    
+                    <li class="col-md-4">
+                        <a href="@gallery.Images.ToList().First().Url" title="@gallery.Images.ToList().First().Name">
+                            <img src="@gallery.Images.ToList().First().Url" alt="@gallery.Images.ToList().First().Name"/>
+
+                            @MiscHelpers.BytesToKiloBytes(int.Parse(umbracoBytes)) kb
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="col-md-4">
+                        <a href="@gallery.Url" title="@gallery.Name">
+                            @if (gallery.PushImage.Url != null)
+                            {
+                                <img src="@gallery.PushImage.Url" alt="@gallery.Name" />
+                            }
+
+                            <span>@gallery.Name</span>                            
+                            <span>@gallery.Images.WhereNotNull().Count() @Umbraco.GetDictionaryValue("System.Media.Images")</span>
+                        </a>
+                    </li>
+                }
+            }
+
+            @if (!Model.Children().Any())
+            {
+                foreach (var image in Model.Images)
+                {
+
+                    if (image != null)
+                    {
+                        var umbracoBytes = image.GetSize();
+                        
+                        <li class="col-md-4">
+                            <a href="@image.Url" title="@image.Name">
+                                @if (image.Url != null)
+                                {
+                                    <img src="@image.Url" alt="@image.Name" />
+                                }
+
+                                <span>@image.GetProperty("name").Value</span>
+                                <span>@MiscHelpers.BytesToKiloBytes(int.Parse(umbracoBytes)) kb</span>
+                                </a>
+                        </li>
+                    }
+                }
+            }
         </ul>
     </article>
 </div>

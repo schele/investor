@@ -11,14 +11,14 @@ using Umbraco.Core.Models;
 namespace Investor.Models.PageModels
 {
     [ContentType(
-    DisplayName = "Sida: Bildarkiv",
-    Icon = Icon.PhotoAlbum,
-    Description = "En sida för att skapa ett bildarkiv",
-    AllowAtRoot = false,
-    AllowedChildNodes = new object[]
-        {
-            typeof(ImageArchivePageModel)
-        }
+        DisplayName = "Sida: Bildarkiv",
+        Icon = Icon.Pictures,
+        Description = "En sida för att skapa ett bildarkiv",
+        AllowAtRoot = false,
+        AllowedChildNodes = new object[]
+            {                
+                typeof(ImageArchivePageModel)
+            }
     )]
     public class ImageArchivePageModel : BaseModel, IPush
     {
@@ -69,6 +69,19 @@ namespace Investor.Models.PageModels
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
         public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }
+
+        #endregion
+
+        #region content
+
+        [Property(
+            "Multiple Media Picker",
+            Tab.Content,
+            DisplayName = "Bilder",
+            Description = "",
+            Converter = typeof(DocumentConverter)
+        )]
+        public virtual IEnumerable<IPublishedContent> Images { get; set; }
 
         #endregion
     }

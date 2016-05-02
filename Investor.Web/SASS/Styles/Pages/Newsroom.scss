@@ -1,0 +1,52 @@
+﻿.newsroom-page {
+
+}
+
+.newsroom-page .newsroom-page-intro {
+    margin-bottom: 40px
+}
+
+.newsroom-page .newsroom-page-comments,
+.newsroom-page .newsroom-page-notices
+ {
+    background: #fff url(/images/menu-gradient.png) repeat-x bottom left;
+    border: 1px solid #d5d5d5;
+    border-bottom: 4px solid #A0A0A0;
+    padding: 10px 30px 30px 30px;
+}
+
+.newsroom-page .newsroom-page-comments h2,
+.newsroom-page .newsroom-page-notices h2 {
+    font-size: 24px;
+    color: #002b7f;
+    font-weight: bold;
+    margin-bottom: 36px;
+}
+
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-notice,
+.newsroom-page .newsroom-page-comment .newsroom-page-comments-comment {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.newsroom-page .newsroom-page-comments h3,
+.newsroom-page .newsroom-page-notices h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 21px;
+    line-height: 27px;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-date span,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-date span {
+    color: #a0a0a0;
+    font-size: 14px;
+}
+
+.newsroom-page .newsroom-page-comments .newsroom-page-comments-time,
+.newsroom-page .newsroom-page-notices .newsroom-page-notices-time { 
+    background: url(/images/time.png) no-repeat left;
+    padding-left: 14px;
+    margin-left: 14px;
+}

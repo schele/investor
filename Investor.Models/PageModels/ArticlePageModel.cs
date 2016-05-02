@@ -21,6 +21,7 @@ namespace Investor.Models.PageModels
                 typeof(ArticlePageModel),
                 typeof(IFramePageModel),
                 typeof(PresentationPageModel),
+                typeof(CoWorkersListPageModel)
             }
     )]
     public class ArticlePageModel : BaseModel, IPush

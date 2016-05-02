@@ -38,6 +38,7 @@
             <li id="mobile-main-menu" class="menu">
                 <a class="ui">
                     <span class="icon"></span>
+                    @Umbraco.GetDictionaryValue("System.Menu")
                 </a>
                 <ul class="options">
                     @foreach (var categoryPage in Model.StartPage.Children<CategoryPageModel>().Where(x => x.HideInNavigation == false))
@@ -52,7 +53,7 @@
     <div class="mobile-navigation" data-mobile="true">
         <div id="search">
             <a class="ui">
-                <span class="icon"></span>
+                <span class="icon"></span>               
             </a>
             <div class="options">
                 <form class="search-mobile">

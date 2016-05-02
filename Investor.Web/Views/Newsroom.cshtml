@@ -1,4 +1,14 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@using Investor.Helpers
+@using Investor.Models.PageModels
+
+@inherits UmbracoTemplatePage
+@inherits UmbracoViewPage<NewsroomPageModel>
+
 @{
-	Layout = null;
+	Layout = "Master.cshtml";
 }
+
+<div>
+    @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
+    @Html.Render(Model.Preamble, @<span>@Model.Preamble</span>)
+</div>

@@ -1,0 +1,21 @@
+﻿@using Investor.Helpers
+@inherits UmbracoViewPage<Investor.Models.PageModels.NoticePageModel>
+
+<div class="newsroom-page-notices-date">
+    <span>@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+    <span class="newsroom-page-notices-time">@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+</div>
+@Html.Render(Model.Header, @<h3>@Model.Header</h3>)
+@Html.Render(Model.Preamble, @<div class="newsroom-page-notices-premable"><p>@Model.Preamble</p></div>)
+
+@if (Model.RelatedLinks != null)
+{
+    <ul class="newsroom-page-notices-links">
+        @foreach (var link in Model.RelatedLinks)
+        {
+            <li>
+                <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+            </li>
+        }
+    </ul>
+}

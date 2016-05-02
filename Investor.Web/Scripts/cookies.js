@@ -1,10 +1,8 @@
 ﻿var moduleContainer = $(".cookie-information");
-var _this;
 
 var events = {
   _init: function () {
     var cookieValue = '';
-    _this = this;
 
     if (document.cookie) {
       cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)acceptCookie\s*\=\s*([^;]*).*$)|^.*$/, '$1');

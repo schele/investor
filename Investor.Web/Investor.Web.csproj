@@ -482,6 +482,7 @@
     <Content Include="packages.config" />
     <Content Include="SASS\magnific-popup.css" />
     <Content Include="Scripts\campaign-lightbox.js" />
+    <Content Include="Scripts\cookies.js" />
     <Content Include="Scripts\iframe-size.js" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />
     <Content Include="Scripts\lib\jquery-ui.min.js" />
@@ -509,7 +510,7 @@
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="Config\uCodeFirstSettings.config" />
-    <Content Include="Views\MacroPartials\PressReleases.cshtml" />
+    <Content Include="Views\MacroPartials\PressReleases\PressReleases.cshtml" />
     <Content Include="App_Plugins\MacroContainerEditor\package.manifest" />
     <Content Include="App_Plugins\MacroListEditor\package.manifest" />
     <Content Include="UI\css\bootstrap-theme.css.map" />
@@ -632,6 +633,12 @@
     <Content Include="Views\ListPresentations.cshtml" />
     <Content Include="Views\ImageArchive.cshtml" />
     <Content Include="SASS\Styles\Pages\ImageArchive.scss" />
+    <Content Include="SASS\Styles\Layout\Cookie.scss" />
+    <Content Include="Views\Partials\Cookies.cshtml" />
+    <Content Include="SASS\Styles\Pages\Search.scss" />
+    <Content Include="SASS\Styles\Pages\Newsroom.scss" />
+    <Content Include="Views\Partials\Comment.cshtml" />
+    <Content Include="Views\Partials\Notice.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

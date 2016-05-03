@@ -510,7 +510,6 @@
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="Config\uCodeFirstSettings.config" />
-    <Content Include="Views\MacroPartials\PressReleases\PressReleases.cshtml" />
     <Content Include="App_Plugins\MacroContainerEditor\package.manifest" />
     <Content Include="App_Plugins\MacroListEditor\package.manifest" />
     <Content Include="UI\css\bootstrap-theme.css.map" />
@@ -642,6 +641,8 @@
     <Content Include="Views\MacroPartials\InvestorsAndMedia.cshtml" />
     <Content Include="Views\MacroPartials\PressReleases.cshtml" />
     <Content Include="SASS\Styles\MacroPartials\InvestorsAndMedia.scss" />
+    <Content Include="Views\MacroPartials\FlexiblePush.cshtml" />
+    <Content Include="SASS\Styles\MacroPartials\FlexiblePush.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

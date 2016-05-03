@@ -639,6 +639,8 @@
     <Content Include="SASS\Styles\Pages\Newsroom.scss" />
     <Content Include="Views\Partials\Comment.cshtml" />
     <Content Include="Views\Partials\Notice.cshtml" />
+    <Content Include="Views\MacroPartials\InvestorsAndMedia.cshtml" />
+    <Content Include="Views\MacroPartials\PressReleases.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

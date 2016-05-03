@@ -12,12 +12,14 @@ var events = {
       moduleContainer.addClass('cookie-information--visible');
     }
   },
-  _onclick: $('.cookie-information__inner__button').click(function (e) {
-    e.preventDefault();
-    var acceptDate = new Date(2020, 1, 1);
-    document.cookie = 'acceptCookie=1; path=/; expires=' + acceptDate.toUTCString();
-    moduleContainer.removeClass('cookie-information--visible');
-  })
+  _onclick: function () {
+    $('.cookie-information__inner__button').click(function(e) {
+      e.preventDefault();
+      var acceptDate = new Date(2020, 1, 1);
+      document.cookie = 'acceptCookie=1; path=/; expires=' + acceptDate.toUTCString();
+      moduleContainer.removeClass('cookie-information--visible');
+    });
+  }
 }
 
 events._init();

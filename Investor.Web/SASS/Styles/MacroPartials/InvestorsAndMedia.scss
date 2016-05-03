@@ -1,0 +1,130 @@
+﻿.investors-and-media {
+    background: white url(/images/menu-gradient.png) repeat-x bottom left;
+    background-color: #fff;
+    border: 1px solid #D5D5D5;
+    border-bottom: 4px solid #A0A0A0;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.investors-and-media .investors-and-media-header {
+    padding: 5px 30px;
+    background: #ee8100;
+    background: -moz-linear-gradient(top, #949494 0%, #7b7b7b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ee8100), color-stop(100%,#d87500));
+    background: -webkit-linear-gradient(top, #ee8100 0%,#d87500 100%);
+    background: -o-linear-gradient(top, #ee8100 0%,#d87500 100%);
+    background: -ms-linear-gradient(top, #ee8100 0%,#d87500 100%);
+}
+
+.investors-and-media .investors-and-media-header h2 {
+    font-size: 20px;
+}
+
+.investors-and-media .investors-and-media-header h2 a:before {
+    background: transparent url("/images/sprite.png") -100px -80px;
+    background-size: 200px 200px;
+    height: 30px;
+    width: 40px;
+    display: inline-block;
+    margin-bottom: -8px;
+    margin-right: 10px;
+    content: "";
+}
+
+.investors-and-media .investors-and-media-header h2 a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    min-height: 30px;
+}
+
+.investors-and-media .investors-and-media-content {
+    padding: 25px 30px 30px;
+}
+
+.investors-and-media .investors-and-media-content h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3e3e3e;
+    margin-bottom: 12px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-date,
+.investors-and-media .investors-and-media-content .investors-and-media-time {
+    color: #a0a0a0;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-time {
+    background: url(/images/time.png) no-repeat left;
+    padding-left: 14px;
+    margin-left: 14px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-latest-reports {
+    margin-bottom: 15px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-latest-reports li  {
+    border-bottom: 1px solid #C4C4C4;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-latest-reports li a {
+    padding: 15px 0px;
+    display: block;
+    text-decoration: none;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-latest-reports li:first-child a {
+    padding-top: 0;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-latest-reports li a .investors-and-media-latest-reports-icon {
+    background: url(/images/filetypes/pdf.png) no-repeat center left !important;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-latest-reports li a .investors-and-media-latest-reports-document {
+    display: block;
+    color: #002B7F;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-share {
+    border-bottom: 1px solid #C4C4C4;
+    margin-bottom: 15px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-share {
+
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-share li a {
+    text-decoration: none;
+    display: block;
+    padding-bottom: 15px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-share li a .investors-and-media-share-status {
+    display: block;
+    color: #000;
+    font-size: 14px;
+}
+    
+.investors-and-media .investors-and-media-content .investors-and-media-contact {
+    margin-top: -3px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-contact li a {
+    display: block;
+    color: #002b7f;
+    font-size: 14px;
+    line-height: 21px; 
+}

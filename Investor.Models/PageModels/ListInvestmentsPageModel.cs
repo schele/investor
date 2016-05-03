@@ -17,7 +17,8 @@ namespace Investor.Models.PageModels
         AllowAtRoot = false,
         AllowedChildNodes = new object[]
             {                
-                typeof(InvestmentPageModel)
+                typeof(InvestmentPageModel),
+                typeof(ArticlePageModel)
             }
     )]
     public class ListInvestmentsPageModel : BaseModel, IInvestments, IPush

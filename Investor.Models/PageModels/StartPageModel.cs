@@ -25,7 +25,6 @@ namespace Investor.Models.PageModels
                 typeof(ArticlePageModel),
                 typeof(IFramePageModel),
                 typeof(SearchPageModel),
-                typeof(NewsroomPageModel),
                 typeof(ContainerPageModel)
             }
     )]

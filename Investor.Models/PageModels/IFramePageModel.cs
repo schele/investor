@@ -14,7 +14,11 @@ namespace Investor.Models.PageModels
         DisplayName = "Sida: Iframe",
         Icon = Icon.WindowPopin,
         Description = "En sida för att skapa en iframe.",
-        AllowAtRoot = true
+        AllowAtRoot = true,
+        AllowedChildNodes = new object[]
+        {                
+            typeof(IFramePageModel)
+        }
     )]
     public class IFramePageModel : BaseModel, IPush
     {

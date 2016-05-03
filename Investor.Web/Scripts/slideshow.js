@@ -83,7 +83,7 @@ var selectSlide = function (setSlideInterval) {
       selectSlideAnimation(currentActiveSlide);
     }    
     clearTimeout(setSlideInterval);
-    setSlideInterval = setInterval('autoSlide()', 100000);
+    setSlideInterval = setInterval('autoSlide()', 14000);
   });
 }
 
@@ -102,7 +102,7 @@ var startSlideInterval = function () {
   if (initSlideShow()) {
     setSlideListWidth();
     initSlideShow();
-    var setSlideInterval = setInterval('autoSlide()', 100000);
+    var setSlideInterval = setInterval('autoSlide()', 14000);
     selectSlide(setSlideInterval);
   }
 }

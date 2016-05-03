@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Web;
 using Investor.Models.Converters;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
@@ -67,5 +68,23 @@ namespace Investor.Models.PageModels
             Converter = typeof(PublishedMediaConverter)
         )]
         public virtual IPublishedContent Image { get; set; }
+
+        [Property(
+            UmbracoDataType.RichtextEditor,
+            Tab.Content,
+            DisplayName = "Extrainformation",
+            Description = "",
+            Converter = typeof(RichtextConverter)
+        )]
+        public virtual IHtmlString AdditionalInfo { get; set; }
+
+        [Property(
+            UmbracoDataType.RichtextEditor,
+            Tab.Content,
+            DisplayName = "Resumé",
+            Description = "",
+            Converter = typeof(RichtextConverter)
+        )]
+        public virtual IHtmlString Resume { get; set; }
     }
 }

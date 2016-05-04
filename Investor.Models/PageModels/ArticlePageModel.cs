@@ -74,8 +74,8 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinks,
-            Tab.Page,
+            UmbracoDataType.RelatedLinksAndMedia,
+            Tab.Content,
             DisplayName = "Relaterade länkar: Länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
@@ -89,15 +89,15 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string RelatedDocumentsHeader { get; set; }
-        
+
         [Property(
-            "Multiple Media Picker",
-            Tab.Page,
+            UmbracoDataType.RelatedLinksAndMedia,
+            Tab.Content,
             DisplayName = "Relaterade dokument: Dokument",
             Description = "",
-            Converter = typeof(DocumentConverter)
+            Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual IEnumerable<IPublishedContent> RelatedDocuments { get; set; }
+        public virtual IEnumerable<NodeLink> RelatedDocuments { get; set; }
         
         #endregion
 

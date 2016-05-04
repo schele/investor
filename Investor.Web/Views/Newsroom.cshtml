@@ -6,6 +6,12 @@
 
 @{
 	Layout = "Master.cshtml";
+    var colClass = "col-md-6";
+
+    if (!Model.GetNotices().Any() || !Model.GetComments().Any())
+    {
+        colClass = "col-md-12";
+    }
 }
 
 <article class="row newsroom-page">
@@ -14,68 +20,75 @@
         @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
     </div>
 
-    <div class="col-md-6">
-        <div class="newsroom-page-comments">
-            @Html.Render(Model.CommentsHeader, @<h2>@Model.CommentsHeader</h2>)
+    @if (Model.GetComments().Any())
+    {
+        <div class="@colClass">
+            <div class="newsroom-page-comments">
+                @Html.Render(Model.CommentsHeader, @<h2>@Model.CommentsHeader</h2>)
 
-            @if(Model.GetComments() != null) {
-                <ul>
-                    @foreach (var comment in Model.GetComments().Take(5))
-                    {
-                        <li class="newsroom-page-comments-comment">
-                            @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
-                        </li>
-                    }
-                </ul>
-                if (Model.GetComments().Count() > 5)
+                @if (Model.GetComments() != null)
                 {
-                    <ul class="newsroom-page-comments-expandable">
-                        @foreach (var comment in Model.GetComments().Skip(5))
+                    <ul>
+                        @foreach (var comment in Model.GetComments().Take(5))
                         {
                             <li class="newsroom-page-comments-comment">
                                 @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
                             </li>
                         }
                     </ul>
-                    <button class="newsroom-page-comments-expand-btn">
-                        <span class="newsroom-page-comments-expandable-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
-                        <span class="newsroom-page-comments-expandable-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
-                    </button>
-                }
-            }
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="newsroom-page-notices">
-            @Html.Render(Model.NoticesHeader, @<h2>@Model.NoticesHeader</h2>)
-
-            @if (Model.GetNotices() != null)
-            {
-                <ul>
-                    @foreach (var notice in Model.GetNotices().Take(5))
+                    if (Model.GetComments().Count() > 5)
                     {
-                        <li class="newsroom-page-notices-notice">
-                            @Html.Partial("~/Views/Partials/Notice.cshtml", notice)
-                        </li>
+                        <ul class="newsroom-page-comments-expandable">
+                            @foreach (var comment in Model.GetComments().Skip(5))
+                            {
+                                <li class="newsroom-page-comments-comment">
+                                    @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
+                                </li>
+                            }
+                        </ul>
+                        <button class="newsroom-page-comments-expand-btn">
+                            <span class="newsroom-page-comments-expandable-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
+                            <span class="newsroom-page-comments-expandable-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
+                        </button>
                     }
-                </ul>
-                if (Model.GetNotices().Count() > 5)
+                }
+            </div>
+        </div>
+    }
+
+    @if (Model.GetNotices().Any())
+    {
+        <div class="@colClass">
+            <div class="newsroom-page-notices">
+                @Html.Render(Model.NoticesHeader, @<h2>@Model.NoticesHeader</h2>)
+
+                @if (Model.GetNotices() != null)
                 {
-                    <ul class="newsroom-page-notices-expandable">
-                        @foreach (var notice in Model.GetNotices().Skip(5))
+                    <ul>
+                        @foreach (var notice in Model.GetNotices().Take(5))
                         {
                             <li class="newsroom-page-notices-notice">
                                 @Html.Partial("~/Views/Partials/Notice.cshtml", notice)
                             </li>
                         }
                     </ul>
-                    <button class="newsroom-page-notices-expand-btn">
-                        <span class="newsroom-page-notices-expandable-closed active">@Umbraco.GetDictionaryValue("System.News.All")</span>
-                        <span class="newsroom-page-notices-expandable-open">@Umbraco.GetDictionaryValue("System.News.All")</span>
-                    </button>
+                    if (Model.GetNotices().Count() > 5)
+                    {
+                        <ul class="newsroom-page-notices-expandable">
+                            @foreach (var notice in Model.GetNotices().Skip(5))
+                            {
+                                <li class="newsroom-page-notices-notice">
+                                    @Html.Partial("~/Views/Partials/Notice.cshtml", notice)
+                                </li>
+                            }
+                        </ul>
+                        <button class="newsroom-page-notices-expand-btn">
+                            <span class="newsroom-page-notices-expandable-closed active">@Umbraco.GetDictionaryValue("System.News.All")</span>
+                            <span class="newsroom-page-notices-expandable-open">@Umbraco.GetDictionaryValue("System.News.All")</span>
+                        </button>
+                    }
                 }
-            }
+            </div>
         </div>
-    </div>
+    }
 </article>

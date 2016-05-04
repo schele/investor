@@ -68,7 +68,7 @@
                     </div>
 
                     <div ng-show="isInternalLinkMode()">
-                        <span ng-bind="newInternalName"></span> <a href="#" ng-click="internal($event)">Choose</a>
+                        <span ng-bind="newInternalName"></span> <a href="#" ng-click="internal($event)">Choose page</a>
                         <br /> or
                         <a href="#" ng-click="switch($event, Mode.ExternalLink)">enter external link</a>
                         <br /> or
@@ -76,7 +76,7 @@
                     </div>
 
                     <div ng-show="isInternalMediaMode()">
-                        <span ng-bind="newInternalName"></span> <a href="#" ng-click="internalMedia($event)">Choose</a>
+                        <span ng-bind="newInternalName"></span> <a href="#" ng-click="internalMedia($event)">Choose media</a>
                         <br /> or
                         <a href="#" ng-click="switch($event, Mode.ExternalLink)">enter external link</a>
                         <br /> or

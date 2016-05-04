@@ -1,14 +1,33 @@
 ﻿@using Investor.Helpers
-@using Investor.Models.Extensions
+@using Investor.Models.Models.NodeLink
 @using Investor.Models.PageModels
-@using MediaExtensions = Investor.Models.Extensions.MediaExtensions
 
 @inherits UmbracoViewPage<ArticlePageModel>
 
 @{
     Layout = "Master.cshtml";
+}
 
-    var docs = Model.RelatedDocuments.ToList();
+@helper GetRelatedLink(NodeLink node)
+{
+    var target = node.NewWindow ? "_blank" : null;
+
+    if (node.Type == "internal")
+    {
+        var rel = Umbraco.TypedContent(node.Link);
+        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
+    }
+
+    if (node.Type == "internalMedia")
+    {
+        var rel = Umbraco.TypedMedia(node.Link);
+        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
+    }
+
+    if (node.Type == "external")
+    {
+        <a href="@node.Link" title="@node.Caption" target="@target">@node.Caption</a>
+    }    
 }
 
 <div class="row">
@@ -22,69 +41,52 @@
                 @Html.Render(Model.Text, @<div class="text-editor-content">@Html.Raw(Model.Text)</div>)
             </div>
             <div class="col-md-3">
-
-                @if (Model.RelatedLinks != null)
+                @if (Model.RelatedLinks.Any())
                 {
                     <div class="article-page-links">
                         <h3>
                             <span class="icon"></span>@Model.RelatedLinksHeader
                         </h3>
-                        <ul>
-                            @foreach (var link in Model.RelatedLinks.Take(5))
+                        <ul>                            
+                            @foreach (var item in Model.RelatedLinks.Take(5))
                             {
-                                var target = link.NewWindow ? "_blank" : null;
-
-                                <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
-
+                                <li>@GetRelatedLink(item)</li>
                             }
                         </ul>
                         @if (Model.RelatedLinks.Count() > 5)
                         {
-
                             <ul class="article-page-links-expandable">
                                 @foreach (var link in Model.RelatedLinks.Skip(5))
                                 {
-                                    var target = link.NewWindow ? "_blank" : null;
-
-                                    <li><a href="@link.Link" target="@target" title="@link.Caption">@link.Caption</a></li>
+                                    <li>@GetRelatedLink(link)</li>
                                 }
                             </ul>
                             <button class="article-page-links-expand-btn">
                                 <span class="article-page-links-expandable-closed active">@Umbraco.GetDictionaryValue("System.Read.All")</span>
                                 <span class="article-page-links-expandable-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
-                            </button> 
+                            </button>
                         }
                     </div>
                 }
 
-                @if (docs[0] != null)
+                @if (Model.RelatedDocuments.Any())
                 {
                     <div class="article-page-documents">
                         <h3>
                             <span class="icon"></span>@Model.RelatedDocumentsHeader
                         </h3>
                         <ul>
-                            @foreach (var document in Model.RelatedDocuments.Take(5))
+                            @foreach (var item in Model.RelatedDocuments.Take(5))
                             {
-                                if (document != null)
-                                {
-                                    var doc = MediaExtensions.GetMediaById(document.Id.ToString());
-
-                                    <li><a href="@doc.FriendlyUrl()" title="@doc.Name">@Path.GetFileNameWithoutExtension(doc.Name)</a></li>
-                                }
+                                <li>@GetRelatedLink(item)</li>
                             }
                         </ul>
                         @if (Model.RelatedDocuments.Count() > 5)
                         {
                             <ul class="article-page-documents-expandable">
-                                @foreach (var document in Model.RelatedDocuments.Skip(5))
+                                @foreach (var link in Model.RelatedDocuments.Skip(5))
                                 {
-                                    if (document != null)
-                                    {
-                                        var doc = MediaExtensions.GetMediaById(document.Id.ToString());
-
-                                        <li><a href="@doc.FriendlyUrl()" title="@doc.Name">@Path.GetFileNameWithoutExtension(doc.Name)</a></li>
-                                    }
+                                    <li>@GetRelatedLink(link)</li>
                                 }
                             </ul>
                             <button class="article-page-documents-expand-btn">
@@ -93,7 +95,7 @@
                             </button>
                         }                
                     </div>
-                }                
+                }
             </div>
         </div>
     </article>

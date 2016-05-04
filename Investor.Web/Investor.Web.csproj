@@ -683,9 +683,12 @@
     <Content Include="SASS\Styles\Pages\Newsroom.scss" />
     <Content Include="Views\Partials\Comment.cshtml" />
     <Content Include="Views\Partials\Notice.cshtml" />
-    <Content Include="Config\UmbExamineSettings.config" />
-    <Content Include="Views\MacroPartials\PressReleases.cshtml" />
     <Content Include="Views\MacroPartials\InvestorsAndMedia.cshtml" />
+    <Content Include="Views\MacroPartials\PressReleases.cshtml" />
+    <Content Include="SASS\Styles\MacroPartials\InvestorsAndMedia.scss" />
+    <Content Include="Views\MacroPartials\FlexiblePush.cshtml" />
+    <Content Include="SASS\Styles\MacroPartials\FlexiblePush.scss" />
+    <Content Include="Config\UmbExamineSettings.config" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

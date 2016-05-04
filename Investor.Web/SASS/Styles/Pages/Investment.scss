@@ -53,6 +53,15 @@
     float: right;
 }
 
+.investment-page .investment-page-logo {
+    padding: 60px;
+}
+   
+.investment-page .investment-page-logo img {
+    max-width: 100%;
+    margin-top: -40px;
+}
+
 .investment-page .investment-page-facts {
     float: right;
 }
@@ -105,5 +114,14 @@
     .investment-page .investment-page-intro img {
         float: left;
         margin-top: 20px;
+    }
+
+    .investment-page .investment-page-logo {
+        padding: 0 30px;
+    }
+   
+    .investment-page .investment-page-logo img {
+        max-width: 100%;
+        margin-top: 0; 
     }
 }

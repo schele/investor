@@ -6,13 +6,13 @@
     height: 300px;
     position: relative;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .start-page .slide-show-container .slide-show-item {
-    position: absolute;
-    transition: 1s;
-    left: 0;
-    display: none;
+    position: relative;
+    width: 1140px;
+    float: left;
 }
 
 .start-page .slide-show-container .slide-show-item.active {
@@ -66,6 +66,14 @@
 
 .start-page .slide-show-container .slide-show-controls .slide-show-dot.active {
     background: #fcc127;
+}
+
+@media (max-width: 1200px) {
+    .start-page .slide-show-container .slide-show-item {
+        position: relative;
+        width: 940px;
+        float: left;
+    }
 }
 
 @media (max-width: 990px) {

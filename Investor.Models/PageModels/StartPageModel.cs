@@ -25,7 +25,8 @@ namespace Investor.Models.PageModels
                 typeof(ArticlePageModel),
                 typeof(IFramePageModel),
                 typeof(SearchPageModel),
-                typeof(ContainerPageModel)
+                typeof(ContainerPageModel),
+                typeof(CoWorkersListPageModel)
             }
     )]
     public class StartPageModel : BaseModel

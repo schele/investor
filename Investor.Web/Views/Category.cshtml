@@ -21,190 +21,37 @@
     </div>
 
     <div class="row">
-
         @foreach (var page in Model.Children().OrderBy(x => x.CreateDate))
         {
-            if (page is IPush)
-            {                
-                //ArticlePageModel
+            var push = page as IPush;
+        
+            if (push != null)
+            {
                 try
                 {
-                    var article = page as ArticlePageModel;
+                    <div class="category-page-category col-md-4 col-sm-4">
 
-                    if (article != null)
-                    {
-                        <div class="category-page-category col-md-4 col-sm-4">
+                        @Html.Render(push.PushImage, @<p><img src="@push.PushImage.Url" alt="@page.Name"/></p>)
 
-                            @Html.Render(article.PushImage, @<p><img src="@article.PushImage.Url" alt="@article.Name"/></p>)
+                        <h2>
+                            <a href="@page.Url" title="@page.Name">@page.Name</a>
+                        </h2>
 
-                            <h2>
-                                <a href="@article.Url" title="@article.Name">@article.Name</a>
-                            </h2>
+                        <p>@push.PushText</p>
 
-                            <p>@article.PushText</p>
-
-                            @if (article.RelatedLinksForPush != null)
-                            {
-                                <span>@article.RelatedLinksForPushHeader</span>
-                                <ul>
-                                    @foreach (var link in article.RelatedLinksForPush)
-                                    {
-                                        <li>
-                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                        </div>
-                    }
-                }
-                catch (Exception exception)
-                {
-                    log.Error(exception.Message);
-                }
-
-                //ListInvestmentsPageModel
-                try
-                {
-                    var investment = page as ListInvestmentsPageModel;
-
-                    if (investment != null)
-                    {
-                        <div class="category-page-category col-md-4 col-sm-4">
-
-                            @Html.Render(investment.PushImage, @<p><img src="@investment.PushImage.Url" alt="@investment.Name"/></p>)
-
-                            <h2>
-                                <a href="@investment.Url" title="@investment.Name" class="@investment.ColorDropdown">@investment.Name</a>
-                            </h2>
-
-                            <p>@investment.PushText</p>
-
-                            @if (investment.RelatedLinksForPush != null)
-                            {
-                                <span>@investment.RelatedLinksForPushHeader</span>
-                                <ul>
-                                    @foreach (var link in investment.RelatedLinksForPush)
-                                    {
-                                        <li>
-                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                        </div>
-                    }
-                }
-                catch (Exception exception)
-                {
-                    log.Error(exception.Message);
-                }
-
-                //IFramePageModel
-                try
-                {
-                    var iframe = page as IFramePageModel;
-
-                    if (iframe != null)
-                    {
-                        <div class="category-page-category col-md-4 col-sm-4">
-
-                            @Html.Render(iframe.PushImage, @<p><img src="@iframe.PushImage.Url" alt="@iframe.Name" /></p>)
-
-                            <h2>
-                                <a href="@iframe.Url" title="@iframe.Name">@iframe.Name</a>
-                            </h2>
-
-                            <p>@iframe.PushText</p>
-
-                            @if (iframe.RelatedLinksForPush != null)
-                            {
-                                <span>@iframe.RelatedLinksForPushHeader</span>
-                                <ul>
-                                    @foreach (var link in iframe.RelatedLinksForPush)
-                                    {
-                                        <li>
-                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                        </div>
-                    }
-                }
-                catch (Exception exception)
-                {
-                    log.Error(exception.Message);
-                }
-
-                //Newsroom
-                try
-                {
-                    var iframe = page as NewsroomPageModel;
-
-                    if (iframe != null)
-                    {
-                        <div class="category-page-category col-md-4 col-sm-4">
-
-                            @Html.Render(iframe.PushImage, @<p><img src="@iframe.PushImage.Url" alt="@iframe.Name" /></p>)
-
-                            <h2>
-                                <a href="@iframe.Url" title="@iframe.Name">@iframe.Name</a>
-                            </h2>
-
-                            <p>@iframe.PushText</p>
-
-                            @if (iframe.RelatedLinksForPush != null)
-                            {
-                                <span>@iframe.RelatedLinksForPushHeader</span>
-                                <ul>
-                                    @foreach (var link in iframe.RelatedLinksForPush)
-                                    {
-                                        <li>
-                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                        </div>
-                    }
-                }
-                catch (Exception exception)
-                {
-                    log.Error(exception.Message);
-                }
-
-                //Image gallery
-                try
-                {
-                    var imageArchive = page as ImageArchivePageModel;
-
-                    if (imageArchive != null)
-                    {
-                        <div class="category-page-category col-md-4 col-sm-4">
-
-                            @Html.Render(imageArchive.PushImage, @<p><img src="@imageArchive.PushImage.Url" alt="@imageArchive.Name" /></p>)
-
-                            <h2>
-                                <a href="@imageArchive.Url" title="@imageArchive.Name">@imageArchive.Name</a>
-                            </h2>
-
-                            <p>@imageArchive.PushText</p>
-
-                            @if (imageArchive.RelatedLinksForPush != null)
-                            {
-                                <span>@imageArchive.RelatedLinksForPushHeader</span>
-                                <ul>
-                                    @foreach (var link in imageArchive.RelatedLinksForPush)
-                                    {
-                                        <li>
-                                            <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                        </div>
-                    }
+                        @if (push.RelatedLinksForPush != null)
+                        {
+                            <span>@push.RelatedLinksForPushHeader</span>
+                            <ul>
+                                @foreach (var link in push.RelatedLinksForPush)
+                                {
+                                    <li>
+                                        <a href="@link.Link" title="@link.Caption">@link.Caption</a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </div>
                 }
                 catch (Exception exception)
                 {

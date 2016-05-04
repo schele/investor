@@ -160,6 +160,15 @@ namespace Investor.Models.PageModels
         [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks")]
         public virtual string Grid { get; set; }
 
+        [Property(
+            UmbracoDataType.RelatedLinksAndMedia,
+            Tab.Content,
+            DisplayName = "Content: RelatedLinksAndMedia",
+            Description = "",
+            Converter = typeof(NodeLinkConverter<NodeLink>)
+        )]
+        public virtual IEnumerable<NodeLink> RelatedLinksAndMedia { get; set; }
+
         #endregion
 
         #region popup

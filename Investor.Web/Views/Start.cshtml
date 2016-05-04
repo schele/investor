@@ -11,3 +11,27 @@
         @Model.Content.GetGridHtml(Html, "grid")
     </div>
 </div>
+
+<div>
+    @foreach (var item in Model.StartPage.RelatedLinksAndMedia)
+    {
+        var target = item.NewWindow ? "_blank" : null;
+
+        if (item.Type == "internal")
+        {
+            var rel = Umbraco.TypedContent(item.Link);
+            <a href="@rel.Url" title="@item.Caption" target="@target">@item.Caption</a>
+        }
+
+        if (item.Type == "internalMedia")
+        {
+            var rel = Umbraco.TypedMedia(item.Link);
+            <a href="@rel.Url" title="@item.Caption" target="@target">@item.Caption</a>
+        }
+
+        if (item.Type == "external")
+        {
+            <a href="@item.Link" title="@item.Caption" target="@target">@item.Caption</a>
+        }                      
+    }
+</div>

@@ -96,7 +96,7 @@
     <!-- End Cookie Consent plugin -->
 </head>
 
-<body>
+<body data-ng-app="baseApp">
     @Html.Partial("~/Views/Partials/Cookies.cshtml")
     @Html.Partial("~/Views/Partials/Header.cshtml")
 
@@ -109,14 +109,14 @@
     <a href="" data-mfp-src="#test-popup" id="fancy_box"></a>
     <div id="test-popup" class="campaign-popup mfp-hide">
         <button class="campaign-custom-close" id="campaign-custom-close">@Umbraco.GetDictionaryValue("System.Modal.Close")</button>
-        <img class="mobile-image" src="~/images/investor-popup-pattern-mobile-small.png" alt="investor pattern"/>
-        <img class="logo logo-desktop" src="~/images/investor-popup-logo.png" alt="investor logo"/>
-        <img class="logo logo-mobile" src="~/images/investor-popup-logo.png" alt="investor logo"/>
+        <img class="mobile-image" src="~/images/investor-popup-pattern-mobile-small.png" alt="investor pattern" />
+        <img class="logo logo-desktop" src="~/images/investor-popup-logo.png" alt="investor logo" />
+        <img class="logo logo-mobile" src="~/images/investor-popup-logo.png" alt="investor logo" />
         @Html.Render(Model.StartPage.PopupText, @<p>@Model.StartPage.PopupText</p>)
         <a href="http://www.investor100years.com">@Html.Render(Model.StartPage.PopupUrlText, @<span>@Model.StartPage.PopupUrlText</span>)</a>
         <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
     </div>
-
+    <script src="~/Scripts/angular/lib/underscore.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/jquery-1.12.3.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/jquery-ui.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/jquery.magnific-popup.min.js" type="text/javascript"></script>
@@ -127,6 +127,15 @@
     <script src="~/Scripts/iframe-size.js" type="text/javascript"></script>
     <script src="~/Scripts/list-expand.js" type="text/javascript"></script>
     <script src="~/Scripts/cookies.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular/lib/angular.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular/lib/angular-route.js" type="text/javascript"></script>
+<script src="~/Scripts/angular/lib/angular-cookies.js" type="text/javascript"></script>
 
+    <script src="~/Scripts/angular/lib/typeahead.bundle.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular/lib/angular-typeahead.js" type="text/javascript"></script>
+
+<script src="~/Scripts/angular/modules/angularConfiguration.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular/angularServices.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular/angularControllers.js" type="text/javascript"></script>
 </body>
 </html>

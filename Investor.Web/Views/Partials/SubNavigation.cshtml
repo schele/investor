@@ -26,7 +26,7 @@ foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNaviga
 
     string activeClass = null;
     string hasChildrenClass = null;
-    var children = childPage.Children<BaseModel>().ToList();
+    var children = childPage.Children<BaseModel>().Where(x => !x.HideInNavigation).ToList();
     var noChildren = !children.Any() || maxLevel.HasValue && maxLevel <= 1 && children.First().Level >= maxLevel;
     if (childPage.Name == Model.Name)
     {
@@ -48,6 +48,7 @@ foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNaviga
                 if (noChildren)
                 {
                     continue;
+                    
                 }
       
                 <ul>

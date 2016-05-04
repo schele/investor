@@ -296,10 +296,15 @@
     <Compile Include="Converters\PublishedMediaConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataTypes\RelatedLinksAndMedia.cs" />
     <Compile Include="DataTypes\DropdownForRobots.cs" />
     <Compile Include="DataTypes\MacroContainer.cs" />
     <Compile Include="Enums\CustomTabs.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\MediaExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\NodeLink\NodeLink.cs" />
     <Compile Include="Models\PressReleases\Attachment.cs" />
     <Compile Include="Models\Slideshow.cs" />

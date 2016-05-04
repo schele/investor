@@ -488,6 +488,7 @@
     <Content Include="Scripts\angular\lib\angular-typeahead.js" />
     <Content Include="Scripts\angular\lib\angular.js" />
     <Content Include="Scripts\angular\lib\typeahead.bundle.js" />
+    <Content Include="Scripts\angular\lib\underscore.js" />
     <Content Include="Scripts\angular\modules\angularConfiguration.js" />
     <Content Include="Scripts\campaign-lightbox.js" />
     <Content Include="Scripts\cookies.js" />
@@ -518,7 +519,6 @@
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="Config\uCodeFirstSettings.config" />
-    <Content Include="Views\MacroPartials\PressReleases\PressReleases.cshtml" />
     <Content Include="App_Plugins\MacroContainerEditor\package.manifest" />
     <Content Include="App_Plugins\MacroListEditor\package.manifest" />
     <Content Include="UI\css\bootstrap-theme.css.map" />
@@ -684,6 +684,8 @@
     <Content Include="Views\Partials\Comment.cshtml" />
     <Content Include="Views\Partials\Notice.cshtml" />
     <Content Include="Config\UmbExamineSettings.config" />
+    <Content Include="Views\MacroPartials\PressReleases.cshtml" />
+    <Content Include="Views\MacroPartials\InvestorsAndMedia.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

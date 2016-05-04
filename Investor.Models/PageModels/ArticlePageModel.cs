@@ -65,6 +65,10 @@ namespace Investor.Models.PageModels
         )]
         public virtual IHtmlString Text { get; set; }
 
+        #endregion
+
+        #region page
+
         [Property(
             UmbracoDataType.Textstring,
             Tab.Page,
@@ -75,7 +79,7 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.RelatedLinksAndMedia,
-            Tab.Content,
+            Tab.Page,
             DisplayName = "Relaterade länkar: Länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
@@ -92,7 +96,7 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.RelatedLinksAndMedia,
-            Tab.Content,
+            Tab.Page,
             DisplayName = "Relaterade dokument: Dokument",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
@@ -129,7 +133,7 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksForPushHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinks,
+            UmbracoDataType.RelatedLinksAndMedia,
             Tab.Push,
             DisplayName = "Puff Relaterade länkar: Länkar",
             Description = "Dessa länkar visas på en puffyta",

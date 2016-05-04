@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
+using Investor.Models.Models.NodeLink;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -13,11 +14,7 @@ namespace Investor.Models.PageModels
         DisplayName = "Sida: Kommentar",
         Icon = Icon.Article,
         Description = "En sida för att skapa en kommentar",
-        AllowAtRoot = true,
-        AllowedChildNodes = new object[]
-            {                
-                //typeof(NewsroomPageModel)
-            }
+        AllowAtRoot = false
     )]
     public class CommentPageModel : BaseModel
     {
@@ -51,15 +48,15 @@ namespace Investor.Models.PageModels
             Converter = typeof(RichtextConverter)
         )]
         public virtual IHtmlString Preamble { get; set; }
-        
+
         [Property(
-            UmbracoDataType.MediaPicker,
+            UmbracoDataType.RelatedLinksAndMedia,
             Tab.Content,
             DisplayName = "Relaterade dokument: Länkar",
             Description = "",
-            Converter = typeof(DocumentConverter)
+            Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual IEnumerable<IPublishedContent> RelatedDocuments { get; set; }
+        public virtual IEnumerable<NodeLink> RelatedDocuments { get; set; }
         
         #endregion
     }

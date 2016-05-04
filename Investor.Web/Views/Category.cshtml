@@ -1,4 +1,5 @@
 ﻿@using Investor.Helpers
+@using Investor.Models.Models.NodeLink
 @using Investor.Models.PageModels
 @using Investor.Models.PageModels.Interfaces
 @using log4net
@@ -9,7 +10,29 @@
 @{
     Layout = "Master.cshtml";
     
-    var log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);     
+    var log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+}
+
+@helper GetRelatedLink(NodeLink node)
+{
+    var target = node.NewWindow ? "_blank" : null;
+
+    if (node.Type == "internal")
+    {
+        var rel = Umbraco.TypedContent(node.Link);
+        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
+    }
+
+    if (node.Type == "internalMedia")
+    {
+        var rel = Umbraco.TypedMedia(node.Link);
+        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
+    }
+
+    if (node.Type == "external")
+    {
+        <a href="@node.Link" title="@node.Caption" target="@target">@node.Caption</a>
+    }
 }
 
 <div class="category-page">
@@ -39,15 +62,13 @@
 
                         <p>@push.PushText</p>
 
-                        @if (push.RelatedLinksForPush != null)
+                        @if (push.RelatedLinksForPush.Any())
                         {
                             <span>@push.RelatedLinksForPushHeader</span>
                             <ul>
                                 @foreach (var link in push.RelatedLinksForPush)
                                 {
-                                    <li>
-                                        <a href="@link.Link" title="@link.Caption">@link.Caption</a>
-                                    </li>
+                                    <li>@GetRelatedLink(link)</li>
                                 }
                             </ul>
                         }

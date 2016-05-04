@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Globalization;
 using Investor.Models.Converters;
+using Investor.Models.Models.NodeLink;
+using umbraco;
 using umbraco.NodeFactory;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
@@ -48,6 +51,15 @@ namespace Investor.Models.PageModels
             Description = "Ändra adressen som går till den här sidan."
         )]
         public virtual string UmbracoUrlName { get; set; }
+
+        [Property(
+            UmbracoDataType.RelatedLinks,
+            Tab.Navigation,
+            DisplayName = "Redirect",
+            Description = "Välj om sidan ska skickas till en annan address.",
+            Converter = typeof(NodeLinkConverter<NodeLink>)
+        )]
+        public virtual IEnumerable<NodeLink> Redirect { get; set; }
 
         #endregion
 
@@ -106,6 +118,30 @@ namespace Investor.Models.PageModels
             {
                 return umbraco.NodeFactory.Node.GetCurrent();
             }
+        }
+
+        public string GetRedirectUrl()
+        {
+
+            return "";
+            //if (Redirect == null)
+            //{
+            //    return string.Empty;
+            //}
+
+            //if (Redirect.isInternal)
+            //{
+            //    if (string.IsNullOrEmpty(Redirect.@internal))
+            //    {
+            //        return string.Empty;
+            //    }
+
+            //    var nodeId = int.Parse(Redirect.@internal);
+
+            //    return library.NiceUrl(nodeId);
+            //}
+
+            //return Redirect.link;
         }
     }
 }

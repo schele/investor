@@ -2,7 +2,6 @@
 using System.Globalization;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
-using Investor.Models.PageModels.Interfaces;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -57,7 +56,7 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinks,
+            UmbracoDataType.RelatedLinksAndMedia,
             Tab.Content,
             DisplayName = "Länkar: Länkar",
             Description = "",

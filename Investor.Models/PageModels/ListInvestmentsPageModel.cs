@@ -82,13 +82,13 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksForPushHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinks,
+            UmbracoDataType.RelatedLinksAndMedia,
             Tab.Push,
             DisplayName = "Puff Relaterade länkar: Länkar",
             Description = "Dessa länkar visas på en puffyta",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }     
+        public virtual IEnumerable<NodeLink> RelatedLinksForPush { get; set; }  
 
         #endregion
 

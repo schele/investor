@@ -359,9 +359,10 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
-    <Content Include="App_Plugins\RelatedLinks\relatedlinks.controller.js" />
-    <Content Include="App_Plugins\RelatedLinks\relatedlinks.css" />
-    <Content Include="App_Plugins\RelatedLinks\relatedlinks.html" />
+    <Content Include="App_Plugins\RG.RelatedLinksWithMedia\lang\en-US.xml" />
+    <Content Include="App_Plugins\RG.RelatedLinksWithMedia\lang\sv-SE.xml" />
+    <Content Include="App_Plugins\RG.RelatedLinksWithMedia\relatedlinkswithmedia.controller.js" />
+    <Content Include="App_Plugins\RG.RelatedLinksWithMedia\relatedlinkswithmedia.html" />
     <Content Include="Configuration\ConfigurationTransforms.xml" />
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="Config\Lang\cs-CZ.user.xml" />
@@ -631,7 +632,6 @@
     <Content Include="SASS\Styles\global.scss" />
     <Content Include="SASS\Styles\Layout\Footer.scss" />
     <Content Include="SASS\Styles\Layout\SubNavigation.scss" />
-    <Content Include="App_Plugins\RelatedLinks\package.manifest" />
     <Content Include="SASS\Styles\Pages\Start.scss" />
     <Content Include="Views\ListInvestments.cshtml" />
     <Content Include="Views\Investment.cshtml" />
@@ -689,6 +689,9 @@
     <Content Include="Views\MacroPartials\FlexiblePush.cshtml" />
     <Content Include="SASS\Styles\MacroPartials\FlexiblePush.scss" />
     <Content Include="Config\UmbExamineSettings.config" />
+    <Content Include="App_Plugins\RG.RelatedLinksWithMedia\package.manifest" />
+    <Content Include="App_Code\Helper.cshtml" />
+    <Content Include="Views\Sitemap.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

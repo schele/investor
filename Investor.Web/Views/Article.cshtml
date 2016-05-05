@@ -1,4 +1,5 @@
 ﻿@using Investor.Helpers
+@using Investor.Models.Extensions
 @using Investor.Models.Models.NodeLink
 @using Investor.Models.PageModels
 
@@ -58,7 +59,10 @@
                             <ul class="article-page-links-expandable">
                                 @foreach (var link in Model.RelatedLinks.Skip(5))
                                 {
-                                    <li>@GetRelatedLink(link)</li>
+                                    <li>
+                                        @Html.RelatedLink(link)
+                                        @*@GetRelatedLink(link)*@
+                                    </li>
                                 }
                             </ul>
                             <button class="article-page-links-expand-btn">

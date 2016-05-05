@@ -26,7 +26,8 @@ namespace Investor.Models.PageModels
                 typeof(IFramePageModel),
                 typeof(SearchPageModel),
                 typeof(ContainerPageModel),
-                typeof(CoWorkersListPageModel)
+                typeof(CoWorkersListPageModel),
+                typeof(SitemapPageModel)
             }
     )]
     public class StartPageModel : BaseModel
@@ -67,9 +68,9 @@ namespace Investor.Models.PageModels
         public virtual INode SearchNode { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinks,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Navigation,
-            DisplayName = "Extrameny",
+            DisplayName = "Högernavigering",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
@@ -124,6 +125,10 @@ namespace Investor.Models.PageModels
         )]
         public virtual IHtmlString Footer { get; set; }
 
+        #endregion
+
+        #region cookie
+
         [Property(
             UmbracoDataType.TextboxMultiple,
             CustomTabs.Cookie,
@@ -148,6 +153,15 @@ namespace Investor.Models.PageModels
         )]
         public virtual string CookieButtonText { get; set; }
 
+        [Property(
+            UmbracoDataType.ContentPicker,
+            CustomTabs.Cookie,
+            DisplayName = "Cookie: Länk",
+            Description = "",
+            Converter = typeof(NodeConverter)
+        )]
+        public virtual INode CookiesNode { get; set; }
+
         #endregion
 
         #region content
@@ -158,7 +172,7 @@ namespace Investor.Models.PageModels
             DisplayName = "Content: Grid",
             Description = ""
         )]
-        [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks")]
+        [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks", "InvestorsAndMedia", "FlexiblePush")]
         public virtual string Grid { get; set; }
 
         #endregion
@@ -180,6 +194,15 @@ namespace Investor.Models.PageModels
             Description = ""
         )]
         public virtual string PopupUrlText { get; set; }
+
+        [Property(
+            UmbracoDataType.SingleRelatedLinksWithMedia,
+            CustomTabs.Popup,
+            DisplayName = "Popup: Länk",
+            Description = "",
+            Converter = typeof(SingleNodeLinkConverter<NodeLink>)
+        )]
+        public virtual NodeLink PopupUrl { get; set; }
 
         #endregion
     }

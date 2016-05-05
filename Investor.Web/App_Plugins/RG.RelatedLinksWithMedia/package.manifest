@@ -1,0 +1,39 @@
+{
+	propertyEditors: [
+		{
+			alias: "RG.RelatedLinksWithMedia",
+			name: "RG Related Links With Media",
+			isParameterEditor: true,
+			editor:
+			{
+				view: "~/App_Plugins/RG.RelatedLinksWithMedia/relatedlinkswithmedia.html",
+				valueType: "JSON"
+			},
+			prevalues: {
+				fields:[
+					{
+						label:"Max numbers of items",
+						description:"Optional: Specify how many items that is allowed to be created.",
+                        key:"max",
+                        view:"textstring"
+					},
+					{
+						label:"Hide Caption",
+						description:"Optional: Set this to true to hide the Caption box.",
+                        key:"hideCaption",
+                        view:"boolean"
+					},
+					{
+						label:"Hide NewWindow",
+						description:"Optional: Set this to true to hide the NewWindow box.",
+                        key:"hideNewWindow",
+                        view:"boolean"
+					}
+				]
+			}
+		}
+	],
+	javascript: [
+		'~/App_Plugins/RG.RelatedLinksWithMedia/relatedlinkswithmedia.controller.js'
+	]
+}

@@ -1,0 +1,117 @@
+﻿<div class="umb-editor umb-relatedlinks rg-relatedlinkswithmedia" ng-controller="RG.RelatedLinksWithMediaController">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td></td>
+                <td ng-show="!model.config.hideCaption"><localize key="relatedlinkswithmedia_caption">Text</localize></td>
+                <td><localize key="relatedlinkswithmedia_link">Link</localize></td>
+                <td ng-show="!model.config.hideNewWindow"><localize key="relatedlinkswithmedia_newWindow">Open in new window</localize></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody ui-sortable="sortableOptions" ng-model="model.value">
+            <tr ng-repeat="link in model.value" data-link="{{link.link}}" ng-class="{ 'unsortable': model.value.length <= 1 }">
+                <td class="col-sort"><i class="icon icon-navigation handle" ng-show="canSort()"></i></td>
+                <td class="col-caption" ng-show="!model.config.hideCaption">
+                    <span ng-show="!link.edit">{{link.caption}}</span>
+                    <div class="control-wrapper">
+                        <input type="text" ng-model="link.caption" ng-show="link.edit" />
+                    </div>
+                </td>
+                <td class="col-link">
+                    <div ng-show="!link.edit">
+                        <i class="icon {{link.internalIcon}}" ng-show="link.internalIcon"></i>
+                        <a href="{{link.link}}" target="_blank" ng-show="!link.isInternal">{{link.link}}</a>
+                        <a href="#/content/content/edit/{{link.internal}}" target="_blank" ng-show="link.mode == Mode.InternalLink" ng-bind="link.internalName"></a>
+                        <a href="#/media/media/edit/{{link.internal}}" target="_blank" ng-show="link.mode == Mode.InternalMedia" ng-bind="link.internalName"></a>
+                    </div>
+                    <div ng-show="link.edit">
+                        <div ng-show="isExternalLinkMode(link.mode)">
+                            <div class="control-wrapper">
+                                <input type="text" ng-model="link.link" />
+                            </div>
+                            <localize key="or">or</localize> <a href="#" ng-click="switchLinkType($event,link, Mode.InternalLink)"><localize key="relatedlinkswithmedia_chooseInternal">choose internal page</localize></a>
+                            <localize key="or">or</localize> <a href="#" ng-click="switchLinkType($event, link, Mode.InternalMedia)"><localize key="relatedlinkswithmedia_chooseInternalMedia">choose internal media</localize></a><br />
+                        </div>
+
+                        <div ng-show="isInternalLinkMode(link.mode)">
+                            <i class="icon {{link.internalIcon}}" ng-show="link.internalIcon"></i>
+                            <span ng-bind="link.internalName"></span> <a href="#" ng-click="selectInternal($event, link, Mode.ExternalLink)"><localize key="relatedlinkswithmedia_pickInternalPage">Choose internal page</localize></a><br />
+                            <localize key="or">or</localize> <a href="#" ng-click="switchLinkType($event,link, Mode.ExternalLink)"><localize key="relatedlinkswithmedia_enterExternal">enter external link</localize></a><br />
+                            <localize key="or">or</localize> <a href="#" ng-click="switchLinkType($event, link, Mode.InternalMedia)"><localize key="relatedlinkswithmedia_chooseInternalMedia">choose internal media</localize></a><br />
+                        </div>
+
+                        <div ng-show="isInternalMediaMode(link.mode)">
+                            <i class="icon {{link.internalIcon}}" ng-show="link.internalIcon"></i>
+                            <span ng-bind="link.internalName"></span> <a href="#" ng-click="selectInternalMedia($event, link, Mode.ExternalLink)"><localize key="relatedlinkswithmedia_pickInternalMedia">Choose internal media</localize></a><br/>
+                            <localize key="or">or</localize> <a href="#" ng-click="switchLinkType($event,link, Mode.ExternalLink)"><localize key="relatedlinkswithmedia_enterExternal">enter external link</localize></a><br/>
+                            <localize key="or">or</localize> <a href="#" ng-click="switchLinkType($event, link, Mode.InternalLink)"><localize key="relatedlinkswithmedia_chooseInternal">choose internal page</localize></a><br/>
+                        </div>
+                    </div>
+                </td>
+                <td class="col-newwindow" ng-show="!model.config.hideNewWindow">
+                    <input type="checkbox" ng-model="link.newWindow" ng-show="!link.edit" disabled="disabled" />
+                    <input type="checkbox" ng-model="link.newWindow" ng-show="link.edit" />
+                </td>
+                <td class="col-actions">
+
+                    <div class="btn-group" ng-show="!link.edit">
+                        <button type="button" class="btn btn-default" ng-click="edit($index)"><localize key="edit">Edit</localize></button>
+                        <button type="button" class="btn btn-default" ng-click="delete($index)"><localize key="delete">Delete</localize></button>
+                    </div>
+                    <div class="btn-group" ng-show="link.edit" style="margin-left: 0;">
+                        <button type="button" class="btn btn-default" ng-click="saveEdit($index)"><localize key="buttons_save">Save</localize></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot ng-show="canAdd()">
+            <tr>
+                <td class="col-sort"></td>
+                <td class="col-caption" ng-show="!model.config.hideCaption">
+                    <div class="control-wrapper">
+                        <input type="text" ng-model="newCaption" localize="placeholder" placeholder="@relatedlinks_captionPlaceholder" val-highlight="hasError" />
+                    </div>
+                </td>
+                <td class="col-link">
+                    <div ng-show="isExternalLinkMode()">
+                        <div class="control-wrapper">
+                            <input type="text" ng-model="newLink" localize="placeholder" placeholder="@relatedlinks_externalLinkPlaceholder" />
+                        </div>
+                        <localize key="or">or</localize>
+                        <a href="#" ng-click="switch($event, Mode.InternalLink)"><localize key="relatedlinkswithmedia_chooseInternal">choose internal page</localize></a><br />
+                        <localize key="or">or</localize>
+                        <a href="#" ng-click="switch($event, Mode.InternalMedia)">choose internal media</a>
+                    </div>
+
+                    <div ng-show="isInternalLinkMode()">
+                        <i class="icon {{newInternalIcon}}" ng-show="newInternalIcon"></i>
+                        <span ng-bind="newInternalName"></span> <a href="#" ng-click="internal($event)"><localize key="relatedlinkswithmedia_pickInternalPage">Choose internal page</localize></a><br />
+                        <localize key="or">or</localize> <a href="#" ng-click="switch($event, Mode.ExternalLink)"><localize key="relatedlinkswithmedia_enterExternal">enter external link</localize></a><br />
+                        <localize key="or">or</localize> <a href="#" ng-click="switch($event, Mode.InternalMedia)"><localize key="relatedlinkswithmedia_chooseInternalMedia">choose internal media</localize></a>
+                    </div>
+
+                    <div ng-show="isInternalMediaMode()">
+                        <i class="icon {{newInternalIcon}}" ng-show="newInternalIcon"></i>
+                        <span ng-bind="newInternalName"></span> <a href="#" ng-click="internalMedia($event)"><localize key="relatedlinkswithmedia_pickInternalMedia">Choose internal media</localize></a><br/>
+                        <localize key="or">or</localize> <a href="#" ng-click="switch($event, Mode.ExternalLink)"><localize key="relatedlinkswithmedia_enterExternal">enter external link</localize></a><br/>
+                        <localize key="or">or</localize> <a href="#" ng-click="switch($event, Mode.InternalLink)"><localize key="relatedlinkswithmedia_chooseInternal">choose internal page</localize></a>
+                    </div>
+                </td>
+                <td class="col-newwindow" ng-show="!model.config.hideNewWindow"><input type="checkbox" ng-model="newNewWindow" /></td>
+                <td class="col-actions">
+                    <div class="btn-group">
+                        <button class="btn btn-default" ng-click="add($event)" ng-disabled="!model.config.hideCaption && newCaption == '' || !canAdd()" ng-show="canAdd()"><localize key="general_add">Add</localize></button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <umb-overlay ng-if="contentPickerOverlay.show"
+                 model="contentPickerOverlay"
+                 view="contentPickerOverlay.view"
+                 position="right">
+    </umb-overlay>
+
+</div>

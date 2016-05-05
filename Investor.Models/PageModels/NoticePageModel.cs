@@ -51,7 +51,7 @@ namespace Investor.Models.PageModels
         public virtual IHtmlString Preamble { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinksAndMedia,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Content,
             DisplayName = "Relaterade länkar: Länkar",
             Description = "",

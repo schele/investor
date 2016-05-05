@@ -50,13 +50,13 @@ namespace Investor.Models.PageModels
         public virtual IHtmlString Preamble { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinksAndMedia,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Content,
-            DisplayName = "Relaterade dokument: Länkar",
+            DisplayName = "Relaterade Länkar: Länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual IEnumerable<NodeLink> RelatedDocuments { get; set; }
+        public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
         
         #endregion
     }

@@ -33,10 +33,10 @@
 @Html.Render(Model.Header, @<h3>@Model.Header</h3>)
 @Html.Render(Model.Preamble, @<div class="newsroom-page-comments-premable"><p>@Model.Preamble</p></div>)
 
-@if (Model.RelatedDocuments.Any())
+@if (Model.RelatedLinks.Any())
 {
     <ul class="newsroom-page-comments-links">
-        @foreach (var document in Model.RelatedDocuments)
+        @foreach (var document in Model.RelatedLinks)
         {            
             <li>@GetRelatedLink(document)</li>
         }

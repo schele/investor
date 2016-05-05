@@ -56,7 +56,7 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinksAndMedia,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Content,
             DisplayName = "Länkar: Länkar",
             Description = "",

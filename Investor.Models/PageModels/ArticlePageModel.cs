@@ -78,7 +78,7 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinksAndMedia,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Page,
             DisplayName = "Relaterade länkar: Länkar",
             Description = "",
@@ -95,7 +95,7 @@ namespace Investor.Models.PageModels
         public virtual string RelatedDocumentsHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinksAndMedia,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Page,
             DisplayName = "Relaterade dokument: Dokument",
             Description = "",
@@ -133,7 +133,7 @@ namespace Investor.Models.PageModels
         public virtual string RelatedLinksForPushHeader { get; set; }
 
         [Property(
-            UmbracoDataType.RelatedLinksAndMedia,
+            UmbracoDataType.RelatedLinksWithMedia,
             Tab.Push,
             DisplayName = "Puff Relaterade länkar: Länkar",
             Description = "Dessa länkar visas på en puffyta",

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language>
+  <area alias="relatedlinkswithmedia">
+    <key alias="caption">Rubrik</key>
+    <key alias="link">Länk</key>
+    <key alias="newWindow">Öppnas i nytt fönster</key>
+    <key alias="chooseInternal">välj intern sida</key>
+    <key alias="chooseInternalMedia">välj intern media</key>
+    <key alias="enterExternal">välj extern länk</key>
+    <key alias="pickInternalPage">Välj intern sida</key>
+    <key alias="pickInternalMedia">Välj intern media</key>
+  </area>
+</language>

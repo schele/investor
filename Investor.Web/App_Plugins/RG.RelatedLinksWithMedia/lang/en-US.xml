@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language>
+  <area alias="relatedlinkswithmedia">
+    <key alias="caption">Header</key>
+    <key alias="link">Link</key>
+    <key alias="newWindow">New Window</key>
+    <key alias="chooseInternal">choose page</key>
+    <key alias="chooseInternalMedia">choose media</key>
+    <key alias="enterExternal">choose external link</key>
+    <key alias="pickInternalPage">Choose Page</key>
+    <key alias="pickInternalMedia">Choose Media</key>
+  </area>
+</language>

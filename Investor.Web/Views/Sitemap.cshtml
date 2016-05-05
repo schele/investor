@@ -1,0 +1,33 @@
+﻿@using umbraco.interfaces
+@using Investor.Models.PageModels
+
+@inherits UmbracoViewPage<SitemapPageModel>
+
+@{
+    Layout = "Master.cshtml";
+}
+
+@helper Traverse(INode node)
+{
+    @*var children = node.ChildrenAsList.Where(x => x.GetProperty("hideInSitemap") == false && !x.GetPropertyValue("metaForRobots").Contains("nofollow")).ToList();
+
+    if (children.Any())
+    {
+        <ul>
+            @foreach (var child in children)
+            {
+                <li>
+                    <a href="@child.Url">@child.Name</a>
+                    @Traverse(child)
+                </li>
+            }
+        </ul>
+    }*@
+}
+
+<h1>@Model.Name</h1>
+
+<ul>
+    <li><a href="@Model.StartPage.Url">@Model.StartPage.Name</a></li>
+    @Traverse(Model.Node.GetAncestorByPathLevel(1))
+</ul>

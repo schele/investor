@@ -52,14 +52,23 @@ namespace Investor.Models.PageModels
         )]
         public virtual string UmbracoUrlName { get; set; }
 
+        //[Property(
+        //    UmbracoDataType.RelatedLinks,
+        //    Tab.Navigation,
+        //    DisplayName = "Redirect",
+        //    Description = "Välj om sidan ska skickas till en annan address.",
+        //    Converter = typeof(NodeLinkConverter<NodeLink>)
+        //)]
+        //public virtual IEnumerable<NodeLink> Redirect { get; set; }
+
         [Property(
-            UmbracoDataType.RelatedLinks,
+            UmbracoDataType.SingleRelatedLinksWithMedia,
             Tab.Navigation,
             DisplayName = "Redirect",
-            Description = "Välj om sidan ska skickas till en annan address.",
+            Description = "Välj om sidan ska redirectas.",
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
-        public virtual IEnumerable<NodeLink> Redirect { get; set; }
+        public virtual NodeLink Redirect { get; set; }
 
         #endregion
 

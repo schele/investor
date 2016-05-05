@@ -67,8 +67,11 @@ namespace Investor.Models
         [EnumName("Related Links")]
         RelatedLinks,
 
-        [EnumName("Related Links And Media")]
-        RelatedLinksAndMedia,
+        [EnumName("Related Links With Media")]
+        RelatedLinksWithMedia,
+
+        [EnumName("Single Related Links With Media")]
+        SingleRelatedLinksWithMedia,
 
         [EnumName("Richtext editor")]
         RichtextEditor,

@@ -17,31 +17,34 @@
         <ul class="row">
             @foreach (var gallery in Model.Children<ImageArchivePageModel>())
             {
-                if (gallery.Images.Count() == 1)
+                if (gallery.Images.ToList()[0] != null)
                 {
-                    var umbracoBytes = umbracoHelper.TypedMedia(gallery.Images.ToList().First().Id).GetSize();
-                    
-                    <li class="col-md-4">
-                        <a href="@gallery.Images.ToList().First().Url" title="@gallery.Images.ToList().First().Name">
-                            <img src="@gallery.Images.ToList().First().Url" alt="@gallery.Images.ToList().First().Name"/>
+                    if (gallery.Images.Count() == 1)
+                    {
+                        var umbracoBytes = umbracoHelper.TypedMedia(gallery.Images.ToList().First().Id).GetSize();
 
-                            @MiscHelpers.BytesToKiloBytes(int.Parse(umbracoBytes)) kb
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    <li class="col-md-4">
-                        <a href="@gallery.Url" title="@gallery.Name">
-                            @if (gallery.PushImage.Url != null)
-                            {
-                                <img src="@gallery.PushImage.Url" alt="@gallery.Name" />
-                            }
+                        <li class="col-md-4">
+                            <a href="@gallery.Images.ToList().First().Url" title="@gallery.Images.ToList().First().Name">
+                                <img src="@gallery.Images.ToList().First().Url" alt="@gallery.Images.ToList().First().Name" />
 
-                            <span>@gallery.Name</span>                            
-                            <span>@gallery.Images.WhereNotNull().Count() @Umbraco.GetDictionaryValue("System.Media.Images")</span>
-                        </a>
-                    </li>
+                                @MiscHelpers.BytesToKiloBytes(int.Parse(umbracoBytes)) kb
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="col-md-4">
+                            <a href="@gallery.Url" title="@gallery.Name">
+                                @if (gallery.PushImage.Url != null)
+                                {
+                                    <img src="@gallery.PushImage.Url" alt="@gallery.Name" />
+                                }
+
+                                <span>@gallery.Name</span>
+                                <span>@gallery.Images.WhereNotNull().Count() @Umbraco.GetDictionaryValue("System.Media.Images")</span>
+                            </a>
+                        </li>
+                    }
                 }
             }
 
@@ -53,7 +56,7 @@
                     if (image != null)
                     {
                         var umbracoBytes = image.GetSize();
-                        
+
                         <li class="col-md-4">
                             <a href="@image.Url" title="@image.Name">
                                 @if (image.Url != null)
@@ -63,11 +66,11 @@
 
                                 <span>@image.GetProperty("name").Value</span>
                                 <span>@MiscHelpers.BytesToKiloBytes(int.Parse(umbracoBytes)) kb</span>
-                                </a>
+                            </a>
                         </li>
                     }
                 }
             }
-        </ul>
+        </ul>           
     </article>
 </div>

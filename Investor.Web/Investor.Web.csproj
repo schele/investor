@@ -692,7 +692,6 @@
     <Content Include="SASS\Styles\MacroPartials\FlexiblePush.scss" />
     <Content Include="Config\UmbExamineSettings.config" />
     <Content Include="App_Plugins\RG.RelatedLinksWithMedia\package.manifest" />
-    <Content Include="App_Code\Helper.cshtml" />
     <Content Include="Views\Sitemap.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>

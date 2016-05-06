@@ -1,5 +1,5 @@
 ﻿@using Investor.Helpers
-@using Investor.Models.Models.NodeLink
+@using Investor.Models.Extensions
 @using Investor.Models.PageModels
 @using Investor.Models.PageModels.Interfaces
 @using log4net
@@ -11,28 +11,6 @@
     Layout = "Master.cshtml";
     
     var log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-}
-
-@helper GetRelatedLink(NodeLink node)
-{
-    var target = node.NewWindow ? "_blank" : null;
-
-    if (node.Type == "internal")
-    {
-        var rel = Umbraco.TypedContent(node.Link);
-        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-
-    if (node.Type == "internalMedia")
-    {
-        var rel = Umbraco.TypedMedia(node.Link);
-        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-
-    if (node.Type == "external")
-    {
-        <a href="@node.Link" title="@node.Caption" target="@target">@node.Caption</a>
-    }
 }
 
 <div class="category-page">
@@ -68,7 +46,7 @@
                             <ul>
                                 @foreach (var link in push.RelatedLinksForPush)
                                 {
-                                    <li>@GetRelatedLink(link)</li>
+                                    <li>@Html.RelatedLink(link)</li>
                                 }
                             </ul>
                         }

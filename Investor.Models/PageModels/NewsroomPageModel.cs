@@ -3,8 +3,6 @@ using System.Globalization;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
 using Investor.Models.PageModels.Interfaces;
-using StructureMap.Query;
-using umbraco;
 using umbraco.interfaces;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;

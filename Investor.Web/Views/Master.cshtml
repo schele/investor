@@ -18,12 +18,12 @@
 
         if (node.Type == "internalMedia")
         {
-            relatedLink.Url =  Umbraco.TypedMedia(node.Link).Url;            
+            relatedLink.Url =  Umbraco.TypedMedia(node.Link).Url;
         }
 
         if (node.Type == "external")
         { 
-            relatedLink.Url = node.Link;            
+            relatedLink.Url = node.Link;
         }
 
         relatedLink.Caption = node.Caption;
@@ -143,10 +143,7 @@
         <img class="logo logo-desktop" src="~/images/investor-popup-logo.png" alt="investor logo" />
         <img class="logo logo-mobile" src="~/images/investor-popup-logo.png" alt="investor logo" />
         @Html.Render(Model.StartPage.PopupText, @<p>@Model.StartPage.PopupText</p>)
-
-        <span>@GetRelatedLink(Model.StartPage.PopupUrl)</span>
-
-        @*<a href="@GetRelatedLink(Model.StartPage.PopupUrl).Url">@Html.Render(GetRelatedLink(Model.StartPage.PopupUrl).Caption, @<span>@GetRelatedLink(Model.StartPage.PopupUrl).Caption</span>)</a>*@
+        <span>@GetRelatedLink(Model.StartPage.PopupUrl)</span>        
         <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
     </div>
     <script src="~/Scripts/angular/lib/underscore.js" type="text/javascript"></script>

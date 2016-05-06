@@ -1,35 +1,14 @@
 ﻿@using Investor.Helpers
-@using Investor.Models.Models.NodeLink
+@using Investor.Models.Extensions
 @using Investor.Models.PageModels
 
 @inherits UmbracoViewPage<NoticePageModel>
-
-@helper GetRelatedLink(NodeLink node)
-{
-    var target = node.NewWindow ? "_blank" : null;
-
-    if (node.Type == "internal")
-    {
-        var rel = Umbraco.TypedContent(node.Link);
-        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-
-    if (node.Type == "internalMedia")
-    {
-        var rel = Umbraco.TypedMedia(node.Link);
-        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-
-    if (node.Type == "external")
-    {
-        <a href="@node.Link" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-}
 
 <div class="newsroom-page-notices-date">
     <span>@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
     <span class="newsroom-page-notices-time">@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
 </div>
+
 @Html.Render(Model.Header, @<h3>@Model.Header</h3>)
 @Html.Render(Model.Preamble, @<div class="newsroom-page-notices-premable"><p>@Model.Preamble</p></div>)
 
@@ -38,7 +17,7 @@
     <ul class="newsroom-page-notices-links">
         @foreach (var link in Model.RelatedLinks)
         {
-            <li>@GetRelatedLink(link)</li>
+            <li>@Html.RelatedLink(link)</li>
         }
     </ul>
 }

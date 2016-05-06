@@ -9,28 +9,6 @@
     Layout = "Master.cshtml";
 }
 
-@*@helper GetRelatedLink(NodeLink node)
-{
-    var target = node.NewWindow ? "_blank" : null;
-
-    if (node.Type == "internal")
-    {
-        var rel = Umbraco.TypedContent(node.Link);
-        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-
-    if (node.Type == "internalMedia")
-    {
-        var rel = Umbraco.TypedMedia(node.Link);
-        <a href="@rel.Url" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-
-    if (node.Type == "external")
-    {
-        <a href="@node.Link" title="@node.Caption" target="@target">@node.Caption</a>
-    }
-}*@
-
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
 
@@ -61,7 +39,6 @@
                                 {
                                     <li>
                                         @Html.RelatedLink(link)
-                                        @*@GetRelatedLink(link)*@
                                     </li>
                                 }
                             </ul>

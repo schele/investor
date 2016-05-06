@@ -312,6 +312,7 @@
     <Compile Include="Models\PressReleases\Attachment.cs" />
     <Compile Include="Models\RelatedLink.cs" />
     <Compile Include="Models\Slideshow.cs" />
+    <Compile Include="PageModels\ListPresentationsPageModel.cs" />
     <Compile Include="PageModels\SitemapPageModel.cs" />
     <Compile Include="PageModels\NoticePageModel.cs" />
     <Compile Include="PageModels\CommentPageModel.cs" />

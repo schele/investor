@@ -15,15 +15,15 @@ namespace Investor.Models.PageModels
         Description = "En sida för att lista ListPresentationPageModel",
         AllowAtRoot = false
     )]
-    public class ListPresentationPageModel : BaseModel
+    public class ListPresentationsPageModel : BaseModel
     {
         #region constructors
 
-        public ListPresentationPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
+        public ListPresentationsPageModel(IPublishedContent content, CultureInfo culture) : base(content, culture)
         {
         }
 
-        public ListPresentationPageModel(IPublishedContent content)
+        public ListPresentationsPageModel(IPublishedContent content)
             : base(content)
         {
         }

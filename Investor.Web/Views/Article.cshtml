@@ -9,7 +9,7 @@
     Layout = "Master.cshtml";
 }
 
-@helper GetRelatedLink(NodeLink node)
+@*@helper GetRelatedLink(NodeLink node)
 {
     var target = node.NewWindow ? "_blank" : null;
 
@@ -29,7 +29,7 @@
     {
         <a href="@node.Link" title="@node.Caption" target="@target">@node.Caption</a>
     }
-}
+}*@
 
 <div class="row">
     @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
@@ -51,7 +51,7 @@
                         <ul>                            
                             @foreach (var item in Model.RelatedLinks.Take(5))
                             {
-                                <li>@GetRelatedLink(item)</li>
+                                <li>@Html.RelatedLink(item)</li>
                             }
                         </ul>
                         @if (Model.RelatedLinks.Count() > 5)
@@ -82,7 +82,7 @@
                         <ul>
                             @foreach (var item in Model.RelatedDocuments.Take(5))
                             {
-                                <li>@GetRelatedLink(item)</li>
+                                <li>@Html.RelatedLink(item)</li>
                             }
                         </ul>
                         @if (Model.RelatedDocuments.Count() > 5)
@@ -90,7 +90,7 @@
                             <ul class="article-page-documents-expandable">
                                 @foreach (var link in Model.RelatedDocuments.Skip(5))
                                 {
-                                    <li>@GetRelatedLink(link)</li>
+                                    <li>@Html.RelatedLink(link)</li>
                                 }
                             </ul>
                             <button class="article-page-documents-expand-btn">

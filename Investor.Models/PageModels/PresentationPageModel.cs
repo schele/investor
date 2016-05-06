@@ -11,9 +11,9 @@ namespace Investor.Models.PageModels
 {
     [ContentType(
         DisplayName = "Sida: Presentation",
-        Icon = Icon.Newspaper,
+        Icon = Icon.Presentation,
         Description = "En sida för att lista presentationer",
-        AllowAtRoot = true
+        AllowAtRoot = false
     )]
     public class PresentationPageModel : BaseModel
     {

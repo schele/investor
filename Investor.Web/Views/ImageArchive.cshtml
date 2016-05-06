@@ -61,9 +61,20 @@
                             <a href="@image.Url" title="@image.Name">
                                 @if (image.Url != null)
                                 {
-                                    <img src="@image.Url" alt="@image.Name" />
+                                    if (image.Url.EndsWith("eps"))
+                                    {
+                                        <img src="~/images/eps.png" alt="@image.Name" width="50"/>
+                                    }
+                                    else if (image.Url.EndsWith("zip"))
+                                    {
+                                        <img src="~/images/zip.png" alt="@image.Name" width="50" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@image.Url" alt="@image.Name" />
+                                    }
                                 }
-
+                                
                                 <span>@image.GetProperty("name").Value</span>
                                 <span>@MiscHelpers.BytesToKiloBytes(int.Parse(umbracoBytes)) kb</span>
                             </a>

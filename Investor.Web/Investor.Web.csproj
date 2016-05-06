@@ -414,6 +414,7 @@
     <Content Include="favicon\safari-pinned-tab.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\blue-gradient.png" />
+    <Content Include="images\eps.png" />
     <Content Include="images\favicon.png" />
     <Content Include="images\filetypes\HTML.png" />
     <Content Include="images\filetypes\movie.png" />
@@ -479,6 +480,7 @@
     <Content Include="images\tick_white.png" />
     <Content Include="images\time.png" />
     <Content Include="images\video.png" />
+    <Content Include="images\zip.png" />
     <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
     <Content Include="SASS\magnific-popup.css" />
@@ -674,7 +676,7 @@
     <Content Include="Views\Newsroom.cshtml" />
     <Content Include="SASS\Styles\Pages\PageNotFound.scss" />
     <Content Include="SASS\Styles\Pages\ListPresentationsPage.scss" />
-    <Content Include="Views\ListPresentations.cshtml" />
+    <Content Include="Views\Presentation.cshtml" />
     <Content Include="Views\ImageArchive.cshtml" />
     <Content Include="SASS\Styles\Pages\ImageArchive.scss" />
     <Content Include="SASS\Styles\Layout\Cookie.scss" />

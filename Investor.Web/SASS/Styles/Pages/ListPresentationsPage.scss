@@ -32,3 +32,23 @@
     color: #002b7f;
     text-decoration: none;
 }
+
+.list-presentations-page ul .list-presentations-page-internal-media a:before {
+    background: url(/images/filetypes/pdf.png) no-repeat center left !important;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-top: -5px;
+    content: "";
+}
+
+.list-presentations-page ul .list-presentations-page-external a:before {
+    background: url(/images/filetypes/movie.png) no-repeat center left !important;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-top: -5px;
+    content: "";
+}

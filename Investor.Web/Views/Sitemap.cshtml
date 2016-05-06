@@ -31,3 +31,31 @@
     <li><a href="@Model.StartPage.Url">@Model.StartPage.Name</a></li>
     @Traverse(Model.Node.GetAncestorByPathLevel(1))
 </ul>
+
+<!--Markup/Style-->
+<article class="row sitemap-page">
+    <div class="col-md-12">
+        <h1>@Model.StartPage.Name</h1>
+        <ul class="sitemap-page-list">
+            <li><a href="">Bacon ipsum</a></li>
+            <li><a href="">Bacon ipsum</a></li>
+            <li>
+                <ul>
+                    <li><a href="">Bacon ipsum</a></li>
+                    <li><a href="">Bacon ipsum</a></li>
+                    <li>
+                        <ul>
+                            <li><a href="">Bacon ipsum</a></li>
+                            <li>
+                                <ul>
+                                    <li><a href="">Bacon ipsum</a></li>
+                                    <li><a href="">Bacon ipsum</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</article>

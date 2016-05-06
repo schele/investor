@@ -20,7 +20,18 @@
             <ul>
                 @foreach (var nodeLink in Model.RelatedLinks)
                 {
-                    <li>@Html.RelatedLink(nodeLink)</li>
+                    switch (nodeLink.Type)
+                    {
+                        case "internalMedia":
+                            <li class="list-presentations-page-internal-media">@Html.RelatedLink(nodeLink)</li>
+                            break;
+                        case "external":
+                            <li class="list-presentations-page-external">@Html.RelatedLink(nodeLink)</li>
+                            break;
+                        default:
+                            <li>@Html.RelatedLink(nodeLink)</li>
+                            break;
+                    }
                 }
             </ul>
         }

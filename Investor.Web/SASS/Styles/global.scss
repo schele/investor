@@ -38,9 +38,11 @@ article {
     padding: 30px 0;
 }
 
-.text-editor h2,
-.text-editor h3 {
-    font-weight: bold !important;
+.text-editor-content h2,
+.text-editor-content h3 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .text-editor-content p {

@@ -378,6 +378,18 @@ function RGRelatedLinksWithMediaController($rootScope, $scope, $element, $timeou
             ui.placeholder.html('<td colspan="' + cellCount + '"></td>').height(ui.item.height());
         }
     };
+    
+    $scope.isSortVisible = function () {
+        return $scope.model.config.max !== "1";
+    }
+
+    $scope.isCaptionVisible = function () {
+        return $scope.model.config.hideCaption !== "1";
+    }
+
+    $scope.isNewWindowVisible = function () {
+        return $scope.model.config.hideNewWindow !== "1";
+    }
 
     //helper to count what is visible
     function countVisible() {
@@ -424,8 +436,8 @@ function RGRelatedLinksWithMediaController($rootScope, $scope, $element, $timeou
     });
 
     $scope.$on("formSubmitting", function () {
-        if (!_.isArray($scope.model.value) || _.isEmpty($scope.model.value)) {
-            $scope.model.value = null;
+        if (!_.isArray($scope.model.value)) {
+            $scope.model.value = [];
         }
     });
 }

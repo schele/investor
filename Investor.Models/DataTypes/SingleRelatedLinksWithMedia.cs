@@ -15,6 +15,8 @@ namespace Investor.Models.DataTypes
             base.UpdateSettings();
 
             SetPrevalue("max", "1");
+            SetPrevalue("hideCaption", "1");
+            SetPrevalue("hideNewWindow", "1");
         }
     }
 }

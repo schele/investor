@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Web.Script.Serialization;
 using Investor.Models.Models.NodeLink;
 using UCodeFirst.Converters;
@@ -9,14 +11,12 @@ namespace Investor.Models.Converters
     {
         public object Read(PropertyInfo propertyInfo, object value)
         {
-            var links = new NodeLink();
-
-            if (value != null && !value.Equals(""))
+            if (value.Equals(""))
             {
-                links = new JavaScriptSerializer().Deserialize<NodeLink>(value.ToString());
+                return null;
             }
 
-            return links;
+            return new JavaScriptSerializer().Deserialize<IEnumerable<NodeLink>>(value.ToString()).First();
         }
     }
 }

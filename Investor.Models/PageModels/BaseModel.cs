@@ -66,7 +66,7 @@ namespace Investor.Models.PageModels
             Tab.Navigation,
             DisplayName = "Redirect",
             Description = "Välj om sidan ska redirectas.",
-            Converter = typeof(NodeLinkConverter<NodeLink>)
+            Converter = typeof(SingleNodeLinkConverter<NodeLink>)
         )]
         public virtual NodeLink Redirect { get; set; }
 

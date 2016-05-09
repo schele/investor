@@ -178,7 +178,7 @@ namespace Investor.UmbExamine.ExamineSearch
                 AddGeneralProperties(searchResults, ref model);
 
                 // Do formatting for this type
-                model.Formatt(c);
+                model.Format(c);
 
                 result.Add(model);
             }
@@ -248,7 +248,7 @@ namespace Investor.UmbExamine.ExamineSearch
                 AddGeneralProperties(searchResults, ref model);
 
                 // Do formatting for this type
-                model.Formatt(c);
+                model.Format(c);
 
                 result.Add(model);
             }

@@ -6,61 +6,136 @@ using Investor.SearchTools;
 using Investor.UmbExamine;
 using Investor.UmbExamine.ExamineSearch;
 using Investor.UmbExamine.Model;
+using Umbraco.Web;
 using Umbraco.Web.Mvc;
 
 namespace Investor.Controllers.SurfaceControllers
 {
-    public class SearchController : SurfaceController
+    // ToDo Refactor search and package it.
+    public class SearchResult
     {
-        //[HttpPost]
-        //public JsonResult LookForProducts(string searchTerm, string culture)
-        //{
-        //    const string searchProviderName = "ProductSearcher";
-        //    const string indexSet = "ProductIndexSet";
+        public double SearchTime { get; set; }
+        public List<Dictionary<string, object>> Result { get; set; }
 
-        //    if (!Validate(searchTerm, out searchTerm))
-        //    {
-        //        return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
-        //    }
+        public SearchResult()
+        {
+            Result = new List<Dictionary<string, object>>();
+        }
 
-        //    var examineSearch = new ExamineSearch(Umbraco);
-        //    var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
+        public SearchResult(List<Dictionary<string, object>> result)
+        {
+            Result = result;
+        }
 
-        //    var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
+        public SearchResult(List<Dictionary<string, object>> result, double searchTime)
+        {
+            Result = result;
+            SearchTime = searchTime;
+        }
+    }
 
-        //    var results = examineSearch.FormatResults<ProductResult>(searchResults, fieldFilter);
-        //    var searchTime = searchResults.SearchTime.TotalSeconds.RoundUp(2);
-
-        //    var model = new
-        //    {
-        //        searchTime,
-        //        results //= searchResults.Results//.Where(x => x.Fields["nodeTypeAlias"].Equals("BazaarProduct", StringComparison.InvariantCultureIgnoreCase))
-        //    };
-
-        //    return Json(model, JsonRequestBehavior.AllowGet);
-        //}
-
-        [HttpPost]
-        public JsonResult LookFor(string searchTerm)
+    public static class SearchHelper
+    {
+        public static SearchResult LookForContent(string searchTerm)
         {
             const string searchProviderName = "ExternalSearcher";
             const string indexSet = "ExternalIndexSet";
 
-            if (!Validate(searchTerm, out searchTerm))
-            {
-                return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
-            }
+            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
-            var examineSearch = new ExamineSearch(Umbraco);
+            var examineSearch = new ExamineSearch(umbracoHelper);
 
             var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
 
             var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
 
+            var results = examineSearch.FormatResults<ExamineContentResult>(searchResults, fieldFilter);
+
+            var result = new SearchResult(results, searchResults.SearchTime.TotalSeconds.RoundUp(2));
+
+            return result;
+        }
+
+        public static SearchResult LookForImages(string searchTerm)
+        {
+            const string searchProviderName = "ExternalSearcher";
+            const string indexSet = "ExternalIndexSet";
+
+            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
+            var examineSearch = new ExamineSearch(umbracoHelper);
+
+            var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
+
+            var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
+
+            var results = examineSearch.FormatResults<ExamineMediaResult>(searchResults, fieldFilter);
+
+            var result = new SearchResult(results, searchResults.SearchTime.TotalSeconds.RoundUp(2));
+
+            return result;
+        }
+
+        public static SearchResult LookForFiles(string searchTerm)
+        {
+            const string mediaSearchProviderName = "MediaSearcher";
+            const string mediaIndexSet = "MediaIndexSet";
+
+            // ToDo: adda antal sökta records.
+
+            UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
+
+            var examineSearch = new ExamineSearch(umbracoHelper);
+
+            var pdfFieldFilter = UmbExamineConfig.Instance.GetIndexFields(mediaIndexSet);
+
+            var searchResults = examineSearch.Search(searchTerm, mediaSearchProviderName, mediaIndexSet, pdfFieldFilter);
+
+            var results = examineSearch.FormatResults<ExamineFileResult>(searchResults, pdfFieldFilter);
+
+            var result = new SearchResult(results, searchResults.SearchTime.TotalSeconds.RoundUp(2));
+
+            return result;
+        }
+
+        public static SearchResult JoinResults(params SearchResult[] searchResults)
+        {
+            var searchResult = new SearchResult();
+
+            foreach (var result in searchResults)
+            {
+                searchResult.SearchTime = searchResult.SearchTime + result.SearchTime;
+                searchResult.Result.AddRange(result.Result);
+            }
+
+            return searchResult;
+        }
+    }
+
+
+    public class SearchController : SurfaceController
+    {
+        [HttpPost]
+        public JsonResult LookFor(string searchTerm)
+        {
+            if (!Validate(searchTerm, out searchTerm))
+            {
+                return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
+            }
+
+            var content = SearchHelper.LookForContent(searchTerm);
+            var image = SearchHelper.LookForImages(searchTerm);
+            var file = SearchHelper.LookForFiles(searchTerm);
+
+            SearchResult m = SearchHelper.JoinResults(content, image, file);
+
+            // Sort based on name
+            m.Result = m.Result.OrderBy(x => x["name"]).ToList();
+
             var model = new
             {
-                searchTime = searchResults.SearchTime.TotalSeconds,
-                results = searchResults.Results
+                searchTime = m.SearchTime,
+                results = m.Result
             };
 
             return Json(model, JsonRequestBehavior.AllowGet);
@@ -69,27 +144,12 @@ namespace Investor.Controllers.SurfaceControllers
         [HttpPost]
         public JsonResult LookForContent(string searchTerm)
         {
-            const string searchProviderName = "ExternalSearcher";
-            const string indexSet = "ExternalIndexSet";
-
             if (!Validate(searchTerm, out searchTerm))
             {
                 return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
             }
 
-            var examineSearch = new ExamineSearch(Umbraco);
-
-            var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
-
-            var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
-
-            var results = examineSearch.FormatResults<ExamineContentResult>(searchResults, fieldFilter);
-
-            var model = new
-            {
-                searchTime = searchResults.SearchTime.TotalSeconds.RoundUp(2),
-                results
-            };
+            var model = SearchHelper.LookForContent(searchTerm);
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
@@ -97,27 +157,12 @@ namespace Investor.Controllers.SurfaceControllers
         [HttpPost]
         public JsonResult LookForImages(string searchTerm)
         {
-            const string searchProviderName = "ExternalSearcher";
-            const string indexSet = "ExternalIndexSet";
-
             if (!Validate(searchTerm, out searchTerm))
             {
                 return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
             }
 
-            var examineSearch = new ExamineSearch(Umbraco);
-
-            var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet);
-
-            var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
-
-            var results = examineSearch.FormatResults<ExamineMediaResult>(searchResults, fieldFilter);
-
-            var model = new
-            {
-                searchTime = searchResults.SearchTime.TotalSeconds.RoundUp(2),
-                results
-            };
+            var model = SearchHelper.LookForImages(searchTerm);
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }
@@ -125,29 +170,12 @@ namespace Investor.Controllers.SurfaceControllers
         [HttpPost]
         public JsonResult LookForFiles(string searchTerm)
         {
-            const string mediaSearchProviderName = "MediaSearcher";
-            const string mediaIndexSet = "MediaIndexSet";
-
-            // ToDo: adda antal sökta records.
-
             if (!Validate(searchTerm, out searchTerm))
             {
                 return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
             }
 
-            var examineSearch = new ExamineSearch(Umbraco);
-
-            var pdfFieldFilter = UmbExamineConfig.Instance.GetIndexFields(mediaIndexSet);
-
-            var searchResults = examineSearch.Search(searchTerm, mediaSearchProviderName, mediaIndexSet, pdfFieldFilter);
-
-            var results = examineSearch.FormatResults<ExamineFileResult>(searchResults, pdfFieldFilter);
-
-            var model = new
-            {
-                searchTime = searchResults.SearchTime.TotalSeconds.RoundUp(2),
-                results
-            };
+            var model = SearchHelper.LookForFiles(searchTerm);
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }

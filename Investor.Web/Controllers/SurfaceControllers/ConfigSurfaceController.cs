@@ -14,7 +14,7 @@ namespace Investor.Controllers.SurfaceControllers
         {
             var searchQueryKey = ConfigurationManager.AppSettings["searchQueryKey"];
 
-            if (!string.IsNullOrEmpty(searchQueryKey))
+            if (string.IsNullOrEmpty(searchQueryKey))
             {
                 searchQueryKey = "s";
             }

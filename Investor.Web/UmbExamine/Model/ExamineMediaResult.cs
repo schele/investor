@@ -9,7 +9,7 @@ namespace Investor.UmbExamine.Model
         {
         }
 
-        public override void Formatt(SearchResult result)
+        public override void Format(SearchResult result)
         {
             AddProperty("name", result.Fields["nodeName"].Replace('_', ' '));
 
@@ -20,6 +20,8 @@ namespace Investor.UmbExamine.Model
             {
                 this["url"] = imageUrl;
             }
+
+            AddProperty("type", "media");
         }
     }
 }

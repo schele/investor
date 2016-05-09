@@ -1,0 +1,33 @@
+﻿@using ServiceStack
+@inherits UmbracoViewPage<Investor.Models.PageModels.BaseModel>
+
+@{
+    var showSearchButton = true;
+    if (Model.StartPage.SearchNode == null)
+    {
+        return;
+    }
+
+    if (ViewData.ContainsKey("showSearchButton"))
+    {
+        showSearchButton = ViewData["showSearchButton"].ConvertTo<bool>();
+    }
+
+    var searchTitle = Umbraco.GetDictionaryValue("SearchTitle");
+    if (string.IsNullOrEmpty(searchTitle))
+    {
+        searchTitle = "Search at Investorab.com";
+    }
+}
+
+<form class="search" data-ng-controller="SearchController" data-ng-init="init('@Model.StartPage.SearchNode.Url')" data-ng-submit="submit()">
+    <input class="searchBox search-input-text" data-ng-model="searchTerm" data-ng-trim="false" data-options="settings" data-datasets="dataset" data-sf-typeahead placeholder="@searchTitle" />
+    @if (showSearchButton)
+    {
+        <input type="submit" value="submit" />
+    }
+    else
+    {
+        <input type="submit" class="hiddenOffcanvas" />
+    }
+</form>

@@ -146,7 +146,7 @@
                     },
                     broadcastClearResults: function () {
                         $rootScope.$broadcast("searchDataService.clearResults");
-                    },
+                    }
                 };
 
                 var eventSubscribers = {
@@ -184,7 +184,7 @@
                         $scope.$on("searchDataService.clearResults", function (context) {
                             callback(context);
                         });
-                    },
+                    }
                 };
 
                 var setLookForPossibleWords = function (data) {
@@ -213,6 +213,7 @@
                 };
 
                 var clearResults = function () {
+                    setLookForResult([]);
                     setLookForContentResult([]);
                     setLookForImagesResult([]);
                     setLookForFilesResult([]);
@@ -252,102 +253,79 @@
                     onLookForFilesResultUpdate: eventSubscribers.onLookForFilesResultUpdate,
                     onClearResultsUpdate: eventSubscribers.onClearResultsUpdate,
                     lookForPossibleWords: function (term, callback) {
-                        var url = umbracoHelper.getUrlToSurfaceController("search", "lookforpossiblewords");
+                        //var url = umbracoHelper.getUrlToSurfaceController("search", "lookforpossiblewords");
 
                         if (term === "") {
                             setLookForPossibleWords([]);
                             return;
                         }
 
-                        $http.post(url, {
-                            searchTerm: term,
-                            culture: configService.getLocalConfig("currentCulture")
-                        }).success(function (data, status, headers, config) {
-                            if (angular.isDefined(data.error)) {
-                                console.log("[lookForPossibleWords] Error: " + data.errorMessage);
+                        umbracoHelper.surfaceControllerPost("search", "lookforpossiblewords", { searchTerm: term })
+                            .then(function (data) {
+                                if (angular.isDefined(data.error)) {
+                                    console.log("[lookForPossibleWords] Error: " + data.errorMessage);
 
-                                setLookForPossibleWords([]);
+                                    setLookForPossibleWords([]);
+                                } else {
+                                    setLookForPossibleWords(data);
+                                }
 
-                                return;
-                            } else {
-                                setLookForPossibleWords(data);
-                            }
+                                if (angular.isDefined(callback)) {
+                                    callback(possibleWordsResult);
+                                }
+                            }, function (error) {
+                                // error
+                                console.log(error);
+                            });
 
-                            if (angular.isDefined(callback)) {
-                                callback(possibleWordsResult);
-                            }
-                        }).error(function (data, status, headers, config) {
-                        });
-                    },
-                    lookFor: function (term, callback) {
-                        //if (term === "") {
-                        //    setLookForResult([]);
-                        //    return;
-                        //}
+                        //$http.post(url, {
+                        //    searchTerm: term,
+                        //    culture: configService.getLocalConfig("currentCulture")
+                        //}).success(function (data, status, headers, config) {
+                        //    if (angular.isDefined(data.error)) {
+                        //        console.log("[lookForPossibleWords] Error: " + data.errorMessage);
 
-                        //umbracoHelper.surfaceControllerRequest("Search", "LookFor", { searchTerm: term }).then(function (response) {
-                        //    if (angular.isDefined(response.error)) {
-                        //        console.log("[lookFor] Error: " + response.errorMessage);
+                        //        setLookForPossibleWords([]);
 
-                        //        setLookForResult([]);
+                        //        return;
                         //    } else {
-                        //        setLookForResult(response);
+                        //        setLookForPossibleWords(data);
                         //    }
 
                         //    if (angular.isDefined(callback)) {
-                        //        callback(lookForResult);
+                        //        callback(possibleWordsResult);
                         //    }
+                        //}).error(function (data, status, headers, config) {
                         //});
-
-                        var url = umbracoHelper.getUrlToSurfaceController("search", "lookfor");
-
+                    },
+                    lookFor: function (term, callback) {
                         if (term === "") {
                             setLookForResult([]);
                             return;
                         }
 
-                        $http.post(url, {
-                            searchTerm: term,
-                            culture: configService.getLocalConfig("currentCulture")
-                        }).success(function (data, status, headers, config) {
-                            if (angular.isDefined(data.error)) {
-                                console.log("[lookFor] Error: " + data.errorMessage);
+                        umbracoHelper.surfaceControllerPost("search", "lookfor", { searchTerm: term })
+                            .then(function (data) {
+                                //console.log("[lookFor] post");
+                                //console.log(data);
 
-                                setLookForResult([]);
+                                if (angular.isDefined(data.error)) {
+                                    console.log("[lookFor] Error: " + data.errorMessage);
 
-                                return;
-                            } else {
-                                setLookForResult(data);
-                            }
+                                    setLookForResult([]);
+                                } else {
+                                    setLookForResult(data);
+                                }
 
-                            if (callback == "function") {
-                                callback(lookForResult);
-                            }
-                        }).error(function (data, status, headers, config) {
-                        });
+                                if (angular.isDefined(callback)) {
+                                    callback(lookForResult);
+                                }
+                            }, function (error) {
+                                // error
+                                console.log(error);
+                            });
                     },
                     lookForContent: function (term, callback) {
-                        //if (term === "") {
-                        //    setLookForContentResult([]);
-                        //    return;
-                        //}
-
-                        //umbracoHelper.surfaceControllerRequest("Search", "LookForContent", { searchTerm: term }).then(function (response) {
-                        //    if (angular.isDefined(response.error)) {
-                        //        console.log("[lookForContent] Error: " + response.errorMessage);
-
-                        //        setLookForContentResult([]);
-                        //    } else {
-                        //        setLookForContentResult(response);
-                        //    }
-
-                        //    if (angular.isDefined(callback)) {
-                        //        callback(lookForContentResult);
-                        //    }
-                        //});
-
-                        //var url = umbracoHelper.getUrlToSurfaceController("search", "lookforcontent");
-
                         if (term === "") {
 
                             return;
@@ -370,119 +348,54 @@
                                 // error
                             console.log(error);
                         });
-
-
-                        //$http.post(url, {
-                        //    searchTerm: term,
-                        //    culture: configService.getLocalConfig("currentCulture")
-                        //}).success(function (data) {
-                        //    if (angular.isDefined(data.error)) {
-                        //        console.log("[lookForContent] Error: " + data.errorMessage);
-
-                        //        setLookForContentResult([]);
-                        //    } else {
-                        //        setLookForContentResult(data);
-                        //    }
-
-                        //    if (angular.isDefined(callback)) {
-                        //        callback(lookForContentResult);
-                        //    }
-                        //}).error(function (data, status, headers, config) {
-                        //});
                     },
                     lookForImages: function (term, callback) {
-                        //if (term === "") {
-                        //    setLookForImagesResult([]);
-                        //    return;
-                        //}
-
-                        //umbracoHelper.surfaceControllerRequest("Search", "LookForImages", { searchTerm: term }).then(function (response) {
-                        //    if (angular.isDefined(response.error)) {
-                        //        console.log("[lookForImages] Error: " + response.errorMessage);
-
-                        //        setLookForImagesResult([]);
-                        //    } else {
-                        //        setLookForImagesResult(response);
-                        //    }
-
-                        //    if (angular.isDefined(callback)) {
-                        //        callback(lookForImagesResult);
-                        //    }
-                        //});
-
-                        var url = umbracoHelper.getUrlToSurfaceController("search", "lookforimages");
-
                         if (term === "") {
                             setLookForImagesResult([]);
                             return;
                         }
 
-                        $http.post(url, {
-                            searchTerm: term,
-                            culture: configService.getLocalConfig("currentCulture")
-                        }).success(function (data, status, headers, config) {
-                            if (angular.isDefined(data.error)) {
-                                console.log("[lookForImages] Error: " + data.errorMessage);
+                        umbracoHelper.surfaceControllerPost("search", "lookforimages", { searchTerm: term })
+                            .then(function (data) {
+                                if (angular.isDefined(data.error)) {
+                                    console.log("[lookForImages] Error: " + data.errorMessage);
 
-                                setLookForImagesResult([]);
+                                    setLookForImagesResult([]);
+                                } else {
+                                    setLookForImagesResult(data);
+                                }
 
-                                return;
-                            } else {
-                                setLookForImagesResult(data);
-                            }
-
-                            if (angular.isDefined(callback)) {
-                                callback(lookForImagesResult);
-                            }
-                        }).error(function (data, status, headers, config) {
-                        });
+                                if (angular.isDefined(callback)) {
+                                    callback(lookForImagesResult);
+                                }
+                            }, function (error) {
+                                // error
+                                console.log(error);
+                            });
                     },
                     lookForFiles: function (term, callback) {
-                        //if (term === "") {
-                        //    setLookForFilesResult([]);
-                        //    return;
-                        //}
-
-                        //umbracoHelper.surfaceControllerRequest("Search", "LookForFiles", { searchTerm: term }).then(function (response) {
-                        //    if (angular.isDefined(response.error)) {
-                        //        console.log("[lookForImages] Error: " + response.errorMessage);
-
-                        //        setLookForFilesResult([]);
-                        //    } else {
-                        //        setLookForFilesResult(response);
-                        //    }
-
-                        //    if (angular.isDefined(callback)) {
-                        //        callback(lookForFilesResult);
-                        //    }
-                        //});
-
-                        var url = umbracoHelper.getUrlToSurfaceController("search", "lookforfiles");
-
                         if (term === "") {
                             setLookForFilesResult([]);
                             return;
                         }
 
-                        $http.post(url, {
-                            searchTerm: term,
-                            culture: configService.getLocalConfig("currentCulture")
-                        }).success(function (data, status, headers, config) {
-                            if (angular.isDefined(data.error)) {
-                                console.log("[lookForFiles] Error: " + data.errorMessage);
+                        umbracoHelper.surfaceControllerPost("search", "lookforfiles", { searchTerm: term })
+                            .then(function (data) {
+                                if (angular.isDefined(data.error)) {
+                                    console.log("[lookForFiles] Error: " + data.errorMessage);
 
-                                setLookForFilesResult([]);
+                                    setLookForFilesResult([]);
+                                } else {
+                                    setLookForFilesResult(data);
+                                }
 
-                                return;
-                            } else {
-                                setLookForFilesResult(data);
-                            }
-
-                            if (angular.isDefined(callback)) {
-                                callback(lookForFilesResult);
-                            }
-                        }).error(function (data, status, headers, config) {
-                        });
+                                if (angular.isDefined(callback)) {
+                                    callback(lookForFilesResult);
+                                }
+                            }, function (error) {
+                                // error
+                                console.log(error);
+                            });
                     }
                 };
             },

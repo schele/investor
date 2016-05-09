@@ -14,7 +14,7 @@ namespace Investor.UmbExamine.Model
             Umbraco = helper;
         }
 
-        public abstract void Formatt(SearchResult result);
+        public abstract void Format(SearchResult result);
 
         public void AddProperty(string name, object value)
         {

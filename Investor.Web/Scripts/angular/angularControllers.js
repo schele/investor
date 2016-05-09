@@ -71,7 +71,7 @@
                 });
 
                 $scope.UpdateSearch = function (term) {
-                    if (term.length >= 2 && term !== "") {
+                    if (term != null && term.length >= 2 && term !== "") {
                         //searchDataService.lookForPossibleWords(term, function(data) {
                         //    $scope.possibleWordsResult = data;
                         //});
@@ -108,19 +108,25 @@
 
                                 console.log("[SearchPanelController] => $scope.UpdateSearch(term): lookForFiles");
                             case "all":
-                                searchDataService.lookForContent(term, function (data) {
+                                searchDataService.lookFor(term, function (data) {
                                     $scope.contentSearchTitle = "(" + getResultCount(data) + ")";
                                 });
 
-                                searchDataService.lookForImages(term, function (data) {
-                                    $scope.imageSearchTitle = "(" + getResultCount(data) + ")";
-                                });
+                                console.log("[SearchPanelController] => $scope.UpdateSearch(term): lookFor");
 
-                                searchDataService.lookForFiles(term, function (data) {
-                                    $scope.fileSearchTitle = "(" + getResultCount(data) + ")";
-                                });
+                                //searchDataService.lookForContent(term, function (data) {
+                                //    $scope.contentSearchTitle = "(" + getResultCount(data) + ")";
+                                //});
 
-                                console.log("[SearchPanelController] => $scope.UpdateSearch(term): lookForContent|lookForImages|lookForFiles");
+                                //searchDataService.lookForImages(term, function (data) {
+                                //    $scope.imageSearchTitle = "(" + getResultCount(data) + ")";
+                                //});
+
+                                //searchDataService.lookForFiles(term, function (data) {
+                                //    $scope.fileSearchTitle = "(" + getResultCount(data) + ")";
+                                //});
+
+                                //console.log("[SearchPanelController] => $scope.UpdateSearch(term): lookForContent|lookForImages|lookForFiles");
                                 break;
                         }
                     } else {
@@ -251,6 +257,40 @@
                 };
             },
 
+            lookForSearchResultController: function ($scope, searchDataService) {
+                $scope.searchModel = searchDataService.getLookForResult();
+                $scope.searchCount = 0;
+                $scope.searchTime = 0;
+
+                searchDataService.onSearchTermUpdate($scope, function () {
+                    // update the local scope model
+
+                    var value = searchDataService.getSearchTerm();
+
+                    if (value.length >= 2) {
+                        searchDataService.lookFor(value);
+
+                        console.log("[ContentSearchResultController] => onSearchTermUpdate: LookForContent(" + value + ") LookForContent updated.");
+                    } else {
+                        // Clear previus results
+                        $scope.searchModel.results = [];
+                    }
+                });
+
+                // We update the model when new model data is available
+                searchDataService.onLookForResultUpdate($scope, function (context, data) {
+                    $scope.searchModel = data;
+
+                    if (!angular.isUndefined(data.results)) {
+                        $scope.searchCount = data.results.length;
+                    }
+
+                    if (!angular.isUndefined(data.searchTime)) {
+                        $scope.searchTime = data.searchTime;
+                    }
+                });
+            },
+
             contentSearchResultController: function ($scope, searchDataService) {
                 $scope.searchModel = searchDataService.getLookForContentResult();
                 $scope.searchCount = 0;
@@ -342,7 +382,8 @@
                     .controller("SearchController", ["$scope", "searchDataService", "configService", view.controllers.searchController])
                     .controller("ContentSearchResultController", ["$scope", "searchDataService", view.controllers.contentSearchResultController])
                     .controller("ImageSearchResultController", ["$scope", "searchDataService", view.controllers.imageSearchResultController])
-                    .controller("FileSearchResultController", ["$scope", "searchDataService", view.controllers.fileSearchResultController]);
+                    .controller("FileSearchResultController", ["$scope", "searchDataService", view.controllers.fileSearchResultController])
+                    .controller("LookForSearchResultController", ["$scope", "searchDataService", view.controllers.lookForSearchResultController]);
             }
         },
 

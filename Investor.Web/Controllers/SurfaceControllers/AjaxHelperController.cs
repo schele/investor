@@ -9,6 +9,22 @@ namespace Investor.Controllers.SurfaceControllers
 {
     public class AjaxHelperController : SurfaceController
     {
+        // ToDo: Fix passing parameters as Dictionary insted of string
+        //[HttpPost]
+        public ActionResult GetMacroResult(string alias, string parameters)
+        {
+            var par = System.Web.Helpers.Json.Decode<Dictionary<string, object>>(parameters);
+            var html = Umbraco.RenderMacro(alias, par);
+
+            //var model = new Dictionary<string, object>
+            //{
+            //    {"html", html}
+            //};
+
+            //return Json(html, JsonRequestBehavior.DenyGet);
+            return Content(html.ToHtmlString());
+        }
+
         //// ToDo: Add [ValidateAntiForgeryToken] ?
         [HttpPost]
         public JsonResult GetEncryptedRoute(string controllerName, string controllerAction, string area, Dictionary<string, object> additionalRouteVals = null)

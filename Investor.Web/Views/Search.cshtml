@@ -4,46 +4,150 @@
 
 @{
     Layout = "Master.cshtml";
+    var contentResultTitle = Umbraco.GetDictionaryValue("ContentResultTitle");
+    var imageResultTitle = Umbraco.GetDictionaryValue("ImageResultTitle");
+    var fileResultTitle = Umbraco.GetDictionaryValue("FileResultTitle");
+    var searchSearchTitle = Umbraco.GetDictionaryValue("SearchTitle");
+
+    if (string.IsNullOrEmpty(contentResultTitle))
+    {
+        contentResultTitle = "Content";
+    }
+    if (string.IsNullOrEmpty(imageResultTitle))
+    {
+        imageResultTitle = "Images";
+    }
+    if (string.IsNullOrEmpty(fileResultTitle))
+    {
+        fileResultTitle = "File";
+    }
+    if (string.IsNullOrEmpty(searchSearchTitle))
+    {
+        searchSearchTitle = "Search";
+    }
 }
-<div data-ng-controller="SearchPanelController" data-tabs id="search-panel-controller">
-    <input id="searchBox" data-ng-model="searchTerm" data-ng-trim="false" data-autocomplete="possibleWordsResult" data-autocomplete-select="autoCompleteSelect(label, value)" />
-    <input type="button" data-ng-click="UpdateSearch(searchTerm)" value="Sök" />
-    <ul>
-        <li><a href="#content">Content{{contentSearchTitle}}</a></li>
-        <li><a href="#image">Image{{imageSearchTitle}}</a></li>
-        <li><a href="#file">File{{fileSearchTitle}}</a></li>
-    </ul>
-    <div id="content" data-ng-controller="ContentSearchResultController">
-        <h2 style="font-size: 3em;">Content Search</h2>
-        <span data-ng-show="searchModel.results">{{searchModel.results.length}} resultat ({{searchModel.searchTime}} sekunder)</span>
-        <div data-ng-repeat="item in searchModel.results">
-            <h2><a href="{{item.url}}">{{item.name}}</a></h2>
-            @*<p>{{item.type}}</p>*@
-            <p>{{item.mainPreamble}}</p>
-            <hr />
+@*<div data-ng-controller="SearchPanelController" data-ng-cloak>
+    <input class="searchBox" data-ng-model="searchTerm" data-ng-trim="false" data-options="settings" data-datasets="dataset" data-sf-typeahead/>
+    <input type="button" data-ng-click="UpdateSearch(searchTerm)" value="@searchSearchTitle"/>
+    <nav role="navigation">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#content" data-toggle="tab">
+                <div>@contentResultTitle {{contentSearchTitle}}</div></a></li>
+            <li><a href="#image" data-toggle="tab">
+                <div>@imageResultTitle {{imageSearchTitle}}</div></a></li>
+            <li><a href="#file" data-toggle="tab">
+                <div>@fileResultTitle {{fileSearchTitle}}</div></a></li>
+        </ul>
+    </nav>
+    <div class="tab-content">
+        <div class="tab-pane active" id="content" data-ng-controller="ContentSearchResultController">
+            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+            <div data-ng-repeat="item in searchModel.results">
+                <h2><a href="{{item.url}}">{{item.name}}</a>
+                </h2>
+                <p>{{item.mainPreamble}}</p>
+                <hr/>
+            </div>
+        </div>
+        <div class="tab-pane" id="image" data-ng-controller="ImageSearchResultController">
+            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+            <div data-ng-repeat="item in searchModel.results">
+                <h2><a href="{{item.url}}" target="_blank"><img data-ng-src="{{item.url}}" alt="{{item.name}}" style="max-width: 15em;"></a>
+                </h2>
+                <hr/>
+            </div>
+        </div>
+        <div class="tab-pane" id="file" data-ng-controller="FileSearchResultController">
+            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+            <div data-ng-repeat="item in searchModel.results">
+                <h2><a href="{{item.url}}" target="_blank">{{item.name}}</a>
+                </h2>
+                <hr/>
+            </div>
         </div>
     </div>
+</div>*@
 
-    <div id="image" data-ng-controller="ImageSearchResultController">
-        <h2 style="font-size: 3em;">Images Search</h2>
-        <span data-ng-show="searchModel.results">{{searchModel.results.length}} resultat ({{searchModel.searchTime}} sekunder)</span>
-        <div data-ng-repeat="item in searchModel.results">
-            <h2><a href="{{item.url}}" target="_blank"><img data-ng-src="{{item.url}}" alt="{{item.name}}" style="max-width: 15em;"></a></h2>
-            @*<p>{{item.type}}</p>*@
-            <hr />
+<article data-ng-controller="SearchPanelController" data-ng-cloak class="row search-page">
+    <div data-ng-controller="LookForSearchResultController">
+        <div class="col-md-12 search-page-intro">
+            <h1>@Model.Header</h1>
+            @*<span data-ng-show="searchModel.results">Your search for <strong>häst</strong> matches 1337 pages</span>*@
+            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
         </div>
+        <ul class="col-md-12 search-page-result-list">
+            <li data-ng-repeat="item in searchModel.results">
+                <h2>
+                    <a href="{{item.url}}">{{item.name}}</a>
+                </h2>
+                <p data-ng-show="item.hasOwnProperty('text')">
+                    {{item.text}}
+                </p>
+            </li>
+        </ul>
+        @*<ul class="col-md-12 search-page-paging">
+                <li>
+                    <a href="#">Previous</a>
+                </li>
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">6</a>
+                </li>
+                <li>
+                    <a href="#">7</a>
+                </li>
+                <li>
+                    <a href="#">8</a>
+                </li>
+                <li>
+                    <a href="#">9</a>
+                </li>
+                <li>
+                    <a href="#">10</a>
+                </li>
+                <li>
+                    <a href="#">Next</a>
+                </li>
+            </ul>*@
     </div>
+</article>
 
-    <div id="file" data-ng-controller="FileSearchResultController">
-        <h2 style="font-size: 3em;">Files Search</h2>
-        <span data-ng-show="searchModel.results">{{searchModel.results.length}} resultat ({{searchModel.searchTime}} sekunder)</span>
-        <div data-ng-repeat="item in searchModel.results">
-            <h2><a href="{{item.url}}" target="_blank">{{item.name}}</a></h2>
-            @*<p>{{item.type}}</p>*@
-            <hr />
-        </div>
-    </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

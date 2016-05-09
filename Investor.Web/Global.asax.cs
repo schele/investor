@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Investor.Configuration;
+using Skybrud.Umbraco.GridData;
 using StructureMap;
 using Umbraco.Web;
 
@@ -17,6 +18,7 @@ namespace Investor
             AppHttpContext = HttpContext.Current;
 
             Bootstrapper.ConfigureStructureMap(ObjectFactory.Container);
+            GridPropertyValueConverter.IsEnabled = false;
         }
     }
 }

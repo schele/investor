@@ -25,7 +25,7 @@ namespace Investor.Abstraction.Pressreleases
             }
             catch (Exception)
             {
-                //TODO Logga felet.
+
                 return new XDocument();
             }
         }

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
+using Examine.LuceneEngine.Config;
 using Investor.Models.Extensions;
 using Investor.SearchTools;
 using Investor.UmbExamine;
 using Investor.UmbExamine.ExamineSearch;
 using Investor.UmbExamine.Model;
+using SmartFormat;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 
@@ -37,10 +40,21 @@ namespace Investor.Controllers.SurfaceControllers
 
     public static class SearchHelper
     {
-        public static SearchResult LookForContent(string searchTerm)
+        public static SearchResult LookForContent(string searchTerm, CultureInfo culture = null)
         {
-            const string searchProviderName = "ExternalSearcher";
-            const string indexSet = "ExternalIndexSet";
+            string searchProviderName = "ExternalSearcher";
+            string indexSet = "ExternalIndexSet";
+
+            if (culture != null)
+            {
+                var cultIndexSet = string.Format("External_{0}_IndexSet", culture.Name);
+                var indexItem = IndexSets.Instance.Sets.Cast<IndexSet>().FirstOrDefault(x => x.SetName == cultIndexSet);
+                if (indexItem != null)
+                {
+                    indexSet = cultIndexSet;
+                    searchProviderName = string.Format("External_{0}_Searcher", culture.Name);
+                }
+            }
 
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
@@ -57,10 +71,21 @@ namespace Investor.Controllers.SurfaceControllers
             return result;
         }
 
-        public static SearchResult LookForImages(string searchTerm)
+        public static SearchResult LookForImages(string searchTerm, CultureInfo culture = null)
         {
-            const string searchProviderName = "ExternalSearcher";
-            const string indexSet = "ExternalIndexSet";
+            string searchProviderName = "ExternalSearcher";
+            string indexSet = "ExternalIndexSet";
+
+            if (culture != null)
+            {
+                var cultIndexSet = string.Format("External_{0}_IndexSet", culture.Name);
+                var indexItem = IndexSets.Instance.Sets.Cast<IndexSet>().FirstOrDefault(x => x.SetName == cultIndexSet);
+                if (indexItem != null)
+                {
+                    indexSet = cultIndexSet;
+                    searchProviderName = string.Format("External_{0}_Searcher", culture.Name);
+                }
+            }
 
             UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
 
@@ -77,7 +102,7 @@ namespace Investor.Controllers.SurfaceControllers
             return result;
         }
 
-        public static SearchResult LookForFiles(string searchTerm)
+        public static SearchResult LookForFiles(string searchTerm, CultureInfo culture = null)
         {
             const string mediaSearchProviderName = "MediaSearcher";
             const string mediaIndexSet = "MediaIndexSet";
@@ -124,7 +149,8 @@ namespace Investor.Controllers.SurfaceControllers
                 return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
             }
 
-            var content = SearchHelper.LookForContent(searchTerm);
+            var culture = Umbraco.CultureDictionary.Culture;
+            var content = SearchHelper.LookForContent(searchTerm, culture);
             var image = SearchHelper.LookForImages(searchTerm);
             var file = SearchHelper.LookForFiles(searchTerm);
             var result = SearchHelper.JoinResults(content, image, file);
@@ -132,12 +158,21 @@ namespace Investor.Controllers.SurfaceControllers
             // Sort based on name
             result.Result = result.Result.OrderBy(x => x["name"]).ToList();
 
-            //var currentLanguageBranch = GetRootUrl(Umbraco.NiceUrlWithDomain(CurrentPage.Id));
+            var messageObject = new
+            {
+                searchWord = searchTerm,
+                resultCount = result.Result.Count
+            };
+
+            var messageFormat = Umbraco.GetDictionaryValue("System.Search.Result");
+
+            var resultMessage = Smart.Format(messageFormat, messageObject);
 
             var model = new
             {
                 searchTime = result.SearchTime,
-                results = result.Result
+                results = result.Result,
+                resultMessage
             };
 
             return Json(model, JsonRequestBehavior.AllowGet);
@@ -183,35 +218,45 @@ namespace Investor.Controllers.SurfaceControllers
         }
 
         [HttpPost]
-        public JsonResult LookForPossibleWords(string searchTerm, string culture)
+        public JsonResult LookForPossibleWords(string searchTerm)
         {
-            const string searchProviderName = "ExternalSearcher";
-            const string indexSet = "ExternalIndexSet";
-            //const string mediaSearchProviderName = "MediaSearcher";
-            //const string mediaIndexSet = "MediaIndexSet";
-
-            //SetUmbracoRequired(culture);
+            string searchProviderName = "ExternalSearcher";
+            string indexSet = "ExternalIndexSet";
+            const string mediaSearchProviderName = "MediaSearcher";
+            const string mediaIndexSet = "MediaIndexSet";
 
             if (!Validate(searchTerm, out searchTerm))
             {
                 return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
+            }
+            
+            var culture = Umbraco.CultureDictionary.Culture;
+            if (culture != null)
+            {
+                var cultIndexSet = string.Format("External_{0}_IndexSet", culture);
+                var indexItem = IndexSets.Instance.Sets.Cast<IndexSet>().FirstOrDefault(x => x.SetName == cultIndexSet);
+                if (indexItem != null)
+                {
+                    indexSet = cultIndexSet;
+                    searchProviderName = string.Format("External_{0}_Searcher", culture);
+                }
             }
 
             var searchTool = new SearchTool();
             var examineSearch = new ExamineSearch(Umbraco);
 
             var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
-            //var pdfFieldFilter = UmbExamineConfig.Instance.GetIndexFields(mediaIndexSet);
+            var pdfFieldFilter = UmbExamineConfig.Instance.GetIndexFields(mediaIndexSet);
 
             var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
-            //var pdfSearchResults = examineSearch.Search(searchTerm, mediaSearchProviderName, mediaIndexSet, pdfFieldFilter);
+            var pdfSearchResults = examineSearch.Search(searchTerm, mediaSearchProviderName, mediaIndexSet, pdfFieldFilter);
 
-            var joinedResult = searchResults.Results;//.Union(pdfSearchResults.Results);
+            var joinedResult = searchResults.Results.Union(pdfSearchResults.Results);
 
             var result = new List<string>();
 
             var excludedFields = GetExculdedFields(searchProviderName, fieldFilter)
-                //.Union(GetExculdedFields(mediaSearchProviderName, pdfFieldFilter))
+                .Union(GetExculdedFields(mediaSearchProviderName, pdfFieldFilter))
                                         .Union(new[] { "__IndexType", "__Path", "__NodeTypeAlias", "__NodeId" })
                                         .ToList();
 

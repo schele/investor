@@ -7,7 +7,7 @@
 @inherits PartialViewMacroPage
               
 @{
-    var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();    
+    var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
     var startPage = Model.Content.ToStrongContent().AncestorOrSelf<StartPageModel>();
     var pressReleaseUrl = startPage.PressReleasesNode;    
 }

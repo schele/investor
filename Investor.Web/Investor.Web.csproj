@@ -650,6 +650,7 @@
     <Compile Include="Abstraction\Pressreleases\IPressReleaseRepository.cs" />
     <Compile Include="Abstraction\Pressreleases\PressReleaseRepository.cs" />
     <Compile Include="Configuration\Bootstrapper.cs" />
+    <Compile Include="Configuration\SiteConstants.cs" />
     <Compile Include="Configuration\WebRegistry.cs" />
     <Compile Include="Controllers\SurfaceControllers\AjaxHelperController.cs" />
     <Compile Include="Controllers\SurfaceControllers\ConfigSurfaceController.cs" />
@@ -705,6 +706,7 @@
     <Compile Include="UmbExamine\Model\ExamineContentResult.cs" />
     <Compile Include="UmbExamine\Model\ExamineFileResult.cs" />
     <Compile Include="UmbExamine\Model\ExamineMediaResult.cs" />
+    <Compile Include="UmbExamine\Model\Quote.cs" />
     <Compile Include="UmbExamine\Model\ResultBase.cs" />
     <Compile Include="UmbExamine\PropertiesIndexFormatting.cs" />
     <Compile Include="UmbExamine\UmbExamineConfig.cs" />

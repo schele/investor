@@ -1,5 +1,13 @@
-﻿
+﻿@using System.Web.Script.Serialization
+@using System.Xml
+@using Investor.Abstraction.Pressreleases
+@using Investor.Configuration
 @using Investor.Helpers
+@using Investor.Models.Models.NodeLink
+@using Investor.Models.Models.PressReleases
+@using Investor.UmbExamine.Model
+@using log4net
+@using StructureMap
 @using Umbraco.Web.Macros
 
 @inherits PartialViewMacroPage
@@ -7,10 +15,107 @@
 @{
     var header = HttpUtility.HtmlDecode(Model.MacroParameters["Header"].ToString());
     var investorsAndMediaNode = Umbraco.TypedContent(Model.MacroParameters["HeaderUrl"].ToString());
-    var contacts = Model.MacroParameters["Contacts"].ToString();
-
-    var c = contacts;
+    var contacts = new JavaScriptSerializer().Deserialize<List<NodeLink>>(Model.MacroParameters["Contacts"].ToString().Replace("&quot;", "\""));
     
+}
+
+@functions
+{
+    protected List<PressRelease> FetchReports()
+    {
+        
+        var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
+        var lang = GetLanguage(library.GetCurrentDomains(umbraco.NodeFactory.Node.GetCurrent().Id)[0].Language.CultureAlias);
+        var xmlUrlAnnual = string.Format((SiteConstants.LatestAnnualReport).Replace("%26", "&"), lang);
+        var xmlUrlinterim = string.Format((SiteConstants.LatestInterimReport).Replace("%26", "&"), lang);
+        var xDocTot = pressReleaseRepository.Load(xmlUrlAnnual);
+        var xDocSub = pressReleaseRepository.Load(xmlUrlinterim);
+
+        if (xDocTot.Root != null)
+        {
+            if (xDocSub.Root != null)
+            {
+                xDocTot.Root.Add(xDocSub.Root.Elements());
+            }
+        }
+
+        return PressReleaseRepository.ParsePressReleasesXmlData(xDocTot, 2, "pdf");
+    }
+
+    private string GetFileName(Attachment attachment)
+    {
+        return attachment.Name != string.Empty ? attachment.Name : attachment.Title;
+    }
+
+    protected string GetLanguage(string culture)
+    {
+        return culture.Substring(0, 2);
+    }
+
+    protected List<Quote> FetchQuotes()
+    {
+        var log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        var quoteList = new List<Quote>();
+        var lang = GetLanguage(library.GetCurrentDomains(umbraco.NodeFactory.Node.GetCurrent().Id)[0].Language.CultureAlias);
+        var url = (string.Format(SiteConstants.CustomQuote, lang)).Replace("%26", "&");
+        var xmlReader = new XmlTextReader(url);
+        var xmlDoc = new XmlDocument();
+        
+        try
+        {
+            xmlDoc.Load(xmlReader);
+        }
+        catch (Exception e)
+        {
+            log.Error(e.Message);            
+        }
+
+        var root = xmlDoc.DocumentElement;
+        if (root != null)
+        {
+            var nodeList = root.GetElementsByTagName("quote");
+            if (nodeList != null)
+            {
+                foreach (XmlElement node in nodeList)
+                {
+                    var quote = new Quote
+                    {
+                        Name = node.ChildNodes.Item(1).InnerXml,
+                        DiffPercent = GetPercent(float.Parse(node.ChildNodes.Item(6).InnerXml)),
+                        LastPrice = node.ChildNodes.Item(7).InnerXml,
+                        ImageUrl = GetImageUrl(float.Parse(node.ChildNodes.Item(5).InnerXml)),
+                        Time = DateTime.Parse(node.ChildNodes.Item(4).InnerXml)
+                    };
+
+                    quoteList.Add(quote);
+                }
+            }
+        }
+
+        return quoteList.OrderBy(item => item.Name).ToList();
+    }
+
+    private string GetPercent(float percent)
+    {
+        return percent > 0 ? "+" + percent.ToString() : percent.ToString();
+    }
+
+    protected string GetImageUrl(float diff)
+    {
+        var imageName = "same";
+
+        if (diff < 0)
+        {
+            imageName = "down";
+        }
+        else if (diff > 0)
+        {
+            imageName = "up";
+        }
+
+        return imageName;
+    }
+
 }
 
 <div class="investors-and-media">
@@ -22,56 +127,60 @@
     </div>)
 
     <div class="investors-and-media-content">
-        @*<h3>Latest reports</h3>
-        <ul class="investors-and-media-latest-reports">
-            <li>
-                <a href="#">
-                    <span class="investors-and-media-latest-reports-icon"></span>
-                    <span class="investors-and-media-date">2016/04/21</span>
-                    <span class="investors-and-media-time">08:15</span>
-                    <span class="investors-and-media-latest-reports-document">Interim Management Statement January-March 2016</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="investors-and-media-latest-reports-icon"></span>
-                    <span class="investors-and-media-date">2016/04/21</span>
-                    <span class="investors-and-media-time">08:15</span>
-                    <span class="investors-and-media-latest-reports-document">Investor ABs Annual Report 2015</span>
-                </a>
-            </li>
-        </ul>*@
-        @*<h3>Investor share</h3>
-        <ul class="investors-and-media-share">
-            <li>
-                <a href="#">
-                    <span class="investors-and-media-date">2016/04/21</span>
-                    <span class="investors-and-media-time">08:15</span>
-                    <span class="investors-and-media-share-status">Investor A 0<span>%</span> 290.30</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="investors-and-media-date">2016/04/21</span>
-                    <span class="investors-and-media-time">08:15</span>
-                    <span class="investors-and-media-share-status">Investor B 0<span>%</span> 290.30</span>
-                </a>
-            </li>
-        </ul>*@
+        @if (FetchReports().Count > 0)
+        {
+            <h3>Latest reports</h3>
+            <ul class="investors-and-media-latest-reports">
+                @foreach (var report in FetchReports().OrderByDescending(x => x.Published).ToList())
+                {
+                    foreach (var attachment in report.Attachment.ToList())
+                    {
+                        <li>
+                            <a href="@attachment.Location" title="@attachment.Name">
+                                <span class="investors-and-media-latest-reports-icon"></span>
+                                <span class="investors-and-media-date">@report.Published.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+                                <span class="investors-and-media-time">@report.Published.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+                                <span class="investors-and-media-latest-reports-document">@GetFileName(attachment)</span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        }
 
-        @foreach (var contact in contacts)
+        @if (FetchQuotes().Count > 0)
+        {
+            <h3>Investor share</h3>
+            <ul class="investors-and-media-share">
+                @foreach (var quote in FetchQuotes())
+                {
+                    <li>
+                        <a href="#">
+                            <span class="investors-and-media-date">@quote.Time.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+                            <span class="investors-and-media-time">@quote.Time.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+                            <span class="investors-and-media-share-status">@quote.Name<span>&#37;</span> @quote.LastPrice</span>
+                            @* todo: lägg till pilarna *@
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+
+        @if (contacts.Any())
         {
             <h3>Contact</h3>
             <ul class="investors-and-media-contact">
                 <li>
-                   
                 </li>
-                <li>
-                    <a href="#">
-                        @contact.Name
-                    </a>
-                </li>
+                @foreach (var contact in contacts)
+                {
+                    <li>
+                        <a href="@contact.Link" title="@contact.Caption">
+                            @contact.Caption
+                        </a>
+                    </li>
+                }
             </ul>
-        }        
+        }
     </div>
 </div>

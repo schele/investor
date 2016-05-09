@@ -69,6 +69,10 @@
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\cms.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="CogUmbracoExamineMediaIndexer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\CogUmbracoExamineMediaIndexer\CogUmbracoExamineMediaIndexer.dll</HintPath>
+    </Reference>
     <Reference Include="controls, Version=1.0.5948.18145, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\controls.dll</HintPath>
@@ -379,6 +383,10 @@
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\TidyNet.dll</HintPath>
+    </Reference>
+    <Reference Include="tika-app-1.2, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\CogUmbracoExamineMediaIndexer\tika-app-1.2.dll</HintPath>
     </Reference>
     <Reference Include="UCodeFirst, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\uCodeFirst.Core.2.2.9\lib\net45\UCodeFirst.dll</HintPath>

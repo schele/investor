@@ -1,13 +1,28 @@
-﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+﻿
+@using Investor.Helpers
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    var header = HttpUtility.HtmlDecode(Model.MacroParameters["Header"].ToString());
+    var investorsAndMediaNode = Umbraco.TypedContent(Model.MacroParameters["HeaderUrl"].ToString());
+    var contacts = Model.MacroParameters["Contacts"].ToString();
+
+    var c = contacts;
+    
+}
 
 <div class="investors-and-media">
-    <div class="investors-and-media-header">
+    
+    @Html.Render(header, @<div class="investors-and-media-header">
         <h2>
-            <a href="#">Investors and media</a>
+            <a href="@investorsAndMediaNode.Url" title="@header" >@header</a>
         </h2>
-    </div>
+    </div>)
+
     <div class="investors-and-media-content">
-        <h3>Latest reports</h3>
+        @*<h3>Latest reports</h3>
         <ul class="investors-and-media-latest-reports">
             <li>
                 <a href="#">
@@ -25,8 +40,8 @@
                     <span class="investors-and-media-latest-reports-document">Investor ABs Annual Report 2015</span>
                 </a>
             </li>
-        </ul>
-        <h3>Investor share</h3>
+        </ul>*@
+        @*<h3>Investor share</h3>
         <ul class="investors-and-media-share">
             <li>
                 <a href="#">
@@ -42,19 +57,21 @@
                     <span class="investors-and-media-share-status">Investor B 0<span>%</span> 290.30</span>
                 </a>
             </li>
-        </ul>
-        <h3>Contact</h3>
-        <ul class="investors-and-media-contact">
-            <li>
-                <a href="#">
-                    Magnus Dalhammar
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Stefan Stern
-                </a>
-            </li>
-        </ul>
+        </ul>*@
+
+        @foreach (var contact in contacts)
+        {
+            <h3>Contact</h3>
+            <ul class="investors-and-media-contact">
+                <li>
+                   
+                </li>
+                <li>
+                    <a href="#">
+                        @contact.Name
+                    </a>
+                </li>
+            </ul>
+        }        
     </div>
 </div>

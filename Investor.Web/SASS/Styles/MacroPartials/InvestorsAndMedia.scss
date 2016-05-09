@@ -117,6 +117,33 @@
     color: #000;
     font-size: 14px;
 }
+
+.investors-and-media .investors-and-media-content .investors-and-media-arrow-down,
+.investors-and-media .investors-and-media-content .investors-and-media-arrow-up,
+.investors-and-media .investors-and-media-content .investors-and-media-arrow-same {
+    display: inline-block;
+    position: absolute;
+    margin-left: 2px;
+    background-image: url('/images/investor_icons_vector.svg');
+    background-size: 71px 71px;
+    height: 21px;
+    width: 15px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-arrow-up {
+    background-position: -0px -31px;
+    margin-top: -10px;
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-arrow-down {
+    background-position: -33px -31px;
+
+}
+
+.investors-and-media .investors-and-media-content .investors-and-media-arrow-same {
+    background-position: -17px -31px;
+    margin-top: -5px;
+}
     
 .investors-and-media .investors-and-media-content .investors-and-media-contact {
     margin-top: -3px;

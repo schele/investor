@@ -22,6 +22,7 @@
     margin-bottom: 15px;
     float: left;
     margin-right: 15px;
+    position: relative;
 }
 
 .article-page .article-page-documents h3,
@@ -29,10 +30,11 @@
     font-size: 20px;
     font-style: italic;
     line-height: 26px;
+    padding-left: 30px;
 }
 
-.article-page .article-page-documents h3 .icon,
-.article-page .article-page-links h3 .icon {
+.article-page .article-page-documents h3:before,
+.article-page .article-page-links h3:before {
     background-image: url('/images/investor_icons_vector.svg');
     -webkit-background-size: 160px 160px;
     -o-background-size: 160px 160px;
@@ -41,14 +43,16 @@
     width: 30px;
     height: 34px;
     display: block;
-    float: left;
+    position: absolute;
+    left: 15px;
+    content: "";
 }
 
-.article-page .article-page-documents h3 .icon {
+.article-page .article-page-documents h3:before {
     background-position: 0px -40px;
     margin-top: -4px;
 }
-.article-page .article-page-links h3 .icon {
+.article-page .article-page-links h3:before {
     background-position: -110px -10px;
     margin-top: -8px;
 }

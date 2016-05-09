@@ -19,3 +19,9 @@
     font-size: 14px;
     line-height: 15px;
 }
+
+@media (max-width: 990px) {
+    .image-archive-page {
+        border-left: 0;
+    }
+}

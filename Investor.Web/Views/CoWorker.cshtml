@@ -22,7 +22,11 @@
                 @Html.Render(Model.Position, @<span class="co-worker-page-position">Position: @Model.Position</span>)
                 @Html.Render(Model.Phone, @<span>@Umbraco.GetDictionaryValue("System.Contact.Phone"): @Model.Phone</span>)
                 @Html.Render(Model.Mobile, @<span>@Umbraco.GetDictionaryValue("System.Contact.Mobile"): @Model.Mobile</span>)
-                @Html.Raw(Model.AdditionalInfo)
+                <div class="text-editor-content">
+                    @Html.Raw(Model.AdditionalInfo) 
+                </div>                                         
+            </div>
+            <div class="col-md-12 text-editor-content">               
                 @Html.Raw(Model.Resume)
             </div>
         </div>

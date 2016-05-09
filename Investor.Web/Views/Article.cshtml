@@ -24,7 +24,7 @@
                 {
                     <div class="article-page-links">
                         <h3>
-                            <span class="icon"></span>@Model.RelatedLinksHeader
+                            @Model.RelatedLinksHeader
                         </h3>
                         <ul>                            
                             @foreach (var item in Model.RelatedLinks.Take(5))
@@ -54,7 +54,7 @@
                 {
                     <div class="article-page-documents">
                         <h3>
-                            <span class="icon"></span>@Model.RelatedDocumentsHeader
+                            @Model.RelatedDocumentsHeader
                         </h3>
                         <ul>
                             @foreach (var item in Model.RelatedDocuments.Take(5))

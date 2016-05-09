@@ -21,6 +21,5 @@
 		<file src='Investor.Web\Scripts\**\*.*' target='Scripts' />
         <file src='Investor.Web\global.asax' target='' />
 		<file src='Investor.Web\web.config' target='' />
-		<file src='Libraries\CogUmbracoExamineMediaIndexer\*.*' target='bin' />
     </files>
 </package>

@@ -72,7 +72,7 @@ namespace Investor.Models.PageModels
         [Property(
             UmbracoDataType.RichtextEditor,
             Tab.Content,
-            DisplayName = "Extrainformation",
+            DisplayName = "Information",
             Description = "",
             Converter = typeof(RichtextConverter)
         )]

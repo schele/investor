@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Investor.Models.Extensions;
@@ -126,16 +127,17 @@ namespace Investor.Controllers.SurfaceControllers
             var content = SearchHelper.LookForContent(searchTerm);
             var image = SearchHelper.LookForImages(searchTerm);
             var file = SearchHelper.LookForFiles(searchTerm);
-
-            SearchResult m = SearchHelper.JoinResults(content, image, file);
+            var result = SearchHelper.JoinResults(content, image, file);
 
             // Sort based on name
-            m.Result = m.Result.OrderBy(x => x["name"]).ToList();
+            result.Result = result.Result.OrderBy(x => x["name"]).ToList();
+
+            //var currentLanguageBranch = GetRootUrl(Umbraco.NiceUrlWithDomain(CurrentPage.Id));
 
             var model = new
             {
-                searchTime = m.SearchTime,
-                results = m.Result
+                searchTime = result.SearchTime,
+                results = result.Result
             };
 
             return Json(model, JsonRequestBehavior.AllowGet);
@@ -276,6 +278,13 @@ namespace Investor.Controllers.SurfaceControllers
             }
 
             return new List<string>();
+        }
+
+        public string GetRootUrl(string url)
+        {
+            var uri = new Uri(url);
+
+            return string.Format("{0}://{1}", uri.Scheme, uri.Authority);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -86,20 +87,14 @@ namespace Investor.UmbExamine
         public void OnApplicationStarted(UmbracoApplicationBase umbracoApplication,
             ApplicationContext applicationContext)
         {
-            //var helper = new UmbracoHelper(UmbracoContext.Current);
-            var t = HttpContext.Current;
             ExamineManager.Instance.IndexProviderCollection["ExternalIndexer"].GatheringNodeData
                          += (sender, e) => GatheringGridData(sender, e);
-            //var indexer = (LuceneIndexer) ExamineManager.Instance.IndexProviderCollection["ExternalIndexer"];
-            //indexer.GatheringNodeData += indexer_GatheringNodeData;
         }
 
         public void GatheringGridData(object sender, IndexingNodeDataEventArgs e)
         {
             try
             {
-                var tt = e.Node;
-
                 var context = ContextHelpers.EnsureUmbracoContext();
                 var umbraco = new UmbracoHelper(context);
                 var content = umbraco.TypedContent(e.NodeId);
@@ -164,6 +159,13 @@ namespace Investor.UmbExamine
                                     // ToDo: create appKey searchHost then add the page path from the content url
                                     //var url = "https://investorab.com.local";// content.Url();
                                     var url =  content.Url();
+                                    var host = ConfigurationManager.AppSettings["GridIndexFormatting.host"];
+
+                                    if (!string.IsNullOrEmpty(host))
+                                    {
+                                        var uri = new Uri(url);
+                                        url = uri.Scheme + "://" + host + uri.AbsolutePath;
+                                    }
 
                                     Dictionary<string, object> additionalRouteVals = new Dictionary<string, object>();
                                     additionalRouteVals.Add("alias", macro.MacroAlias);
@@ -172,7 +174,7 @@ namespace Investor.UmbExamine
                                     var ufprint = AjaxHelperController.CreateEncryptedRouteString("ajaxhelper", "getmacroresult", "", additionalRouteVals);
                                     WebRequest req = WebRequest.Create(url);
                                     string postData = string.Format("ufprt={0}", ufprint);
-
+                                    
                                     byte[] send = Encoding.Default.GetBytes(postData);
                                     req.Method = "POST";
                                     req.ContentType = "application/x-www-form-urlencoded";

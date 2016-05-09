@@ -15,12 +15,12 @@
         <file src='Investor.Web\Config\**\*.*' target='Config' />
         <file src='Investor.Web\static\**\*.*' target='static' />
         <file src='Investor.Web\images\*.*' target='images' />
-	<file src='Investor.Web\UI\**\*.*' target='UI' />
-	<file src='Investor.Web\Views\**\*.*' target='Views' />
-	<file src='Investor.Web\SASS\**\*.*' target='SASS' />
-	<file src='Investor.Web\Scripts\**\*.*' target='Scripts' />
+		<file src='Investor.Web\UI\**\*.*' target='UI' />
+		<file src='Investor.Web\Views\**\*.*' target='Views' />
+		<file src='Investor.Web\SASS\**\*.*' target='SASS' />
+		<file src='Investor.Web\Scripts\**\*.*' target='Scripts' />
         <file src='Investor.Web\global.asax' target='' />
-	<file src='Investor.Web\web.config' target='' />
-	<file src='Libraries\CogUmbracoExamineMediaIndexer\*.*' target='bin' />
+		<file src='Investor.Web\web.config' target='' />
+		<file src='Libraries\CogUmbracoExamineMediaIndexer\*.*' target='bin' />
     </files>
 </package>

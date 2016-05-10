@@ -9,7 +9,7 @@
 
 @helper Traverse(INode node)
 {
-    @*var children = node.ChildrenAsList.Where(x => x.GetProperty("hideInSitemap") == false && !x.GetPropertyValue("metaForRobots").Contains("nofollow")).ToList();
+    var children = node.ChildrenAsList.Where(x => x.GetProperty("hideInSitemap").Value == "0" || !x.GetProperty("metaForRobots").Value.Contains("nofollow")).ToList(); //.Where(x => x.GetProperty("hideInSitemap") == 0 && !x.GetPropertyValue("metaForRobots").Contains("nofollow")).ToList();
 
     if (children.Any())
     {
@@ -22,40 +22,44 @@
                 </li>
             }
         </ul>
-    }*@
+    }
 }
 
-<h1>@Model.Name</h1>
-
-<ul>
-    <li><a href="@Model.StartPage.Url">@Model.StartPage.Name</a></li>
-    @Traverse(Model.Node.GetAncestorByPathLevel(1))
-</ul>
-
-<!--Markup/Style-->
 <article class="row sitemap-page">
     <div class="col-md-12">
         <h1>@Model.StartPage.Name</h1>
+
         <ul class="sitemap-page-list">
-            <li><a href="">Bacon ipsum</a></li>
-            <li><a href="">Bacon ipsum</a></li>
-            <li>
-                <ul>
-                    <li><a href="">Bacon ipsum</a></li>
-                    <li><a href="">Bacon ipsum</a></li>
-                    <li>
-                        <ul>
-                            <li><a href="">Bacon ipsum</a></li>
-                            <li>
-                                <ul>
-                                    <li><a href="">Bacon ipsum</a></li>
-                                    <li><a href="">Bacon ipsum</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            <li><a href="@Model.StartPage.Url">@Model.StartPage.Name</a></li>
+            @Traverse(Model.Node.GetAncestorByPathLevel(1))
         </ul>
     </div>
 </article>
+
+<!--Markup/Style-->
+@*<article class="row sitemap-page">
+        <div class="col-md-12">
+            <h1>@Model.StartPage.Name</h1>
+            <ul class="sitemap-page-list">
+                <li><a href="">Bacon ipsum</a></li>
+                <li><a href="">Bacon ipsum</a></li>
+                <li>
+                    <ul>
+                        <li><a href="">Bacon ipsum</a></li>
+                        <li><a href="">Bacon ipsum</a></li>
+                        <li>
+                            <ul>
+                                <li><a href="">Bacon ipsum</a></li>
+                                <li>
+                                    <ul>
+                                        <li><a href="">Bacon ipsum</a></li>
+                                        <li><a href="">Bacon ipsum</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </article>*@

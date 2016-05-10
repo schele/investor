@@ -37,6 +37,15 @@ namespace Investor.Models.PageModels
         public virtual bool HideInNavigation { get; set; }
 
         [Property(
+            UmbracoDataType.TrueFalse,
+            Tab.Navigation,
+            DisplayName = "Hide In Sitemap",
+            Description = "Välj om sidan ska visas i en sitemap",
+            Converter = typeof(BoolConverter)
+        )]
+        public virtual bool HideInSitemap { get; set; }
+
+        [Property(
             UmbracoDataType.Textstring,
             Tab.Navigation,
             DisplayName = "Url Alias",

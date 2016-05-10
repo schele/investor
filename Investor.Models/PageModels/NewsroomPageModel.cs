@@ -136,13 +136,16 @@ namespace Investor.Models.PageModels
         {
             var comments = new List<CommentPageModel>();
 
-            foreach (var comment in CommentsNode.ChildrenAsList)
+            if (CommentsNode != null)
             {
-                var commentModel = ModelFactory.Instance.GetModel<CommentPageModel>(comment.Id);
+                foreach (var comment in CommentsNode.ChildrenAsList)
+                {
+                    var commentModel = ModelFactory.Instance.GetModel<CommentPageModel>(comment.Id);
 
-                comments.Add(commentModel);
+                    comments.Add(commentModel);
+                }    
             }
-
+            
             return comments;
         }
 
@@ -150,13 +153,16 @@ namespace Investor.Models.PageModels
         {
             var notices = new List<NoticePageModel>();
 
-            foreach (var notice in NoticesNode.ChildrenAsList)
+            if (NoticesNode != null)
             {
-                var noticeModel = ModelFactory.Instance.GetModel<NoticePageModel>(notice.Id);
+                foreach (var notice in NoticesNode.ChildrenAsList)
+                {
+                    var noticeModel = ModelFactory.Instance.GetModel<NoticePageModel>(notice.Id);
 
-                notices.Add(noticeModel);
+                    notices.Add(noticeModel);
+                }    
             }
-
+            
             return notices;
         } 
     }

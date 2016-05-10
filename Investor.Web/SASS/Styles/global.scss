@@ -66,3 +66,17 @@ article {
     line-height: 22px;
     padding: 0 0 10px 0;
 }
+
+textarea.umbEditorTextFieldMultiple {
+    width: 430px !important;
+    height: 70px !important;
+}
+
+.responsive-video {
+    max-width: 100%;
+    height: auto;
+}
+
+div.mce-tinymce.mce-container.mce-panel {
+    min-width: 66.6% !important;
+}

@@ -799,6 +799,7 @@
     <Content Include="SASS\Styles\Widgets\search-widget.scss" />
     <Content Include="SASS\Styles\widgets.scss" />
     <Content Include="Views\Partials\SearchBox.cshtml" />
+    <Content Include="SASS\Styles\Pages\SiteMap.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

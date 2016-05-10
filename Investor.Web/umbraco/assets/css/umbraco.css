@@ -5,6 +5,11 @@ textarea.umbEditorTextFieldMultiple {
     height: 70px !important;
 }
 
-/*div#mceu_15.mce-tinymce.mce-container.mce-panel {
+.responsive-video {
+    max-width: 100%;
+    height: auto;
+}
+
+div.mce-tinymce.mce-container.mce-panel {
     min-width: 66.6% !important;
-}*/
+}

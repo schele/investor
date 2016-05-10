@@ -15,6 +15,9 @@
         @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
         @Html.Render(Model.RelatedLinksHeader, @<h2>@Model.RelatedLinksHeader</h2>)
 
+        @*todo make movie repsonsive*@
+        @Html.Render(Model.Movie, @<video poster="~/images/play.png" class="responsive-video" controls><source src="@Model.Movie.Url" type="video/mp4">Your browser does not support the video tag.</video>)
+
         @if (Model.RelatedLinks.Any())
         {
             <ul>

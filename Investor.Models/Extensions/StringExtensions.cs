@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Lucene.Net.QueryParsers;
 
@@ -8,16 +9,32 @@ namespace Investor.Models.Extensions
     public static class StringExtensions
     {
         const string Hellip = "&hellip;";
-        public static IEnumerable<string> GetWords(this string input, int limit)
+
+        public static string GetWords(this string input, int count)
         {
-            var matches = Regex.Matches(input, @"\b[\w']*\b");
+            var words = input.Split(' ').Take(count);
 
-            var words = from m in matches.Cast<Match>()
-                        where !string.IsNullOrEmpty(m.Value)
-                        select TrimSuffix(m.Value);
+            var sb = new StringBuilder();
 
-            return words.Take(limit);
+            foreach (var word in words)
+            {
+                sb.Append(word + " ");
+            }
+
+            return sb + "...";
         }
+
+
+        //public static IEnumerable<string> GetWords(this string input, int limit)
+        //{
+        //    var matches = Regex.Matches(input, @"\b[\w']*\b");
+
+        //    var words = from m in matches.Cast<Match>()
+        //                where !string.IsNullOrEmpty(m.Value)
+        //                select TrimSuffix(m.Value);
+
+        //    return words.Take(limit);
+        //}
 
         public static IEnumerable<string> GetWords(this string input)
         {
@@ -30,50 +47,50 @@ namespace Investor.Models.Extensions
             return words;
         }
 
-        public static string TruncateWords(this string input, int maxLength, string suffix = Hellip)
-        {
-            if (string.IsNullOrEmpty(input))
-            {
-                return input;
-            }
+        //public static string TruncateWords(this string input, int maxLength, string suffix = Hellip)
+        //{
+        //    if (string.IsNullOrEmpty(input))
+        //    {
+        //        return input;
+        //    }
 
-            // Clean the input of any html
-            input = input.StripHtml();
+        //    // Clean the input of any html
+        //    input = input.StripHtml();
 
-            if (maxLength <= 0)
-            {
-                return input;
-            }
+        //    if (maxLength <= 0)
+        //    {
+        //        return input;
+        //    }
 
-            var suffixLength = suffix == Hellip ? 3 : suffix.Length;
-            int strLength = maxLength - suffixLength;
-            if (strLength <= 0)
-            {
-                return input;
-            }
+        //    var suffixLength = suffix == Hellip ? 3 : suffix.Length;
+        //    int strLength = maxLength - suffixLength;
+        //    if (strLength <= 0)
+        //    {
+        //        return input;
+        //    }
 
-            if (input.Length <= maxLength)
-            {
-                return input;
-            }
+        //    if (input.Length <= maxLength)
+        //    {
+        //        return input;
+        //    }
 
-            var wordLength = 0;
-            var words = GetWords(input, maxLength).TakeWhile(x =>
-            {
-                // Check if word + suffix is not greater then current word length
-                if ((x.Length + suffixLength + wordLength) > maxLength)
-                {
-                    return false;
-                }
+        //    var wordLength = 0;
+        //    var words = GetWords(input, maxLength).TakeWhile(x =>
+        //    {
+        //        // Check if word + suffix is not greater then current word length
+        //        if ((x.Length + suffixLength + wordLength) > maxLength)
+        //        {
+        //            return false;
+        //        }
 
-                // Incrise the word length.
-                wordLength = wordLength + x.Length;
+        //        // Incrise the word length.
+        //        wordLength = wordLength + x.Length;
 
-                return true;
-            });
+        //        return true;
+        //    });
 
-            return string.Join(" ", words) + suffix;
-        }
+        //    return string.Join(" ", words) + suffix;
+        //}
 
         /// <summary>
         /// Strips all html from a string.

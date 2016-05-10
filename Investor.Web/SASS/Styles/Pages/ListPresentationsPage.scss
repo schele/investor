@@ -52,3 +52,10 @@
     margin-top: -5px;
     content: "";
 }
+
+@media (max-width: 990px ) {
+   .list-presentations-page {
+        border-left: none;
+        margin-left: 0;
+    }
+}

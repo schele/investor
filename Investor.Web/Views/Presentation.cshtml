@@ -14,8 +14,6 @@
         @Html.Render(Model.Header, @<h1>@Model.Header</h1>)
         @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
         @Html.Render(Model.RelatedLinksHeader, @<h2>@Model.RelatedLinksHeader</h2>)
-
-        @*todo make movie repsonsive*@
         @Html.Render(Model.Movie, @<video class="responsive-video" controls><source src="@Model.Movie.Url" type="video/mp4">@Umbraco.GetDictionaryValue("System.Video.NoSupport")</video>)
 
         @if (Model.RelatedLinks.Any())

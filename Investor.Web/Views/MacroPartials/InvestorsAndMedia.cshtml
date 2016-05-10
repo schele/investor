@@ -14,7 +14,13 @@
 
 @{
     var header = HttpUtility.HtmlDecode(Model.MacroParameters["Header"].ToString());
-    var investorsAndMediaNode = Umbraco.TypedContent(Model.MacroParameters["HeaderUrl"].ToString());
+    IPublishedContent investorsAndMediaNode = null;
+    
+    if (Model.MacroParameters["HeaderUrl"] != null)
+    {        
+        investorsAndMediaNode = Umbraco.TypedContent(Model.MacroParameters["HeaderUrl"].ToString());
+    }
+    
     var contacts = new JavaScriptSerializer().Deserialize<List<NodeLink>>(Model.MacroParameters["Contacts"].ToString().Replace("&quot;", "\""));
     
 }
@@ -97,7 +103,7 @@
 
     private string GetPercent(float percent)
     {
-        return percent > 0 ? "+" + percent.ToString() : percent.ToString();
+        return percent > 0 ? "+" + percent : percent.ToString();
     }
 
     protected string GetImageUrl(float diff)
@@ -159,7 +165,6 @@
                             <span class="investors-and-media-date">@quote.Time.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
                             <span class="investors-and-media-time">@quote.Time.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
                             <span class="investors-and-media-share-status">@quote.Name<span>&#37;</span> @quote.LastPrice<span class="investors-and-media-arrow-@quote.ImageUrl"></span></span>
-                            @* todo: lägg till pilarna *@
                         </a>
                     </li>
                 }

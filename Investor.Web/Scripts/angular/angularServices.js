@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    angular.module("baseApp.services", ["baseApp.configuration", "ngCookies", "siyfion.sfTypeahead"], function () {
+    angular.module("baseApp.services", ["baseApp.configuration", "ngCookies", "siyfion.sfTypeahead", "ngSanitize"], function () {
     })
 .run(["configService", "$rootScope", function (configService, $rootScope) {
     // Module Init
@@ -253,8 +253,6 @@
                     onLookForFilesResultUpdate: eventSubscribers.onLookForFilesResultUpdate,
                     onClearResultsUpdate: eventSubscribers.onClearResultsUpdate,
                     lookForPossibleWords: function (term, callback) {
-                        //var url = umbracoHelper.getUrlToSurfaceController("search", "lookforpossiblewords");
-
                         if (term === "") {
                             setLookForPossibleWords([]);
                             return;
@@ -277,26 +275,6 @@
                                 // error
                                 console.log(error);
                             });
-
-                        //$http.post(url, {
-                        //    searchTerm: term,
-                        //    culture: configService.getLocalConfig("currentCulture")
-                        //}).success(function (data, status, headers, config) {
-                        //    if (angular.isDefined(data.error)) {
-                        //        console.log("[lookForPossibleWords] Error: " + data.errorMessage);
-
-                        //        setLookForPossibleWords([]);
-
-                        //        return;
-                        //    } else {
-                        //        setLookForPossibleWords(data);
-                        //    }
-
-                        //    if (angular.isDefined(callback)) {
-                        //        callback(possibleWordsResult);
-                        //    }
-                        //}).error(function (data, status, headers, config) {
-                        //});
                     },
                     lookFor: function (term, callback) {
                         if (term === "") {

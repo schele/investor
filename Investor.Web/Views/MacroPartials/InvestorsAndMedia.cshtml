@@ -158,7 +158,7 @@
                         <a href="#">
                             <span class="investors-and-media-date">@quote.Time.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
                             <span class="investors-and-media-time">@quote.Time.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
-                            <span class="investors-and-media-share-status">@quote.Name<span>&#37;</span> @quote.LastPrice<span class="investors-and-media-arrow-down"></span></span>
+                            <span class="investors-and-media-share-status">@quote.Name<span>&#37;</span> @quote.LastPrice<span class="investors-and-media-arrow-@quote.ImageUrl"></span></span>
                             @* todo: lägg till pilarna *@
                         </a>
                     </li>

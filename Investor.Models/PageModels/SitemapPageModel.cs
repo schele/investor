@@ -7,7 +7,7 @@ namespace Investor.Models.PageModels
 {
     [ContentType(
         DisplayName = "Sida: Sitemap",
-        Icon = Icon.Article,
+        Icon = Icon.Sitemap,
         Description = "En sida för att skapa en sitemap",
         AllowAtRoot = false
     )]

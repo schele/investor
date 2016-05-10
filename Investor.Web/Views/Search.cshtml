@@ -68,14 +68,14 @@
     </div>
 </div>*@
 
-<article data-ng-controller="SearchPanelController" data-ng-cloak="" class="row search-page">
+<article data-ng-controller="SearchPanelController" class="row search-page ng-cloak">
     <div data-ng-controller="LookForSearchResultController">
         <div class="col-md-12 search-page-intro">
             <h1>@Model.Header</h1>
             @*<span data-ng-show="searchModel.results">Your search for <strong>häst</strong> matches 1337 pages</span>*@
-            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+            <span data-ng-show="searchModel.results" data-ng-bind-html="searchModel.resultMessage"></span>
         </div>
-        <ul class="col-md-12 search-page-result-list" data-ng-cloak="">
+        <ul class="col-md-12 search-page-result-list">
             <li data-ng-repeat="item in searchModel.results">
                 <h2>
                     <a href="{{item.url}}">{{item.name}}</a>

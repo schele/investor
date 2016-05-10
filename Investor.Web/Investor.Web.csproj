@@ -286,6 +286,9 @@
     <Reference Include="Skybrud.Umbraco.GridData">
       <HintPath>..\packages\Skybrud.Umbraco.GridData.1.5.1\lib\net45\Skybrud.Umbraco.GridData.dll</HintPath>
     </Reference>
+    <Reference Include="SmartFormat">
+      <HintPath>..\packages\SmartFormat.NET.1.6.1.0\lib\net40\SmartFormat.dll</HintPath>
+    </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.5948.18145, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\SQLCE4Umbraco.dll</HintPath>
@@ -588,6 +591,7 @@
     <Content Include="Scripts\angular\angularServices.js" />
     <Content Include="Scripts\angular\lib\angular-cookies.js" />
     <Content Include="Scripts\angular\lib\angular-route.js" />
+    <Content Include="Scripts\angular\lib\angular-sanitize.min.js" />
     <Content Include="Scripts\angular\lib\angular-typeahead.js" />
     <Content Include="Scripts\angular\lib\angular.js" />
     <Content Include="Scripts\angular\lib\typeahead.bundle.js" />
@@ -799,6 +803,7 @@
     <Content Include="SASS\Styles\Widgets\search-widget.scss" />
     <Content Include="SASS\Styles\widgets.scss" />
     <Content Include="Views\Partials\SearchBox.cshtml" />
+    <Content Include="Views\News.cshtml" />
     <Content Include="SASS\Styles\Pages\SiteMap.scss" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>

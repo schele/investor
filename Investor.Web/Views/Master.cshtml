@@ -144,10 +144,10 @@
         <img class="logo logo-mobile" src="~/images/investor-popup-logo.png" alt="investor logo" />
         @Html.Render(Model.StartPage.PopupText, @<p>@Model.StartPage.PopupText</p>)
         
-        @if (Model.StartPage.PopupUrl != null)
+        @*@if (Model.StartPage.PopupUrl != null)
         {
             <span>@GetRelatedLink(Model.StartPage.PopupUrl)</span>
-        }
+        }*@
 
         @*  exempel med annat pattern *@
         @*@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupText</span>)*@

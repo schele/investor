@@ -6,9 +6,10 @@ using Umbraco.Web;
 
 namespace Investor.UmbExamine.Model
 {
-    public class ExamineContentResult : ResultBase
+    public class CoWorkerPageModelContentResult : ResultBase
     {
-        public ExamineContentResult(UmbracoHelper helper) : base(helper)
+        public CoWorkerPageModelContentResult(UmbracoHelper helper)
+            : base(helper)
         {
         }
 

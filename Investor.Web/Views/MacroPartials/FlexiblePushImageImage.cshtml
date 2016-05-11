@@ -111,3 +111,8 @@
         </div>
     </div>
 }
+
+@{
+    var rte = Model.MacroParameters["RTE"].ToString();
+}
+<div>@Html.Raw(Uri.UnescapeDataString(rte))</div>

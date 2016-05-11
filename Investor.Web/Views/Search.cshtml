@@ -72,10 +72,9 @@
     <div data-ng-controller="LookForSearchResultController">
         <div class="col-md-12 search-page-intro">
             <h1>@Model.Header</h1>
-            @*<span data-ng-show="searchModel.results">Your search for <strong>häst</strong> matches 1337 pages</span>*@
-            <span data-ng-show="searchModel.results" data-ng-bind-html="searchModel.resultMessage"></span>
+            <span data-ng-bind-html="searchModel.resultMessage"></span>
         </div>
-        <ul class="col-md-12 search-page-result-list">
+        <ul class="col-md-12 search-page-result-list" data-ng-if="searchModel.results">
             <li data-ng-repeat="item in searchModel.results">
                 <h2>
                     <a href="{{item.url}}">{{item.name}}</a>

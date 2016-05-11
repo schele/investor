@@ -164,7 +164,7 @@ namespace Investor.Controllers.SurfaceControllers
                 resultCount = result.Result.Count
             };
 
-            var messageFormat = Umbraco.GetDictionaryValue("System.Search.Result");
+            var messageFormat = Umbraco.GetDictionaryValue(result.Result.Any() ? "System.Search.Result" : "System.Search.ResultEmpty");
 
             var resultMessage = Smart.Format(messageFormat, messageObject);
 
@@ -319,7 +319,12 @@ namespace Investor.Controllers.SurfaceControllers
                 excludedFields = excludedFields.ToList();
                 IEnumerable<string> fields = excludedFields;
 
-                return fieldsToFilter.Where(fields.Contains);
+                if (fieldsToFilter.Any())
+                {
+                    return fieldsToFilter.Where(fields.Contains);
+                }
+
+                return excludedFields;
             }
 
             return new List<string>();

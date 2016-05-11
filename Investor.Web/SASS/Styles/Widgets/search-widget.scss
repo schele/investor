@@ -95,3 +95,10 @@
         height: 1px;
     }
 }
+
+footer .introduction .container [data-ng-controller="SearchController"] {
+    /*.twitter-typeahead .tt-dropdown-menu {
+        bottom: 100% !important;
+        top: initial !important;
+    }*/
+}

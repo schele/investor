@@ -1,0 +1,16 @@
+﻿{
+    propertyEditors: [
+    {
+        alias: "TinyMceEditor",
+        name: "Tiny Mce Editor",
+		isParameterEditor: true,
+        editor: {
+          view: "~/App_Plugins/TinyMceEditor/tinymceeditor.html"
+        }
+    }
+    ]
+    ,
+    javascript: [
+        '~/App_Plugins/TinyMceEditor/tinymceeditor.controller.js'
+    ]
+}

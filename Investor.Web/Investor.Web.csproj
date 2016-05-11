@@ -466,6 +466,9 @@
     <Content Include="App_Plugins\RG.RelatedLinksWithMedia\lang\sv-SE.xml" />
     <Content Include="App_Plugins\RG.RelatedLinksWithMedia\relatedlinkswithmedia.controller.js" />
     <Content Include="App_Plugins\RG.RelatedLinksWithMedia\relatedlinkswithmedia.html" />
+    <Content Include="App_Plugins\TinyMceEditor\tinymceeditor.controller.js" />
+    <Content Include="App_Plugins\TinyMceEditor\tinymceeditor.css" />
+    <Content Include="App_Plugins\TinyMceEditor\tinymceeditor.html" />
     <Content Include="Configuration\ConfigurationTransforms.xml" />
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="Config\Lang\cs-CZ.user.xml" />
@@ -708,6 +711,7 @@
     <Compile Include="UmbExamine\Extensions\SearchResultExtensions.cs" />
     <Compile Include="UmbExamine\Extensions\StringExtensions.cs" />
     <Compile Include="UmbExamine\Model\ExamineContentResult.cs" />
+    <Compile Include="UmbExamine\Model\CoWorkerPageModelContentResult.cs" />
     <Compile Include="UmbExamine\Model\ExamineFileResult.cs" />
     <Compile Include="UmbExamine\Model\ExamineMediaResult.cs" />
     <Compile Include="UmbExamine\Model\Quote.cs" />
@@ -809,6 +813,8 @@
     <Content Include="Views\MacroPartials\FlexiblePushTextImage.cshtml" />
     <Content Include="Views\MacroPartials\FlexiblePushImageImage.cshtml" />
     <Content Include="Views\MacroPartials\FlexiblePushTextVideo.cshtml" />
+    <Content Include="App_Plugins\TinyMceEditor\package.manifest" />
+    <Content Include="Views\Partials\MobileSearchBox.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

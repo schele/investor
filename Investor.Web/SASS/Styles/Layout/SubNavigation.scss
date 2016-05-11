@@ -41,7 +41,7 @@
 }
 
 .sub-navigation .has-children ul {
-    width: 95%;
+    width: calc(95% + 1px);
     display: none;
     margin-left: 5%;
 }

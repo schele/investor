@@ -30,13 +30,15 @@
         <h1>@Model.StartPage.Name</h1>
 
         <ul class="sitemap-page-list">
-            <li><a href="@Model.StartPage.Url">@Model.StartPage.Name</a></li>
-            @Traverse(Model.Node.GetAncestorByPathLevel(1))
+            <li>
+                <a href="@Model.StartPage.Url">@Model.StartPage.Name</a>
+                @Traverse(Model.Node.GetAncestorByPathLevel(1))
+            </li>           
         </ul>
     </div>
 </article>
 
-<!--Markup/Style-->
+
 @*<article class="row sitemap-page">
         <div class="col-md-12">
             <h1>@Model.StartPage.Name</h1>

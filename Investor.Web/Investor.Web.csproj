@@ -805,6 +805,10 @@
     <Content Include="Views\Partials\SearchBox.cshtml" />
     <Content Include="Views\News.cshtml" />
     <Content Include="SASS\Styles\Pages\SiteMap.scss" />
+    <Content Include="Views\MacroPartials\FlexiblePushTextText.cshtml" />
+    <Content Include="Views\MacroPartials\FlexiblePushTextImage.cshtml" />
+    <Content Include="Views\MacroPartials\FlexiblePushImageImage.cshtml" />
+    <Content Include="Views\MacroPartials\FlexiblePushTextVideo.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

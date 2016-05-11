@@ -23,7 +23,7 @@
     </div>
 
     <div class="row">
-        @foreach (var page in Model.Children().OrderBy(x => x.CreateDate))
+        @foreach (var page in Model.Children().OrderBy(x => x.SortOrder))
         {
             var push = page as IPush;
             string color = null;

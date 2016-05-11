@@ -1,0 +1,88 @@
+﻿@using Investor.Helpers
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    var header = Model.MacroParameters["Header"].ToString();
+    var text = Model.MacroParameters["Text"].ToString();
+    var flip = Model.MacroParameters["Flip"].ToString();
+
+    IPublishedContent image = null;
+    IPublishedContent imageUrl = null;
+    if (!string.IsNullOrWhiteSpace(Model.MacroParameters["Image"].ToString()))
+    {
+        image = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());
+
+        if (image.GetProperty("Url").HasValue)
+        {
+            imageUrl = Umbraco.TypedContent(image.GetProperty("Url").Value.ToString());
+        }
+    }
+}
+
+<div class="col-md-12 flexible-push">
+    <div class="row">
+        
+        @if (image == null && !string.IsNullOrWhiteSpace(text))
+        {
+            <div class="col-md-12">
+                <div class="flexible-push-first-column">
+                    @Html.Render(header, @<h2>@header</h2>)
+                    @Html.Render(text, @<p>@text</p>)
+                </div>
+            </div>
+        }
+
+        @if (image != null && string.IsNullOrWhiteSpace(text))
+        {
+            <div class="col-md-12">
+                <div class="flexible-push-first-column">
+                    <a href="@if (imageUrl != null)
+                                {
+                                    @imageUrl.Url
+                                }" title="@image.GetProperty("Name").Value.ToString()"><img src="@image.Url" alt="@image.GetProperty("Name").Value.ToString()" /></a>
+                </div>
+            </div>
+        }
+
+        @if (image != null && !string.IsNullOrWhiteSpace(text))
+        {
+            if (flip == "0")
+            {
+                <div class="col-md-6">
+                    <div class="flexible-push-first-column">
+                        @Html.Render(header, @<h2>@header</h2>)
+                        @Html.Render(text, @<p>@text</p>)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="flexible-push-second-column">
+                        <a href="@if (imageUrl != null)
+                                {
+                                    @imageUrl.Url
+                                }" title="@image.GetProperty("Name").Value.ToString()"><img src="@image.Url" alt="@image.GetProperty("Name").Value.ToString()" /></a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-6">
+                    <div class="flexible-push-first-column">
+                        <a href="@if (imageUrl != null)
+                                {
+                                    @imageUrl.Url
+                                }" title="@image.GetProperty("Name").Value.ToString()"><img src="@image.Url" alt="@image.GetProperty("Name").Value.ToString()" /></a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="flexible-push-second-column">
+                        @Html.Render(header, @<h2>@header</h2>)
+                        @Html.Render(text, @<p>@text</p>)
+                    </div>
+                </div>
+            }
+
+        }   
+    </div>
+</div>

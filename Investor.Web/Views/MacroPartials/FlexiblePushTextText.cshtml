@@ -1,0 +1,72 @@
+﻿@using Investor.Helpers
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    var headerLeft = Model.MacroParameters["HeaderLeft"].ToString();
+    var textLeft = Model.MacroParameters["TextLeft"].ToString();
+
+    var headerRight = Model.MacroParameters["HeaderRight"].ToString();
+    var textRight = Model.MacroParameters["TextRight"].ToString();
+
+    var flip = Model.MacroParameters["Flip"].ToString();
+}
+
+
+
+@if (string.IsNullOrWhiteSpace(headerRight) || string.IsNullOrWhiteSpace(textRight))
+{
+    <div class="col-md-12 flexible-push">
+        @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
+        @Html.Render(textLeft, @<p>@textLeft</p>)
+    </div>
+}
+
+@if (string.IsNullOrWhiteSpace(headerLeft) || string.IsNullOrWhiteSpace(textLeft))
+{
+    <div class="col-md-12 flexible-push">
+        @Html.Render(headerRight, @<h2>@headerRight</h2>)
+        @Html.Render(textRight, @<p>@textRight</p>)
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(headerLeft) && !string.IsNullOrWhiteSpace(textLeft) && !string.IsNullOrWhiteSpace(headerRight) && !string.IsNullOrWhiteSpace(textRight))
+{
+    <div class="col-md-12 flexible-push">
+        <div class="row">
+
+            @if (flip == "0")
+            {
+                <div class="col-md-6">
+                    <div class="flexible-push-first-column">
+                        @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
+                        @Html.Render(textLeft, @<p>@textLeft</p>)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="flexible-push-second-column">
+                        @Html.Render(headerRight, @<h2>@headerRight</h2>)
+                        @Html.Render(textRight, @<p>@textRight</p>)
+                    </div>
+                </div>
+            }
+            else
+            {                
+                <div class="col-md-6">
+                    <div class="flexible-push-first-column">
+                        @Html.Render(headerRight, @<h2>@headerRight</h2>)
+                        @Html.Render(textRight, @<p>@textRight</p>)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="flexible-push-second-column">
+                        @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
+                        @Html.Render(textLeft, @<p>@textLeft</p>)
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+}

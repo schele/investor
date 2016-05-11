@@ -20,7 +20,7 @@
     }
 }
 
-<form class="search" data-ng-controller="SearchController" data-ng-init="init('@Model.StartPage.SearchNode.Url')" data-ng-submit="submit()">
+<form class="search-mobile" data-ng-controller="SearchController" data-ng-init="init('@Model.StartPage.SearchNode.Url')" data-ng-submit="submit()">
     <input type="text" class="searchBox search-input-text" data-ng-model="searchTerm" data-ng-trim="false" data-options="settings" data-datasets="dataset" data-sf-typeahead placeholder="@searchTitle" />
     @if (showSearchButton)
     {

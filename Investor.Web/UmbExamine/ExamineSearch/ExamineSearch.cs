@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Examine;
 using Investor.UmbExamine.ExamineSearch.Abstraction;
@@ -11,6 +12,7 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
+using Umbraco.Core.Media;
 using Umbraco.Web;
 
 namespace Investor.UmbExamine.ExamineSearch
@@ -111,6 +113,34 @@ namespace Investor.UmbExamine.ExamineSearch
             }
         }
 
+        public object GetContentSpecefic(string nodeTypeAlias)
+        {
+            var type = typeof(ResultBase);
+            var results = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p));
+
+            Type result = null;
+
+            foreach (var item in results)
+            {
+                if (item.Name.EndsWith(nodeTypeAlias + "ContentResult", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    result = item;
+                    break;
+                }
+            }
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            var t = Activator.CreateInstance(result);
+
+            return t;
+        }
+
         public List<Dictionary<string, object>> FormatResults<TResultBase>(IExamineSearchResult searchResults, string[] fieldFilter) where TResultBase : ResultBase
         {
             var result = new List<Dictionary<string, object>>();
@@ -129,38 +159,44 @@ namespace Investor.UmbExamine.ExamineSearch
                 }
 
                 var contentType = c.GetContentType(nodeTypeAlias);
+                var t = GetContentSpecefic(nodeTypeAlias);
+                model = t as ResultBase;
 
-                if (contentType == ContentType.Content)
+                if (model == null)
                 {
-                    model = new ExamineContentResult(Umbraco);
-                }
-                else if (contentType == ContentType.Media)
-                {
-                    model = new ExamineMediaResult(Umbraco);
-                }
-                else if (contentType == ContentType.File)
-                {
-                    model = new ExamineFileResult(Umbraco);
-                }
-                else
-                {
-                    // type not found take all fields in filter.
-                    var defaultModel = new Dictionary<string, object>();
-
-                    foreach (var field in c.Fields)
+                    if (contentType == ContentType.Content)
                     {
-                        if (fieldFilter.Contains(field.Key))
-                        {
-                            defaultModel.Add(field.Key, field.Value);
-                        }
+                        model = new ExamineContentResult(Umbraco);
                     }
+                    else if (contentType == ContentType.Media)
+                    {
+                        model = new ExamineMediaResult(Umbraco);
+                    }
+                    else if (contentType == ContentType.File)
+                    {
+                        model = new ExamineFileResult(Umbraco);
+                    }
+                    else
+                    {
+                        // type not found take all fields in filter.
+                        var defaultModel = new Dictionary<string, object>();
 
-                    AddGeneralProperties(searchResults, ref defaultModel);
+                        foreach (var field in c.Fields)
+                        {
+                            if (fieldFilter.Contains(field.Key))
+                            {
+                                defaultModel.Add(field.Key, field.Value);
+                            }
+                        }
 
-                    result.Add(defaultModel);
+                        AddGeneralProperties(searchResults, ref defaultModel);
 
-                    continue;
+                        result.Add(defaultModel);
+
+                        continue;
+                    }
                 }
+                
 
                 if (!(model is TResultBase))
                 {

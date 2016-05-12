@@ -26,7 +26,7 @@
                         <h3>
                             @Model.RelatedLinksHeader
                         </h3>
-                        <ul>                            
+                        <ul>
                             @foreach (var item in Model.RelatedLinks.Take(5))
                             {
                                 <li>@Html.RelatedLink(item)</li>
@@ -34,7 +34,7 @@
                         </ul>
                         @if (Model.RelatedLinks.Count() > 5)
                         {
-                            <ul class="article-page-links-expandable">
+                            <ul class="article-page-links-expandable expandable-list-container">
                                 @foreach (var link in Model.RelatedLinks.Skip(5))
                                 {
                                     <li>
@@ -42,9 +42,9 @@
                                     </li>
                                 }
                             </ul>
-                            <button class="article-page-links-expand-btn">
-                                <span class="article-page-links-expandable-closed active">@Umbraco.GetDictionaryValue("System.Read.All")</span>
-                                <span class="article-page-links-expandable-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
+                            <button class="article-page-links-expand-btn expandable-list-btn">
+                                <span class="article-page-links-expandable-closed expandable-list-closed active">@Umbraco.GetDictionaryValue("System.Read.More")</span>
+                                <span class="article-page-links-expandable-open expandable-list-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
                             </button>
                         }
                     </div>
@@ -64,20 +64,21 @@
                         </ul>
                         @if (Model.RelatedDocuments.Count() > 5)
                         {
-                            <ul class="article-page-documents-expandable">
+                            <ul class="article-page-documents-expandable expandable-list-container">
                                 @foreach (var link in Model.RelatedDocuments.Skip(5))
                                 {
                                     <li>@Html.RelatedLink(link)</li>
                                 }
                             </ul>
-                            <button class="article-page-documents-expand-btn">
-                                <span class="article-page-documents-expandable-closed active">@Umbraco.GetDictionaryValue("System.Read.All")</span>
-                                <span class="article-page-documents-expandable-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
+                            <button class="article-page-documents-expand-btn expandable-list-btn">
+                                <span class="expandable-list-closed active">@Umbraco.GetDictionaryValue("System.Read.More")</span>
+                                <span class="expandable-list-open">@Umbraco.GetDictionaryValue("System.Read.Less")</span>
                             </button>
-                        }                
+                        }
                     </div>
                 }
             </div>
         </div>
     </article>
 </div>
+<script type="text/javascript">$(listExpand.init())</script>

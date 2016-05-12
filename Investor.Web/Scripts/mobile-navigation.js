@@ -1,7 +1,7 @@
 ﻿var mobileNavigation = (function() {
 
-  var expandNav = function () {
-    $("#mobile-main-menu .ui").click(function (e) {
+  var expandNav = function() {
+    $("#mobile-main-menu .ui").click(function(e) {
       e.preventDefault();
 
       if ($("#mobile-main-menu .options").is(":visible")) {
@@ -14,8 +14,8 @@
     });
   }
 
-  var expandSearch = function () {
-    $("#search .ui").click(function (e) {
+  var expandSearch = function() {
+    $("#search .ui").click(function(e) {
       e.preventDefault();
 
       if ($("#search .options").is(":visible")) {
@@ -37,4 +37,4 @@
     init: init
   }
 
-});
+})();

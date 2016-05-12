@@ -1,13 +1,12 @@
-﻿var global = (function() {
+﻿var globalFunctions = (function () {
+    var init = function () {
+      campaignLightBox.init();
+      cookies.init();
+      mobileNavigation.init();
+      subNavigation.init();
+    }
 
-  var init = function() {
-    campaignLightBox.init();
-    cookies.init();
-    mobileNavigation.init();
-  }
-
-  return {
-    init: init
-  }
-
-})();
+    return {
+      init: init
+    }
+ })();

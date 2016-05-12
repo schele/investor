@@ -38,7 +38,7 @@
                     </ul>
                     if (Model.GetComments().Count() > 5)
                     {
-                        <ul class="newsroom-page-comments-expandable">
+                        <ul class="newsroom-page-comments-expandable expandable-list-container">
                             @foreach (var comment in Model.GetComments().Skip(5))
                             {
                                 <li class="newsroom-page-comments-comment">
@@ -46,9 +46,9 @@
                                 </li>
                             }
                         </ul>
-                        <button class="newsroom-page-comments-expand-btn">
-                            <span class="newsroom-page-comments-expandable-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
-                            <span class="newsroom-page-comments-expandable-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
+                        <button class="newsroom-page-comments-expand-btn expandable-list-btn">
+                            <span class="newsroom-page-comments-expandable-closed expandable-list-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
+                            <span class="newsroom-page-comments-expandable-open expandable-list-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
                         </button>
                     }
                 }
@@ -74,7 +74,7 @@
                     </ul>
                     if (Model.GetNotices().Count() > 5)
                     {
-                        <ul class="newsroom-page-notices-expandable">
+                        <ul class="newsroom-page-notices-expandable expandable-list-container">
                             @foreach (var notice in Model.GetNotices().Skip(5))
                             {
                                 <li class="newsroom-page-notices-notice">
@@ -82,9 +82,9 @@
                                 </li>
                             }
                         </ul>
-                        <button class="newsroom-page-notices-expand-btn">
-                            <span class="newsroom-page-notices-expandable-closed active">@Umbraco.GetDictionaryValue("System.News.All")</span>
-                            <span class="newsroom-page-notices-expandable-open">@Umbraco.GetDictionaryValue("System.News.All")</span>
+                        <button class="newsroom-page-notices-expand-btn expandable-list-btn">
+                            <span class="expandable-list-closed active">@Umbraco.GetDictionaryValue("System.News.All")</span>
+                            <span class="expandable-list-open">@Umbraco.GetDictionaryValue("System.News.All")</span>
                         </button>
                     }
                 }
@@ -92,3 +92,4 @@
         </div>
     }
 </article>
+<script type="text/javascript">$(listExpand.init())</script>

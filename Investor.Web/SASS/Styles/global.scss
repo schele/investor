@@ -80,3 +80,17 @@ textarea.umbEditorTextFieldMultiple {
 div.mce-tinymce.mce-container.mce-panel {
     min-width: 66.6% !important;
 }
+
+.expandable-list-container {
+    display: none;
+}
+
+.expandable-list-closed,
+.expandable-list-open {
+    display: none;
+}
+
+.expandable-list-closed.active,
+.expandable-list-open.active {
+    display: block;
+}

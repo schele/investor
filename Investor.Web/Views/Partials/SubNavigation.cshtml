@@ -28,7 +28,7 @@ foreach (var childPage in parent.Children<BaseModel>().Where(x => x.HideInNaviga
     string hasChildrenClass = null;
     var children = childPage.Children<BaseModel>().Where(x => !x.HideInNavigation).ToList();
     var noChildren = !children.Any() || maxLevel.HasValue && maxLevel <= 1 && children.First().Level >= maxLevel;
-    if (childPage.Name == Model.Name)
+    if (childPage.Id == Model.Id)
     {
         activeClass = "sub-navigation-active";
     }

@@ -1,20 +1,21 @@
-﻿$(document).ready(function() {
-  var expandNav = function () {
-    $("#mobile-main-menu .ui").click(function (e) {
-    e.preventDefault();
+﻿var mobileNavigation = (function() {
 
-    if ($("#mobile-main-menu .options").is(":visible")) {
-      $("#mobile-main-menu").removeClass("selected");
-    } else {
-      $("#mobile-main-menu").addClass("selected");
-    }
+  var expandNav = function() {
+    $("#mobile-main-menu .ui").click(function(e) {
+      e.preventDefault();
 
-    $("#mobile-main-menu .options").stop().slideToggle();
+      if ($("#mobile-main-menu .options").is(":visible")) {
+        $("#mobile-main-menu").removeClass("selected");
+      } else {
+        $("#mobile-main-menu").addClass("selected");
+      }
+
+      $("#mobile-main-menu .options").stop().slideToggle();
     });
   }
 
-  var expandSearch = function () {
-    $("#search .ui").click(function (e) {
+  var expandSearch = function() {
+    $("#search .ui").click(function(e) {
       e.preventDefault();
 
       if ($("#search .options").is(":visible")) {
@@ -27,6 +28,13 @@
     });
   }
 
-  expandNav();
-  expandSearch();
-});
+  var init = function() {
+    expandNav();
+    expandSearch();
+  }
+
+  return {
+    init: init
+  }
+
+})();

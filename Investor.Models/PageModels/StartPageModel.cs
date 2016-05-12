@@ -44,6 +44,19 @@ namespace Investor.Models.PageModels
 
         #endregion
 
+        #region content
+
+        [Property(
+            "Sida: Start - Grid - Grid layout",
+            Tab.Content,
+            DisplayName = "Content: Grid",
+            Description = ""
+        )]
+        [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks", "InvestorsAndMedia", "FlexiblePushImageImage", "FlexiblePushTextImage", "FlexiblePushTextText", "FlexiblePushTextVideo")]
+        public virtual string Grid { get; set; }
+
+        #endregion
+
         #region seo
 
         [Property(
@@ -161,19 +174,6 @@ namespace Investor.Models.PageModels
             Converter = typeof(NodeConverter)
         )]
         public virtual INode CookiesNode { get; set; }
-
-        #endregion
-
-        #region content
-
-        [Property(
-            "Sida: Start - Grid - Grid layout",
-            Tab.Content,
-            DisplayName = "Content: Grid",
-            Description = ""
-        )]
-        [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks", "InvestorsAndMedia", "FlexiblePushTextText")]
-        public virtual string Grid { get; set; }
 
         #endregion
 

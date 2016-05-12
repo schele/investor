@@ -1,15 +1,16 @@
-﻿$(document).ready(function() {
+﻿var mobileNavigation = (function() {
+
   var expandNav = function () {
     $("#mobile-main-menu .ui").click(function (e) {
-    e.preventDefault();
+      e.preventDefault();
 
-    if ($("#mobile-main-menu .options").is(":visible")) {
-      $("#mobile-main-menu").removeClass("selected");
-    } else {
-      $("#mobile-main-menu").addClass("selected");
-    }
+      if ($("#mobile-main-menu .options").is(":visible")) {
+        $("#mobile-main-menu").removeClass("selected");
+      } else {
+        $("#mobile-main-menu").addClass("selected");
+      }
 
-    $("#mobile-main-menu .options").stop().slideToggle();
+      $("#mobile-main-menu .options").stop().slideToggle();
     });
   }
 
@@ -27,6 +28,13 @@
     });
   }
 
-  expandNav();
-  expandSearch();
+  var init = function() {
+    expandNav();
+    expandSearch();
+  }
+
+  return {
+    init: init
+  }
+
 });

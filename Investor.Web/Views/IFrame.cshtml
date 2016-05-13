@@ -33,7 +33,8 @@
         }
         else
         {
-            <iframe onload="iframeLoaded()" id="iframe-page-iframe" scrolling="no" src="@Model.IFrameSrc"></iframe>
+            <iframe id="iframe-page-iframe" scrolling="no" src="@Model.IFrameSrc"></iframe>
         }
-    </article> 
+    </article>
 </div>
+<script type="text/javascript">$(iframeSize.init());</script>

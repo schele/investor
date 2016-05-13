@@ -48,7 +48,6 @@
     content: "";
 }
 
-
 .newsroom-page .newsroom-page-notices .newsroom-page-notices-notice,
 .newsroom-page .newsroom-page-comments .newsroom-page-comments-comment {
     margin-bottom: 20px;
@@ -71,16 +70,6 @@
     outline:none;
     color: #002B7F;
     float: right;
-}
-
-.newsroom-page .newsroom-page-comments .newsroom-page-comments-expand-btn span,
-.newsroom-page .newsroom-page-notices .newsroom-page-notices-expand-btn span {
-    display: none;
-}
-
-.newsroom-page .newsroom-page-comments .newsroom-page-comments-expand-btn span.active,
-.newsroom-page .newsroom-page-notices .newsroom-page-notices-expand-btn span.active {
-    display: block;
 }
 
 .newsroom-page .newsroom-page-comments h3,

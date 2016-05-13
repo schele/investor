@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
+	concat = require('gulp-concat'),
 	minifyCSS = require("gulp-minify-css"),
 	runSequence = require('run-sequence'),
 	clean = require('gulp-clean'),
@@ -8,11 +9,13 @@ var gulp = require('gulp'),
 			resetStyles: '../SASS/reset.scss',
 			styles: '../SASS/style.scss',
 			stylesWatch: ['../SASS/style.scss', '../SASS/Styles/**'],
+			js: '../Scripts/*.js'
 		},
 		dest = {
 			root: '../static/**',
 			resetStyles: '../static/styles/',
 			styles: '../static/styles/',
+			js: '../static/scripts/'
 	};
 
 gulp.task('styles', function () {
@@ -20,6 +23,12 @@ gulp.task('styles', function () {
 		.pipe(sass({ errLogToConsole: true }))
 		.pipe(minifyCSS())
 		.pipe(gulp.dest(dest.styles));
+});
+
+gulp.task('scripts', function () {
+    return gulp.src(src.js)
+		.pipe(concat('app.js'))
+		.pipe(gulp.dest(dest.js));
 });
 
 gulp.task('resetStyles', function () {
@@ -36,11 +45,11 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function () {
 	gulp.watch(src.stylesWatch, ['styles']);
-
+	gulp.watch(src.js, ['scripts']);
 });
 
 // all is used to exclude watch task
 gulp.task('all', function() {
-	runSequence('clean', ['styles', 'resetStyles']);
+	runSequence('clean', ['styles', 'resetStyles', 'scripts']);
 });
 gulp.task('default', ['all', 'watch']);

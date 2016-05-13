@@ -1,47 +1,28 @@
-﻿var relatedDocumentsClasses = {
-  button: '.article-page-documents-expand-btn',
-  container: '.article-page-documents-expandable',
-  closed: '.article-page-documents-expandable-closed',
-  open: '.article-page-documents-expandable-open'
-}
+﻿var listExpand = (function() {
 
-var relatedLinksClasses = {
-  button: '.article-page-links-expand-btn',
-  container: '.article-page-links-expandable',
-  closed: '.article-page-links-expandable-closed',
-  open: '.article-page-links-expandable-open'
-}
+  var expandLinkList = function () {
+    $('.expandable-list-btn').click(function (e) {
+      e.preventDefault();
 
-var commentsClasses = {
-  button: '.newsroom-page-comments-expand-btn',
-  container: '.newsroom-page-comments-expandable',
-  closed: '.newsroom-page-comments-expandable-closed',
-  open: '.newsroom-page-comments-expandable-open'
-}
+      var toggleBtn = $(this);
+      $(toggleBtn).find('.expandable-list-closed, .expandable-list-open').removeClass('active');
 
-var noticesClasses = {
-  button: '.newsroom-page-notices-expand-btn',
-  container: '.newsroom-page-notices-expandable',
-  closed: '.newsroom-page-notices-expandable-closed',
-  open: '.newsroom-page-notices-expandable-open'
-}
-
-var expandLinkList = function(classObj) {
-  $(classObj.button).click(function (e) {
-    e.preventDefault();
-    $(classObj.open + ',' + classObj.closed).removeClass('active');
-
-    $(classObj.container).stop().slideToggle(300, function() {
-      if ($(classObj.container).is(":visible")) {
-        $(classObj.open).addClass("active");
-      } else {
-        $(classObj.closed).addClass("active");
-      }
+      $(this).siblings('.expandable-list-container').stop().slideToggle(300, function () {
+        if ($(this).is(":visible")) {
+          $(toggleBtn).find('.expandable-list-open').addClass("active");
+        } else {
+          $(toggleBtn).find('.expandable-list-closed').addClass("active");
+        }
+      });
     });
-  });
-}
+  }
 
-expandLinkList(relatedDocumentsClasses);
-expandLinkList(relatedLinksClasses);
-expandLinkList(commentsClasses);
-expandLinkList(noticesClasses);
+  var init = function() {
+    expandLinkList();
+  }
+
+  return {
+    init: init
+  }
+
+})();

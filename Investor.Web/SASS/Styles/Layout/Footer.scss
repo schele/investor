@@ -67,7 +67,6 @@ footer .introduction .search input[type=submit] {
     text-indent: -200px;
     overflow: hidden;
     border: none;
-    margin: 0 -4px 0;
     position: relative;
 }
 
@@ -108,7 +107,9 @@ footer .copyright a {
         margin-top: 20px;
     }
 
-    .footer .introduction .search {
+    footer .introduction .search {
         float: left;
+        clear: left;
+        margin-top: 20px;
     }
 }

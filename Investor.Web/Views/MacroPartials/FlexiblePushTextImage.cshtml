@@ -7,13 +7,17 @@
     var header = Model.MacroParameters["Header"].ToString();
     var text = Model.MacroParameters["Text"].ToString();
     var flip = Model.MacroParameters["Flip"].ToString();
-
+    string title = null;
+    string alt = null;
+    
     IPublishedContent image = null;
     IPublishedContent imageUrl = null;
     if (!string.IsNullOrWhiteSpace(Model.MacroParameters["Image"].ToString()))
     {
         image = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());
-
+        title = image.GetProperty("Name").Value.ToString();
+        alt = image.GetProperty("Name").Value.ToString();
+            
         if (image.GetProperty("Url").HasValue)
         {
             imageUrl = Umbraco.TypedContent(image.GetProperty("Url").Value.ToString());
@@ -29,7 +33,7 @@
             <div class="col-md-12">
                 <div class="flexible-push-first-column">
                     @Html.Render(header, @<h2>@header</h2>)
-                    @Html.Render(text, @<p>@text</p>)
+                    <div class="text-editor-content">@Html.Raw(Uri.UnescapeDataString(text))</div>
                 </div>
             </div>
         }
@@ -41,7 +45,7 @@
                     <a href="@if (imageUrl != null)
                                 {
                                     @imageUrl.Url
-                                }" title="@image.GetProperty("Name").Value.ToString()"><img src="@image.Url" alt="@image.GetProperty("Name").Value.ToString()" /></a>
+                                }" title="@title"><img src="@image.Url" alt="@alt" /></a>
                 </div>
             </div>
         }
@@ -53,7 +57,9 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(header, @<h2>@header</h2>)
-                        @Html.Render(text, @<p>@text</p>)
+                        <div class="text-editor-content">
+                            @Html.Raw(Uri.UnescapeDataString(text))
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -61,7 +67,7 @@
                         <a href="@if (imageUrl != null)
                                 {
                                     @imageUrl.Url
-                                }" title="@image.GetProperty("Name").Value.ToString()"><img src="@image.Url" alt="@image.GetProperty("Name").Value.ToString()" /></a>
+                                }" title="@title"><img src="@image.Url" alt="@alt" /></a>
                     </div>
                 </div>
             }
@@ -72,17 +78,17 @@
                         <a href="@if (imageUrl != null)
                                 {
                                     @imageUrl.Url
-                                }" title="@image.GetProperty("Name").Value.ToString()"><img src="@image.Url" alt="@image.GetProperty("Name").Value.ToString()" /></a>
+                                }" title="@title"><img src="@image.Url" alt="@alt" /></a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="flexible-push-second-column">
                         @Html.Render(header, @<h2>@header</h2>)
-                        @Html.Render(text, @<p>@text</p>)
+                        <div class="text-editor-content">@Html.Raw(Uri.UnescapeDataString(text))</div>
                     </div>
                 </div>
             }
+        }
 
-        }   
     </div>
 </div>

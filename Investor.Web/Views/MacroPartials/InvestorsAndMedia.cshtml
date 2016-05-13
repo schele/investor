@@ -135,7 +135,7 @@
     <div class="investors-and-media-content">
         @if (FetchReports().Count > 0)
         {
-            <h3>Latest reports</h3>
+            <h3>@Umbraco.GetDictionaryValue("System.InvestorsAndMedia.Latest")</h3>
             <ul class="investors-and-media-latest-reports">
                 @foreach (var report in FetchReports().OrderByDescending(x => x.Published).ToList())
                 {
@@ -156,7 +156,7 @@
 
         @if (FetchQuotes().Count > 0)
         {
-            <h3>Investor share</h3>
+            <h3>@Umbraco.GetDictionaryValue("System.InvestorsAndMedia.Share")</h3>
             <ul class="investors-and-media-share">
                 @foreach (var quote in FetchQuotes())
                 {
@@ -173,7 +173,7 @@
 
         @if (contacts.Any())
         {
-            <h3>Contact</h3>
+            <h3>@Umbraco.GetDictionaryValue("System.InvestorsAndMedia.Contact")</h3>
             <ul class="investors-and-media-contact">
                 <li>
                 </li>

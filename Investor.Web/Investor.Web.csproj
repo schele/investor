@@ -815,6 +815,7 @@
     <Content Include="Views\MacroPartials\FlexiblePushTextVideo.cshtml" />
     <Content Include="App_Plugins\TinyMceEditor\package.manifest" />
     <Content Include="Views\Partials\MobileSearchBox.cshtml" />
+    <Content Include="Views\MacroPartials\FlexiblePushImage.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

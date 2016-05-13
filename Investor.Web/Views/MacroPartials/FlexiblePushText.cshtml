@@ -1,0 +1,17 @@
+﻿@using Investor.Helpers
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    var header = Model.MacroParameters["Header"].ToString();
+    var text = Model.MacroParameters["Text"].ToString();
+}
+
+@if (!string.IsNullOrWhiteSpace(header) || !string.IsNullOrWhiteSpace(text))
+{
+    <div class="flexible-push">
+        @Html.Render(header, @<h2>@header</h2>)
+        @Html.Raw(Uri.UnescapeDataString(text))
+    </div>
+}

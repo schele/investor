@@ -1,5 +1,5 @@
 ﻿.sub-navigation {
-    padding-top: 25px;
+    padding: 25px 0;
     padding-right: 0;
     border-right: 1px solid rgb(201, 201, 201);
 }
@@ -44,6 +44,12 @@
     width: calc(95% + 1px);
     display: none;
     margin-left: 5%;
+    float: right;
+}
+
+.sub-navigation ul li {
+    width: 100%;
+    float: left;
 }
 
 .sub-navigation .has-children--expanded > a {

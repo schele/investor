@@ -12,6 +12,7 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
+using Umbraco.Core.Logging;
 using Umbraco.Core.Media;
 using Umbraco.Web;
 
@@ -113,32 +114,39 @@ namespace Investor.UmbExamine.ExamineSearch
             }
         }
 
-        public object GetContentSpecefic(string nodeTypeAlias)
+        public ResultBase GetContentSpecefic(string nodeTypeAlias)
         {
-            var type = typeof(ResultBase);
-            var results = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p));
-
-            Type result = null;
-
-            foreach (var item in results)
+            try
             {
-                if (item.Name.EndsWith(nodeTypeAlias + "ContentResult", StringComparison.InvariantCultureIgnoreCase))
+                var type = typeof(ResultBase);
+                var results = AppDomain.CurrentDomain.GetAssemblies()
+                    .SelectMany(s => s.GetTypes())
+                    .Where(p => type.IsAssignableFrom(p));
+
+                Type result = null;
+
+                foreach (var item in results)
                 {
-                    result = item;
-                    break;
+                    if (item.Name.EndsWith(nodeTypeAlias + "ContentResult", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        result = item;
+                        break;
+                    }
+                }
+
+                if (result != null)
+                {
+                    var resultBase = (ResultBase)Activator.CreateInstance(result, Umbraco);
+
+                    return resultBase;
                 }
             }
-
-            if (result == null)
+            catch (Exception ex)
             {
-                return null;
+                LogHelper.Error<ExamineSearch>(ex.Message, ex);
             }
 
-            var t = Activator.CreateInstance(result);
-
-            return t;
+            return null;
         }
 
         public List<Dictionary<string, object>> FormatResults<TResultBase>(IExamineSearchResult searchResults, string[] fieldFilter) where TResultBase : ResultBase
@@ -147,8 +155,6 @@ namespace Investor.UmbExamine.ExamineSearch
 
             foreach (SearchResult c in searchResults.Results)
             {
-                ResultBase model;
-
                 // ToDo: Factory for ResultBase ?
                 string nodeTypeAlias = string.Empty;
                 var content = c.TryGetContentOrMedia(Umbraco);
@@ -158,12 +164,10 @@ namespace Investor.UmbExamine.ExamineSearch
                     nodeTypeAlias = content.DocumentTypeAlias;
                 }
 
-                var contentType = c.GetContentType(nodeTypeAlias);
-                var t = GetContentSpecefic(nodeTypeAlias);
-                model = t as ResultBase;
-
+                var model = GetContentSpecefic(nodeTypeAlias);
                 if (model == null)
                 {
+                    var contentType = c.GetContentType(nodeTypeAlias);
                     if (contentType == ContentType.Content)
                     {
                         model = new ExamineContentResult(Umbraco);
@@ -195,12 +199,11 @@ namespace Investor.UmbExamine.ExamineSearch
 
                         continue;
                     }
-                }
-                
 
-                if (!(model is TResultBase))
-                {
-                    continue;
+                    if (!(model is TResultBase))
+                    {
+                        continue;
+                    }
                 }
 
                 foreach (var field in c.Fields)

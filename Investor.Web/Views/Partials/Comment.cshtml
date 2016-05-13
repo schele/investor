@@ -10,8 +10,8 @@
 }
 
 <div class="newsroom-page-comments-date">
-    <span>@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
-    <span class="newsroom-page-comments-time">@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+    <span>@Model.UpdateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+    <span class="newsroom-page-comments-time">@Model.UpdateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
 </div>
 
 @Html.Render(Model.Header, @<h3>@Model.Header</h3>)

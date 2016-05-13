@@ -151,9 +151,9 @@ namespace Investor.Controllers.SurfaceControllers
 
             var culture = Umbraco.CultureDictionary.Culture;
             var content = SearchHelper.LookForContent(searchTerm, culture);
-            var image = SearchHelper.LookForImages(searchTerm);
+            //var image = SearchHelper.LookForImages(searchTerm);
             var file = SearchHelper.LookForFiles(searchTerm);
-            var result = SearchHelper.JoinResults(content, image, file);
+            var result = SearchHelper.JoinResults(content, file);
 
             // Sort based on name
             result.Result = result.Result.OrderBy(x => x["name"]).ToList();
@@ -220,16 +220,16 @@ namespace Investor.Controllers.SurfaceControllers
         [HttpPost]
         public JsonResult LookForPossibleWords(string searchTerm)
         {
+            if (!Validate(searchTerm, out searchTerm))
+            {
+                return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
+            }
+
             string searchProviderName = "ExternalSearcher";
             string indexSet = "ExternalIndexSet";
             const string mediaSearchProviderName = "MediaSearcher";
             const string mediaIndexSet = "MediaIndexSet";
 
-            if (!Validate(searchTerm, out searchTerm))
-            {
-                return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
-            }
-            
             var culture = Umbraco.CultureDictionary.Culture;
             if (culture != null)
             {
@@ -242,34 +242,36 @@ namespace Investor.Controllers.SurfaceControllers
                 }
             }
 
+            var content = SearchHelper.LookForContent(searchTerm, culture);
+            //var image = SearchHelper.LookForImages(searchTerm);
+            var file = SearchHelper.LookForFiles(searchTerm);
+            var joinedResult = SearchHelper.JoinResults(content, file);
+
+            // Sort based on name
+            joinedResult.Result = joinedResult.Result.OrderBy(x => x["name"]).ToList();
+
             var searchTool = new SearchTool();
-            var examineSearch = new ExamineSearch(Umbraco);
+
+            var result = new List<string>();
 
             var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
             var pdfFieldFilter = UmbExamineConfig.Instance.GetIndexFields(mediaIndexSet);
-
-            var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
-            var pdfSearchResults = examineSearch.Search(searchTerm, mediaSearchProviderName, mediaIndexSet, pdfFieldFilter);
-
-            var joinedResult = searchResults.Results.Union(pdfSearchResults.Results);
-
-            var result = new List<string>();
 
             var excludedFields = GetExculdedFields(searchProviderName, fieldFilter)
                 .Union(GetExculdedFields(mediaSearchProviderName, pdfFieldFilter))
                                         .Union(new[] { "__IndexType", "__Path", "__NodeTypeAlias", "__NodeId" })
                                         .ToList();
 
-            foreach (var c in joinedResult)
+            foreach (var c in joinedResult.Result)
             {
-                foreach (var field in c.Fields)
+                foreach (var field in c)
                 {
                     if (excludedFields.Any() && excludedFields.Contains(field.Key))
                     {
                         continue;
                     }
 
-                    searchTool.AddToBuffert(field.Value);
+                    searchTool.AddToBuffert(field.Value.ToString());
                 }
             }
 
@@ -277,6 +279,64 @@ namespace Investor.Controllers.SurfaceControllers
             result.AddRange(matchingWords);
 
             return Json(result.Distinct().ToList(), JsonRequestBehavior.AllowGet);
+
+            //string searchProviderName = "ExternalSearcher";
+            //string indexSet = "ExternalIndexSet";
+            //const string mediaSearchProviderName = "MediaSearcher";
+            //const string mediaIndexSet = "MediaIndexSet";
+
+            //if (!Validate(searchTerm, out searchTerm))
+            //{
+            //    return Json(ErrorResult("404", "Search term not found"), JsonRequestBehavior.AllowGet);
+            //}
+            
+            //var culture = Umbraco.CultureDictionary.Culture;
+            //if (culture != null)
+            //{
+            //    var cultIndexSet = string.Format("External_{0}_IndexSet", culture);
+            //    var indexItem = IndexSets.Instance.Sets.Cast<IndexSet>().FirstOrDefault(x => x.SetName == cultIndexSet);
+            //    if (indexItem != null)
+            //    {
+            //        indexSet = cultIndexSet;
+            //        searchProviderName = string.Format("External_{0}_Searcher", culture);
+            //    }
+            //}
+
+            //var searchTool = new SearchTool();
+            //var examineSearch = new ExamineSearch(Umbraco);
+
+            //var fieldFilter = UmbExamineConfig.Instance.GetIndexFields(indexSet, new[] { "umbracoNaviHide" });
+            //var pdfFieldFilter = UmbExamineConfig.Instance.GetIndexFields(mediaIndexSet);
+
+            //var searchResults = examineSearch.Search(searchTerm, searchProviderName, indexSet, fieldFilter);
+            //var pdfSearchResults = examineSearch.Search(searchTerm, mediaSearchProviderName, mediaIndexSet, pdfFieldFilter);
+
+            //var joinedResult = searchResults.Results.Union(pdfSearchResults.Results);
+
+            //var result = new List<string>();
+
+            //var excludedFields = GetExculdedFields(searchProviderName, fieldFilter)
+            //    .Union(GetExculdedFields(mediaSearchProviderName, pdfFieldFilter))
+            //                            .Union(new[] { "__IndexType", "__Path", "__NodeTypeAlias", "__NodeId" })
+            //                            .ToList();
+
+            //foreach (var c in joinedResult)
+            //{
+            //    foreach (var field in c.Fields)
+            //    {
+            //        if (excludedFields.Any() && excludedFields.Contains(field.Key))
+            //        {
+            //            continue;
+            //        }
+
+            //        searchTool.AddToBuffert(field.Value);
+            //    }
+            //}
+
+            //var matchingWords = searchTool.Search(searchTerm);
+            //result.AddRange(matchingWords);
+
+            //return Json(result.Distinct().ToList(), JsonRequestBehavior.AllowGet);
         }
 
         Dictionary<string, object> ErrorResult(string errorType, string errorMessage)

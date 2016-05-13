@@ -15,21 +15,25 @@ namespace Investor.UmbExamine.Model
 
         public override void Format(SearchResult result)
         {
+            var phone = Umbraco.TypedContent(result.Id).GetPropertyValue("phone");
+
             AddProperty("url", library.NiceUrl(result.Id));
             AddProperty("name", result.Fields["nodeName"]);
+            AddProperty("text", phone);
             
-            if (result.Fields.ContainsKey("text"))
-            {
-                var text = result.Fields["text"].GetWords(50); //StripTagsCharArray(result.Fields["text"].TruncateWords(50));
+            
+            //if (result.Fields.ContainsKey("text"))
+            //{
+            //    var text = result.Fields["text"].GetWords(50); //StripTagsCharArray(result.Fields["text"].TruncateWords(50));
 
-                //Value = "We have a long-term investment perspective and support our companies in their efforts to create sustainable value. Through board participation, industrial experience, our network and financial strength, we strive to make our companies best-in-class.\r\n \r...
+            //    //Value = "We have a long-term investment perspective and support our companies in their efforts to create sustainable value. Through board participation, industrial experience, our network and financial strength, we strive to make our companies best-in-class.\r\n \r...
 
-                AddProperty("text", HttpUtility.HtmlDecode(text));
-            }
-            else
-            {
+            //    AddProperty("text", HttpUtility.HtmlDecode(text));
+            //}
+            //else
+            //{
                 
-            }
+            //}
 
             AddProperty("type", "content");
         }

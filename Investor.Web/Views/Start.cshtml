@@ -7,11 +7,11 @@
 }
 
 <div class="row">
-    <div class="start-page">
+    <article class="start-page">
         @Model.Content.GetGridHtml(Html, "grid")
         <div class="container">
             @Html.Partial("~/Views/MacroPartials/FlexiblePush.cshtml")
         </div>
-    </div>
+    </article>
 </div>
 <script type="text/javascript">$(slideShow.init());</script>

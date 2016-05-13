@@ -8,7 +8,7 @@
 }
 
 <div class="row">
-    <div class="col-md-9 list-investments-page">
+    <article class="col-md-9 list-investments-page">
         @Html.Render(Model.CurrentPage.Name, @<h1 class="@Model.ColorDropdown">@Model.Header</h1>)
         @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
 
@@ -18,5 +18,5 @@
                 <li><a href="@investment.Url">@investment.Name</a></li>
             }
         </ul>
-    </div>
+    </article>
 </div>

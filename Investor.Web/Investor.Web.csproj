@@ -589,7 +589,7 @@
     <Content Include="images\zip.png" />
     <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
-    <Content Include="SASS\magnific-popup.css" />
+    <Content Include="UI\css\magnific-popup.css" />
     <Content Include="Scripts\angular\angularControllers.js" />
     <Content Include="Scripts\angular\angularServices.js" />
     <Content Include="Scripts\angular\lib\angular-cookies.js" />
@@ -602,6 +602,7 @@
     <Content Include="Scripts\angular\modules\angularConfiguration.js" />
     <Content Include="Scripts\campaign-lightbox.js" />
     <Content Include="Scripts\cookies.js" />
+    <Content Include="Scripts\debouncer.js" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\iframe-size.js" />
     <Content Include="Scripts\lib\jquery-1.12.3.min.js" />

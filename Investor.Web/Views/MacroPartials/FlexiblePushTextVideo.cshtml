@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="flexible-push-first-column">
                     @Html.Render(header, @<h2>@header</h2>)
-                    @Html.Render(text, @<p>@text</p>)
+                    @Html.Raw(Uri.UnescapeDataString(text))
                 </div>
             </div>
         }
@@ -47,7 +47,7 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(header, @<h2>@header</h2>)
-                        @Html.Render(text, @<p>@text</p>)
+                        @Html.Raw(Uri.UnescapeDataString(text))
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -72,7 +72,7 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(header, @<h2>@header</h2>)
-                        @Html.Render(text, @<p>@text</p>)
+                        @Html.Raw(Uri.UnescapeDataString(text))
                     </div>
                 </div>
             }

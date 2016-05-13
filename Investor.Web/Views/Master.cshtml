@@ -3,6 +3,7 @@
 @using Investor.Models.Models
 @using Investor.Models.Models.NodeLink
 @using Investor.Models.PageModels
+@using javax.swing
 
 @inherits UmbracoViewPage<BaseModel>
 
@@ -163,7 +164,10 @@
         }*@
 
         @*  exempel med annat pattern *@
-        <a href="@Model.StartPage.PopupUrl.Link" title="@Model.StartPage.PopupUrlText">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrlText</span>)</a>
+        @if (Model.StartPage.PopupUrl != null)
+        {
+            <a href="@Model.StartPage.PopupUrl.Link" title="@Model.StartPage.PopupUrlText">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrlText</span>)</a>
+        }        
 
         <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
     </div>

@@ -13,13 +13,11 @@
     var flip = Model.MacroParameters["Flip"].ToString();
 }
 
-
-
 @if (string.IsNullOrWhiteSpace(headerRight) || string.IsNullOrWhiteSpace(textRight))
 {
     <div class="col-md-12 flexible-push">
         @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
-        @Html.Render(textLeft, @<p>@textLeft</p>)
+        @Html.Raw(Uri.UnescapeDataString(textLeft))
     </div>
 }
 
@@ -27,7 +25,7 @@
 {
     <div class="col-md-12 flexible-push">
         @Html.Render(headerRight, @<h2>@headerRight</h2>)
-        @Html.Render(textRight, @<p>@textRight</p>)
+        @Html.Raw(Uri.UnescapeDataString(textRight))
     </div>
 }
 
@@ -41,13 +39,13 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
-                        @Html.Render(textLeft, @<p>@textLeft</p>)
+                        @Html.Raw(Uri.UnescapeDataString(textLeft))
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="flexible-push-second-column">
                         @Html.Render(headerRight, @<h2>@headerRight</h2>)
-                        @Html.Render(textRight, @<p>@textRight</p>)
+                        @Html.Raw(Uri.UnescapeDataString(textRight))
                     </div>
                 </div>
             }
@@ -56,13 +54,13 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(headerRight, @<h2>@headerRight</h2>)
-                        @Html.Render(textRight, @<p>@textRight</p>)
+                        @Html.Raw(Uri.UnescapeDataString(textRight))
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="flexible-push-second-column">
                         @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
-                        @Html.Render(textLeft, @<p>@textLeft</p>)
+                        @Html.Raw(Uri.UnescapeDataString(textLeft))
                     </div>
                 </div>
             }

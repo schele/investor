@@ -1,0 +1,41 @@
+﻿@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    IPublishedContent image = null;
+    string imageUrl = null;
+    string name = null;
+    
+    if (!string.IsNullOrWhiteSpace(Model.MacroParameters["Image"].ToString()))
+    {
+        image = Umbraco.TypedMedia(Model.MacroParameters["Image"].ToString());
+        name = image.GetPropertyValue("Name").ToString();
+
+        if (image.GetProperty("Url").HasValue)
+        {
+            imageUrl = Umbraco.TypedContent(image.GetProperty("Url").Value.ToString()).Url;
+        }
+    }
+}
+
+@if (image != null)
+{
+    <div class="flexible-push">
+        @if (!string.IsNullOrWhiteSpace(imageUrl))
+        {
+            <a href="@imageUrl" title="@name">
+                <img src="@image.Url" alt="@name"  />
+            </a>
+        }
+        else
+        {
+            <img src="@image.Url" alt="@image.Name"  />
+        }
+    </div>
+}
+
+@*@{
+    var rte = Model.MacroParameters["RTE"].ToString();
+}
+<div>@Html.Raw(Uri.UnescapeDataString(rte))</div>*@

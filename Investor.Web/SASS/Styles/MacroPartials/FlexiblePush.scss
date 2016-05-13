@@ -44,6 +44,10 @@
     width: 100%;
 }
 
+.flexible-push a img {
+    max-width: 100%;
+ }
+
 @media (max-width: 990px) {
     .flexible-push .flexible-push-second-column {
         padding-left: 0px;

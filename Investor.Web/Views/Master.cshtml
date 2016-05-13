@@ -1,4 +1,5 @@
 ﻿@using Investor.Helpers
+@using Investor.Models.Extensions
 @using Investor.Models.Models
 @using Investor.Models.Models.NodeLink
 @using Investor.Models.PageModels
@@ -158,11 +159,11 @@
         
         @*@if (Model.StartPage.PopupUrl != null)
         {
-            <span>@GetRelatedLink(Model.StartPage.PopupUrl)</span>
+            <span>@GetRelatedLink(Model.StartPage.PopupUrl).Url</span>
         }*@
 
         @*  exempel med annat pattern *@
-        @*@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupText</span>)*@
+        <a href="@Model.StartPage.PopupUrl.Link" title="@Model.StartPage.PopupUrlText">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrlText</span>)</a>
 
         <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
     </div>

@@ -1,0 +1,25 @@
+﻿@using Investor.Helpers
+@using Umbraco.Web.Macros
+
+@inherits PartialViewMacroPage
+
+@{
+    IPublishedContent video = null;
+    
+    if (!string.IsNullOrWhiteSpace(Model.MacroParameters["Video"].ToString()))
+    {
+        video = Umbraco.TypedMedia(Model.MacroParameters["Video"].ToString());        
+    }
+}
+
+@if (video != null)
+{
+    <div class="flexible-push">
+        
+            <video controls>
+                <source src="@video.Url" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+    </div>
+}

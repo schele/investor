@@ -617,6 +617,7 @@
     <Content Include="UI\css\bootstrap.css" />
     <Content Include="UI\css\bootstrap.min.css" />
     <Content Include="UI\css\ie10-viewport-bug-workaround.css" />
+    <Content Include="UI\css\magnific-popup.css" />
     <Content Include="UI\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="UI\js\analytics.js" />
     <Content Include="UI\js\bootstrap.js" />

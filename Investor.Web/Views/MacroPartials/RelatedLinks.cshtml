@@ -1,5 +1,6 @@
 ﻿@using System.Web.Script.Serialization
 @using Investor.Helpers
+@using Investor.Models.Extensions
 @using Investor.Models.Models.NodeLink
 @using Umbraco.Web.Macros
 
@@ -25,11 +26,7 @@
         <ul class="related-links-list">
             @foreach (var link in links)
             {
-                <li>
-                    <a href="#">
-                        @Html.Render(link.Caption, @<span>@link.Caption</span>)
-                    </a>
-                </li>
+                <li>@Html.RelatedLink(link)</li>
             }
         </ul>
     </div>

@@ -589,7 +589,6 @@
     <Content Include="images\zip.png" />
     <Content Include="images\zip_icon.jpg" />
     <Content Include="packages.config" />
-    <Content Include="SASS\magnific-popup.css" />
     <Content Include="Scripts\angular\angularControllers.js" />
     <Content Include="Scripts\angular\angularServices.js" />
     <Content Include="Scripts\angular\lib\angular-cookies.js" />
@@ -616,6 +615,7 @@
     <Content Include="UI\css\bootstrap.css" />
     <Content Include="UI\css\bootstrap.min.css" />
     <Content Include="UI\css\ie10-viewport-bug-workaround.css" />
+    <Content Include="UI\css\magnific-popup.css" />
     <Content Include="UI\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="UI\js\analytics.js" />
     <Content Include="UI\js\bootstrap.js" />
@@ -816,7 +816,6 @@
     <Content Include="Views\MacroPartials\FlexiblePushTextVideo.cshtml" />
     <Content Include="App_Plugins\TinyMceEditor\package.manifest" />
     <Content Include="Views\Partials\MobileSearchBox.cshtml" />
-    <Content Include="Views\MacroPartials\FlexiblePushImage.cshtml" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

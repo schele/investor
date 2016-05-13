@@ -74,19 +74,19 @@
             @Html.Render(Model.FactsWebsite, @<a class="investment-page-facts-link" href="@Model.FactsWebsite" title="@Model.FactsWebsite" target="_blank">@Model.FactsWebsiteHeader</a>)
             <div class="investment-page-facts-info">
                 @Html.Render(Model.FactsWebsite, @<h2 class="@Model.ColorDropdown">@Model.FactsHeader</h2>)
-                <h3>Registered Office:</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Office"):</h3>
                 @Html.Render(Model.FactsOffice, @<span>@Model.FactsOffice</span>)
-                <h3>Listed:</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Listed"):</h3>
                 @Html.Render(Model.FactsListed, @<span>@Model.FactsListed</span>)
-                <h3>Business Area:</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Business"):</h3>
                 @Html.Render(Model.FactsBusinessArea, @<span>@Model.FactsBusinessArea</span>)
-                <h3>Share of total assets (%):</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Share"):</h3>
                 @Html.Render(Model.FactsShare, @<span>@Model.FactsShare</span>)
-                <h3>Ownership capital/votes (%):</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Ownership"):</h3>
                 @Html.Render(Model.FactsOwnership, @<span>@Model.FactsOwnership</span>)
-                <h3>Investment Year:</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Year"):</h3>
                 @Html.Render(Model.FactsInvestment, @<span>@Model.FactsInvestment</span>)
-                <h3>Serving On The Board:</h3>
+                <h3>@Umbraco.GetDictionaryValue("System.Investment.Board"):</h3>
                 @Html.Render(Model.FactsBoard, @<span>@Model.FactsBoard</span>)
             </div>
         </div>

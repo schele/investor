@@ -163,7 +163,7 @@
         }*@
 
         @*  exempel med annat pattern *@
-        <a href="#">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrl.Link</span>)</a>
+        <a href="@Model.StartPage.PopupUrl.Link" title="@Model.StartPage.PopupUrlText">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrlText</span>)</a>
 
         <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
     </div>

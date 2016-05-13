@@ -13,7 +13,7 @@
         showSearchButton = ViewData["showSearchButton"].ConvertTo<bool>();
     }
 
-    var searchTitle = Umbraco.GetDictionaryValue("SearchTitle");
+    var searchTitle = Umbraco.GetDictionaryValue("System.Search.Title");
     if (string.IsNullOrEmpty(searchTitle))
     {
         searchTitle = "Search at Investorab.com";

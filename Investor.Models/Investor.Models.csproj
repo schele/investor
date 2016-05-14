@@ -241,8 +241,8 @@
       <HintPath>..\packages\UmbracoCms.Core.7.4.3\lib\TidyNet.dll</HintPath>
     </Reference>
     <Reference Include="UCodeFirst, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\uCodeFirst.Core.2.2.9\lib\net45\UCodeFirst.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uCodeFirst.Core.2.3.3\lib\net45\UCodeFirst.dll</HintPath>
     </Reference>
     <Reference Include="umbraco, Version=1.0.5948.18146, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -312,6 +312,7 @@
     <Compile Include="Models\PressReleases\Attachment.cs" />
     <Compile Include="Models\RelatedLink.cs" />
     <Compile Include="Models\Slideshow.cs" />
+    <Compile Include="PageModels\Interfaces\INews.cs" />
     <Compile Include="PageModels\SitemapPageModel.cs" />
     <Compile Include="PageModels\NoticePageModel.cs" />
     <Compile Include="PageModels\CommentPageModel.cs" />

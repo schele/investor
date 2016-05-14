@@ -8,7 +8,7 @@ namespace Investor.Models.Extensions
 {
     public static class StringExtensions
     {
-        const string Hellip = "&hellip;";
+        //const string Hellip = "&hellip;";
 
         public static string GetWords(this string input, int count)
         {

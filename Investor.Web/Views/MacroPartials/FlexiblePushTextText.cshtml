@@ -17,7 +17,7 @@
 {
     <div class="col-md-12 flexible-push">
         @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
-        @Html.Raw(Uri.UnescapeDataString(textLeft))
+        @Html.Raw(HttpUtility.HtmlDecode(textLeft))
     </div>
 }
 
@@ -25,7 +25,7 @@
 {
     <div class="col-md-12 flexible-push">
         @Html.Render(headerRight, @<h2>@headerRight</h2>)
-        @Html.Raw(Uri.UnescapeDataString(textRight))
+        @Html.Raw(HttpUtility.HtmlDecode(textRight))
     </div>
 }
 
@@ -39,13 +39,13 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
-                        @Html.Raw(Uri.UnescapeDataString(textLeft))
+                        @Html.Raw(HttpUtility.HtmlDecode(textLeft))
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="flexible-push-second-column">
                         @Html.Render(headerRight, @<h2>@headerRight</h2>)
-                        @Html.Raw(Uri.UnescapeDataString(textRight))
+                        @Html.Raw(HttpUtility.HtmlDecode(textRight))
                     </div>
                 </div>
             }
@@ -54,13 +54,13 @@
                 <div class="col-md-6">
                     <div class="flexible-push-first-column">
                         @Html.Render(headerRight, @<h2>@headerRight</h2>)
-                        @Html.Raw(Uri.UnescapeDataString(textRight))
+                        @Html.Raw(HttpUtility.HtmlDecode(textRight))
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="flexible-push-second-column">
                         @Html.Render(headerLeft, @<h2>@headerLeft</h2>)
-                        @Html.Raw(Uri.UnescapeDataString(textLeft))
+                        @Html.Raw(HttpUtility.HtmlDecode(textLeft))
                     </div>
                 </div>
             }

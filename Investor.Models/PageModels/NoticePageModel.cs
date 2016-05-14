@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
 using Investor.Models.Models.NodeLink;
+using Investor.Models.PageModels.Interfaces;
 using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
@@ -16,7 +18,7 @@ namespace Investor.Models.PageModels
         Description = "En sida för att skapa en notis",
         AllowAtRoot = true
     )]
-    public class NoticePageModel : BaseModel
+    public class NoticePageModel : BaseModel, INews
     {
         #region constructors
 
@@ -58,7 +60,15 @@ namespace Investor.Models.PageModels
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
         public virtual IEnumerable<NodeLink> RelatedLinks { get; set; }
-        
+
+        [Property(
+            UmbracoDataType.DatePickerWithTime,
+            Tab.Content,
+            DisplayName = "Datum/Tid",
+            Description = ""            
+        )]
+        public virtual DateTime AlternativeDateTime { get; set; }
+
         #endregion
     }
 }

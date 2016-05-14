@@ -295,15 +295,15 @@ function RGRelatedLinksWithMediaController($rootScope, $scope, $element, $timeou
     };
 
     $scope.switchLinkType = function ($event, link, mode) {
-        if (mode == Mode.ExternalLink) {
+        if (mode == $scope.Mode.ExternalLink) {
             link.isInternal = false;
             link.type = "external";
         }
-        else if (mode == Mode.InternalLink) {
+        else if (mode == $scope.Mode.InternalLink) {
             link.isInternal = true;
             link.type = "internal";
         }
-        else if (mode == Mode.InternalMedia) {
+        else if (mode == $scope.Mode.InternalMedia) {
             link.isInternal = true;
             link.type = "internal";
         }
@@ -311,7 +311,9 @@ function RGRelatedLinksWithMediaController($rootScope, $scope, $element, $timeou
         if (!link.isInternal) {
             link.link = $scope.newLink;
         }
-        
+
+        link.mode = mode;
+
         $event.preventDefault();
     };
 

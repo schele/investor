@@ -8,6 +8,7 @@ using UCodeFirst;
 using UCodeFirst.ContentTypes;
 using UCodeFirst.Tab;
 using Umbraco.Core.Models;
+using UCodeFirst.Abstraction;
 using ContentTypeBase = UCodeFirst.ContentTypes.ContentTypeBase;
 
 namespace Investor.Models.PageModels
@@ -16,7 +17,7 @@ namespace Investor.Models.PageModels
         DisplayName = "Base",
         Icon = Icon.Brick
     )]
-    public class BaseModel : ContentTypeBase
+    public class BaseModel : ContentTypeBase, IRedirect
     {
         #region constructors
 
@@ -140,26 +141,24 @@ namespace Investor.Models.PageModels
 
         public string GetRedirectUrl()
         {
+            if (Redirect == null)
+            {
+                return string.Empty;
+            }
 
-            return "";
-            //if (Redirect == null)
-            //{
-            //    return string.Empty;
-            //}
+            if (Redirect.IsInternal)
+            {
+                if (string.IsNullOrEmpty(Redirect.Link))
+                {
+                    return string.Empty;
+                }
 
-            //if (Redirect.isInternal)
-            //{
-            //    if (string.IsNullOrEmpty(Redirect.@internal))
-            //    {
-            //        return string.Empty;
-            //    }
+                var nodeId = int.Parse(Redirect.Link);
 
-            //    var nodeId = int.Parse(Redirect.@internal);
+                return library.NiceUrl(nodeId);
+            }
 
-            //    return library.NiceUrl(nodeId);
-            //}
-
-            //return Redirect.link;
+            return Redirect.Link;
         }
     }
 }

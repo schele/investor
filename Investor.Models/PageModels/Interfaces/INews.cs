@@ -11,6 +11,8 @@ namespace Investor.Models.PageModels.Interfaces
 
         IHtmlString Preamble { get; set; }
 
+        string RelatedLinksHeader { get; set; }
+
         IEnumerable<NodeLink> RelatedLinks { get; set; }
 
         DateTime AlternativeDateTime { get; set; }

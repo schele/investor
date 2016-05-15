@@ -292,6 +292,7 @@
     <Compile Include="Converters\ModelConverter.cs" />
     <Compile Include="Converters\MultipleMediaConverter.cs" />
     <Compile Include="Converters\NodeConverter.cs" />
+    <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Converters\SingleNodeLinkConverter.cs" />
     <Compile Include="Converters\NodeLinkConverter.cs" />
     <Compile Include="Converters\PublishedMediaConverter.cs">

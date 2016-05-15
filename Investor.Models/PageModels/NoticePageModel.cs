@@ -53,6 +53,14 @@ namespace Investor.Models.PageModels
         public virtual IHtmlString Preamble { get; set; }
 
         [Property(
+            UmbracoDataType.Textstring,
+            Tab.Content,
+            DisplayName = "Relaterade Länkar: Rubrik",
+            Description = ""
+        )]
+        public virtual string RelatedLinksHeader { get; set; }
+
+        [Property(
             UmbracoDataType.RelatedLinksWithMedia,
             Tab.Content,
             DisplayName = "Relaterade länkar: Länkar",
@@ -65,7 +73,8 @@ namespace Investor.Models.PageModels
             UmbracoDataType.DatePickerWithTime,
             Tab.Content,
             DisplayName = "Datum/Tid",
-            Description = ""            
+            Description = "",
+            Converter = typeof(DateConverter)
         )]
         public virtual DateTime AlternativeDateTime { get; set; }
 

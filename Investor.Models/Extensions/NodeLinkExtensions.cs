@@ -117,6 +117,11 @@ namespace Investor.Models.Extensions
                     }
                 }
 
+                if (item.NewWindow)
+                {
+                    entity.Target = "_blank";
+                }
+
                 bodyTemplate(entity).WriteTo(writer);
             }
 

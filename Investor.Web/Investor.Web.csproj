@@ -449,6 +449,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\BackofficeStuff\general.css" />
+    <Content Include="App_Plugins\BackofficeStuff\general.js" />
+    <Content Include="App_Plugins\BackofficeStuff\Macros\investors-and-media.css" />
+    <Content Include="App_Plugins\BackofficeStuff\Macros\our-investments.css" />
+    <Content Include="App_Plugins\BackofficeStuff\Macros\press-releases.css" />
+    <Content Include="App_Plugins\BackofficeStuff\Macros\related-links.css" />
+    <Content Include="App_Plugins\BackofficeStuff\Macros\slideshow.css" />
     <Content Include="App_Plugins\DropdownForInvestmentsEditor\dropdownforinvestmentseditor.controller.js" />
     <Content Include="App_Plugins\DropdownForInvestmentsEditor\dropdownforinvestmentseditor.html" />
     <Content Include="App_Plugins\DropdownForRobotsEditor\dropdownforrobotseditor.controller.js" />
@@ -820,6 +827,7 @@
     <Content Include="Views\MacroPartials\FlexiblePushTextVideo.cshtml" />
     <Content Include="App_Plugins\TinyMceEditor\package.manifest" />
     <Content Include="Views\Partials\MobileSearchBox.cshtml" />
+    <Content Include="App_Plugins\BackofficeStuff\package.manifest" />
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

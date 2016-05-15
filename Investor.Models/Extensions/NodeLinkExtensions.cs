@@ -62,6 +62,11 @@ namespace Investor.Models.Extensions
                 }
             }
 
+            if (item.NewWindow)
+            {
+                entity.Target = "_blank";
+            }
+
             var buffer = new StringBuilder();
             var writer = new StringWriter(buffer);
 
@@ -110,6 +115,11 @@ namespace Investor.Models.Extensions
                     {
                         item.Caption = item.Link;
                     }
+                }
+
+                if (item.NewWindow)
+                {
+                    entity.Target = "_blank";
                 }
 
                 bodyTemplate(entity).WriteTo(writer);

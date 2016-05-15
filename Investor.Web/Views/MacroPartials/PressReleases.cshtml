@@ -9,7 +9,9 @@
 @{
     var pressReleaseRepository = ObjectFactory.GetInstance<IPressReleaseRepository>();
     var startPage = Model.Content.ToStrongContent().AncestorOrSelf<StartPageModel>();
-    var pressReleaseUrl = startPage.PressReleasesNode;    
+    var pressReleaseUrl = startPage.PressReleasesNode;
+    var quantity = int.Parse(Model.MacroParameters["Quantity"].ToString());
+    var q = quantity;
 }
 
 <div class="press-releases">
@@ -28,7 +30,7 @@
     @if (pressReleaseUrl != null)
     {
         <ul class="press-releases-list">
-            @foreach (var pressRelease in pressReleaseRepository.GetPressReleases())
+            @foreach (var pressRelease in pressReleaseRepository.GetPressReleases().Take(quantity))
             {
                 <li>
                     <a href="@pressReleaseUrl.Url?id=@pressRelease.Id">

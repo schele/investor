@@ -1,0 +1,13 @@
+{
+	javascript: [
+		'~/App_Plugins/BackofficeStuff/general.js'
+	],
+	css: [
+		'~/App_Plugins/BackofficeStuff/general.css',
+		'~/App_Plugins/BackofficeStuff/Macros/slideshow.css',
+		'~/App_Plugins/BackofficeStuff/Macros/our-investments.css',
+		'~/App_Plugins/BackofficeStuff/Macros/related-links.css',
+		'~/App_Plugins/BackofficeStuff/Macros/press-releases.css',
+		'~/App_Plugins/BackofficeStuff/Macros/investors-and-media.css'
+	]
+}

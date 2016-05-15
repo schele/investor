@@ -1,38 +1,100 @@
-﻿@using Umbraco.Web.Macros
+﻿@using Investor.Models.Extensions
+@using Umbraco.Web.Macros
 
 @inherits PartialViewMacroPage
 
 @{
     var slideIndex = 1;
     var dotIndex = 1;
+    var items = Umbraco.TypedMedia(Model.MacroParameters["Slideshow"].ToString().Split(',')).ToList();
+    var id = "slideshow_" + Guid.NewGuid().ToString("N") + Model.MacroId;
 }
 
-<div class="slide-show-container">
-    <ul class="slide-show-item-list">
-        @foreach (var media in Umbraco.TypedMedia(Model.MacroParameters["Slideshow"].ToString().Split(',')))
-        {
-            <li name="@slideIndex" class="slide-show-item">
-                <div class="col-md-6 no-padding">
-                    <div class="slide-show-content">
-                        <h2>@media.GetProperty("heading").Value.ToString()</h2>
-                        <p>@media.GetProperty("text").Value.ToString()</p>
-                        <a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@media.GetProperty("urlText").Value.ToString()</a>
+@if (this.IsEdit())
+{
+    <div id="@id" class="carousel slide slide-show-container" data-ride="carousel">
+        <ol class="carousel-indicators slide-show-controls">
+            @for (int index = 0; index < items.Count; index++)
+            {
+                <li data-target="#@id" data-slide-to="@index" class="slide-show-dot @(index == 0 ? "active" : null)"></li>
+            }
+        </ol>
+
+        <div class="carousel-inner slide-show-item-list">
+            @for (int index = 0; index < items.Count; index++)
+            {
+                var media = items[index];
+                @*if (index == items.Count - 1)
+                {
+                    <div class="item slide-show-item @(index == 0 ? "active" : null)">
+                        <div class="span6 no-padding">
+                            <div class="slide-show-image">
+                                <img src="@media.Url" alt="@(media.GetPropertyValue<string>("heading"))" />
+                            </div>
+                        </div>
+                        <div class="span6 no-padding">
+                            <div class="slide-show-content">
+                                <h2>@(media.GetPropertyValue<string>("heading"))</h2>
+                                <p>@(media.GetPropertyValue<string>("text"))</p>
+                                <a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@(media.GetPropertyValue<string>("urlText"))</a>
+                            </div>
+                        </div>
+                    </div>
+                    continue;
+                }*@
+                <div class="item slide-show-item @(index == 0 ? "active" : null)">
+                    <div class="span6 no-padding">
+                        <div class="slide-show-content">
+                            <h2>@(media.GetPropertyValue<string>("heading"))</h2>
+                            <p>@(media.GetPropertyValue<string>("text"))</p>
+                            <a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@(media.GetPropertyValue<string>("urlText"))</a>
+                        </div>
+                    </div>
+                    <div class="span6 no-padding">
+                        <div class="slide-show-image">
+                            <img src="@media.Url" alt="@(media.GetPropertyValue<string>("heading"))" />
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 no-padding">
-                    <div class="slide-show-image">
-                        <img src="@media.Url" alt="@media.GetProperty("heading").Value.ToString()"/>
+            }
+        </div>
+    </div>
+    @* As this is in a iframe we need to start the carousel manualy *@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#@id").carousel("cycle");
+        });
+    </script>
+}
+else
+{
+    <div class="slide-show-container">
+        <ul class="slide-show-item-list">
+            @foreach (var media in items)
+            {
+                <li name="@slideIndex" class="slide-show-item">
+                    <div class="col-md-6 no-padding">
+                        <div class="slide-show-content">
+                            <h2>@(media.GetPropertyValue<string>("heading"))</h2>
+                            <p>@(media.GetPropertyValue<string>("text"))</p>
+                            <a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@(media.GetPropertyValue<string>("urlText"))</a>
+                        </div>
                     </div>
-                </div>
-            </li>
-            slideIndex++;
-        }
-    </ul>
-    <ul class="slide-show-controls">
-        @foreach (var media in Umbraco.TypedMedia(Model.MacroParameters["Slideshow"].ToString().Split(',')))
-        {
-            <li name="@dotIndex" class="slide-show-dot"></li>
-            dotIndex++;
-        }
-    </ul>
-</div>
+                    <div class="col-md-6 no-padding">
+                        <div class="slide-show-image">
+                            <img src="@media.Url" alt="@(media.GetPropertyValue<string>("heading"))" />
+                        </div>
+                    </div>
+                </li>
+                slideIndex++;
+            }
+        </ul>
+        <ul class="slide-show-controls">
+            @foreach (var media in items)
+            {
+                <li name="@dotIndex" class="slide-show-dot"></li>
+                dotIndex++;
+            }
+        </ul>
+    </div>
+}

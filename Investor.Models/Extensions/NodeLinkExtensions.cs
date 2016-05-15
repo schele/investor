@@ -62,6 +62,11 @@ namespace Investor.Models.Extensions
                 }
             }
 
+            if (item.NewWindow)
+            {
+                entity.Target = "_blank";
+            }
+
             var buffer = new StringBuilder();
             var writer = new StringWriter(buffer);
 

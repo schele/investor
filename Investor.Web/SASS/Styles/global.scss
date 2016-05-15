@@ -74,6 +74,22 @@ article {
     color: #002B7E;
 }
 
+.text-editor-content .text-editor-iframe {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    float: left;
+}
+
+.text-editor-content .text-editor-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 textarea.umbEditorTextFieldMultiple {
     width: 430px !important;
     height: 70px !important;

@@ -4,6 +4,7 @@
     cookies.init();
     mobileNavigation.init();
     subNavigation.init();
+    textEditorIframeWrapper.init();
   }
 
   return {

@@ -102,7 +102,7 @@ namespace Investor.Models.PageModels
             Converter = typeof(NodeLinkConverter<NodeLink>)
         )]
         public virtual IEnumerable<NodeLink> RelatedDocuments { get; set; }
-        
+
         #endregion
 
         #region puff

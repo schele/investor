@@ -13,7 +13,7 @@
         @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
 
         <ul>
-            @foreach (var investment in Model.Children())
+            @foreach (var investment in Model.Children().OrderBy(x => x.SortOrder))
             {
                 <li><a href="@investment.Url">@investment.Name</a></li>
             }

@@ -51,9 +51,13 @@ namespace Investor.Models.PageModels
         )]
         public virtual IHtmlString Preamble { get; set; }
 
+        #endregion
+
+        #region content
+
         [Property(
             UmbracoDataType.Textstring,
-            Tab.Content,
+            Tab.Page,
             DisplayName = "Relaterade Länkar: Rubrik",
             Description = ""
         )]
@@ -61,7 +65,7 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.RelatedLinksWithMedia,
-            Tab.Content,
+            Tab.Page,
             DisplayName = "Relaterade Länkar: Länkar",
             Description = "",
             Converter = typeof(NodeLinkConverter<NodeLink>)
@@ -70,9 +74,9 @@ namespace Investor.Models.PageModels
 
         [Property(
             UmbracoDataType.DatePickerWithTime,
-            Tab.Content,
+            Tab.Page,
             DisplayName = "Datum/Tid",
-            Description = "",
+            Description = "Detta datum skrivs ut på sidan",
             Converter = typeof(DateConverter)
         )]
         public virtual DateTime AlternativeDateTime { get; set; }

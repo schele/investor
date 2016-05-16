@@ -1,4 +1,5 @@
-﻿@using Investor.Models.PageModels
+﻿@using Investor.Models.Extensions
+@using Investor.Models.PageModels
 
 @inherits UmbracoViewPage<BaseModel>
 
@@ -49,11 +50,11 @@
         <div class="container">
             @if (Model.StartPage.AdditionalMenu != null)
             {
-                <ul class="main-actions">
-                @foreach (var menu in Model.StartPage.AdditionalMenu)
+                <ul class="main-actions">                
+                @foreach (var link in Model.StartPage.AdditionalMenu)
                 {
-                    <li><a href="@menu.Link">@menu.Caption</a></li>
-                }
+                    <li>@Html.RelatedLink(link)</li>
+                }                
                 </ul>
             }
             @*<form class="search">

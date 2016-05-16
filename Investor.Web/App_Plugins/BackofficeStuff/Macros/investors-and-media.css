@@ -40,7 +40,7 @@
 }
 
 .investors-and-media .investors-and-media-content {
-    padding: 25px 30px 30px;
+    padding: 25px 30px 30px 10px;
 }
 
 .investors-and-media .investors-and-media-content h3 {
@@ -96,6 +96,7 @@
     color: #002B7F;
     font-size: 14px;
     line-height: 15px;
+	margin-left: 35px;
 }
 
 .investors-and-media .investors-and-media-content .investors-and-media-share {
@@ -154,5 +155,10 @@
     display: block;
     color: #002b7f;
     font-size: 14px;
-    line-height: 21px; 
+    line-height: 21px;
+	list-style-type: none;
+}
+ 
+ul.investors-and-media-contact li {
+	list-style-type: none;
 }

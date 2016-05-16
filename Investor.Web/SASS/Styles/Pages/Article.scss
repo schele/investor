@@ -95,6 +95,18 @@
     margin: 0;
 }
 
+.article-page .article-page-time,
+.article-page .article-page-date  {
+    color: #a0a0a0;
+    font-size: 14px;
+}
+
+.article-page .article-page-time { 
+    background: url(/images/time.png) no-repeat left;
+    padding-left: 14px;
+    margin-left: 14px;
+}
+
 @media (max-width: 990px) {
     .article-page {
         border-left: none;

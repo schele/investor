@@ -52,7 +52,7 @@ namespace Investor.Models.PageModels
             DisplayName = "Content: Grid",
             Description = ""
         )]
-        [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks", "InvestorsAndMedia", "FlexiblePushTextImage", "FlexiblePushTextText", "FlexiblePushImageImage", "FlexiblePushTextVideo")]
+        [MacroCache("Slideshow", "OurInvestments", "PressReleases", "RelatedLinks", "InvestorsAndMedia", "FlexiblePushTextImage", "FlexiblePushTextText", "FlexiblePushImageImage", "FlexiblePushTextVideo")]        
         public virtual string Grid { get; set; }
 
         #endregion

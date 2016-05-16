@@ -393,7 +393,7 @@
     </Reference>
     <Reference Include="UCodeFirst, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\uCodeFirst.Core.2.3.3\lib\net45\UCodeFirst.dll</HintPath>
+      <HintPath>..\packages\uCodeFirst.Core.2.3.4\lib\net45\UCodeFirst.dll</HintPath>
     </Reference>
     <Reference Include="umbraco, Version=1.0.5948.18146, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -451,6 +451,7 @@
   <ItemGroup>
     <Content Include="App_Plugins\BackofficeStuff\general.css" />
     <Content Include="App_Plugins\BackofficeStuff\general.js" />
+    <Content Include="App_Plugins\BackofficeStuff\Macros\flexible-push-video.css" />
     <Content Include="App_Plugins\BackofficeStuff\Macros\investors-and-media.css" />
     <Content Include="App_Plugins\BackofficeStuff\Macros\our-investments.css" />
     <Content Include="App_Plugins\BackofficeStuff\Macros\press-releases.css" />

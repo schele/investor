@@ -8,6 +8,7 @@
 		'~/App_Plugins/BackofficeStuff/Macros/our-investments.css',
 		'~/App_Plugins/BackofficeStuff/Macros/related-links.css',
 		'~/App_Plugins/BackofficeStuff/Macros/press-releases.css',
-		'~/App_Plugins/BackofficeStuff/Macros/investors-and-media.css'
+		'~/App_Plugins/BackofficeStuff/Macros/investors-and-media.css',	
+		'~/App_Plugins/BackofficeStuff/Macros/flexible-push-video.css'
 	]
 }

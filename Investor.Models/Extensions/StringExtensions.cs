@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
+using Castle.Core.Internal;
 using Lucene.Net.QueryParsers;
 
 namespace Investor.Models.Extensions
@@ -137,6 +139,18 @@ namespace Investor.Models.Extensions
             }
 
             return QueryParser.Escape(value);
+        }
+
+        public static string GetAbsoluteUrl(string url)
+        {
+            var absoluteUrl = "";
+
+            if (!url.IsNullOrEmpty())
+            {
+                absoluteUrl = "https://" + HttpContext.Current.Request.Url.Host + url;
+            }
+            
+            return absoluteUrl;
         }
     }
 }

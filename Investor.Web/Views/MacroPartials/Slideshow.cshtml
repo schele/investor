@@ -43,14 +43,14 @@
                     continue;
                 }*@
                 <div class="item slide-show-item @(index == 0 ? "active" : null)">
-                    <div class="span6 no-padding">
+                    <div class="col-md-6 no-padding">
                         <div class="slide-show-content">
                             <h2>@(media.GetPropertyValue<string>("heading"))</h2>
                             <p>@(media.GetPropertyValue<string>("text"))</p>
                             <a href="@(Umbraco.NiceUrl(media.GetPropertyValue<int>("url")))">@(media.GetPropertyValue<string>("urlText"))</a>
                         </div>
                     </div>
-                    <div class="span6 no-padding">
+                    <div class="col-md-6 no-padding">
                         <div class="slide-show-image">
                             <img src="@media.Url" alt="@(media.GetPropertyValue<string>("heading"))" />
                         </div>

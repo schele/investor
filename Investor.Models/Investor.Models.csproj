@@ -242,7 +242,7 @@
     </Reference>
     <Reference Include="UCodeFirst, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\uCodeFirst.Core.2.3.4\lib\net45\UCodeFirst.dll</HintPath>
+      <HintPath>..\packages\uCodeFirst.Core.2.3.5\lib\net45\UCodeFirst.dll</HintPath>
     </Reference>
     <Reference Include="umbraco, Version=1.0.5948.18146, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

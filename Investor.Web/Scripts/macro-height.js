@@ -31,8 +31,8 @@
 
   var setMacroHeight = function(rows) {
     $(rows).each(function() {
-      var firstMacroContainer = $(this).find('.col-md-6:first-child > div').children();
-      var lastMacroContainer = $(this).find('.col-md-6:last-child > div').children();
+      var firstMacroContainer = $(this).find('.col-md-6:first-child > div > .half-grid-item');
+      var lastMacroContainer = $(this).find('.col-md-6:last-child > div > .half-grid-item');
 
       var containers = macroContainers(firstMacroContainer, lastMacroContainer);
       

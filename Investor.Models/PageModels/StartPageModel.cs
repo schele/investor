@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Web;
 using Investor.Models.Converters;
-using Investor.Models.Enums;
 using Investor.Models.Models.NodeLink;
 using umbraco.interfaces;
 using UCodeFirst;

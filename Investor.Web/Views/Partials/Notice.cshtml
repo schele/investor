@@ -5,8 +5,8 @@
 @inherits UmbracoViewPage<NoticePageModel>
 
 <div class="newsroom-page-notices-date">
-    <span>@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
-    <span class="newsroom-page-notices-time">@Model.CreateDate.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
+    <span>@Model.AlternativeDateTime.ToString(Umbraco.GetDictionaryValue("System.Language.DateFormat"))</span>
+    <span class="newsroom-page-notices-time">@Model.AlternativeDateTime.ToString(Umbraco.GetDictionaryValue("System.Language.TimeFormat"))</span>
 </div>
 
 @Html.Render(Model.Header, @<h3>@Model.Header</h3>)

@@ -3,36 +3,35 @@
 @using Investor.Models.Models
 @using Investor.Models.Models.NodeLink
 @using Investor.Models.PageModels
-@using javax.swing
 
 @inherits UmbracoViewPage<BaseModel>
 
 @functions
 {        
-    private RelatedLink GetRelatedLink(NodeLink node)
-    {
-        var relatedLink = new RelatedLink();
+    //private RelatedLink GetRelatedLink(NodeLink node)
+    //{
+    //    var relatedLink = new RelatedLink();
         
-        if (node.Type == "internal")
-        {
-            relatedLink.Url =  Umbraco.TypedContent(node.Link).Url;
-        }
+    //    if (node.Type == "internal")
+    //    {
+    //        relatedLink.Url =  Umbraco.TypedContent(node.Link).Url;
+    //    }
 
-        if (node.Type == "internalMedia")
-        {
-            relatedLink.Url =  Umbraco.TypedMedia(node.Link).Url;
-        }
+    //    if (node.Type == "internalMedia")
+    //    {
+    //        relatedLink.Url =  Umbraco.TypedMedia(node.Link).Url;
+    //    }
 
-        if (node.Type == "external")
-        { 
-            relatedLink.Url = node.Link;
-        }
+    //    if (node.Type == "external")
+    //    { 
+    //        relatedLink.Url = node.Link;
+    //    }
 
-        relatedLink.Caption = node.Caption;
-        relatedLink.Target = node.NewWindow ? "_blank" : null;
+    //    relatedLink.Caption = node.Caption;
+    //    relatedLink.Target = node.NewWindow ? "_blank" : null;
         
-        return relatedLink;
-    }
+    //    return relatedLink;
+    //}
 }
 
 <!DOCTYPE html>
@@ -137,13 +136,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
-    @*<script type="text/javascript">
-    window.cookieconsent_options = { "message": "@Model.StartPage.CookieText", "dismiss": "@Model.StartPage.CookieButtonText", "learnMore": "@Model.StartPage.CookieUrlText", "link": "/cookies", "theme": "light-bottom" };
-    </script>
-
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>*@
-    <!-- End Cookie Consent plugin -->
 </head>
 
 <body data-ng-app="baseApp">
@@ -175,7 +167,7 @@
             <a href="@Model.StartPage.PopupUrl.Link" title="@Model.StartPage.PopupUrlText">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrlText</span>)</a>
         }        
 
-        <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile">Stanna kvar på investorab</button>
+        <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile" title="@Umbraco.GetDictionaryValue("System.Modal.Stay")">@Umbraco.GetDictionaryValue("System.Modal.Stay")</button>
     </div>
     <script src="~/Scripts/angular/lib/underscore.js" type="text/javascript"></script>
     <script src="~/Scripts/angular/lib/angular.js" type="text/javascript"></script>

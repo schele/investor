@@ -6,7 +6,13 @@
 
 @{
     Layout = "Master.cshtml";
-    var videoUrl = Investor.Models.Extensions.StringExtensions.GetAbsoluteUrl(Model.Movie.Url);
+    
+    var videoUrl = string.Empty;
+    
+    if (Model.Movie != null)
+    {
+        videoUrl = Investor.Models.Extensions.StringExtensions.GetAbsoluteUrl(Model.Movie.Url);
+    }
 }
 
 <div class="row">

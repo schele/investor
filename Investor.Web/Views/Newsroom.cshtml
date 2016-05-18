@@ -1,7 +1,6 @@
 ﻿@using Investor.Helpers
 @using Investor.Models.PageModels
 
-@inherits UmbracoTemplatePage
 @inherits UmbracoViewPage<NewsroomPageModel>
 
 @{
@@ -20,40 +19,43 @@
         @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
     </div>
 
-    @if (Model.GetComments().Any())
+    @if (Model.GetComments() != null)
     {
-        <div class="@colClass">
-            <div class="newsroom-page-comments">
-                @Html.Render(Model.CommentsHeader, @<h2>@Model.CommentsHeader</h2>)
+        if (Model.GetComments().Any())
+        {
+            <div class="@colClass">
+                <div class="newsroom-page-comments">
+                    @Html.Render(Model.CommentsHeader, @<h2> @Model.CommentsHeader </h2>)
 
-                @if (Model.GetComments() != null)
-                {
-                    <ul>
-                        @foreach (var comment in Model.GetComments().Take(5))
-                        {
-                            <li class="newsroom-page-comments-comment">
-                                @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
-                            </li>
-                        }
-                    </ul>
-                    if (Model.GetComments().Count() > 5)
+                    @if (Model.GetComments() != null)
                     {
-                        <ul class="newsroom-page-comments-expandable expandable-list-container">
-                            @foreach (var comment in Model.GetComments().Skip(5))
+                        <ul>
+                            @foreach (var comment in Model.GetComments().Take(5))
                             {
                                 <li class="newsroom-page-comments-comment">
                                     @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
                                 </li>
                             }
                         </ul>
-                        <button class="newsroom-page-comments-expand-btn expandable-list-btn">
-                            <span class="newsroom-page-comments-expandable-closed expandable-list-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
-                            <span class="newsroom-page-comments-expandable-open expandable-list-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
-                        </button>
+                        if (Model.GetComments().Count() > 5)
+                        {
+                            <ul class="newsroom-page-comments-expandable expandable-list-container">
+                                @foreach (var comment in Model.GetComments().Skip(5))
+                                {
+                                    <li class="newsroom-page-comments-comment">
+                                        @Html.Partial("~/Views/Partials/Comment.cshtml", comment)
+                                    </li>
+                                }
+                            </ul>
+                            <button class="newsroom-page-comments-expand-btn expandable-list-btn">
+                                <span class="newsroom-page-comments-expandable-closed expandable-list-closed active">@Umbraco.GetDictionaryValue("System.Documents.All")</span>
+                                <span class="newsroom-page-comments-expandable-open expandable-list-open">@Umbraco.GetDictionaryValue("System.Documents.Less")</span>
+                            </button>
+                        }
                     }
-                }
+                </div>
             </div>
-        </div>
+        }
     }
 
     @if (Model.GetNotices().Any())
@@ -72,6 +74,7 @@
                             </li>
                         }
                     </ul>
+                    
                     if (Model.GetNotices().Count() > 5)
                     {
                         <ul class="newsroom-page-notices-expandable expandable-list-container">
@@ -92,4 +95,5 @@
         </div>
     }
 </article>
+
 <script type="text/javascript">$(listExpand.init())</script>

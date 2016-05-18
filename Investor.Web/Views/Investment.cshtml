@@ -5,22 +5,29 @@
 
 @{
     Layout = "Master.cshtml";
-
-    var siblings = Model.Parent<BaseModel>().Children().Count();    
 }
 
 @functions
 {
     protected string GetPreviousUrl()
     {
-        var parent = Model.Parent<BaseModel>();        
+        var parent = Model.Parent<BaseModel>();
         var list = parent.Children<InvestmentPageModel>();
         string url;
 
         if (!Model.IsFirst())
         {
             var prevNode = Model.Previous<InvestmentPageModel>();
-            url = prevNode.Url;
+
+            if (prevNode == null)
+            {
+                // this is the last node of InvestmentPageModel im going to create a Model.IsLast<T>() later but for now we roll like this
+                url = list.Last().Url;
+            }
+            else
+            {
+                url = prevNode.Url;
+            }
         }
         else
         {
@@ -39,7 +46,16 @@
         if (!Model.IsLast())
         {
             var prevNode = Model.Next<InvestmentPageModel>();
-            url = prevNode.Url;
+
+            if (prevNode == null)
+            {
+                // this is the last node of InvestmentPageModel im going to create a Model.IsLast<T>() later but for now we roll like this
+                url = list.First().Url;
+            }
+            else
+            {
+                url = prevNode.Url;
+            }
         }
         else
         {
@@ -51,17 +67,12 @@
 }
 
 <article class="investment-page">
-    
-    @if (siblings > 1)
-    {
-        <div class="row">
-            <div class="col-md-12 investment-page-next-previous">
-                <a class="previous" href="@GetPreviousUrl()">@Umbraco.GetDictionaryValue("System.Investment.PreviousInvestment")</a> |
-                <a class="next link" href="@GetNextUrl()">@Umbraco.GetDictionaryValue("System.Investment.NextInvestment")</a>
-            </div>
+    <div class="row">
+        <div class="col-md-12 investment-page-next-previous">
+            <a class="previous" href="@GetPreviousUrl()">@Umbraco.GetDictionaryValue("System.Investment.PreviousInvestment")</a> |
+            <a class="next link" href="@GetNextUrl()">@Umbraco.GetDictionaryValue("System.Investment.NextInvestment")</a>
         </div>
-    }
-    
+    </div>
     <div class="row investment-page-intro">
         <div class="col-md-7 col-sm-6">
             @Html.Render(Model.Header, @<h1> @Model.Header </h1>)

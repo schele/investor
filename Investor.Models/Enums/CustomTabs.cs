@@ -6,7 +6,7 @@ namespace Investor.Models.Enums
     {
         [EnumName("Cookie")]
         Cookie,
-
+ 
         [EnumName("Popup")]
         Popup
     }

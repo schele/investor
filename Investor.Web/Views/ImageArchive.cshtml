@@ -23,7 +23,7 @@
                     {
                         var umbracoBytes = umbracoHelper.TypedMedia(gallery.Images.ToList().First().Id).GetSize();
 
-                        <li class="col-md-3 col-sm-3">
+                        <li class="col-md-3 col-sm-3 image-container">
                             <a href="@gallery.Images.ToList().First().Url" title="@gallery.Images.ToList().First().Name">
                                 <img src="@gallery.Images.ToList().First().Url" alt="@gallery.Images.ToList().First().Name" />
 
@@ -33,7 +33,7 @@
                     }
                     else
                     {
-                        <li class="col-md-3 col-sm-3">
+                        <li class="col-md-3 col-sm-3 image-container">
                             <a href="@gallery.Url" title="@gallery.Name">
                                 @if (gallery.PushImage != null)
                                 {
@@ -57,7 +57,7 @@
                     {
                         var umbracoBytes = image.GetSize();
 
-                        <li class="col-md-3 col-sm-3">
+                        <li class="col-md-3 col-sm-3 image-container">
                             <a href="@image.Url" title="@image.Name">
                                 @if (image.Url != null)
                                 {

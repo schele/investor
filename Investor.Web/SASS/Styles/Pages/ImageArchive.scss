@@ -3,10 +3,23 @@
     margin-left: -1px;
 }
 
+.image-archive-page ul .image-container {
+    margin-bottom: 15px;
+    float: none; display: inline-block; margin: 0 -0.125em;
+    vertical-align: top;
+    margin-bottom: 30px;
+}
+
+.image-archive-page ul {
+    margin-bottom: 20px;
+    list-style: none;
+}
+
 .image-archive-page ul li a {
     color: #000;
     display: block;
     text-decoration: none;
+    max-width: 143px; 
 }
 
 .image-archive-page ul li a img {

@@ -831,6 +831,9 @@
     <Content Include="App_Plugins\TinyMceEditor\package.manifest" />
     <Content Include="Views\Partials\MobileSearchBox.cshtml" />
     <Content Include="App_Plugins\BackofficeStuff\package.manifest" />
+    <None Include="Web.PROD.config">
+		<DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.QA.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

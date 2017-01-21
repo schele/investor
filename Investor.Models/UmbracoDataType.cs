@@ -110,6 +110,12 @@ namespace Investor.Models
         SimpleModuleArea,
 
         [EnumName("Macro Container")]
-        MacroContainer
+        MacroContainer,
+
+        [EnumName("Dropdown for Investments")]
+        DropdownForInvestments,
+
+        [EnumName("Grid")]
+        Grid
     }
 }

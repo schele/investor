@@ -63,7 +63,7 @@
 
     <title>@Model.BrowserTabText - Investor AB</title>
 
-    <script>document.domain = document.domain.replace(/[^.]*\./, '');</script>
+    @*<script>document.domain = document.domain.replace(/[^.]*\./, '');</script>*@
 
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-touch-icon-60x60.png">
@@ -167,7 +167,7 @@
             <a href="@Model.StartPage.PopupUrl.Link" title="@Model.StartPage.PopupUrlText">@Html.RelatedLink(Model.StartPage.PopupUrl, @<span>@Model.StartPage.PopupUrlText</span>)</a>
         }        
 
-        <button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile" title="@Umbraco.GetDictionaryValue("System.Modal.Stay")">@Umbraco.GetDictionaryValue("System.Modal.Stay")</button>
+        @*<button class="campaign-custom-close-mobile" id="campaign-custom-close-mobile" title="@Umbraco.GetDictionaryValue("System.Modal.Stay")">@Umbraco.GetDictionaryValue("System.Modal.Stay")</button>*@
     </div>
     <script src="~/Scripts/angular/lib/underscore.js" type="text/javascript"></script>
     <script src="~/Scripts/angular/lib/angular.js" type="text/javascript"></script>

@@ -5,14 +5,6 @@ using Umbraco.Web;
 
 namespace Investor.UmbExamine.Extensions
 {
-    public enum ContentType
-    {
-        Content,
-        Media,
-        File,
-        None
-    }
-
     public static class SearchResultExtensions
     {
         public static IPublishedContent TryGetContentOrMedia(this SearchResult result, UmbracoHelper helper)

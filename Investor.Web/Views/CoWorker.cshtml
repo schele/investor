@@ -1,34 +1,4 @@
-﻿@using Investor.Helpers
-@using Investor.Models.PageModels
-
-@inherits UmbracoViewPage<CoWorkerPageModel>
-
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "Master.cshtml";
+	Layout = null;
 }
-
-<div class="row">
-    @Html.Partial("~/Views/Partials/SubNavigation.cshtml")
-    <article class="co-worker-page col-md-7 col-sm-12">
-        <div class="row">
-            <div class="col-md-3 col-sm-3">
-                @if (Model.Image != null)
-                {
-                    <img src="@Model.Image.Url" alt="@Model.Name" />
-                }
-            </div>
-            <div class="co-worker-page-content col-md-5 col-sm-5">
-                @Html.Render(Model.Name, @<h1>@Model.Name</h1>)
-                @Html.Render(Model.Position, @<span>Position: @Model.Position</span>)
-                @Html.Render(Model.Phone, @<span>@Umbraco.GetDictionaryValue("System.Contact.Phone"): @Model.Phone</span>)
-                @Html.Render(Model.Mobile, @<span>@Umbraco.GetDictionaryValue("System.Contact.Mobile"): @Model.Mobile</span>)
-                <div class="text-editor-content">
-                    @Html.Raw(Model.AdditionalInfo) 
-                </div>                                         
-            </div>
-            <div class="col-md-12 text-editor-content co-worker-page-resume">               
-                @Html.Raw(Model.Resume)
-            </div>
-        </div>
-    </article>
-</div>

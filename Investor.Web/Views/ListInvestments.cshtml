@@ -1,22 +1,4 @@
-﻿@using Investor.Helpers
-@using Investor.Models.PageModels
-
-@inherits UmbracoViewPage<ListInvestmentsPageModel>
-
-@{    
-    Layout = "Master.cshtml";
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = null;
 }
-
-<div class="row">
-    <article class="col-md-9 list-investments-page">
-        @Html.Render(Model.CurrentPage.Name, @<h1 class="@Model.ColorDropdown">@Model.Header</h1>)
-        @Html.Render(Model.Preamble, @<p>@Model.Preamble</p>)
-
-        <ul>
-            @foreach (var investment in Model.Children().OrderBy(x => x.SortOrder))
-            {
-                <li><a href="@investment.Url">@investment.Name</a></li>
-            }
-        </ul>
-    </article>
-</div>

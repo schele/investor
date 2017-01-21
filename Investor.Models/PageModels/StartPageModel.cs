@@ -47,7 +47,7 @@ namespace Investor.Models.PageModels
         #region content
 
         [Property(
-            "Sida: Start - Grid - Grid layout",
+            UmbracoDataType.Grid,
             Tab.Content,
             DisplayName = "Content: Grid",
             Description = ""

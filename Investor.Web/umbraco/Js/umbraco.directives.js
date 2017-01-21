@@ -1,6 +1,6 @@
 /*! umbraco
  * https://github.com/umbraco/umbraco-cms/
- * Copyright (c) 2016 Umbraco HQ;
+ * Copyright (c) 2017 Umbraco HQ;
  * Licensed 
  */
 
@@ -2141,15 +2141,22 @@ Use this directive to construct a header inside the main editor window.
                 scope.dialogModel = {
                     view: "iconpicker",
                     show: true,
-                    submit: function(model) {
-                        if (model.color) {
-                            scope.icon = model.icon + " " + model.color;
-                        } else {
-                            scope.icon = model.icon;
-                        }
+                    submit: function (model) {
 
-                        // set form to dirty
-                        ctrl.$setDirty();
+                        /* ensure an icon is selected, because on focus on close button
+                           or an element in background no icon is submitted. So don't clear/update existing icon/preview.
+                        */
+                        if (model.icon) {
+
+                            if (model.color) {
+                                scope.icon = model.icon + " " + model.color;
+                            } else {
+                                scope.icon = model.icon;
+                            }
+
+                            // set form to dirty
+                            ctrl.$setDirty();
+                        }
 
                         scope.dialogModel.show = false;
                         scope.dialogModel = null;
@@ -3528,6 +3535,7 @@ angular.module("umbraco.directives")
                                     await.push(stylesheetResource.getRulesByName(stylesheet).then(function (rules) {
                                         angular.forEach(rules, function (rule) {
                                           var r = {};
+                                          var split = "";
                                           r.title = rule.name;
                                           if (rule.selector[0] === ".") {
                                               r.inline = "span";
@@ -3538,6 +3546,14 @@ angular.module("umbraco.directives")
                                               // since only one element can have one id.
                                               r.inline = "span";
                                               r.attributes = { id: rule.selector.substring(1) };
+                                          }else if (rule.selector[0] !== "." && rule.selector.indexOf(".") > -1) {
+                                              split = rule.selector.split(".");
+                                              r.block = split[0];
+                                              r.classes = rule.selector.substring(rule.selector.indexOf(".") + 1).replace(".", " ");
+                                          }else if (rule.selector[0] !== "#" && rule.selector.indexOf("#") > -1) {
+                                              split = rule.selector.split("#");
+                                              r.block = split[0];
+                                              r.classes = rule.selector.substring(rule.selector.indexOf("#") + 1);
                                           }else {
                                               r.block = rule.selector;
                                           }
@@ -3627,6 +3643,55 @@ angular.module("umbraco.directives")
 
                                 });
 
+                                // pin toolbar to top of screen if we have focus and it scrolls off the screen
+                                var pinToolbar = function () {
+
+                                    var _toolbar = $(editor.editorContainer).find(".mce-toolbar");
+                                    var toolbarHeight = _toolbar.height();
+
+                                    var _tinyMce = $(editor.editorContainer);
+                                    var tinyMceRect = _tinyMce[0].getBoundingClientRect();
+                                    var tinyMceTop = tinyMceRect.top;
+                                    var tinyMceBottom = tinyMceRect.bottom;
+                                    var tinyMceWidth = tinyMceRect.width;
+
+                                    var _tinyMceEditArea = _tinyMce.find(".mce-edit-area");
+
+                                    // set padding in top of mce so the content does not "jump" up
+                                    _tinyMceEditArea.css("padding-top", toolbarHeight);
+
+                                    if (tinyMceTop < 160 && ((160 + toolbarHeight) < tinyMceBottom)) {
+                                        _toolbar
+                                            .css("visibility", "visible")
+                                            .css("position", "fixed")
+                                            .css("top", "160px")
+                                            .css("margin-top", "0")
+                                            .css("width", tinyMceWidth);
+                                    } else {
+                                        _toolbar
+                                            .css("visibility", "visible")
+                                            .css("position", "absolute")
+                                            .css("top", "auto")
+                                            .css("margin-top", "0")
+                                            .css("width", tinyMceWidth);
+                                    }
+                                    
+                                };
+
+                                // unpin toolbar to top of screen
+                                var unpinToolbar = function() {
+
+                                    var _toolbar = $(editor.editorContainer).find(".mce-toolbar");
+                                    var _tinyMce = $(editor.editorContainer);
+                                    var _tinyMceEditArea = _tinyMce.find(".mce-edit-area");
+
+                                    // reset padding in top of mce so the content does not "jump" up
+                                    _tinyMceEditArea.css("padding-top", "0");
+                                        
+                                    _toolbar.css("position", "static");
+
+                                };
+
                                 //when we leave the editor (maybe)
                                 editor.on('blur', function (e) {
                                     editor.save();
@@ -3640,6 +3705,9 @@ angular.module("umbraco.directives")
                                             scope.onBlur();
                                         }
 
+                                        unpinToolbar();
+                                        $('.umb-panel-body').off('scroll', pinToolbar);
+
                                     });
                                 });
 
@@ -3651,6 +3719,9 @@ angular.module("umbraco.directives")
                                             scope.onFocus();
                                         }
 
+                                        pinToolbar();
+                                        $('.umb-panel-body').on('scroll', pinToolbar);
+
                                     });
                                 });
 
@@ -3661,6 +3732,9 @@ angular.module("umbraco.directives")
                                         if(scope.onClick){
                                             scope.onClick();
                                         }
+
+                                        pinToolbar();
+                                        $('.umb-panel-body').on('scroll', pinToolbar);
 
                                     });
                                 });
@@ -4259,9 +4333,13 @@ angular.module("umbraco.directives")
                             $timeout(function(){
                                 setDimensions();
                             });
-							var offsetX = $overlay[0].offsetLeft;
-							var offsetY = $overlay[0].offsetTop;
-                            calculateGravity(offsetX, offsetY);
+							// Make sure we can find the offset values for the overlay(dot) before calculating
+							// fixes issue with resize event when printing the page (ex. hitting ctrl+p inside the rte)
+							if($overlay.is(':visible')) {
+								var offsetX = $overlay[0].offsetLeft;
+								var offsetY = $overlay[0].offsetTop;
+								calculateGravity(offsetX, offsetY);
+							}
                         });
                     });
 
@@ -4378,6 +4456,13 @@ angular.module("umbraco.directives")
 
 angular.module("umbraco.directives")
 
+    /**
+    * @ngdoc directive
+    * @name umbraco.directives.directive:localize
+    * @restrict EA
+    * @function
+    * @description Localize directive
+    **/
     .directive('localize', function ($log, localizationService) {
         return {
             restrict: 'E',
@@ -4419,6 +4504,7 @@ angular.module("umbraco.directives")
         };
 
     });
+
 /**
  * @ngdoc directive
  * @name umbraco.directives.directive:umbNotifications
@@ -5314,6 +5400,8 @@ angular.module("umbraco.directives")
                 var curr = $(event.target);         // active tab
                 var prev = $(event.relatedTarget);  // previous tab
 
+				$scope.$apply();
+
                 for (var c in callbacks) {
                     callbacks[c].apply(this, [{current: curr, previous: prev}]);
                 }
@@ -5875,7 +5963,7 @@ angular.module("umbraco.directives")
         //TODO: Remove more of the binding from this template and move the DOM manipulation to be manually done in the link function,
         // this will greatly improve performance since there's potentially a lot of nodes being rendered = a LOT of watches!
 
-        template: '<li ng-class="{\'current\': (node == currentNode)}" on-right-click="altSelect(node, $event)">' +
+        template: '<li ng-class="{\'current\': (node == currentNode), \'has-children\': node.hasChildren}" on-right-click="altSelect(node, $event)">' +
             '<div ng-class="getNodeCssClass(node)" ng-swipe-right="options(node, $event)" >' +
             //NOTE: This ins element is used to display the search icon if the node is a container/listview and the tree is currently in dialog
             //'<ins ng-if="tree.enablelistviewsearch && node.metaData.isContainer" class="umb-tree-node-search icon-search" ng-click="searchNode(node, $event)" alt="searchAltText"></ins>' + 
@@ -5913,14 +6001,13 @@ angular.module("umbraco.directives")
                     //set the padding
                     .css("padding-left", (node.level * 20) + "px");
 
-                //remove first 'ins' if there is no children
-                //show/hide last 'ins' depending on children
+                //toggle visibility of last 'ins' depending on children
+                //visibility still ensure the space is "reserved", so both nodes with and without children are aligned.
                 if (!node.hasChildren) {
-                    element.find("ins:first").remove();
-                    element.find("ins").last().hide();
+                    element.find("ins").last().css("visibility", "hidden");
                 }
                 else {
-                    element.find("ins").last().show();
+                    element.find("ins").last().css("visibility", "visible");
                 }
 
                 var icon = element.find("i:first");
@@ -6123,7 +6210,6 @@ function treeSearchBox(localizationService, searchService, $q) {
 
                     //a canceler exists, so perform the cancelation operation and reset
                     if (canceler) {
-                        console.log("CANCELED!");
                         canceler.resolve();
                         canceler = $q.defer();
                     }
@@ -6324,6 +6410,79 @@ angular.module("umbraco.directives")
             }
         };
     });
+
+/**
+@ngdoc directive
+@name umbraco.directives.directive:umbAvatar
+@restrict E
+@scope
+
+@description
+Use this directive to render an avatar.
+
+<h3>Markup example</h3>
+<pre>
+	<div ng-controller="My.Controller as vm">
+
+        <umb-avatar
+            size="xs"
+            img-src="{{vm.avatar[0].value}}"
+            img-srcset="{{vm.avatar[1].value}} 2x, {{vm.avatar[2].value}} 3x">
+        </umb-avatar>
+
+	</div>
+</pre>
+
+<h3>Controller example</h3>
+<pre>
+	(function () {
+		"use strict";
+
+		function Controller() {
+
+            var vm = this;
+
+            vm.avatar = [
+                { value: "assets/logo.png" },
+                { value: "assets/logo@2x.png" },
+                { value: "assets/logo@3x.png" }
+            ];
+
+        }
+
+		angular.module("umbraco").controller("My.Controller", Controller);
+
+	})();
+</pre>
+
+@param {string} size (<code>attribute</code>): The size of the avatar (xs, s, m, l, xl).
+@param {string} img-src (<code>attribute</code>): The image source to the avatar.
+@param {string} img-srcset (<code>atribute</code>): Reponsive support for the image source.
+**/
+
+(function() {
+    'use strict';
+
+    function AvatarDirective() {
+
+        var directive = {
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'views/components/umb-avatar.html',
+            scope: {
+                size: "@",
+                imgSrc: "@",
+                imgSrcset: "@"
+            }
+        };
+
+        return directive;
+
+    }
+
+    angular.module('umbraco.directives').directive('umbAvatar', AvatarDirective);
+
+})();
 
 /**
 @ngdoc directive
@@ -8164,6 +8323,157 @@ angular.module("umbraco.directives")
 
 })();
 
+/**
+@ngdoc directive
+@name umbraco.directives.directive:umbLightbox
+@restrict E
+@scope
+
+@description
+<p>Use this directive to open a gallery in a lightbox overlay.</p>
+
+<h3>Markup example</h3>
+<pre>
+    <div ng-controller="My.Controller as vm">
+
+        <div class="my-gallery">
+            <a href="" ng-repeat="image in images" ng-click="vm.openLightbox($index, images)">
+                <img ng-src="image.source" />
+            </a>
+        </div>
+
+        <umb-lightbox
+            ng-if="vm.lightbox.show"
+            items="vm.lightbox.items"
+            active-item-index="vm.lightbox.activeIndex"
+            on-close="vm.closeLightbox">
+        </umb-lightbox>
+
+    </div>
+</pre>
+
+<h3>Controller example</h3>
+<pre>
+    (function () {
+
+        "use strict";
+
+        function Controller() {
+
+            var vm = this;
+
+            vm.images = [
+                {
+                    "source": "linkToImage"
+                },
+                {
+                    "source": "linkToImage"
+                }
+            ]
+
+            vm.openLightbox = openLightbox;
+            vm.closeLightbox = closeLightbox;
+
+            function openLightbox(itemIndex, items) {
+                vm.lightbox = {
+                    show: true,
+                    items: items,
+                    activeIndex: itemIndex
+                };
+            }
+
+            function closeLightbox() {
+                vm.lightbox.show = false;
+                vm.lightbox = null;
+            }
+
+        }
+
+        angular.module("umbraco").controller("My.Controller", Controller);
+    })();
+</pre>
+
+@param {array} items Array of gallery items.
+@param {callback} onClose Callback when the lightbox is closed.
+@param {number} activeItemIndex Index of active item.
+**/
+
+
+(function() {
+    'use strict';
+
+    function LightboxDirective() {
+
+        function link(scope, el, attr, ctrl) {
+
+
+            function activate() {
+
+                var eventBindings = [];
+
+                el.appendTo("body");
+
+                // clean up
+                scope.$on('$destroy', function() {
+                    // unbind watchers
+                    for (var e in eventBindings) {
+                        eventBindings[e]();
+                    }
+                });
+            }
+
+            scope.next = function() {
+
+                var nextItemIndex = scope.activeItemIndex + 1;
+
+                if( nextItemIndex < scope.items.length) {
+                    scope.items[scope.activeItemIndex].active = false;
+                    scope.items[nextItemIndex].active = true;
+                    scope.activeItemIndex = nextItemIndex;
+                }
+            };
+
+            scope.prev = function() {
+
+                var prevItemIndex = scope.activeItemIndex - 1;
+
+                if( prevItemIndex >= 0) {
+                    scope.items[scope.activeItemIndex].active = false;
+                    scope.items[prevItemIndex].active = true;
+                    scope.activeItemIndex = prevItemIndex;
+                }
+
+            };
+
+            scope.close = function() {
+                if(scope.onClose) {
+                    scope.onClose();
+                }
+            };
+
+            activate();
+
+        }
+
+        var directive = {
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'views/components/umb-lightbox.html',
+            scope: {
+                items: '=',
+                onClose: "=",
+                activeItemIndex: "="
+            },
+            link: link
+        };
+
+        return directive;
+    }
+
+    angular.module('umbraco.directives').directive('umbLightbox', LightboxDirective);
+
+})();
+
 (function() {
    'use strict';
 
@@ -8205,7 +8515,7 @@ angular.module("umbraco.directives")
 (function() {
   'use strict';
 
-  function ListViewSettingsDirective(contentTypeResource, dataTypeResource, dataTypeHelper) {
+  function ListViewSettingsDirective(contentTypeResource, dataTypeResource, dataTypeHelper, listViewPrevalueHelper) {
 
     function link(scope, el, attr, ctrl) {
 
@@ -8224,6 +8534,7 @@ angular.module("umbraco.directives")
 
               scope.dataType = dataType;
 
+              listViewPrevalueHelper.setPrevalues(dataType.preValues);
               scope.customListViewCreated = checkForCustomListView();
 
             });
@@ -8672,6 +8983,22 @@ Use this directive to generate a thumbnail grid of media items.
                 if (!item.isFolder) {
                     item.thumbnail = mediaHelper.resolveFile(item, true);
                     item.image = mediaHelper.resolveFile(item, false);
+
+                    var fileProp = _.find(item.properties, function (v) {
+                        return (v.alias === "umbracoFile");
+                    });
+
+                    if (fileProp && fileProp.value) {
+                        item.file = fileProp.value;
+                    }
+
+                    var extensionProp = _.find(item.properties, function (v) {
+                        return (v.alias === "umbracoExtension");
+                    });
+
+                    if (extensionProp && extensionProp.value) {
+                        item.extension = extensionProp.value;
+                    }
                 }
             }
 
@@ -9010,6 +9337,48 @@ Use this directive to generate a pagination.
 
 })();
 
+
+/**
+@ngdoc directive
+@name umbraco.directives.directive:umbProgressBar
+@restrict E
+@scope
+
+@description
+Use this directive to generate a progress bar.
+
+<h3>Markup example</h3>
+<pre>
+    <umb-progress-bar
+        percentage="60">
+    </umb-progress-bar>
+</pre>
+
+@param {number} percentage (<code>attribute</code>): The progress in percentage.
+**/
+
+(function() {
+    'use strict';
+
+    function ProgressBarDirective() {
+
+        var directive = {
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'views/components/umb-progress-bar.html',
+            scope: {
+                percentage: "@"
+            }
+        };
+
+        return directive;
+
+    }
+
+    angular.module('umbraco.directives').directive('umbProgressBar', ProgressBarDirective);
+
+})();
+
 /**
 @ngdoc directive
 @name umbraco.directives.directive:umbStickyBar
@@ -9165,50 +9534,50 @@ Use this directive make an element sticky and follow the page when scrolling.
 
 })();
 
-(function() {
+(function () {
    'use strict';
 
    function TableDirective() {
 
       function link(scope, el, attr, ctrl) {
 
-         scope.clickItem = function(item, $event) {
-            if(scope.onClick) {
+         scope.clickItem = function (item, $event) {
+            if (scope.onClick) {
                scope.onClick(item);
                $event.stopPropagation();
             }
          };
 
-        scope.selectItem = function(item, $index, $event) {
-            if(scope.onSelect) {
+         scope.selectItem = function (item, $index, $event) {
+            if (scope.onSelect) {
                scope.onSelect(item, $index, $event);
                $event.stopPropagation();
             }
-        };
+         };
 
-        scope.selectAll = function($event) {
-            if(scope.onSelectAll) {
-                scope.onSelectAll($event);
+         scope.selectAll = function ($event) {
+            if (scope.onSelectAll) {
+               scope.onSelectAll($event);
             }
-        };
+         };
 
-        scope.isSelectedAll = function() {
-            if(scope.onSelectedAll && scope.items && scope.items.length > 0) {
-                return scope.onSelectedAll();
+         scope.isSelectedAll = function () {
+            if (scope.onSelectedAll && scope.items && scope.items.length > 0) {
+               return scope.onSelectedAll();
             }
-        };
+         };
 
-        scope.isSortDirection = function (col, direction) {
+         scope.isSortDirection = function (col, direction) {
             if (scope.onSortingDirection) {
-                return scope.onSortingDirection(col, direction);
+               return scope.onSortingDirection(col, direction);
             }
-        };
+         };
 
-        scope.sort = function(field, allow) {
-            if(scope.onSort) {
-                scope.onSort(field, allow);
+         scope.sort = function (field, allow, isSystem) {
+            if (scope.onSort) {
+               scope.onSort(field, allow, isSystem);
             }
-        };
+         };
 
       }
 
@@ -9414,215 +9783,226 @@ Use this directive to render a tooltip.
 /*
 TODO
 .directive("umbFileDrop", function ($timeout, $upload, localizationService, umbRequestHelper){
-
-	return{
-		restrict: "A",
-		link: function(scope, element, attrs){
-
-			//load in the options model
-
-
-		}
-	}
+    return{
+        restrict: "A",
+        link: function(scope, element, attrs){
+            //load in the options model
+        }
+    }
 })
 */
 
 angular.module("umbraco.directives")
+    .directive('umbFileDropzone',
+        function($timeout, Upload, localizationService, umbRequestHelper) {
+            return {
+                restrict: 'E',
+                replace: true,
+                templateUrl: 'views/components/upload/umb-file-dropzone.html',
+                scope: {
+                    parentId: '@',
+                    contentTypeAlias: '@',
+                    propertyAlias: '@',
+                    accept: '@',
+                    maxFileSize: '@',
 
-.directive('umbFileDropzone', function ($timeout, Upload, localizationService, umbRequestHelper) {
-	return {
+                    compact: '@',
+                    hideDropzone: '@',
+                    acceptedMediatypes: '=',
 
-		restrict: 'E',
-		replace: true,
+                    filesQueued: '=',
+                    handleFile: '=',
+                    filesUploaded: '='
+                },
+                link: function(scope, element, attrs) {
+                    scope.queue = [];
+                    scope.done = [];
+                    scope.rejected = [];
+                    scope.currentFile = undefined;
 
-		templateUrl: 'views/components/upload/umb-file-dropzone.html',
+                    function _filterFile(file) {
+                        var ignoreFileNames = ['Thumbs.db'];
+                        var ignoreFileTypes = ['directory'];
 
-		scope: {
-			parentId: '@',
-			contentTypeAlias: '@',
-			propertyAlias: '@',
-			accept: '@',
-			maxFileSize: '@',
+                        // ignore files with names from the list
+                        // ignore files with types from the list
+                        // ignore files which starts with "."
+                        if (ignoreFileNames.indexOf(file.name) === -1 &&
+                            ignoreFileTypes.indexOf(file.type) === -1 &&
+                            file.name.indexOf(".") !== 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
 
-			compact: '@',
-			hideDropzone: '@',
+                    function _filesQueued(files, event) {
+                        //Push into the queue
+                        angular.forEach(files,
+                            function(file) {
 
-			filesQueued: '=',
-			handleFile: '=',
-			filesUploaded: '='
-		},
+                                if (_filterFile(file) === true) {
 
-		link: function(scope, element, attrs) {
+                                    if (file.$error) {
+                                        scope.rejected.push(file);
+                                    } else {
+                                        scope.queue.push(file);
+                                    }
+                                }
+                            });
 
-			scope.queue = [];
-			scope.done = [];
-			scope.rejected = [];
-			scope.currentFile = undefined;
+                        //when queue is done, kick the uploader
+                        if (!scope.working) {
+                            // Upload not allowed
+                            if (!scope.acceptedMediatypes || !scope.acceptedMediatypes.length) {
+                                files.map(function(file) {
+                                    file.uploadStatus = "error";
+                                    file.serverErrorMessage = "File type is not allowed here";
+                                    scope.rejected.push(file);
+                                });
+                                scope.queue = [];
+                            }
+                            // One allowed type
+                            if (scope.acceptedMediatypes && scope.acceptedMediatypes.length === 1) {
+                                // Standard setup - set alias to auto select to let the server best decide which media type to use
+                                if (scope.acceptedMediatypes[0].alias === 'Image') {
+                                    scope.contentTypeAlias = "umbracoAutoSelect";
+                                } else {
+                                    scope.contentTypeAlias = scope.acceptedMediatypes[0].alias;
+                                }
 
-			function _filterFile(file) {
+                                _processQueueItem();
+                            }
+                            // More than one, open dialog
+                            if (scope.acceptedMediatypes && scope.acceptedMediatypes.length > 1) {
+                                _chooseMediaType();
+                            }
+                        }
+                    }
 
-				var ignoreFileNames = ['Thumbs.db'];
-				var ignoreFileTypes = ['directory'];
+                    function _processQueueItem() {
+                        if (scope.queue.length > 0) {
+                            scope.currentFile = scope.queue.shift();
+                            _upload(scope.currentFile);
+                        } else if (scope.done.length > 0) {
+                            if (scope.filesUploaded) {
+                                //queue is empty, trigger the done action
+                                scope.filesUploaded(scope.done);
+                            }
 
-				// ignore files with names from the list
-				// ignore files with types from the list
-				// ignore files which starts with "."
-				if(ignoreFileNames.indexOf(file.name) === -1 &&
-					ignoreFileTypes.indexOf(file.type) === -1 &&
-					file.name.indexOf(".") !== 0) {
-					return true;
-				} else {
-					return false;
-				}
+                            //auto-clear the done queue after 3 secs
+                            var currentLength = scope.done.length;
+                            $timeout(function() {
+                                    scope.done.splice(0, currentLength);
+                                },
+                                3000);
+                        }
+                    }
 
-			}
+                    function _upload(file) {
 
-			function _filesQueued(files, event){
+                        scope.propertyAlias = scope.propertyAlias ? scope.propertyAlias : "umbracoFile";
+                        scope.contentTypeAlias = scope.contentTypeAlias ? scope.contentTypeAlias : "Image";
 
-				//Push into the queue
-				angular.forEach(files, function(file){
+                        Upload.upload({
+                                url: umbRequestHelper.getApiUrl("mediaApiBaseUrl", "PostAddFile"),
+                                fields: {
+                                    'currentFolder': scope.parentId,
+                                    'contentTypeAlias': scope.contentTypeAlias,
+                                    'propertyAlias': scope.propertyAlias,
+                                    'path': file.path
+                                },
+                                file: file
+                            })
+                            .progress(function(evt) {
+                                // calculate progress in percentage
+                                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
+                                // set percentage property on file
+                                file.uploadProgress = progressPercentage;
+                                // set uploading status on file
+                                file.uploadStatus = "uploading";
+                            })
+                            .success(function(data, status, headers, config) {
+                                if (data.notifications && data.notifications.length > 0) {
+                                    // set error status on file
+                                    file.uploadStatus = "error";
+                                    // Throw message back to user with the cause of the error
+                                    file.serverErrorMessage = data.notifications[0].message;
+                                    // Put the file in the rejected pool
+                                    scope.rejected.push(file);
+                                } else {
+                                    // set done status on file
+                                    file.uploadStatus = "done";
+                                    // set date/time for when done - used for sorting
+                                    file.doneDate = new Date();
+                                    // Put the file in the done pool
+                                    scope.done.push(file);
+                                }
+                                scope.currentFile = undefined;
+                                //after processing, test if everthing is done
+                                _processQueueItem();
+                            })
+                            .error(function(evt, status, headers, config) {
+                                // set status done
+                                file.uploadStatus = "error";
+                                //if the service returns a detailed error
+                                if (evt.InnerException) {
+                                    file.serverErrorMessage = evt.InnerException.ExceptionMessage;
+                                    //Check if its the common "too large file" exception
+                                    if (evt.InnerException.StackTrace &&
+                                        evt.InnerException.StackTrace.indexOf("ValidateRequestEntityLength") > 0) {
+                                        file.serverErrorMessage = "File too large to upload";
+                                    }
+                                } else if (evt.Message) {
+                                    file.serverErrorMessage = evt.Message;
+                                }
+                                // If file not found, server will return a 404 and display this message
+                                if (status === 404) {
+                                    file.serverErrorMessage = "File not found";
+                                }
+                                //after processing, test if everthing is done
+                                scope.rejected.push(file);
+                                scope.currentFile = undefined;
+                                _processQueueItem();
+                            });
+                    }
 
-					if(_filterFile(file) === true) {
+                    function _chooseMediaType() {
+                        scope.mediatypepickerOverlay = {
+                            view: "mediatypepicker",
+                            title: "Choose media type",
+                            acceptedMediatypes: scope.acceptedMediatypes,
+                            hideSubmitButton: true,
+                            show: true,
+                            submit: function(model) {
+                                scope.contentTypeAlias = model.selectedType.alias;
+                                scope.mediatypepickerOverlay.show = false;
+                                scope.mediatypepickerOverlay = null;
+                                _processQueueItem();
+                            },
+                            close: function(oldModel) {
 
-						if(file.$error) {
-							scope.rejected.push(file);
-						} else {
-							scope.queue.push(file);
-						}
+                                scope.queue.map(function(file) {
+                                    file.uploadStatus = "error";
+                                    file.serverErrorMessage = "Cannot upload this file, no mediatype selected";
+                                    scope.rejected.push(file);
+                                });
+                                scope.queue = [];
+                                scope.mediatypepickerOverlay.show = false;
+                                scope.mediatypepickerOverlay = null;
+                            }
+                        };
+                    }
 
-					}
-
-				});
-
-				//when queue is done, kick the uploader
-				if(!scope.working){
-					_processQueueItem();
-				}
-			}
-
-
-			function _processQueueItem(){
-
-				if(scope.queue.length > 0){
-					scope.currentFile = scope.queue.shift();
-					_upload(scope.currentFile);
-				}else if(scope.done.length > 0){
-
-					if(scope.filesUploaded){
-						//queue is empty, trigger the done action
-						scope.filesUploaded(scope.done);
-					}
-
-					//auto-clear the done queue after 3 secs
-					var currentLength = scope.done.length;
-					$timeout(function(){
-						scope.done.splice(0, currentLength);
-					}, 3000);
-				}
-			}
-
-			function _upload(file) {
-
-				scope.propertyAlias = scope.propertyAlias ? scope.propertyAlias : "umbracoFile";
-				scope.contentTypeAlias = scope.contentTypeAlias ? scope.contentTypeAlias : "Image";
-
-				Upload.upload({
-					url: umbRequestHelper.getApiUrl("mediaApiBaseUrl", "PostAddFile"),
-					fields: {
-						'currentFolder': scope.parentId,
-						'contentTypeAlias': scope.contentTypeAlias,
-						'propertyAlias': scope.propertyAlias,
-						'path': file.path
-					},
-					file: file
-				}).progress(function (evt) {
-
-					// calculate progress in percentage
-					var progressPercentage = parseInt(100.0 * evt.loaded / evt.total, 10);
-
-					// set percentage property on file
-					file.uploadProgress = progressPercentage;
-
-					// set uploading status on file
-					file.uploadStatus = "uploading";
-
-				}).success(function (data, status, headers, config) {
-
-					if(data.notifications && data.notifications.length > 0) {
-
-						// set error status on file
-						file.uploadStatus = "error";
-
-						// Throw message back to user with the cause of the error
-						file.serverErrorMessage = data.notifications[0].message;
-
-						// Put the file in the rejected pool
-						scope.rejected.push(file);
-
-					} else {
-
-						// set done status on file
-						file.uploadStatus = "done";
-
-						// set date/time for when done - used for sorting
-						file.doneDate = new Date();
-
-						// Put the file in the done pool
-						scope.done.push(file);
-
-					}
-
-					scope.currentFile = undefined;
-
-					//after processing, test if everthing is done
-					_processQueueItem();
-
-				}).error( function (evt, status, headers, config) {
-
-					// set status done
-					file.uploadStatus = "error";
-
-					//if the service returns a detailed error
-					if (evt.InnerException) {
-					    file.serverErrorMessage = evt.InnerException.ExceptionMessage;
-
-					    //Check if its the common "too large file" exception
-					    if (evt.InnerException.StackTrace && evt.InnerException.StackTrace.indexOf("ValidateRequestEntityLength") > 0) {
-					        file.serverErrorMessage = "File too large to upload";
-					    }
-
-					} else if (evt.Message) {
-					    file.serverErrorMessage = evt.Message;
-					}
-
-					// If file not found, server will return a 404 and display this message
-					if(status === 404 ) {
-						file.serverErrorMessage = "File not found";
-					}
-
-					//after processing, test if everthing is done
-					scope.rejected.push(file);
-					scope.currentFile = undefined;
-
-					_processQueueItem();
-				});
-			}
-
-
-			scope.handleFiles = function(files, event){
-				if(scope.filesQueued){
-					scope.filesQueued(files, event);
-				}
-
-				_filesQueued(files, event);
-
-			};
-
-			}
-
-
-		};
-	});
+                    scope.handleFiles = function(files, event) {
+                        if (scope.filesQueued) {
+                            scope.filesQueued(files, event);
+                        }
+                        _filesQueued(files, event);
+                    };
+                }
+            };
+        });
 
 /**
 * @ngdoc directive
@@ -9681,6 +10061,68 @@ function umbSingleFileUpload($compile) {
 }
 
 angular.module('umbraco.directives').directive("umbSingleFileUpload", umbSingleFileUpload);
+/**
+ * Konami Code directive for AngularJS
+ * @version v0.0.1
+ * @license MIT License, http://www.opensource.org/licenses/MIT
+ */
+
+angular.module('umbraco.directives')
+  .directive('konamiCode', ['$document', function ($document) {
+      var konamiKeysDefault = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+
+      return {
+          restrict: 'A',
+          link: function (scope, element, attr) {
+
+              if (!attr.konamiCode) {
+                  throw ('Konami directive must receive an expression as value.');
+              }
+
+              // Let user define a custom code.
+              var konamiKeys = attr.konamiKeys || konamiKeysDefault;
+              var keyIndex = 0;
+
+              /**
+               * Fired when konami code is type.
+               */
+              function activated() {
+                  if ('konamiOnce' in attr) {
+                      stopListening();
+                  }
+                  // Execute expression.
+                  scope.$eval(attr.konamiCode);
+              }
+
+              /**
+               * Handle keydown events.
+               */
+              function keydown(e) {
+                  if (e.keyCode === konamiKeys[keyIndex++]) {
+                      if (keyIndex === konamiKeys.length) {
+                          keyIndex = 0;
+                          activated();
+                      }
+                  } else {
+                      keyIndex = 0;
+                  }
+              }
+
+              /**
+               * Stop to listen typing.
+               */
+              function stopListening() {
+                  $document.off('keydown', keydown);
+              }
+
+              // Start listening to key typing.
+              $document.on('keydown', keydown);
+
+              // Stop listening when scope is destroyed.
+              scope.$on('$destroy', stopListening);
+          }
+      };
+  }]);
 /**
 * @ngdoc directive
 * @name umbraco.directives.directive:noDirtyCheck
@@ -9936,6 +10378,16 @@ function valEmail(valEmailExpression) {
                 }
             };
 
+            //if there is an attribute: type="email" then we need to remove those formatters and parsers
+            if (attrs.type === "email") {
+                //we need to remove the existing parsers = the default angular one which is created by
+                // type="email", but this has a regex issue, so we'll remove that and add our custom one
+                ctrl.$parsers.pop();
+                //we also need to remove the existing formatter - the default angular one will not render
+                // what it thinks is an invalid email address, so it will just be blank
+                ctrl.$formatters.pop();
+            }
+            
             ctrl.$parsers.push(patternValidator);
         }
     };
@@ -9943,7 +10395,8 @@ function valEmail(valEmailExpression) {
 
 angular.module('umbraco.directives.validation')
     .directive("valEmail", valEmail)
-    .factory('valEmailExpression', function() {
+    .factory('valEmailExpression', function () {
+        //NOTE: This is the fixed regex which is part of the newer angular
         return {
             EMAIL_REGEXP: /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i
         };
@@ -10425,6 +10878,45 @@ function valRegex() {
 }
 angular.module('umbraco.directives.validation').directive("valRegex", valRegex);
 
+(function() {
+  'use strict';
+
+  function ValRequireComponentDirective() {
+
+    function link(scope, el, attr, ngModel) {
+
+      var unbindModelWatcher = scope.$watch(function () {
+        return ngModel.$modelValue;
+      }, function(newValue) {
+
+        if(newValue === undefined || newValue === null || newValue === "") {
+          ngModel.$setValidity("valRequiredComponent", false);
+        } else {
+          ngModel.$setValidity("valRequiredComponent", true);
+        }
+
+      });
+
+      // clean up
+      scope.$on('$destroy', function(){
+        unbindModelWatcher();
+      });
+
+    }
+
+    var directive = {
+      require: 'ngModel',
+      restrict: "A",
+      link: link
+    };
+
+    return directive;
+  }
+
+  angular.module('umbraco.directives').directive('valRequireComponent', ValRequireComponentDirective);
+
+})();
+
 /**
     * @ngdoc directive
     * @name umbraco.directives.directive:valServer
@@ -10585,6 +11077,56 @@ function valServerField(serverValidationManager) {
 }
 angular.module('umbraco.directives.validation').directive("valServerField", valServerField);
 
+/**
+* @ngdoc directive
+* @name umbraco.directives.directive:valSubView
+* @restrict A
+* @description Used to show validation warnings for a editor sub view to indicate that the section content has validation errors in its data.
+* In order for this directive to work, the valFormManager directive must be placed on the containing form.
+**/
+(function() {
+  'use strict';
+
+  function valSubViewDirective() {
+
+    function link(scope, el, attr, ctrl) {
+
+      var valFormManager = ctrl[1];
+      scope.subView.hasError = false;
+
+      //listen for form validation changes
+      valFormManager.onValidationStatusChanged(function (evt, args) {
+          if (!args.form.$valid) {
+
+             var subViewContent = el.find(".ng-invalid");
+
+             if (subViewContent.length > 0) {
+                 scope.subView.hasError = true;
+             } else {
+                 scope.subView.hasError = false;
+             }
+
+          }
+          else {
+             scope.subView.hasError = false;
+          }
+      });
+
+    }
+
+    var directive = {
+      require: ['^form', '^valFormManager'],
+      restrict: "A",
+      link: link
+    };
+
+    return directive;
+  }
+
+  angular.module('umbraco.directives').directive('valSubView', valSubViewDirective);
+
+})();
+
 
 /**
 * @ngdoc directive
@@ -10724,156 +11266,5 @@ angular.module('umbraco.directives.validation')
 		priority : 1	
 	};
 });
-/**
- * Konami Code directive for AngularJS
- * @version v0.0.1
- * @license MIT License, http://www.opensource.org/licenses/MIT
- */
-
-angular.module('umbraco.directives')
-  .directive('konamiCode', ['$document', function ($document) {
-      var konamiKeysDefault = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-
-      return {
-          restrict: 'A',
-          link: function (scope, element, attr) {
-
-              if (!attr.konamiCode) {
-                  throw ('Konami directive must receive an expression as value.');
-              }
-
-              // Let user define a custom code.
-              var konamiKeys = attr.konamiKeys || konamiKeysDefault;
-              var keyIndex = 0;
-
-              /**
-               * Fired when konami code is type.
-               */
-              function activated() {
-                  if ('konamiOnce' in attr) {
-                      stopListening();
-                  }
-                  // Execute expression.
-                  scope.$eval(attr.konamiCode);
-              }
-
-              /**
-               * Handle keydown events.
-               */
-              function keydown(e) {
-                  if (e.keyCode === konamiKeys[keyIndex++]) {
-                      if (keyIndex === konamiKeys.length) {
-                          keyIndex = 0;
-                          activated();
-                      }
-                  } else {
-                      keyIndex = 0;
-                  }
-              }
-
-              /**
-               * Stop to listen typing.
-               */
-              function stopListening() {
-                  $document.off('keydown', keydown);
-              }
-
-              // Start listening to key typing.
-              $document.on('keydown', keydown);
-
-              // Stop listening when scope is destroyed.
-              scope.$on('$destroy', stopListening);
-          }
-      };
-  }]);
-(function() {
-  'use strict';
-
-  function ValRequireComponentDirective() {
-
-    function link(scope, el, attr, ngModel) {
-
-      var unbindModelWatcher = scope.$watch(function () {
-        return ngModel.$modelValue;
-      }, function(newValue) {
-
-        if(newValue === undefined || newValue === null || newValue === "") {
-          ngModel.$setValidity("valRequiredComponent", false);
-        } else {
-          ngModel.$setValidity("valRequiredComponent", true);
-        }
-
-      });
-
-      // clean up
-      scope.$on('$destroy', function(){
-        unbindModelWatcher();
-      });
-
-    }
-
-    var directive = {
-      require: 'ngModel',
-      restrict: "A",
-      link: link
-    };
-
-    return directive;
-  }
-
-  angular.module('umbraco.directives').directive('valRequireComponent', ValRequireComponentDirective);
-
-})();
-
-/**
-* @ngdoc directive
-* @name umbraco.directives.directive:valSubView
-* @restrict A
-* @description Used to show validation warnings for a editor sub view to indicate that the section content has validation errors in its data.
-* In order for this directive to work, the valFormManager directive must be placed on the containing form.
-**/
-(function() {
-  'use strict';
-
-  function valSubViewDirective() {
-
-    function link(scope, el, attr, ctrl) {
-
-      var valFormManager = ctrl[1];
-      scope.subView.hasError = false;
-
-      //listen for form validation changes
-      valFormManager.onValidationStatusChanged(function (evt, args) {
-          if (!args.form.$valid) {
-
-             var subViewContent = el.find(".ng-invalid");
-
-             if (subViewContent.length > 0) {
-                 scope.subView.hasError = true;
-             } else {
-                 scope.subView.hasError = false;
-             }
-
-          }
-          else {
-             scope.subView.hasError = false;
-          }
-      });
-
-    }
-
-    var directive = {
-      require: ['^form', '^valFormManager'],
-      restrict: "A",
-      link: link
-    };
-
-    return directive;
-  }
-
-  angular.module('umbraco.directives').directive('valSubView', valSubViewDirective);
-
-})();
-
 
 })();

@@ -27,46 +27,46 @@
     }
 }
 @*<div data-ng-controller="SearchPanelController" data-ng-cloak>
-    <input class="searchBox" data-ng-model="searchTerm" data-ng-trim="false" data-options="settings" data-datasets="dataset" data-sf-typeahead/>
-    <input type="button" data-ng-click="UpdateSearch(searchTerm)" value="@searchSearchTitle"/>
-    <nav role="navigation">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#content" data-toggle="tab">
-                <div>@contentResultTitle {{contentSearchTitle}}</div></a></li>
-            <li><a href="#image" data-toggle="tab">
-                <div>@imageResultTitle {{imageSearchTitle}}</div></a></li>
-            <li><a href="#file" data-toggle="tab">
-                <div>@fileResultTitle {{fileSearchTitle}}</div></a></li>
-        </ul>
-    </nav>
-    <div class="tab-content">
-        <div class="tab-pane active" id="content" data-ng-controller="ContentSearchResultController">
-            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
-            <div data-ng-repeat="item in searchModel.results">
-                <h2><a href="{{item.url}}">{{item.name}}</a>
-                </h2>
-                <p>{{item.mainPreamble}}</p>
-                <hr/>
+        <input class="searchBox" data-ng-model="searchTerm" data-ng-trim="false" data-options="settings" data-datasets="dataset" data-sf-typeahead/>
+        <input type="button" data-ng-click="UpdateSearch(searchTerm)" value="@searchSearchTitle"/>
+        <nav role="navigation">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#content" data-toggle="tab">
+                    <div>@contentResultTitle {{contentSearchTitle}}</div></a></li>
+                <li><a href="#image" data-toggle="tab">
+                    <div>@imageResultTitle {{imageSearchTitle}}</div></a></li>
+                <li><a href="#file" data-toggle="tab">
+                    <div>@fileResultTitle {{fileSearchTitle}}</div></a></li>
+            </ul>
+        </nav>
+        <div class="tab-content">
+            <div class="tab-pane active" id="content" data-ng-controller="ContentSearchResultController">
+                <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+                <div data-ng-repeat="item in searchModel.results">
+                    <h2><a href="{{item.url}}">{{item.name}}</a>
+                    </h2>
+                    <p>{{item.mainPreamble}}</p>
+                    <hr/>
+                </div>
+            </div>
+            <div class="tab-pane" id="image" data-ng-controller="ImageSearchResultController">
+                <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+                <div data-ng-repeat="item in searchModel.results">
+                    <h2><a href="{{item.url}}" target="_blank"><img data-ng-src="{{item.url}}" alt="{{item.name}}" style="max-width: 15em;"></a>
+                    </h2>
+                    <hr/>
+                </div>
+            </div>
+            <div class="tab-pane" id="file" data-ng-controller="FileSearchResultController">
+                <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
+                <div data-ng-repeat="item in searchModel.results">
+                    <h2><a href="{{item.url}}" target="_blank">{{item.name}}</a>
+                    </h2>
+                    <hr/>
+                </div>
             </div>
         </div>
-        <div class="tab-pane" id="image" data-ng-controller="ImageSearchResultController">
-            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
-            <div data-ng-repeat="item in searchModel.results">
-                <h2><a href="{{item.url}}" target="_blank"><img data-ng-src="{{item.url}}" alt="{{item.name}}" style="max-width: 15em;"></a>
-                </h2>
-                <hr/>
-            </div>
-        </div>
-        <div class="tab-pane" id="file" data-ng-controller="FileSearchResultController">
-            <span data-ng-show="searchModel.results">{{searchModel.resultMessage}}</span>
-            <div data-ng-repeat="item in searchModel.results">
-                <h2><a href="{{item.url}}" target="_blank">{{item.name}}</a>
-                </h2>
-                <hr/>
-            </div>
-        </div>
-    </div>
-</div>*@
+    </div>*@
 
 <article data-ng-controller="SearchPanelController" class="row search-page ng-cloak">
     <div data-ng-controller="LookForSearchResultController">
@@ -151,82 +151,82 @@
 
 
 @*<article class="row search-page">
-    <div class="col-md-12 search-page-intro">
-        <h1>@Model.Header</h1>
-        <span>Your search for <strong>häst</strong> matches 1337 pages</span>
-    </div>
+        <div class="col-md-12 search-page-intro">
+            <h1>@Model.Header</h1>
+            <span>Your search for <strong>häst</strong> matches 1337 pages</span>
+        </div>
 
-    <ul class="col-md-12 search-page-result-list">
-        <li>
-            <h2>
-                <a href="#">AGM 2010</a>
-            </h2>
-            <p>
-                Approval of the Income Statement and the Balance SheetThe Annual General Meeting (the "Meeting") approved the income statement and the balance sheet for the parent company, as well as of the consolidated income statement and the consolidated balance sheet......
-            </p>
-        </li>
-        <li>
-            <h2>
-                <a href="#">Årsstämma 2010</a>
-            </h2>
-            <p>
-                Fastställande av balans- och resultaträkningÅrsstämman fastställde balans- och resultaträkningarna för moderbolaget och koncernen för verksamhetsåret 2009. UtdelningÅrsstämman fastställde föreslagen utdelning till aktieägarna om 4,00 kronor per aktie. So......
-            </p>
-        </li>
-        <li>
-            <h2>
-                <a href="#">Utskott 2008</a>
-            </h2>
-            <p>
-                Utskotten har framför allt en beredande och handläggande roll. Utskotten har rätt att fatta beslut i ärenden som styrelsen, i enlighet med utskottens instruktioner, delegerat till dem samt i andra frågor inom respektive utskotts ansvarsområde som inte är ......
-            </p>
-        </li>
-        <li>
-            <h2>
-                <a href="#">Committees 2008</a>
-            </h2>
-            <p>
-                The committees function above all is a preparatory and administrative role. They are empowered to make decisions on business that the Board, under the instructions issued to the committees has delegated to them, and on other issues in their respective are......
-            </p>
-        </li>
-    </ul>
+        <ul class="col-md-12 search-page-result-list">
+            <li>
+                <h2>
+                    <a href="#">AGM 2010</a>
+                </h2>
+                <p>
+                    Approval of the Income Statement and the Balance SheetThe Annual General Meeting (the "Meeting") approved the income statement and the balance sheet for the parent company, as well as of the consolidated income statement and the consolidated balance sheet......
+                </p>
+            </li>
+            <li>
+                <h2>
+                    <a href="#">Årsstämma 2010</a>
+                </h2>
+                <p>
+                    Fastställande av balans- och resultaträkningÅrsstämman fastställde balans- och resultaträkningarna för moderbolaget och koncernen för verksamhetsåret 2009. UtdelningÅrsstämman fastställde föreslagen utdelning till aktieägarna om 4,00 kronor per aktie. So......
+                </p>
+            </li>
+            <li>
+                <h2>
+                    <a href="#">Utskott 2008</a>
+                </h2>
+                <p>
+                    Utskotten har framför allt en beredande och handläggande roll. Utskotten har rätt att fatta beslut i ärenden som styrelsen, i enlighet med utskottens instruktioner, delegerat till dem samt i andra frågor inom respektive utskotts ansvarsområde som inte är ......
+                </p>
+            </li>
+            <li>
+                <h2>
+                    <a href="#">Committees 2008</a>
+                </h2>
+                <p>
+                    The committees function above all is a preparatory and administrative role. They are empowered to make decisions on business that the Board, under the instructions issued to the committees has delegated to them, and on other issues in their respective are......
+                </p>
+            </li>
+        </ul>
 
-    <ul class="col-md-12 search-page-paging">
-        <li>
-            <a href="#">Previous</a>
-        </li>
-        <li>
-            <a href="#">1</a>
-        </li>
-        <li>
-            <a href="#">2</a>
-        </li>
-        <li>
-            <a href="#">3</a>
-        </li>
-        <li>
-            <a href="#">4</a>
-        </li>
-        <li>
-            <a href="#">5</a>
-        </li>
-        <li>
-            <a href="#">6</a>
-        </li>
-        <li>
-            <a href="#">7</a>
-        </li>
-        <li>
-            <a href="#">8</a>
-        </li>
-        <li>
-            <a href="#">9</a>
-        </li>
-        <li>
-            <a href="#">10</a>
-        </li>
-        <li>
-            <a href="#">Next</a>
-        </li>
-    </ul>
-</article>*@
+        <ul class="col-md-12 search-page-paging">
+            <li>
+                <a href="#">Previous</a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">6</a>
+            </li>
+            <li>
+                <a href="#">7</a>
+            </li>
+            <li>
+                <a href="#">8</a>
+            </li>
+            <li>
+                <a href="#">9</a>
+            </li>
+            <li>
+                <a href="#">10</a>
+            </li>
+            <li>
+                <a href="#">Next</a>
+            </li>
+        </ul>
+    </article>*@

@@ -9,7 +9,7 @@
 
 @{
     Layout = "Master.cshtml";
-    
+
     var log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 }
 
@@ -26,20 +26,20 @@
         {
             var push = page as IPush;
             string color = null;
-            
+
             if (page.DocumentTypeAlias == "ListInvestmentsPageModel")
             {
                 var categoryPage = ModelFactory.Instance.GetModel<ListInvestmentsPageModel>(page.Id);
                 color = categoryPage.ColorDropdown;
             }
-            
+
             if (push != null)
             {
                 try
                 {
                     <div class="category-page-category col-md-4 col-sm-4">
 
-                        @Html.Render(push.PushImage, @<p><img src="@push.PushImage.Url" alt="@page.Name"/></p>)
+                        @Html.Render(push.PushImage, @<p><img src="@push.PushImage.Url" alt="@page.Name" /></p>)
 
                         <h2>
                             <a href="@page.Url" title="@page.Name" class="@color">@page.Name</a>

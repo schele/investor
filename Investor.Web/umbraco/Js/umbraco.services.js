@@ -1,6 +1,6 @@
 /*! umbraco
  * https://github.com/umbraco/umbraco-cms/
- * Copyright (c) 2016 Umbraco HQ;
+ * Copyright (c) 2017 Umbraco HQ;
  * Licensed 
  */
 
@@ -2195,7 +2195,7 @@ angular.module('umbraco.services')
          * @description
          * Opens a content picker tree in a modal, the callback returns an array of selected documents
          * @param {Object} options content picker dialog options object
-         * @param {Boolean} options.multipicker should the picker return one or multiple items
+         * @param {Boolean} options.multiPicker should the picker return one or multiple items
          * @param {Function} options.callback callback function
          * @returns {Object} modal object
          */
@@ -3049,11 +3049,16 @@ function iconHelper($q, $timeout) {
         },
         formatContentTypeIcons: function (contentTypes) {
             for (var i = 0; i < contentTypes.length; i++) {
-                contentTypes[i].icon = this.convertFromLegacyIcon(contentTypes[i].icon);
+                if (!contentTypes[i].icon) {
+                    //just to be safe (e.g. when focus was on close link and hitting save)
+                    contentTypes[i].icon = "icon-document"; // default icon
+                } else {
+                    contentTypes[i].icon = this.convertFromLegacyIcon(contentTypes[i].icon);
+                }
 
                 //couldnt find replacement
                 if(contentTypes[i].icon.indexOf(".") > 0){
-                     contentTypes[i].icon = "icon-document-dashed-line";   
+                     contentTypes[i].icon = "icon-document-dashed-line";
                 }
             }
             return contentTypes;
@@ -3068,6 +3073,10 @@ function iconHelper($q, $timeout) {
         },
         /** If the icon is legacy */
         isLegacyIcon: function (icon) {
+            if(!icon) {
+                return false;
+            }
+
             if(icon.startsWith('..')){
                 return false;
             }
@@ -3998,13 +4007,12 @@ function keyboardService($window, $timeout) {
 
         function setSorting(field, allow, options) {
             if (allow) {
-                options.orderBy = field;
-
-                if (options.orderDirection === "desc") {
-                    options.orderDirection = "asc";
-                } else {
+                if (options.orderBy === field && options.orderDirection === 'asc') {
                     options.orderDirection = "desc";
+                } else {
+                    options.orderDirection = "asc";
                 }
+                options.orderBy = field;
             }
         }
 
@@ -4069,6 +4077,91 @@ function keyboardService($window, $timeout) {
 
 
 })();
+
+/**
+ @ngdoc service
+ * @name umbraco.services.listViewPrevalueHelper
+ *
+ *
+ * @description
+ * Service for accessing the prevalues of a list view being edited in the inline list view editor in the doctype editor
+ */
+(function () {
+    'use strict';
+
+    function listViewPrevalueHelper() {
+
+        var prevalues = [];
+
+        /**
+        * @ngdoc method
+        * @name umbraco.services.listViewPrevalueHelper#getPrevalues
+        * @methodOf umbraco.services.listViewPrevalueHelper
+        *
+        * @description
+        * Set the collection of prevalues
+        */
+
+        function getPrevalues() {
+            return prevalues;
+        }
+
+        /**
+        * @ngdoc method
+        * @name umbraco.services.listViewPrevalueHelper#setPrevalues
+        * @methodOf umbraco.services.listViewPrevalueHelper
+        *
+        * @description
+        * Changes the current layout used by the listview to the layout passed in. Stores selection in localstorage
+        *
+        * @param {Array} values Array of prevalues
+        */
+
+        function setPrevalues(values) {
+            prevalues = values;
+        }
+
+        
+
+        var service = {
+
+            getPrevalues: getPrevalues,
+            setPrevalues: setPrevalues
+
+        };
+
+        return service;
+
+    }
+
+
+    angular.module('umbraco.services').factory('listViewPrevalueHelper', listViewPrevalueHelper);
+
+
+})();
+
+/**
+ * @ngdoc service
+ * @name umbraco.services.localizationService
+ *
+ * @requires $http
+ * @requires $q
+ * @requires $window
+ * @requires $filter
+ *
+ * @description
+ * Application-wide service for handling localization
+ *
+ * ##usage
+ * To use, simply inject the localizationService into any controller that needs it, and make
+ * sure the umbraco.services module is accesible - which it should be by default.
+ *
+ * <pre>
+ *    localizationService.localize("area_key").then(function(value){
+ *        element.html(value);
+ *    });
+ * </pre>
+ */
 
 angular.module('umbraco.services')
 .factory('localizationService', function ($http, $q, eventsService, $window, $filter, userService) {
@@ -4150,7 +4243,17 @@ angular.module('umbraco.services')
             return deferred.promise;
         },
 
-        //helper to tokenize and compile a localization string
+        /**
+         * @ngdoc method
+         * @name umbraco.services.localizationService#tokenize
+         * @methodOf umbraco.services.localizationService
+         *
+         * @description
+         * Helper to tokenize and compile a localization string
+         * @param {String} value the value to tokenize
+         * @param {Object} scope the $scope object 
+         * @returns {String} tokenized resource string
+         */
         tokenize: function (value, scope) {
             if (value) {
                 var localizer = value.split(':');
@@ -4167,7 +4270,17 @@ angular.module('umbraco.services')
             return value;
         },
 
-        // checks the dictionary for a localized resource string
+        /**
+         * @ngdoc method
+         * @name umbraco.services.localizationService#localize
+         * @methodOf umbraco.services.localizationService
+         *
+         * @description
+         * Checks the dictionary for a localized resource string
+         * @param {String} value the area/key to localize
+         * @param {Array} tokens if specified this array will be sent as parameter values 
+         * @returns {String} localized resource string
+         */
         localize: function (value, tokens) {
             return service.initLocalizedResources().then(function (dic) {
                 var val = _lookup(value, tokens, dic);
@@ -4766,6 +4879,65 @@ function mediaHelper(umbRequestHelper) {
         
     };
 }angular.module('umbraco.services').factory('mediaHelper', mediaHelper);
+
+/**
+ * @ngdoc service
+ * @name umbraco.services.mediaTypeHelper
+ * @description A helper service for the media types
+ **/
+function mediaTypeHelper(mediaTypeResource, $q) {
+
+    var mediaTypeHelperService = {
+
+        getAllowedImagetypes: function (mediaId){
+				
+            // Get All allowedTypes
+            return mediaTypeResource.getAllowedTypes(mediaId)
+                .then(function(types){
+                    
+                    var allowedQ = types.map(function(type){
+                        return mediaTypeResource.getById(type.id);
+                    });
+
+                    // Get full list
+                    return $q.all(allowedQ).then(function(fullTypes){
+
+                        // Find all the media types with an Image Cropper property editor
+                        var filteredTypes = mediaTypeHelperService.getTypeWithEditor(fullTypes, ['Umbraco.ImageCropper']);
+
+                        // If there is only one media type with an Image Cropper we will return this one
+                        if(filteredTypes.length === 1) {
+                            return filteredTypes;
+                        // If there is more than one Image cropper, custom media types have been added, and we return all media types with and Image cropper or UploadField
+                        } else {
+                            return mediaTypeHelperService.getTypeWithEditor(fullTypes, ['Umbraco.ImageCropper', 'Umbraco.UploadField']);
+                        }
+
+                    });
+            });
+		},
+
+        getTypeWithEditor: function (types, editors) {
+
+            return types.filter(function (mediatype) {
+                for (var i = 0; i < mediatype.groups.length; i++) {
+                    var group = mediatype.groups[i];
+                    for (var j = 0; j < group.properties.length; j++) {
+                        var property = group.properties[j];
+                        if( editors.indexOf(property.editor) !== -1 ) {
+                            return mediatype;
+                        }
+                    }
+                }
+            });
+
+        }
+
+    };
+
+    return mediaTypeHelperService;
+}
+angular.module('umbraco.services').factory('mediaTypeHelper', mediaTypeHelper);
 
 /**
  * @ngdoc service
@@ -8133,15 +8305,15 @@ function umbRequestHelper($http, $q, umbDataFormatter, angularHelper, dialogServ
          * @description
          * This returns a promise with an underlying http call, it is a helper method to reduce
          *  the amount of duplicate code needed to query http resources and automatically handle any 
-         *  Http errors. See /docs/source/using-promises-resources.md
+         *  500 Http server errors. 
          *
-         * @param {object} opts A mixed object which can either be a string representing the error message to be
-         *   returned OR an object containing either:
+         * @param {object} opts A mixed object which can either be a `string` representing the error message to be
+         *   returned OR an `object` containing either:
          *     { success: successCallback, errorMsg: errorMessage }
          *          OR
          *     { success: successCallback, error: errorCallback }
-         *   In both of the above, the successCallback must accept these parameters: data, status, headers, config
-         *   If using the errorCallback it must accept these parameters: data, status, headers, config
+         *   In both of the above, the successCallback must accept these parameters: `data`, `status`, `headers`, `config`
+         *   If using the errorCallback it must accept these parameters: `data`, `status`, `headers`, `config`
          *   The success callback must return the data which will be resolved by the deferred object.
          *   The error callback must return an object containing: {errorMsg: errorMessage, data: originalData, status: status }
          */
@@ -8200,16 +8372,14 @@ function umbRequestHelper($http, $q, umbDataFormatter, angularHelper, dialogServ
                     }
                     
                 }
-                else {
 
-                    //return an error object including the error message for UI
-                    deferred.reject({
-                        errorMsg: result.errorMsg,
-                        data: result.data,
-                        status: result.status
-                    });
+                //return an error object including the error message for UI
+                deferred.reject({
+                    errorMsg: result.errorMsg,
+                    data: result.data,
+                    status: result.status
+                });
 
-                }
 
             });
 
@@ -8296,15 +8466,14 @@ function umbRequestHelper($http, $q, umbDataFormatter, angularHelper, dialogServ
                         }
                         
                     }
-                    else {
-
-                        //return an error object including the error message for UI
-                        deferred.reject({
-                            errorMsg: 'An error occurred',
-                            data: data,
-                            status: status
-                        });
-                    }
+                    
+                    //return an error object including the error message for UI
+                    deferred.reject({
+                        errorMsg: 'An error occurred',
+                        data: data,
+                        status: status
+                    });
+                   
 
                 });
 
@@ -8368,6 +8537,7 @@ function umbRequestHelper($http, $q, umbDataFormatter, angularHelper, dialogServ
     };
 }
 angular.module('umbraco.services').factory('umbRequestHelper', umbRequestHelper);
+
 angular.module('umbraco.services')
     .factory('userService', function ($rootScope, eventsService, $q, $location, $log, securityRetryQueue, authResource, dialogService, $timeout, angularHelper, $http) {
 
@@ -8401,7 +8571,7 @@ angular.module('umbraco.services')
             loginDialog = null;
 
             if (success) {
-                securityRetryQueue.retryAll();
+                securityRetryQueue.retryAll(currentUser.name);
             }
             else {
                 securityRetryQueue.cancelAll();
@@ -8409,9 +8579,9 @@ angular.module('umbraco.services')
             }
         }
 
-        /** 
-        This methods will set the current user when it is resolved and 
-        will then start the counter to count in-memory how many seconds they have 
+        /**
+        This methods will set the current user when it is resolved and
+        will then start the counter to count in-memory how many seconds they have
         remaining on the auth session
         */
         function setCurrentUser(usr) {
@@ -8424,8 +8594,8 @@ angular.module('umbraco.services')
             countdownUserTimeout();
         }
 
-        /** 
-        Method to count down the current user's timeout seconds, 
+        /**
+        Method to count down the current user's timeout seconds,
         this will continually count down their current remaining seconds every 5 seconds until
         there are no more seconds remaining.
         */
@@ -8440,8 +8610,8 @@ angular.module('umbraco.services')
                     //if there are more than 30 remaining seconds, recurse!
                     if (currentUser.remainingAuthSeconds > 30) {
 
-                        //we need to check when the last time the timeout was set from the server, if 
-                        // it has been more than 30 seconds then we'll manually go and retrieve it from the 
+                        //we need to check when the last time the timeout was set from the server, if
+                        // it has been more than 30 seconds then we'll manually go and retrieve it from the
                         // server - this helps to keep our local countdown in check with the true timeout.
                         if (lastServerTimeoutSet != null) {
                             var now = new Date();
@@ -8449,7 +8619,7 @@ angular.module('umbraco.services')
 
                             if (seconds > 30) {
 
-                                //first we'll set the lastServerTimeoutSet to null - this is so we don't get back in to this loop while we 
+                                //first we'll set the lastServerTimeoutSet to null - this is so we don't get back in to this loop while we
                                 // wait for a response from the server otherwise we'll be making double/triple/etc... calls while we wait.
                                 lastServerTimeoutSet = null;
 
@@ -8468,7 +8638,7 @@ angular.module('umbraco.services')
                     }
                     else {
 
-                        //we are either timed out or very close to timing out so we need to show the login dialog.                                        
+                        //we are either timed out or very close to timing out so we need to show the login dialog.
                         if (Umbraco.Sys.ServerVariables.umbracoSettings.keepUserLoggedIn !== true) {
                             //NOTE: the safeApply because our timeout is set to not run digests (performance reasons)
                             angularHelper.safeApply($rootScope, function () {
@@ -8479,14 +8649,14 @@ angular.module('umbraco.services')
                                 }
                                 finally {
                                     userAuthExpired();
-                                } 
+                                }
                             });
                         }
                         else {
                             //we've got less than 30 seconds remaining so let's check the server
 
                             if (lastServerTimeoutSet != null) {
-                                //first we'll set the lastServerTimeoutSet to null - this is so we don't get back in to this loop while we 
+                                //first we'll set the lastServerTimeoutSet to null - this is so we don't get back in to this loop while we
                                 // wait for a response from the server otherwise we'll be making double/triple/etc... calls while we wait.
                                 lastServerTimeoutSet = null;
 
@@ -8582,7 +8752,7 @@ angular.module('umbraco.services')
                     });
             },
 
-            /** Logs the user out 
+            /** Logs the user out
              */
             logout: function () {
 
@@ -8641,6 +8811,102 @@ angular.module('umbraco.services')
     });
 
 /*Contains multiple services for various helper tasks */
+function versionHelper() {
+
+    return {
+
+        //see: https://gist.github.com/TheDistantSea/8021359
+        versionCompare: function(v1, v2, options) {
+            var lexicographical = options && options.lexicographical,
+                zeroExtend = options && options.zeroExtend,
+                v1parts = v1.split('.'),
+                v2parts = v2.split('.');
+
+            function isValidPart(x) {
+                return (lexicographical ? /^\d+[A-Za-z]*$/ : /^\d+$/).test(x);
+            }
+
+            if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
+                return NaN;
+            }
+
+            if (zeroExtend) {
+                while (v1parts.length < v2parts.length) {
+                    v1parts.push("0");
+                }
+                while (v2parts.length < v1parts.length) {
+                    v2parts.push("0");
+                }
+            }
+
+            if (!lexicographical) {
+                v1parts = v1parts.map(Number);
+                v2parts = v2parts.map(Number);
+            }
+
+            for (var i = 0; i < v1parts.length; ++i) {
+                if (v2parts.length === i) {
+                    return 1;
+                }
+
+                if (v1parts[i] === v2parts[i]) {
+                    continue;
+                }
+                else if (v1parts[i] > v2parts[i]) {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+
+            if (v1parts.length !== v2parts.length) {
+                return -1;
+            }
+
+            return 0;
+        }
+    };
+}
+angular.module('umbraco.services').factory('versionHelper', versionHelper);
+
+function dateHelper() {
+
+    return {
+        
+        convertToServerStringTime: function(momentLocal, serverOffsetMinutes, format) {
+
+            //get the formatted offset time in HH:mm (server time offset is in minutes)
+            var formattedOffset = (serverOffsetMinutes > 0 ? "+" : "-") +
+                moment()
+                .startOf('day')
+                .minutes(Math.abs(serverOffsetMinutes))
+                .format('HH:mm');
+
+            var server = moment.utc(momentLocal).utcOffset(formattedOffset);
+            return server.format(format ? format : "YYYY-MM-DD HH:mm:ss");
+        },
+
+        convertToLocalMomentTime: function (strVal, serverOffsetMinutes) {
+
+            //get the formatted offset time in HH:mm (server time offset is in minutes)
+            var formattedOffset = (serverOffsetMinutes > 0 ? "+" : "-") +
+                moment()
+                .startOf('day')
+                .minutes(Math.abs(serverOffsetMinutes))
+                .format('HH:mm');
+
+            //convert to the iso string format
+            var isoFormat = moment(strVal).format("YYYY-MM-DDTHH:mm:ss") + formattedOffset;
+
+            //create a moment with the iso format which will include the offset with the correct time
+            // then convert it to local time
+            return moment.parseZone(isoFormat).local();
+        }
+
+    };
+}
+angular.module('umbraco.services').factory('dateHelper', dateHelper);
 
 function packageHelper(assetsService, treeService, eventsService, $templateCache) {
 
